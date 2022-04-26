@@ -20,6 +20,7 @@
 {%- endstyle -%}
 
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
+<script src="{{ 'product-form-with-condition.js' | asset_url }}" type="module" defer="defer"></script>
 
 {%- assign product = section.settings.product -%}
 
@@ -257,7 +258,14 @@
             {%- when 'buy_buttons' -%}
               <div {{ block.shopify_attributes }}>
                 {%- if product != blank -%}
-                  <product-form class="product-form">
+                  <product-form-with-condition 
+                    max_total_products_quantity="{{ settings.max_total_products_quantity }}" 
+                    max_each_product_quantity="{{ settings.max_each_product_quantity }}" 
+                    max_cart_total="{{ settings.max_cart_total }}" 
+                    cart_display_message="{{ settings.cart_display_message }}" 
+                    product_price="{{ product.price | money_without_currency }}"
+                    class="product-form"
+                  > 
                     <div class="product-form__error-message-wrapper" role="alert" hidden>
                       <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
                         <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
@@ -294,8 +302,8 @@
                           {{ form | payment_button }}
                         {%- endif -%}
                       </div>
-                    {%- endform -%}
-                  </product-form>
+                    {%- endform -%}    
+                  </product-form-with-condition>
                 {%- else -%}
                   <div class="product-form">
                     <div class="product-form__buttons form">
@@ -337,7 +345,7 @@
               {%- endif -%}
             {%- endcase -%}
           {%- endfor -%}
-        <a{% if product == blank %} role="link" aria-disabled="true"{% else %} href="{{ product.url }}"{% endif %} class="link product__view-details animate-arrow">
+        <a {% if product == blank %} role="link" aria-disabled="true"{% else %} href="{{ product.url }}"{% endif %} class="link product__view-details animate-arrow">
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
         </a>

@@ -1143,5 +1143,36 @@
         "default": true
       }
     ]
+  },
+  {
+    "name": "t:settings_schema.cart_conditions.name",
+    "settings": [
+      {
+        "type": "number",
+        "id": "max_total_products_quantity",
+        "label": "t:settings_schema.cart_conditions.settings.max_total_products_quantity.label",
+        "default": 46
+      },
+      {
+        "type": "number",
+        "id": "max_each_product_quantity",
+        "label": "t:settings_schema.cart_conditions.settings.max_each_product_quantity.label",
+        "default": 46
+      },
+      {
+        "type": "number",
+        "id": "max_cart_total",
+        "label": "t:settings_schema.cart_conditions.settings.max_cart_total.label",
+        "info": "t:settings_schema.cart_conditions.settings.max_cart_total.info",
+        "default": 4000
+      },
+      {
+        "type": "liquid",
+        "id": "cart_display_message",
+        "label": "t:settings_schema.cart_conditions.settings.cart_display_message.label",
+        "info": "t:settings_schema.cart_conditions.settings.cart_display_message.info",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nisi elit, feugiat eu congue sit amet, efficitur sed sem. Cras sit amet ipsum varius, interdum justo et, commodo nunc."
+      }
+    ]
   }
 ]

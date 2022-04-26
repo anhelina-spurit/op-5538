@@ -1,0 +1,7 @@
+cart-with-condition-items.is-empty .title-wrapper-with-link {
+  display: none;
+}
+
+cart-with-condition-items {
+  display: block;
+}
