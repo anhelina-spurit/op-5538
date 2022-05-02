@@ -323,6 +323,25 @@
           "label": "Vertical space"
         }
       }
+    },
+    "cart_conditions": {
+      "name": "Cart conditions",
+      "settings": {
+        "max_total_products_quantity": {
+          "label": "Maximum number of all items in cart"
+        },
+        "max_each_product_quantity": {
+          "label": "Maximum number of each item in cart"
+        },
+        "max_cart_total": {
+          "label": "Maximum cart total (in coins)",
+          "info": "Should be in shop's currency"
+        },
+        "cart_display_message": {
+          "label": "Cart overflow message",
+          "info": "Visible when one of the conditions is broken"
+        }
+      }
     }
   },
   "sections": {

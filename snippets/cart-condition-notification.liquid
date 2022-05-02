@@ -1,0 +1,35 @@
+{% comment %}
+    Renders cart condition notification
+
+    Accepts:
+    - color_scheme: {String} sets the color scheme of the notification (optional)
+
+    Usage:
+    {% render 'cart-condition-notification' %}
+{% endcomment %}
+
+<cart-condition-notification>
+  <div class="cart-condition-notification-wrapper page-width{% if color_scheme %} color-{{ color_scheme }}{% endif %}">
+    <div id="cart-condition-notification" class="cart-condition-notification focus-inset" aria-modal="true" aria-label="{{ 'general.cart.item_added' | t }}" role="dialog" tabindex="-1">
+      <div class="cart-notification__header cart-condition-notification__header">
+        <button type="button" class="cart-notification__close modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
+          <svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="#icon-close"/></svg>
+        </button>
+      </div>
+      <div id="cart-notification-message" class="cart-notification-message">
+        {{ settings.cart_display_message }}
+      </div>
+      {%- assign templateBase = template | slice: 0, 4 -%}
+      {%- if templateBase != 'cart' -%}
+        <div class="cart-notification__links">
+          <a href="{{ routes.cart_url }}" id="cart-notification-button" class="button button--secondary button--full-width">Go to cart</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</cart-condition-notification>
+{% style %}
+  .cart-condition-notification {
+    display: none;
+  }
+{% endstyle %}

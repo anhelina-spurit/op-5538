@@ -1,4 +1,5 @@
 {{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-with-condition.css' | asset_url | stylesheet_tag }}
 {{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
 {{ 'component-totals.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -19,9 +20,16 @@
   }
 {%- endstyle -%}
 
-<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'check_cart_condition.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart-with-condition.js' | asset_url }}" defer="defer"></script>
 
-<cart-items class="page-width{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
+<cart-with-condition-items 
+  class="page-width{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}"
+  max_total_products_quantity="{{ settings.max_total_products_quantity }}" 
+  max_each_product_quantity="{{ settings.max_each_product_quantity }}" 
+  max_cart_total="{{ settings.max_cart_total }}" 
+  cart_display_message="{{ settings.cart_display_message }}"
+>
   <div class="title-wrapper-with-link">
     <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
     <a href="{{ routes.all_products_collection_url }}" class="underlined-link">{{ 'general.continue_shopping' | t }}</a>
@@ -216,7 +224,6 @@
                           {% render 'icon-plus' %}
                         </button>
                       </quantity-input>
-
                       <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
                         <a href="{{ item.url_to_remove }}" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
                           {% render 'icon-remove' %}
@@ -292,7 +299,7 @@
     <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
     <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
   </form>
-</cart-items>
+</cart-with-condition-items>
 
 {% schema %}
 {
