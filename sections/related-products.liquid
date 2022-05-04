@@ -1,0 +1,166 @@
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% if section.settings.is_enabled %}
+  <related-products
+    class="related-products"
+    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4"
+  >
+    {% liquid
+      for block in section.blocks
+        if block.type == 'related-to-product' and block.settings.main-product.id == product.id
+          assign has_block_recommendations = true
+          assign block_recommendations = block.settings.related-products
+        endif
+      endfor
+
+      assign has_recommendations = true
+      
+      if recommendations.performed and recommendations.products_count > 0 
+        assign related_products = recommendations.products
+      elsif has_block_recommendations and block_recommendations.count > 0
+        assign related_products = block_recommendations
+      else
+        assign has_recommendations = false
+      endif
+    %}
+    {% if has_recommendations == true %}
+      <h2>{{ section.settings.title }}</h2>
+      <ul class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop product-grid--centered">
+        {% for related_product in related_products %}
+          <li class="grid__item">
+            {% render 'card-product',
+              card_product: related_product
+            %}
+          </li>
+        {% endfor %}
+      </ul>
+      <a 
+        class="button button--primary" 
+        {% if section.settings.button_page == blank %} 
+        role="link" aria-disabled="true"
+        {% else %} 
+        href="{{ section.settings.button_page.url }}"
+        {% endif %}
+      >
+        {{ section.settings.button_content }}
+      </a>
+    {% endif %}
+  </related-products>
+{% endif %}
+
+{% style %}
+  .related-products {
+    visibility: hidden;
+  }
+
+  .related-products.related-products--loaded {
+    visibility: visible;
+  }
+
+  .product-grid--centered {
+    justify-content: center;
+  }
+{% endstyle %}
+
+{% javascript %}
+  class RelatedProducts extends HTMLElement {
+    constructor() {
+      super();
+      this.serveShopifyRecommendations()
+    }
+
+    serveShopifyRecommendations() {
+      const handleIntersection = (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+        observer.unobserve(this);
+
+        fetch(this.dataset.url)
+          .then(response => response.text())
+          .then(text => {
+            const html = document.createElement('div');
+            html.innerHTML = text;
+            const recommendations = html.querySelector('related-products');
+
+            if (recommendations && recommendations.innerHTML.trim().length) {
+              this.innerHTML = recommendations.innerHTML;
+            }
+        
+            this.classList.add("related-products--loaded")
+          })
+          .catch(e => {
+            console.error(e);
+            this.classList.add("related-products--loaded")
+          });
+      }
+
+      new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
+    }
+  }
+
+  customElements.define('related-products', RelatedProducts);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:sections.related-products.name",
+  "tag": "section",
+  "class": "page-width center",
+  "limit": 1,
+  "blocks": [
+    {
+      "name": "t:sections.related-products.blocks.related-to-product.name",
+      "type": "related-to-product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "main-product",
+          "label": "t:sections.related-products.blocks.related-to-product.settings.main-product.label"
+        },
+        {
+          "type": "product_list",
+          "id": "related-products",
+          "limit": 4,
+          "label": "t:sections.related-products.blocks.related-to-product.settings.related-products.label"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.related-products.settings.general_settings.label"
+    },
+    {
+      "type": "checkbox",
+      "default": true,
+      "id": "is_enabled",
+      "label": "t:sections.related-products.settings.is_enabled.label"
+    },
+    {
+      "type": "text",
+      "default": "Related products",
+      "id": "title",
+      "label": "t:sections.related-products.settings.title.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.related-products.settings.button_settings.label"
+    },
+    {
+      "type": "text",
+      "default": "Show more",
+      "id": "button_content",
+      "label": "t:sections.related-products.settings.button_content.label"
+    },
+    {
+      "type": "page",
+      "id": "button_page",
+      "label": "t:sections.related-products.settings.button_page.label"
+    }
+  ]
+}
+{% endschema %}

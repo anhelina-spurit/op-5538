@@ -2817,6 +2817,42 @@
       "presets": {
         "name": "Collapsible content"
       }
+    },
+    "related-products": {
+      "name": "Related products",
+      "blocks": {
+        "related-to-product": {
+          "name": "Related products",
+          "settings": {
+            "main-product": {
+              "label": "Main product"
+            },
+            "related-products": {
+              "label": "Related products"
+            }
+          }
+        }
+      },
+      "settings": {
+        "general_settings": {
+          "label": "General settings"
+        },
+        "is_enabled": {
+          "label": "Enabled"
+        },
+        "title": {
+          "label": "Title"
+        },
+        "button_settings": {
+          "label": "Button settings"
+        },
+        "button_content": {
+          "label": "Button content"
+        },
+        "button_page": {
+          "label": "Page"
+        }
+      }
     }
   }
 }
