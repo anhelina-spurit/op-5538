@@ -196,20 +196,40 @@
         "padding_bottom": 36
       }
     },
-    "product-recommendations": {
-      "type": "product-recommendations",
+    "related-products": {
+      "type": "related-products",
+      "blocks": {
+        "211a029a-eebc-499f-ae51-32d74bb27df2": {
+          "type": "related-to-product",
+          "settings": {
+            "main-product": "crimson-star",
+            "related-products": [
+              "sparkling-sea",
+              "red-violet"
+            ]
+          }
+        },
+        "53701d2c-94a0-4394-8d00-8b381ead3005": {
+          "type": "related-to-product",
+          "settings": {
+            "main-product": "bitter-thunder",
+            "related-products": [
+              "very-cool-product",
+              "green-dew",
+              "red-violet"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "211a029a-eebc-499f-ae51-32d74bb27df2",
+        "53701d2c-94a0-4394-8d00-8b381ead3005"
+      ],
       "settings": {
-        "heading": "You may also like",
-        "heading_size": "h2",
-        "columns_desktop": 4,
-        "color_scheme": "background-1",
-        "image_ratio": "square",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 28
+        "is_enabled": false,
+        "title": "Related products",
+        "button_content": "Show more",
+        "button_page": ""
       }
     }
   },
@@ -217,6 +237,6 @@
     "main",
     "image-with-text",
     "multicolumn",
-    "product-recommendations"
+    "related-products"
   ]
 }
