@@ -10,7 +10,7 @@
     "prestart": "npm run connect",
     "start": "shopify theme serve",
     "dev": "concurrently \"npm:watch\" \"npm:start\"",
-    "connect": "shopify switch --store=cyrillus-fr.myshopify.com",
+    "connect": "shopify switch --store=anhelina-ke.myshopify.com",
     "login": "shopify login",
     "serve": "shopify theme sdata-toggle-password-viewerve",
     "clean": "rm ./assets/bundle.min.js ./assets/style.min.css",
