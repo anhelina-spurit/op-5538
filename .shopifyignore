@@ -1,0 +1,15 @@
+package.json
+package-lock.json
+README.md
+webpack.config.js
+.gitignore
+.gitattributes
+.editorconfig
+.browserslistrc
+.babelrc.json
+
+#globs
+
+webpack/*
+src/*
+assets/fonts.css
