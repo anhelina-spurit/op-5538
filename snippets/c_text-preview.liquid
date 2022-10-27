@@ -1,0 +1,79 @@
+{%- comment -%}
+    @summary Renders a skeleton
+
+    @param {string} heading - heading
+    @param {string} [heading_level] - heading_level
+    @param {string} [sub_heading] - sub heading
+    @param {string} description - description
+    @param {Shopify.image} [image] - image after text
+    @param {string} [image_link] - url
+    @param {string} [link] - url
+    @param {string} [link_title] - title link
+    @param {string} [link_2] - url
+    @param {string} [link_2_title] - title link
+    @param {booleans} [separate_actions] - links separate from text
+    @param {string} [actions_classes] - additional actions classes
+    @param {string[]} [heading_modifiers] - modifiers for heading
+    @param {string} [target] - link target
+    @param {string} [custom_classes] - additional classes
+    @param {string} [link_custom_classes] - additional link classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+    @param {string} [id] - id
+
+    @example
+    {%-
+        render 'c_text-preview',
+        heading: 'Text',
+        sub_heading: 'Text',
+        description: 'Partagez vos photos sur Instagram avec le #cyrillusetvous'
+        custom_classes: 'custom',
+        link_custom_classes: 'custom-link',
+        modifiers: 'lg, light',
+        attributes: 'data-custom'
+    -%}
+{%- endcomment -%}
+
+{% liquid
+  assign level = heading_level | default: 2
+  assign heading_modifiers = heading_modifiers | default: 'md'
+  assign target = target | default: false
+  assign separate_actions = separate_actions | default: false
+  assign link_classes = 'text-preview__link ' | append: link_custom_classes
+
+  capture actions
+    render 'el_link', custom_classes: link_classes, href: link, text: link_title, target: target
+    render 'el_link', custom_classes: link_classes, href: link_2, text: link_2_title, target: target
+  endcapture
+%}
+
+{%- if heading != blank or description != blank -%}
+  <div class="{%- render 'f_bem-classes', main_class: 'text-preview', custom_classes: custom_classes, modifiers: modifiers -%}">
+      {% if sub_heading %}
+        <p class="text-preview__sub-heading" {% if id %}id="{{ id }}"{% endif %}>{{ sub_heading }}</p>
+      {% endif %}
+      {% render 'el_heading', level: level, text: heading, custom_classes: 'text-preview__heading', modifiers: heading_modifiers %}
+      {% if description != blank %}
+        <p class="text-preview__description" {% if id %}id="{{ id }}"{% endif %}>{{ description }}</p>
+      {% endif %}
+      {% unless separate_actions %}
+        {{ actions }}
+      {% endunless %}
+  </div>
+  {% if separate_actions %}
+    <div class="text-preview__actions {{ actions_classes }}">
+      {{ actions }}
+    </div>
+  {% endif %}
+  {% if image != blank %}
+    <div class="text-preview__media">
+      {%- if image_link != blank -%}
+        <a class="text-preview__image-link" href="{{- image_link.url -}}">
+      {%- endif -%}
+        {%  render 'el_shopify-image', image: image, lazy_loading: true, custom_classes: 'text-preview__image' %}
+      {%- if image_link != blank -%}
+        </a>
+      {%- endif -%}
+  </div>
+  {% endif %}
+{%- endif -%}

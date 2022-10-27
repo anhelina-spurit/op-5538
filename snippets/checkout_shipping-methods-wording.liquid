@@ -1,0 +1,13 @@
+<script>
+  window.checkout_wording = {
+    translations: {
+      encombrant: {{ 'checkout.shipping_method_wording.encombrant_wording' | t | json }},
+      boutique: {{ 'checkout.shipping_method_wording.boutique_wording' | t | json }},
+      domicile: {{ 'checkout.shipping_method_wording.domicile_wording' | t | json }},
+      relay: {{ 'checkout.shipping_method_wording.relay_wording' | t | json }},
+      colissimo: {{ 'checkout.shipping_method_wording.colissimo_wording' | t | json }}
+    }
+  }
+</script>
+
+<script src="{{ 'checkout-wording.js' | asset_url }}"></script>

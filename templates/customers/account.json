@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "16490619528525b79b": {
+      "type": "account",
+      "settings": {
+        "account_nav": "account-menu",
+        "return_tab_enable_custom_wording": true,
+        "return_tab_custom_wording": "<p><strong>Pour toute commande passée AVANT le 6 Juin 2022 :<\/strong><br\/>et si vous n'avez pas pu télécharger votre bon de retour dans votre compte client, rubrique \"retour\", vous pouvez effectuer votre retour en téléchargeant un bon de retour via <a href=\"https:\/\/www.mondialrelay.fr\/envoi-de-colis\/retourner-un-colis\/creer-un-retour?brandId=F2CYRLUS&SiteId=CY_LOG&WeightInGramm=1000\" target=\"_blank\">ce lien<\/a>.<\/p><p>A l'intérieur de votre colis, vous pouvez insérer un papier libre précisant vos nom, prénom et numéro de commande (commence par 21...). Egalement nous vous demandons afin de faciliter la rapidité de traitement de votre retour, de renvoyer vos articles dans leurs emballages d'origine (pochettes transparentes) ainsi que dans la pochette ou le carton d'expédition Cyrillus d'origine.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "16490619528525b79b"
+  ]
+}

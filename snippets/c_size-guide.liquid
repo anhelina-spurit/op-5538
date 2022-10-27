@@ -1,0 +1,74 @@
+{% comment %}
+  @summary Renders size guide wrraper
+
+  @example
+  {%- render 'c_size-guide' -%}
+{% endcomment %}
+
+<div class="size-guide-wrapper">
+  {% liquid
+    capture tablist
+      assign women = 'size_guide.tabs.women' | t
+      render 'el_tab', id: 'women_guide', content: women, panel_id: 'women_guide_panel', selected: true, tabindex: '0'
+
+      assign men = 'size_guide.tabs.men' | t
+      render 'el_tab', id: 'men_guide', content: men, panel_id: 'men_guide_panel', selected: false, tabindex: '-1'
+
+      assign children = 'size_guide.tabs.children' | t
+      render 'el_tab', id: 'children_guide', content: children, panel_id: 'children_guide_panel', selected: false, tabindex: '-1'
+
+      assign babies = 'size_guide.tabs.babies' | t
+      render 'el_tab', id: 'babies_guide', content: babies, panel_id: 'babies_guide_panel', selected: false, tabindex: '-1'
+
+      assign shoes = 'size_guide.tabs.shoes' | t
+      render 'el_tab', id: 'shoes_guide', content: shoes, panel_id: 'shoes_guide_panel', selected: false, tabindex: '-1'
+    endcapture
+
+    render 'el_tab-list', content: tablist, custom_classes: 'size-guide__tabs'
+
+    capture options
+      assign option_women = 'option_women'
+      render 'el_selectbox-option', id: option_women, option_value: women, selected: true, option_text: women, attributes: 'data-size-guide-option="women_guide_panel"'
+
+      assign option_men = 'option_men'
+      render 'el_selectbox-option', id: option_men, option_value: men, selected: false, option_text: men, attributes: 'data-size-guide-option="men_guide_panel"'
+
+      assign option_children = 'option_children'
+      render 'el_selectbox-option', id: option_children, option_value: children, selected: false, option_text: children, attributes: 'data-size-guide-option="children_guide_panel"'
+
+      assign option_babies = 'option_babies'
+      render 'el_selectbox-option', id: option_babies, option_value: babies, selected: false, option_text: babies, attributes: 'data-size-guide-option="babies_guide_panel"'
+
+      assign option_shoes = 'option_shoes'
+      render 'el_selectbox-option', id: option_shoes, option_value: shoes, selected: false, option_text: shoes, attributes: 'data-size-guide-option="shoes_guide_panel"'
+    endcapture
+
+    render 'c_selectbox', id: 'size_guide_type', custom_classes: 'size-guide__selectbox-tab', custom_options: options, selected_option_id: option_women, selected_option_text: women
+
+    capture women_tab_content
+      render 'c_size-guide-women', id: 'women'
+    endcapture
+
+    capture men_tab_content
+      render 'c_size-guide-men', id: 'men'
+    endcapture
+
+    capture children_tab_content
+      render 'c_size-guide-children', id: 'children'
+    endcapture
+
+    capture babies_tab_content
+      render 'c_size-guide-babies', id: 'babies'
+    endcapture
+
+    capture shoes_tab_content
+      render 'c_size-guide-shoes', id: 'shoes'
+    endcapture
+
+    render 'el_tab-panel', id: 'women_guide_panel', content: women_tab_content, tab_id: 'women_guide', hidden: false
+    render 'el_tab-panel', id: 'men_guide_panel', content: men_tab_content, tab_id: 'men_guide', hidden: true
+    render 'el_tab-panel', id: 'children_guide_panel', content: children_tab_content, tab_id: 'children_guide', hidden: true
+    render 'el_tab-panel', id: 'babies_guide_panel', content: babies_tab_content, tab_id: 'babies_guide', hidden: true
+    render 'el_tab-panel', id: 'shoes_guide_panel', content: shoes_tab_content, tab_id: 'shoes_guide', hidden: true
+  %}
+</div>

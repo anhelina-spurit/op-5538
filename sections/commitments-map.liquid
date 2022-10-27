@@ -1,0 +1,146 @@
+{%- capture content -%}
+  {%- if section.settings.annotation != blank -%}
+    <div class='commitments-map__annotation'>
+      {{ section.settings.annotation | newline_to_br }}
+    </div>
+  {%- endif -%}
+
+  <div class='commitments-map__partners'>
+    <ul class='commitments-map__list'>
+      {% for block in section.blocks %}
+        {%- assign item_id = section.id | append: block.settings.heading | downcase | handleize -%}
+        <li
+          class='commitments-map__item'
+          id='{{ item_id }}'
+          {% if forloop.first != true %}
+            hidden
+          {% endif %}
+        >
+          {%- render "el_heading", level: 3, text: block.settings.heading, custom_classes: 'commitments-map__item_h' -%}
+          <div class='commitments-map__item_subh'>{{ block.settings.subheading }}</div>
+          <div class='commitments-map__item_desc'>{{ block.settings.description | newline_to_br }}</div>
+          <div class='commitments-map__item_media'>
+            {%- liquid
+              if block.settings.image1 != blank
+                assign img_src = block.settings.image1 | image_url: width: 243
+                echo '<div>'
+                render 'el_image', src: img_src, lazy_loading: true
+                echo '</div>'
+              endif
+
+              if block.settings.image2 != blank
+                assign img_src = block.settings.image2 | image_url: width: 243
+                echo '<div>'
+                render 'el_image', src: img_src, lazy_loading: true
+                echo '</div>'
+              endif
+            -%}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class='commitments-map__world commitments__dropdown-tabs' data-dropdown-tabs>
+      {%- if section.settings.legend != blank -%}
+        <div class="commitments-map__legend">{{ section.settings.legend | newline_to_br }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.nav_label != blank -%}
+        {%- render "el_heading", level: 2, text: section.settings.nav_label, custom_classes: 'commitments__dropdown-tabs__label' -%}
+      {%- endif -%}
+
+      <div class="commitments__dropdown-tabs-list dropdown-tabs-list">
+        {% for block in section.blocks %}
+          {%- assign control_id = section.id | append: block.settings.heading | downcase | handleize -%}
+          <button
+            class='commitments-map__marker commitments__dropdown-tabs__item'
+            data-title='{{ block.settings.marker_name | capitalize }}'
+            aria-selected='{% if forloop.first == true %}true{% else %}false{% endif %}'
+            aria-controls='{{ control_id }}'
+            role='tab'
+          >
+            <span class="commitments-map__marker_text">{{ block.settings.marker_name | capitalize }}</span>
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  capture section_content
+    render 'el_container', content: content, modifiers: 'xxl'
+  endcapture
+
+  render 'c_section', content: section_content, name: 'commitments-map'
+-%}
+
+<style>
+  @media screen and (min-width: 992px) {
+    .commitments-map__world {
+      background-image: url({{ 'world-map.png' | asset_url }});
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Commitments map",
+  "settings": [
+    {
+      "id": "annotation",
+      "type": "textarea",
+      "label": "Annotation"
+    },
+    {
+      "id": "legend",
+      "type": "textarea",
+      "label": "Map legend"
+    },
+    {
+      "id": "nav_label",
+      "type": "text",
+      "label": "Navigation label",
+      "info": "Visible only on small screens"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "marker",
+      "name": "Marker",
+      "settings": [
+        {
+          "id": "marker_name",
+          "type": "text",
+          "label": "Marker name"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "subheading",
+          "type": "text",
+          "label": "Subheading"
+        },
+        {
+          "id": "description",
+          "type": "richtext",
+          "label": "Description"
+        },
+        {
+          "id": "image1",
+          "type": "image_picker",
+          "label": "Image 1"
+        },
+        {
+          "id": "image2",
+          "type": "image_picker",
+          "label": "Image 2"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

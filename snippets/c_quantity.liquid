@@ -1,0 +1,35 @@
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'quantity', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+  capture title
+    render 'f_product-title', product: product
+  endcapture
+
+  assign input_id = 'quantity-' | append: id
+-%}
+
+<fieldset class="{{ class }}">
+  <label class="legend" for="{{ input_id }}">
+    {{ 'products.product.quantity.label' | t }}
+  </label>
+
+  <div class="quantity__group" data-quantity-input>
+    <button class="quantity__button" name="minus" type="button">
+      <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: title | escape }}</span>
+      -
+    </button>
+    <input class="quantity__input"
+        type="number"
+        name="quantity"
+        id="{{ input_id }}"
+        min="1"
+        value="1"
+        form="{{ product_form_id }}"
+      >
+    <button class="quantity__button" name="plus" type="button">
+      <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: title | escape }}</span>
+      +
+    </button>
+  </div>
+</fieldset>

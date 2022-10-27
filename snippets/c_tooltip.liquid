@@ -1,0 +1,36 @@
+{% comment %}
+  @summary Renders collapse panel
+
+  @param {string} id - id
+  @param {string} labelled_by - label id
+  @param {string} content - content
+  @param {boolean} [is_opened] - is opene
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+      render 'c_tooltip',
+      id: 'collapse',
+      content: '<span>Lorem ipsum</span>',
+      modifiers: 'lg, light',
+      custom_classes: 'accordion-item__panel',
+      attributes: 'data-custom',
+  %}
+{% endcomment %}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'tooltip', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  capture close
+    render 'el_icon', icon: 'close', custom_classes: ''
+  endcapture
+%}
+<div class="{{- class -}}" data-tooltip data-controlled-by="{{- controlled_by -}}" role="tooltip" {{ attributes }}>
+  {{ content }}
+  <div class="tooltip__arrow" data-tooltip-arrow></div>
+  {% render 'el_button', text: close, custom_classes: 'tooltip__close', modifiers: 'link', attributes: 'data-tooltip-close', type: 'button' %}
+</div>

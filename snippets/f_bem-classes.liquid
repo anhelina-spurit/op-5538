@@ -1,0 +1,44 @@
+{%- comment -%}
+  @summary BEM class generation
+
+  @param {string} main_class - content
+  @param {string[]} [modifiers] - modifiers
+  @param {string} [custom_classes] - additional classes
+
+  @example <caption>will be converted to block block--xl block--light custom-class-1 custom-class-2</caption>
+  {%-
+    render 'f_bem-classes',
+    main_class: "block",
+    modifiers: 'xl, light',
+    custom_classes: 'custom-class-1 custom-class-2',
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign main_class = main_class | strip_newlines | strip
+  assign classes = main_class
+
+  unless classes == blank
+    if modifiers
+      assign modifiers = modifiers | strip_newlines | strip | remove: ' ' | split: ','
+
+      for modifier in modifiers
+        unless modifier == blank
+          assign classes = classes | append: ' ' | append: main_class | append: '--' | append: modifier
+        endunless
+      endfor
+    endif
+
+    if custom_classes
+      assign custom_classes = custom_classes | split: ' '
+
+      for custom_class in custom_classes
+        unless custom_class == blank
+          assign classes = classes | append: ' ' | append: custom_class
+        endunless
+      endfor
+    endif
+  endunless
+
+  echo classes | strip_newlines | strip
+-%}

@@ -1,0 +1,38 @@
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+
+.orders-table {
+  width: 100%;
+  color: $palette-dark;
+  font-weight: 300;
+}
+
+.orders-table__head .orders-table__ceil {
+  padding-bottom: to-rem(28.5px);
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(1px);
+}
+
+.orders-table__body .orders-table__ceil {
+  padding-bottom: to-rem(41.5px);
+  font-size: to-rem(13px);
+}
+
+.orders-table__ceil_lg {
+  width: 20%;
+}
+
+.orders-table__content-refund-action {
+  display: block;
+  width: fit-content;
+  line-height: to-rem(10px);
+  white-space: nowrap;
+}
+
+.orders-table__content-refund-action:not(:first-of-type) {
+  padding-top: to-rem(10px);
+}
+
+.orders-table__ceil_sm {
+  width: 25%;
+}

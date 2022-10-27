@@ -1,0 +1,58 @@
+{%- liquid
+  assign heading_id = section.id | append: section.settings.id | append: '__heading'
+  assign heading_custom_classes = 'faq-navigation__heading faq-navigation__heading--main '
+  capture container_content
+    if section.blocks.size > 0
+      assign label_id = section.id | append: '_title'
+      echo '<nav id="' | append: section.id | append: '" class="faq-navigation__navigation" aria-labelledby="' | append: label_id | append: '">'
+      echo '<ul class="faq-navigation__list" role="menubar" aria-labelledby="' | append: label_id | append: '">'
+      for block in section.blocks
+        echo '<li class="faq-navigation__item" role="none">'
+        if forloop.index == 1
+          assign link_classes = 'faq-navigation__link faq-navigation__link--active'
+        else
+          assign link_classes = 'faq-navigation__link'
+        endif
+        assign href = block.settings.href | handleize | replace: '#', '' | prepend: '#'
+        render 'el_link', href: href, text: block.settings.nav_name, custom_classes: link_classes
+        echo '</li>'
+      endfor
+      echo '</ul>'
+      echo '</nav>'
+    endif
+  endcapture
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'faq-navigation', content: container_content
+-%}
+
+{% schema %}
+{
+  "name": "Faq navigation",
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "Nav item",
+      "settings": [
+        {
+          "id": "nav_name",
+          "type": "text",
+          "label": "Navigation name"
+        },
+        {
+          "id": "href",
+          "type": "text",
+          "label": "Id for navigation"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Faq navigation"
+    }
+  ]
+}
+{% endschema %}

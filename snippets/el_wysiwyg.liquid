@@ -1,0 +1,27 @@
+{%- comment -%}
+  @summary Renders a wysiwyg content
+
+  @param {string} [content] - content
+  @param {string} [custom_classes] - additional classes
+  @param {string[]} [modifiers] - modifiers
+  @param {string} [attributes] - additional attributes
+
+  @example
+  {%-
+    render 'el_wysiwyg',
+    content: page.content,
+    custom_classes: 'custom-page',
+    modifiers: 'center',
+    attributes: 'data-attribute',
+  -%}
+{%- endcomment -%}
+
+{%- unless content == blank -%}
+  {%- liquid
+    capture class
+      render 'f_bem-classes', main_class: 'wysiwyg', custom_classes: custom_classes, modifiers: modifiers
+    endcapture
+  -%}
+
+  <div class="{{ class }}" {{ attributes }}>{{- content -}}</div>
+{%- endunless -%}

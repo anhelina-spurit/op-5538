@@ -1,0 +1,204 @@
+{% liquid
+	assign heading = 'gift_cards.form.card.heading' | t
+	assign description = 'gift_cards.form.card.description' | t
+	assign sum_label = 'gift_cards.form.card.input_labels.sum_html' | t
+	assign for_label = 'gift_cards.form.card.input_labels.for' | t
+	assign message_label = 'gift_cards.form.card.input_labels.message' | t
+	assign message_placeholder = 'gift_cards.form.card.input_labels.message_placeholder' | t
+	assign from_label = 'gift_cards.form.card.input_labels.from' | t
+	assign delivery_label = 'gift_cards.form.card.input_labels.delivery_html' | t
+	assign delivery_home = 'gift_cards.form.card.input_labels.delivery_home' | t
+	assign delivery_address = 'gift_cards.form.card.input_labels.delivery_address' | t
+	assign submit_label = 'gift_cards.form.card.buttons.submit' | t
+  assign address_label = 'gift_cards.form.card.input_labels.address' | t
+  assign additional_address_label = 'gift_cards.form.card.input_labels.additional_address' | t
+  assign post_code_label = 'gift_cards.form.card.input_labels.post_code' | t
+  assign city_label = 'gift_cards.form.card.input_labels.city' | t
+%}
+<form action="#" class="gift-card-form">
+	{%-
+		render 'el_image',
+		src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/Carte_Cadeau.svg?v=1653299537',
+		alt: '',
+		lazy_loading: true,
+		lazy_loading_src_enabled: true,
+		custom_classes: 'gift-card-form__icon'
+	-%}
+	{%-
+		render 'el_heading',
+    tag: 'h2',
+    level: 2,
+    text: heading,
+    custom_classes: 'gift-card-form__heading',
+	-%}
+	<p class="gift-card-form__description">{{ description }}</p>
+
+	{% comment %} Hidden card type input {% endcomment %}
+	{%-
+		render 'el_input',
+		type: 'hidden',
+		name: 'properties[gift-card-types]',
+		value: 'GIFT_CARD',
+		required: true,
+	-%}
+
+	{% comment %} Sum {% endcomment %}
+	<div class="gift-card-form__field">
+		{%-
+			render 'el_label',
+			for_input: 'sum_select',
+			content: sum_label,
+			custom_classes: "gift-card-form__label",
+		-%}
+    {% liquid
+      assign option_values = ',10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,145,150' | split:','
+      capture options
+        for option in option_values
+          if forloop.index == 1
+            render 'el_option', value: option, content: option, selected: true, attributes: 'hidden'
+          else
+            render 'el_option', value: option, content: option, selected: false
+          endif
+        endfor
+      endcapture
+    %}
+    {%- render  'el_select', id: 'sum_select', options: options, required: true, custom_classes: 'gift-card-form__select',   modifiers: 'outlined' -%}
+	</div>
+
+	{% comment %} For {% endcomment %}
+	<div class="gift-card-form__field">
+		{%-
+			render 'el_label',
+			for_input: 'for_input',
+			content: for_label,
+			custom_classes: "gift-card-form__label",
+		-%}
+		{%-
+			render 'el_input',
+			id: 'for_input',
+			name: 'properties[recipient-name]',
+			required: true,
+			custom_classes: 'gift-card-form__input',
+			modifiers: 'outlined',
+		-%}
+	</div>
+
+	{% comment %} Message {% endcomment %}
+	<div class="gift-card-form__field">
+		{%-
+			render 'el_label',
+			for_input: 'message_input',
+			content: message_label,
+			custom_classes: "gift-card-form__label"
+		-%}
+		{%-
+			render 'el_textarea',
+			id: 'message_input',
+			name: 'properties[message]',
+			rows: 6,
+			placeholder: message_placeholder,
+			custom_classes: 'gift-card-form__textarea',
+			attributes: 'maxlength="200"',
+			modifiers: 'outlined',
+		-%}
+	</div>
+
+	{% comment %} From {% endcomment %}
+	<div class="gift-card-form__field">
+		{%-
+			render 'el_label',
+			for_input: 'from_input',
+			content: from_label,
+			custom_classes: "gift-card-form__label"
+		-%}
+		{%-
+			render 'el_input',
+			id: 'from_input',
+			name: 'properties[sender-name]',
+			required: true,
+			custom_classes: 'gift-card-form__input',
+			modifiers: 'outlined',
+		-%}
+	</div>
+
+	{% comment %} Delivery addresses {% endcomment %}
+  <div class="gift-card-form__field">
+    <p class="gift-card-form__radio-description">{{ delivery_label }}</p>
+    {%-
+            render 'el_label',
+            for_input: 'address_input',
+            content: address_label,
+            custom_classes: "gift-card-form__label"
+    -%}
+    {%-
+            render 'el_input',
+            id: 'address_input',
+            name: 'properties[recipient-address1]',
+            required: true,
+            custom_classes: 'gift-card-form__input',
+            modifiers: 'outlined',
+    -%}
+  </div>
+
+  <div class="gift-card-form__field">
+    {%-
+            render 'el_label',
+            for_input: 'additional_address_input',
+            content: additional_address_label,
+            custom_classes: "gift-card-form__label"
+    -%}
+    {%-
+            render 'el_input',
+            id: 'additional_address_input',
+            name: 'properties[recipient-address2]',
+            required: false,
+            custom_classes: 'gift-card-form__input',
+            modifiers: 'outlined',
+    -%}
+  </div>
+
+  <div class="gift-card-form__field">
+    {%-
+            render 'el_label',
+            for_input: 'post_code_input',
+            content: post_code_label,
+            custom_classes: "gift-card-form__label"
+    -%}
+    {%-
+            render 'el_input',
+            id: 'post_code_input',
+            name: 'properties[recipient-zip]',
+            required: true,
+            custom_classes: 'gift-card-form__input',
+            modifiers: 'outlined',
+    -%}
+  </div>
+
+  <div class="gift-card-form__field">
+    {%-
+            render 'el_label',
+            for_input: 'city_input',
+            content: city_label,
+            custom_classes: "gift-card-form__label"
+    -%}
+    {%-
+            render 'el_input',
+            id: 'city_input',
+            name: 'properties[recipient-city]',
+            required: true,
+            custom_classes: 'gift-card-form__input',
+            modifiers: 'outlined',
+    -%}
+  </div>
+
+
+	{% comment %} Submit {% endcomment %}
+	<div class="gift-card-form__field">
+		{%-
+      render 'el_button',
+      text: submit_label,
+      modifiers: 'secondary, small, full-width',
+      type: 'submit',
+		-%}
+	</div>
+</form>

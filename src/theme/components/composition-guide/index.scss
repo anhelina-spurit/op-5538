@@ -1,0 +1,123 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.composition-guide {
+  padding-bottom: to-rem(90px);
+  background-color: $palette-merino;
+}
+
+.composition-guide__breadcrumbs {
+  padding: to-rem(26px) to-rem(50px) to-rem(32px);
+
+  @include media-breakpoint-down(lg) {
+    padding-right: to-rem(20px);
+    padding-left: to-rem(20px);
+  }
+}
+
+.composition-guide__breadcrumbs .breadcrumbs-item__title {
+  color: $palette-dusty-gray;
+}
+
+.composition-guide__breadcrumbs .breadcrumbs-item__title--current {
+  color: $palette-pickled-bluewood;
+}
+
+.composition-guide__hero {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.composition-guide__heading {
+  align-self: center;
+  padding: to-rem(20px);
+  margin: auto;
+  font-size: to-rem(24px);
+  font-weight: 400;
+  justify-self: center;
+  letter-spacing: to-rem(4px);
+  line-height: 1.83;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(lg) {
+    width: 50%;
+    font-size: to-rem(14px);
+    text-align: center;
+  }
+}
+
+.composition-guide__container {
+  max-width: to-rem(1089px);
+}
+
+.composition-guide__logo {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  max-width: to-rem(46px);
+  max-height: to-rem(56px);
+  transform: translate(-50%, -50%);
+}
+
+.composition-guide__media {
+  width: 50%;
+}
+
+.composition-guide__content {
+  display: flex;
+  padding-top: to-rem(72px);
+  padding-left: to-rem(72px);
+
+  @include media-breakpoint-down(lg) {
+    flex-direction: column;
+    padding-top: to-rem(36px);
+    padding-left: 0;
+  }
+}
+
+.composition-guide__description {
+  max-width: to-rem(248px);
+  margin-right: to-rem(120px);
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(0.6px);
+  line-height: 1.86;
+
+  @include media-breakpoint-down(lg) {
+    margin: auto auto to-rem(40px);
+  }
+}
+
+.composition-guide__accordion {
+  width: calc(100% - 248px);
+  border-top: to-rem(1px) solid $palette-dusty-gray;
+
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+  }
+}
+
+.composition-guide__accordion-item {
+  box-shadow: 0 1px 0 0 $palette-dusty-gray;
+}
+
+.composition-guide__accordion-item .accordion-item__button {
+  padding-top: to-rem(20px);
+  padding-bottom: to-rem(20px);
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(12px);
+  font-weight: 400;
+  letter-spacing: to-rem(0.72px);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.composition-guide__accordion-item .collapse-panel__content {
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(0.6px);
+  line-height: 1.86;
+}

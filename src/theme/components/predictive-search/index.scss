@@ -1,0 +1,192 @@
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+
+.predictive-search {
+  position: absolute;
+  z-index: 30;
+  top: 100%;
+  left: 0;
+  display: none;
+  width: 100%;
+  border-bottom: to-rem(1px) solid rgba($palette-dark, 0.2);
+  background-color: $palette-white;
+
+  @include media-breakpoint-down(lg) {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+  }
+}
+
+.predictive-search--search-template {
+  z-index: 2;
+}
+
+.predictive-search--header {
+  @include media-breakpoint-down(md) {
+    top: 100%;
+    right: 0;
+    left: 0;
+  }
+}
+
+.predictive-search-container[open] .predictive-search,
+.predictive-search-container[loading] .predictive-search {
+  display: block;
+}
+
+.predictive-search__heading {
+  position: relative;
+  padding: 1.5rem 2rem;
+  margin: 0;
+  color: $palette-dark;
+  font-weight: 400;
+  text-align: center;
+  text-transform: none;
+}
+
+.predictive-search__heading .loader {
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
+}
+
+.predictive-search-container .loader {
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 0;
+}
+
+// stylelint-disable-next-line selector-max-specificity
+.predictive-search-container:not([loading]) .predictive-search__heading .loader,
+.predictive-search-container:not([loading]) .predictive-search__loading-state,
+.predictive-search-container:not([loading]) .predictive-search-status__loading {
+  display: none;
+}
+
+.predictive-search-container[loading] .predictive-search__loading-state {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.predictive-search__results-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+// stylelint-disable-next-line selector-max-specificity
+.predictive-search-container[loading] .predictive-search__heading ~ .predictive-search__loading-state,
+.predictive-search-container[loading] .predictive-search__results-list:first-child {
+  display: none;
+}
+
+.predictive-search__list-item {
+  width: 100%;
+  margin-bottom: to-rem(20px);
+
+  @include media-breakpoint-up(md) {
+    width: 50%;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 33.333%;
+  }
+}
+
+.predictive-search__list-item[aria-selected='true'],
+.predictive-search__list-item:hover {
+  background-color: rgba($palette-dark, 0.04);
+  color: $palette-dark;
+}
+
+// stylelint-disable-next-line selector-max-specificity
+.predictive-search__list-item[aria-selected='true'] .predictive-search__item-heading,
+.predictive-search__list-item:hover .predictive-search__item-heading {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.predictive-search__item {
+  display: flex;
+  width: 100%;
+  padding: 1rem 0;
+  text-align: left;
+  text-decoration: none;
+
+  @include media-breakpoint-up(md) {
+    padding: 1rem 2rem;
+  }
+}
+
+.predictive-search__item--link {
+  display: grid;
+  color: $palette-dark;
+  grid-column-gap: 1.25rem;
+  grid-template-areas: 'product-image product-content';
+  grid-template-columns: to-rem(130px) 1fr;
+}
+
+.predictive-search__item-content {
+  display: flex;
+  flex-direction: column;
+  grid-area: product-content;
+}
+
+.predictive-search__item-heading {
+  margin: 0 0 1rem;
+  font-size: to-rem(12px);
+  font-weight: 400;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.predictive-search__item-subtitle {
+  margin: 0 0 to-rem(20px);
+  font-size: to-rem(14px);
+  font-weight: 500;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.predictive-search__item .price {
+  margin: 0;
+  color: rgba($palette-dark, 0.7);
+  font-size: to-rem(13px);
+  line-height: 1.375;
+}
+
+.predictive-search__item .product-label {
+  margin-right: 100%;
+}
+
+.predictive-search__image {
+  font-family: 'object-fit: contain';
+  grid-area: product-image;
+  object-fit: contain;
+}
+
+.predictive-search__all {
+  padding: to-rem(40px) 0 to-rem(50px);
+  text-align: center;
+}
+
+.predictive-search__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: transparent;
+  font-size: to-rem(14px);
+  line-height: 1;
+
+  @include media-breakpoint-down(md) {
+    top: 1.2rem;
+    right: 0.75rem;
+  }
+}

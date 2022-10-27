@@ -1,0 +1,23 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.product-list {
+  display: grid;
+  width: 100%;
+  grid-gap: to-rem(40px) to-rem(20px);
+  grid-template-columns: repeat(4, 1fr);
+  @include media-breakpoint-down(lg) {
+    grid-gap: to-rem(40px) to-rem(12px);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.product-list--empty {
+  grid-template-columns: repeat(1, 1fr);
+  text-align: center;
+}
+
+.product-list .product-card {
+  max-width: 100%;
+}

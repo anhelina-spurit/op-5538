@@ -1,0 +1,58 @@
+@import '../../../constants/palette';
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+
+.cart-form__wrapper {
+  display: grid;
+  align-items: start;
+  grid-gap: to-rem(145px);
+  grid-template-columns: 2fr 1fr;
+
+  @include media-breakpoint-down(lg) {
+    grid-gap: 0;
+    grid-template-columns: 1fr;
+  }
+}
+
+.cart-form {
+  height: 100%;
+}
+
+.cart-form__wrapper--empty {
+  height: 100%;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+.cart-form__body {
+  text-align: left;
+}
+
+.cart-form__info {
+  position: sticky;
+  top: to-rem(20px);
+}
+
+.cart-form__items {
+  padding: 0;
+}
+
+.cart-form__item {
+  padding: to-rem(16px) 0;
+  border-top: to-rem(0.5px) solid $palette-dark;
+  list-style-type: none;
+}
+
+.cart-form__item:last-child {
+  @include media-breakpoint-up(md) {
+    border-bottom: to-rem(0.5px) solid $palette-dark;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-bottom: 0;
+  }
+}
+
+.cart-form__empty {
+  text-align: center;
+}

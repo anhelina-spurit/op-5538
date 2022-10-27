@@ -1,0 +1,28 @@
+{%- comment -%}
+  @summary Renders a product media
+
+  @param {Shopify.product} product - product
+
+  @example
+  {%-
+    render 'c_product-media',
+    product: product
+  -%}
+{%- endcomment -%}
+
+{%- assign images = product.media | where: 'media_type', 'image' -%}
+{%- unless images == blank -%}
+  <div class="product-media">
+    <div class="product-media__pagination"></div>
+    <div class="product-media__slider swiper">
+      <ul class="product-media__slides swiper-wrapper" role="list">
+        {%- for image in images -%}
+          <li class="product-media__slide swiper-slide">
+            {%- render 'el_shopify-image', image: image,lazy_loading: true, custom_classes: 'product-media__image' -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+{%- endunless -%}
+

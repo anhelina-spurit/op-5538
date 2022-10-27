@@ -1,0 +1,77 @@
+{% style %}
+  .intro {
+    background-color: {{- section.settings.background -}};
+  }
+
+  .intro__content {
+   background-color: {{- section.settings.color_block -}};
+  }
+
+  .intro__title {
+    color: {{- section.settings.color_text -}};
+  }
+{% endstyle %}
+
+{%- liquid
+  capture container_content
+    echo '<div class="intro__content">'
+      render 'el_heading', level: 1,  text: page.title, custom_classes: 'intro__title'
+      unless section.settings.logo == blank
+        render 'el_image',src: section.settings.logo,lazy_loading: true,custom_classes: 'intro__logo'
+      endunless
+      unless section.settings.image == blank
+        echo '<div class="intro__media">'
+        render 'el_shopify-image',image: section.settings.image,custom_classes: 'intro__image'
+        echo '</div>'
+      endunless
+    echo '</div>'
+  endcapture
+
+  capture content
+    render 'c_breadcrumbs', custom_classes: 'intro__breadcrumbs'
+    render 'el_container', content: container_content, modifiers: 'xl', custom_classes: 'intro__container'
+  endcapture
+  render 'c_section', id: section.settings.id, name: 'intro', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Intro",
+  "settings": [
+    {
+      "id": "background",
+      "type": "color",
+      "label": "Background",
+      "default": "#F8F4EA"
+    },
+    {
+      "id": "color_text",
+      "type": "color",
+      "label": "Color of title",
+      "default": "#FFFFFF"
+    },
+    {
+      "id": "color_block",
+      "type": "color",
+      "label": "Image background",
+      "default": "#D8D8D8"
+    },
+    {
+      "id": "logo",
+      "type": "text",
+      "label": "Logo",
+      "info": "It is more priority to use the image in the SVG format. To do this, you need to upload an image to the store's file system, copy path and paste it here."
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Intro"
+    }
+  ]
+}
+{% endschema %}

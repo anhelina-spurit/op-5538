@@ -1,0 +1,155 @@
+{
+  "sections": {
+    "section": {
+      "type": "empty",
+      "settings": {
+      }
+    },
+    "165001656889f98be1": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "cyrillus s’engage",
+        "image": "shopify:\/\/shop_images\/01000_1514_XXXX_PO_FA_043_c78316b8-3d70-4337-8326-9083f9b6ab64.png",
+        "sub_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/engagements-title.png?v=1649851339",
+        "sub_mobile_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/logo_66b1fd35-ff89-44e6-bbf5-c92925c679b2.svg?v=1648027830",
+        "color": "#ffffff",
+        "long": true
+      }
+    },
+    "16500165755138fbd3": {
+      "type": "product-feature",
+      "settings": {
+        "quote": "« Produire mieux, consommer mieux et respecter ce qui nous entoure. »",
+        "section_description": "Produit de manière plus naturelle, le coton biologique est cultivé sans pesticides, ni engrais chimiques, ni OGM.",
+        "percent": 100,
+        "description": "de nos nouveaux jeans\nsont en coton bio",
+        "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/leaf.svg?v=1649852223",
+        "image": "shopify:\/\/shop_images\/01100_1205_4540_PO_FA_013.png",
+        "pull_up": true
+      }
+    },
+    "1650016584a78110f2": {
+      "type": "info-with-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/page_denim_pile_368x382_43481b4d-44c2-4112-bd8b-c185df2e77a3.jpg",
+        "heading": "Un délavage plus<br>éco-responsable",
+        "description": "Nos jeans en denim indigo bénéficient d’une technologie de délavage écoresponsable innovante et plus écologique, qui permet de réduire la consommation en eau, énergie et produits chimiques.",
+        "link_text": "",
+        "link": "",
+        "content_large": false,
+        "mobile_hidden": false
+      }
+    },
+    "1652875757253416bb": {
+      "type": "image-tiles",
+      "blocks": {
+        "1652875757f70dfa69-0": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeans01.jpg",
+            "heading": ""
+          }
+        },
+        "1652875757f70dfa69-1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeans02.jpg",
+            "heading": ""
+          }
+        },
+        "1652875757f70dfa69-2": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeans03.jpg",
+            "heading": ""
+          }
+        },
+        "1652875757f70dfa69-3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeans04.jpg",
+            "heading": ""
+          }
+        },
+        "cbf50711-898b-4627-a563-ea55ab472c8d": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeans05.jpg",
+            "heading": ""
+          }
+        },
+        "7f04bd1a-e70e-46cf-924f-3e85bdfab115": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeans06jpg.jpg",
+            "heading": ""
+          }
+        },
+        "39a73865-d784-4854-b9aa-05c41d4b4e15": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeans02.jpg",
+            "heading": ""
+          }
+        },
+        "b530e566-fce1-483f-8cac-436e3bc86b06": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jeans01.jpg",
+            "heading": ""
+          }
+        }
+      },
+      "block_order": [
+        "1652875757f70dfa69-0",
+        "1652875757f70dfa69-1",
+        "1652875757f70dfa69-2",
+        "1652875757f70dfa69-3",
+        "cbf50711-898b-4627-a563-ea55ab472c8d",
+        "7f04bd1a-e70e-46cf-924f-3e85bdfab115",
+        "39a73865-d784-4854-b9aa-05c41d4b4e15",
+        "b530e566-fce1-483f-8cac-436e3bc86b06"
+      ],
+      "settings": {
+        "subheading": "",
+        "heading": "Nos denims",
+        "description": "Slim, 5 poches, cigarette, flare, hyper flex, wide leg, jupes et vestes",
+        "link_text": "TOUS NOS JEANS",
+        "link": "#"
+      }
+    },
+    "16500165879c0c67ab": {
+      "type": "collection-trends",
+      "settings": {
+        "sub_image": "shopify:\/\/shop_images\/Bitmap_3d2ae653-cc2f-4a8c-82a0-96fa4538e15a.png",
+        "sub_heading": "Style",
+        "heading": "Les jeans hommes suivent le mouvement",
+        "description": "En coton biologique certifié Gots ou en polyester recyclé, ils bénéficient aussi d’une technologie de délavage innovante et plus écologique",
+        "link_text": "LES JEANS HOMMES",
+        "link": "shopify:\/\/pages\/nos-jeans-eco-responsables",
+        "image": "shopify:\/\/shop_images\/Bitmap_1.png"
+      }
+    },
+    "1650016609a83c0e95": {
+      "type": "info-with-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Capture_d_ecran_2022-04-06_a_11.36.22.png",
+        "heading": "Cyrillus s’engage…",
+        "description": "Découvrez notre programme et nos actions très prochainement.",
+        "link_text": "En savoir plus",
+        "link": "shopify:\/\/pages\/nos-jeans-eco-responsables",
+        "content_large": true,
+        "mobile_hidden": true
+      }
+    }
+  },
+  "order": [
+    "section",
+    "165001656889f98be1",
+    "16500165755138fbd3",
+    "1650016584a78110f2",
+    "1652875757253416bb",
+    "16500165879c0c67ab",
+    "1650016609a83c0e95"
+  ]
+}

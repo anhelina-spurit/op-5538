@@ -1,0 +1,80 @@
+{% comment %}
+  @summary Renders filter active
+  @param {object} results - Collection or Search object
+  @param {string} [custom_classes] - additional classes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_filter-active',
+    results: collection,
+    custom_classes: "custom",
+    modifiers: 'lg, light',
+  %}
+{% endcomment %}
+
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'filter-active', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  capture close
+    render 'el_icon', icon: 'close', custom_classes: 'filter-active__icon'
+  endcapture
+
+  assign filters = 'collection.filter.filters' | t
+  assign active_filter_count = 0
+
+  assign from = 'collection.filter.from' | t
+  assign to = 'collection.filter.to' | t
+  capture content
+    for filter in results.filters
+      assign filter_category_name = filter.label
+      assign downcased_category_name = filter_category_name | downcase
+      assign namespace = filter.param_name | split: "." | last
+      unless namespace == 'subcollection'
+        if filter.type == 'price_range' and filter.min_value.value != blank and filter.max_value.value != blank
+          assign active_filter_count = active_filter_count | plus: 1
+          assign min_value = filter.min_value.value | money | replace: ' ', ' ' | append: ' '
+          assign max_value = filter.max_value.value | money | replace: ' ', ' ' | append: ' '
+          echo '<li class="filter-active__item">'
+            echo '<span>'
+              if filter.min_value.value > 0
+                echo from | append: ' ' | append: min_value
+              endif
+              echo to | append: ' ' | append: max_value
+            echo '</span>'
+            render 'el_button', text: close, modifiers: 'link', custom_classes: 'filter-active__remove', attributes: 'data-filter-reset-item', type: 'button', name: filter.type
+          echo '</li>'
+        endif
+
+        for value in filter.active_values
+          assign active_filter_count = active_filter_count | plus: 1
+          assign button_attr = 'data-filter-reset-item="' | append: value.value | append: '"'
+          echo '<li class="filter-active__item">'
+            assign label = value.label
+            if downcased_category_name contains 'color'
+              assign color_data = value.label | split: '/'
+              assign color_label = color_data[0]
+              assign label = color_label
+            endif
+
+            echo '<span>' | append: label | append: '</span>'
+            render 'el_button', text: close, modifiers: 'link', custom_classes: 'filter-active__remove', attributes: button_attr, type: 'button', name: value.param_name
+          echo '</li>'
+        endfor
+      endunless
+    endfor
+  endcapture
+%}
+
+<div class="{{- class -}}" data-filter-active>
+  {% render 'el_input', type: 'hidden', value: active_filter_count, attributes: 'data-filter-count' %}
+  <ul class="filter-active__list">
+    {{ content }}
+  </ul>
+  {%- if active_filter_count > 0 -%}
+    {% render 'el_button', text: filters, modifiers: 'link', custom_classes: 'filter-active__btn', type: 'button', attributes: 'data-filter-active-button' %}
+  {%- endif -%}
+</div>
+

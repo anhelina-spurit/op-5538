@@ -1,0 +1,96 @@
+{% assign redirect_link = settings.redirect_link %}
+
+{% assign section_name = 'login' %}
+{% if template.suffix contains 'lightregister' %}
+  {% assign section_name = 'lightregister' %}
+{% endif %}
+
+
+{% if customer and redirect_link != blank and section_name == 'lightregister' %}
+  <script type="text/javascript">
+    window.location = "{{ redirect_link }}";
+  </script>
+{% endif %}
+
+
+{%- capture container_content -%}
+    {%- unless section.settings.page_heading == blank -%}
+      {%
+              render 'el_heading', level: 2, text: section.settings.page_heading, custom_classes: 'login__heading'
+      %}
+    {%- endunless -%}
+    {%- unless section.settings.page_description == blank -%}
+      <div class="login__description">{{ section.settings.page_description }}</div>
+    {%- endunless -%}
+  <div class="login__grid">
+    <div class="login__grid-item {% unless section.settings.show_sign_up %}login__grid-item--single{% endunless %}">
+      {%- liquid
+        render 'c_sign-in', description: section.settings.sign_in_description
+
+        if section.settings.show_social_sign_in
+          render 'c_social-sign-in', description: section.settings.social_sign_in_description
+        endif
+      -%}
+    </div>
+    {%- if section.settings.show_sign_up -%}
+      <div class="login__grid-item">
+        {%- render 'c_sign-up', description: section.settings.sign_up_description -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+
+  capture section_content
+    render 'el_container', content: container_content, modifiers: 'xl', custom_classes: 'login__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: section_name, content: section_content, heading_id: heading_id
+-%}
+
+{%- schema -%}
+  {
+    "name": "Login",
+    "settings": [
+      {
+        "type": "text",
+        "id": "page_heading",
+        "label": "Page heading"
+      },
+      {
+        "type": "richtext",
+        "id": "page_description",
+        "label": "Page description"
+      },
+      {
+        "type": "richtext",
+        "id": "sign_in_description",
+        "label": "Sign-in description"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_social_sign_in",
+        "label": "Show social sign-in block",
+        "default": true
+      },
+      {
+        "type": "richtext",
+        "id": "social_sign_in_description",
+        "label": "Social sign-in description"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sign_up",
+        "label": "Show sign-up block",
+        "default": true
+      },
+      {
+        "type": "richtext",
+        "id": "sign_up_description",
+        "label": "Sign-up description"
+      }
+    ]
+  }
+{%- endschema -%}

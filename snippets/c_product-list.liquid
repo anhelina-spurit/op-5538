@@ -1,0 +1,52 @@
+{% comment %}
+  @summary Renders product list
+
+  @param {Shopify.product[] | string[]} products - products list or products handles list
+  @param {string} [custom_classes] - additional classes
+  @param {string[]} [modifiers] - modifiers
+  @param {string} [attributes] - additional attributes
+
+  @example
+  {%-
+      render 'c_product-list',
+      products: collection.products,
+      custom_classes: "custom custom-2",
+      attributes: 'data-product-list data-layout-switch-container'
+  -%}
+{% endcomment %}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'product-list', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+<div class="{{ class }} {%- if products.size == 0 -%} product-list--empty {% endif %}" {{ attributes }} data-collection-initial-page="{{ current_page }}"
+     data-grid data-page="{{ current_page }}" data-page-max="{{ paginate.pages }}">
+  {% liquid
+    if products.size > 0
+      for product in products
+          assign product_data = product
+          if product_data.id == blank
+            assign product_handle = product | handleize
+            assign product_data = all_products[product_handle]
+          endif
+          assign product_id = product_data.id
+          if product_data.type == 'static'
+            echo '<article class="product-list__item" data-product-list-item>'
+              render 'c_product-card-static', product: product_data, id: product_id
+            echo '</article>'
+          else
+            echo '<article class="product-list__item" data-product-list-item>'
+              render 'c_product-card', product: product_data, id: product_id
+            echo '</article>'
+          endif
+      endfor
+    else
+      assign product_not_found_text = 'products.not_found' | t
+      echo '<p>' | append: product_not_found_text | append: '</p>'
+    endif
+  %}
+</div>
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}

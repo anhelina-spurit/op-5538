@@ -1,0 +1,27 @@
+{% comment %}
+  @summary Renders a legend tag and style needed at fieldset.
+
+  @param {string} id - id
+  @param {string} content {required} - content
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'el_legend',
+    content: 'Some legend title',
+    id: 'test_link',
+    custom_classes: 'button button--primary',
+    attributes: 'data-test data-test-2',
+    modifiers: 'test,test-2',
+  %}
+{% endcomment %}
+
+{%- if content != blank -%}
+  <legend {% if id %}id="{{ id }}"{% endif %}
+    class="{%- render 'f_bem-classes', main_class: 'legend', custom_classes: custom_classes, modifiers: modifiers -%}"
+    {{ attributes }}>
+    {{- content -}}
+  </legend>
+{%- endif -%}

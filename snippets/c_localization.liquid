@@ -1,0 +1,48 @@
+{% if localization.available_languages.size > 1 %} {%- comment -%}TODO: change 0 to 1{%- endcomment -%}
+  {%- liquid
+    capture class
+      render 'f_bem-classes', main_class: 'localization', custom_classes: custom_classes, modifiers: modifiers
+    endcapture
+  %}
+
+  <div class="{{ class }}">
+    {%- form 'localization', id: 'HeaderLanguageForm', class: 'localization-form' -%}
+      <div class="disclosure" data-disclosure>
+        <button type="button" class="button localization-form__select" aria-expanded="false" aria-controls="HeaderLanguageList" aria-describedby="HeaderLanguageLabel" data-disclosure-toggle>
+          {{ localization.language.iso_code | upcase }}
+          {% render 'el_icon', icon: 'arrow-down', custom_classes: 'localization-form__select_icon' %}
+        </button>
+        <ul id="HeaderLanguageList" class="localization-form__list disclosure__list" role="list" data-disclosure-list>
+            {%- for locale in form.available_locales -%}
+              {%- if request.page_type == 'index' -%}
+                {%- assign locale_url = locale.root_url -%}
+              {%- else -%}
+                {%- if form.current_locale.primary -%}
+                  {%- assign locale_url = request.path -%}
+                {%- else -%}
+                  {%- assign locale_url = request.path | remove_first: form.current_locale.root_url -%}
+                {%- endif -%}
+                {%- unless locale.primary -%}
+                  {%- assign locale_url = locale_url | prepend: locale.root_url -%}
+                {%- endunless -%}
+              {%- endif -%}
+
+              <li class="localization-form__item" tabindex="-1">
+                <a
+                  class="link link--text localization-form__link caption-large{% if locale.iso_code == localization.language.iso_code %} localization-form__link--active{% endif %}"
+                  href="{{- locale_url -}}"
+                  hreflang="{{ locale.iso_code }}"
+                  lang="{{ locale.iso_code }}"
+                  {% if locale.iso_code == localization.language.iso_code %}aria-current="true"{% endif %}
+                  data-value="{{ locale.iso_code }}"
+                >
+                  {{ locale.iso_code | upcase }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+      </div>
+      <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+    {%- endform -%}
+  </div>
+{% endif %}

@@ -1,0 +1,35 @@
+{% comment %}
+  @summary Renders account content heading.
+
+  @param {string} title - button text {required}
+  @param {string} custom_classes_container - custom class container
+  @param {string} custom_classes_title - custom class title
+  @param {string} custom_classes_link - custom class link
+
+  @example
+  {%
+    render 'el_account-content-heading',
+    title: 'Add meal-kit',
+    custom_classes: 'test test-2',
+  %}
+{% endcomment %}
+
+
+<div class="account-content-heading {{ custom_classes_container }}">
+  <div class="account-content-heading_hidden-mobile">
+    {%- assign classesTitle = 'account-content-heading__title ' | append: custom_classes_title -%}
+    {% render 'el_heading', level: 2, text: title, modifiers: 'xxs', custom_classes: classesTitle %}
+  </div>
+  <div class="account-content-heading_hidden-desktop">
+    {%- if title -%}
+      {%- capture backUrl -%}
+        <span class="account-content-heading__link-icon">
+                {%- render 'el_icon', icon: 'arrow-chevron-left' -%}
+              </span>
+        <span class="account-content-heading__link-content">{{- title -}}</span>
+      {%- endcapture -%}
+      {%- assign classesLink = 'account-content-heading__link ' | append: custom_classes_link -%}
+      {% render 'el_link', href: routes.account_url, text: backUrl, custom_classes: classesLink %}
+    {%- endif -%}
+  </div>
+</div>

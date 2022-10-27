@@ -1,0 +1,57 @@
+{%- comment -%}
+    @summary Renders a account family form
+
+    @param {bool} [is_edit] - is this edit form
+    @example
+    {%-
+        render 'c_family-form',
+        is_edit: false
+    -%}
+{%- endcomment -%}
+
+{% liquid
+  assign name_t = 'account.family.content.form.name.label' | t
+  assign birthdate_t = 'account.family.content.form.birthdate.label' | t
+  assign sex_t = 'account.family.content.form.sex.label' | t
+  assign sex_f_t = 'account.family.content.form.sex.options.f' | t
+  assign sex_m_t = 'account.family.content.form.sex.options.m' | t
+  assign feedback_success_t = 'account.family.content.form.feedback.success' | t
+  assign feedback_error_t = 'account.family.content.form.feedback.error' | t
+  assign button_label_t = 'account.family.content.form.button.label' | t
+
+  assign radio_female_id  = 'female'
+  assign radio_male_id  = 'male'
+  if is_edit
+    assign radio_female_id = radio_female_id | prepend: 'edit_'
+    assign radio_male_id  = radio_male_id | prepend: 'edit_'
+  endif
+
+  assign formId = 'account--add-child__form'
+  if is_edit
+    assign formId = 'account--edit-child__form'
+  endif
+%}
+
+<form id="{{- formId -}}" class="{{- formId -}}">
+  <div class="input-wrapper">
+    {%- liquid
+      assign id = "name"
+      assign required = true
+      render 'el_input', id: id, name: 'name', required: requred, modifiers: 'outlined, sm', placeholder: name_t
+      render 'el_label', for_input: id, content: name_t, custom_classes: "input-label"  modifiers: "float" 
+    -%}
+  </div>
+  {% render 'el_date-select', id: 'birthdate', name: 'birthdate', label: birthdate_t, required: true %}
+  {% render 'el_label', for_input: 'sex', content: sex_t, required: true %}
+  <div class="radio-wrapper family-form__sex">
+    {% render 'el_radio', input_id: radio_female_id, label: sex_f_t, name: 'sex', value: 'Female' %}
+    {% render 'el_radio', input_id: radio_male_id, label: sex_m_t, name: 'sex', value: 'Male' %}
+  </div>
+
+  <div class="feedback">
+    <div class="success hidden">{{ feedback_success_t }}</div>
+    <div class="error hidden">{{ feedback_error_t }}</div>
+  </div>
+
+  {% render 'el_button', type: 'submit', text: button_label_t, modifiers: 'secondary, small' %}
+</form>

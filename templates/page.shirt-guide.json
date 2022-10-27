@@ -1,0 +1,100 @@
+{
+  "sections": {
+    "intro": {
+      "type": "intro",
+      "settings": {
+        "background": "#f8f4ea",
+        "color_text": "#ffffff",
+        "color_block": "#324d57",
+        "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/logo_66b1fd35-ff89-44e6-bbf5-c92925c679b2.svg?v=1648027830",
+        "image": "shopify:\/\/shop_images\/intro.jpg"
+      }
+    },
+    "abbreviation-list": {
+      "type": "abbreviation-list",
+      "blocks": {
+        "579e9752-9627-49f7-8193-f41dbf4eda24": {
+          "type": "item",
+          "settings": {
+            "title": "Slim fit",
+            "subtitle": "Coupe ajustée qui souligne la silhouette",
+            "image": "shopify:\/\/shop_images\/Capture_d_ecran_2022-04-25_a_15.20.19.png",
+            "content": "<p>• Légérement fiftée poitrine et taille <br\/>• 2 pinces de cintrage au dos<\/p>"
+          }
+        },
+        "683ccc37-13b1-4bd6-890c-58e9dbdf1bf1": {
+          "type": "item",
+          "settings": {
+            "title": "Regular fit",
+            "subtitle": "Coupe standard droite",
+            "image": "shopify:\/\/shop_images\/Capture_d_ecran_2022-04-25_a_15.20.19.png",
+            "content": "<p>• Convient à toutes les morphologies<br\/>• 2 plis simples au dos <\/p>"
+          }
+        },
+        "7c21a02b-dabe-418a-b160-b2724cedc8e2": {
+          "type": "item",
+          "settings": {
+            "title": "Classic fit",
+            "subtitle": "Coupe qui offre ampleur et liberté de mouvement",
+            "image": "shopify:\/\/shop_images\/Capture_d_ecran_2022-04-25_a_15.20.19.png",
+            "content": "<p>• Aisance poitrine et taille <br\/>• 1 pli creux au milieu du dos <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "579e9752-9627-49f7-8193-f41dbf4eda24",
+        "683ccc37-13b1-4bd6-890c-58e9dbdf1bf1",
+        "7c21a02b-dabe-418a-b160-b2724cedc8e2"
+      ],
+      "settings": {
+        "background": "#f8f4ea",
+        "title": "LES COUPES"
+      }
+    },
+    "1652866910ff34a0b0": {
+      "type": "custom-image-text",
+      "settings": {
+        "heading": "Les styles",
+        "image": "shopify:\/\/shop_images\/Bitmap.jpg",
+        "title": "Tendance casual",
+        "description": "Des modèles plus flous, plus loose\nconçus à partir de matières plus légères\nlavées et adoucies pour un usage plus\ncool, plus naturel et moins habillé",
+        "link_text": "Toutes nos chemises casual",
+        "link": "#",
+        "alignment": "right",
+        "color": "#7d95a9",
+        "large_image": false
+      }
+    },
+    "16528703570494ae09": {
+      "type": "custom-image-text",
+      "settings": {
+        "heading": "",
+        "image": "shopify:\/\/shop_images\/Bitmap_469e9ac6-8dea-4a1f-ae1f-c3d5cb19f1b5.jpg",
+        "title": "En mode ville",
+        "description": "Des créations au style plus classique, des\nconstructions de tissus plus prestigieuses,\nplus compactes, des matières plus\nqualitatives, des traitements Non Iron,\ndes dessins plus fins, plus subtils et\ndes finitions particulièrement soignées !",
+        "small_image": "shopify:\/\/shop_images\/Bitmap_small_925d2c64-ff27-46af-b4e4-d4861c736fa7.jpg",
+        "link_text": "Toutes nos chemises ville",
+        "link": "#",
+        "alignment": "left",
+        "color": "#7d95a9",
+        "large_image": true
+      }
+    },
+    "16528798647009e6b8": {
+      "type": "guide-note",
+      "settings": {
+        "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/iron.svg?v=1652879894",
+        "content": "<p>Adieu le repassage avec le traitement NON IRON (sans repassage) : une technique qui rend le tissu presque infroissable. Ce procédé facilite le séchage, dispense du repassage, limite le froissage au porté et vous facilite la vie !<br\/><br\/>Nos clientes adorent :<\/p><p>★★★★★<\/p><p>« Un classique intemporel. J’achète régulièrement ce modèle pour mon fils. Il ne trouve pas de chemise de cette qualité et apprécie beaucoup la facilité d’entretien »<\/p>",
+        "link_text": "Toutes nos chemises non iron",
+        "link": "#"
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "abbreviation-list",
+    "1652866910ff34a0b0",
+    "16528703570494ae09",
+    "16528798647009e6b8"
+  ]
+}

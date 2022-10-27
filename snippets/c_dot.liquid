@@ -1,0 +1,40 @@
+{% comment %}
+  @summary Renders collapse panel
+
+  @param {string} id - id
+  @param {string} labelled_by - label id
+  @param {string} content - content
+  @param {boolean} [is_opened] - is opene
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+      render 'c_dot',
+      id: 'collapse',
+      content: 'Lorem ipsum',
+      modifiers: 'lg, light',
+      custom_classes: 'accordion-item__panel',
+      attributes: 'data-custom',
+  %}
+{% endcomment %}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'dot', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  capture dot_content
+    echo '<span class="visually-hidden">' | append: content | append: '</span>'
+  endcapture
+
+  capture dot_attributes
+    echo 'style="top:' | append: top | append: '%;' | append: ' left:' | append: left | append: '%' | append: '"'
+    echo attributes
+  endcapture
+
+  render 'el_button', id: id, custom_classes: class, attributes: dot_attributes, text: dot_content, type: 'button'
+%}
+
+

@@ -1,0 +1,116 @@
+{% comment %}
+  @summary Renders size guide wrraper
+
+  @example
+  {%- render 'c_bedding-size-guide' -%}
+{% endcomment %}
+
+<div class="begging-size-guide">
+  <div class="begging-size-guide__header">
+    <h2 class="bedding-size-guide__title">{{ 'bedding_size_guide.title' | t }}</h2>
+  </div>
+  <div class="begging-size-guide__list">
+      <div class="begging-size-guide__item">
+        <h3 class="begging-size-guide__item-title">{{ 'bedding_size_guide.item_1.title' | t }}</h3>
+        <p>{{ 'bedding_size_guide.item_1.description' | t }}</p>
+        <ul class="begging-size-guide__item-list">
+          {% assign item_1 =  'bedding_size_guide.item_1.list.item_1' | t  %}
+          {% if item_1 != blank  %}
+            <li>{{ item_1 }}</li>
+          {% endif %}
+          {% assign item_2 =  'bedding_size_guide.item_1.list.item_2' | t  %}
+          {% if item_2 != blank  %}
+            <li>{{ item_2 }}</li>
+          {% endif %}
+          {% assign item_3 =  'bedding_size_guide.item_1.list.item_3' | t  %}
+          {% if item_3 != blank  %}
+            <li>{{ item_3 }}</li>
+          {% endif %}
+          {% assign item_4 =  'bedding_size_guide.item_1.list.item_4' | t  %}
+          {% if item_4 != blank  %}
+            <li>{{ item_4 }}</li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="begging-size-guide__item begging-size-guide__item--bg-gray">
+        <h3>{{ 'bedding_size_guide.item_2.title' | t }}</h3>
+        <p>{{ 'bedding_size_guide.item_2.description' | t }}</p>
+        <ul class="begging-size-guide__item-list">
+          {% assign item_1 =  'bedding_size_guide.item_2.list.item_1' | t  %}
+          {% if item_1 != blank  %}
+            <li>{{ item_1 }}</li>
+          {% endif %}
+          {% assign item_2 =  'bedding_size_guide.item_2.list.item_2' | t  %}
+          {% if item_2 != blank  %}
+            <li>{{ item_2 }}</li>
+          {% endif %}
+        </ul>
+        <div class="begging-size-guide__table">
+          <div class="begging-size-guide__row">
+            <div class="begging-size-guide__cell">
+              <span class="begging-size-guide__row-head">
+                   {{ 'bedding_size_guide.item_2.beg_size.size_1' | t }}
+                   90x190 {{ 'bedding_size_guide.item_2.units' | t }}
+              </span>
+            </div>
+            <div class="begging-size-guide__cell">
+              <p>{{ 'bedding_size_guide.item_2.bed_covering' | t }} 140x190 {{ 'bedding_size_guide.item_2.units' | t }}</p>
+              {%- render 'el_image',  src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/90x140x190.png?v=1650612753', custom_classes: 'begging-size-guide__image', alt: 'some alt text', lazy_loading: true -%}
+            </div>
+            <div class="begging-size-guide__cell">
+              <p>{{ 'bedding_size_guide.item_2.bed_covering' | t }} 200x200 {{ 'bedding_size_guide.item_2.units' | t }}</p>
+              {%- render 'el_image',  src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/90x200x200.png?v=1650612753', custom_classes: 'begging-size-guide__image',  alt: 'some alt text', lazy_loading: true -%}
+            </div>
+            <div class="begging-size-guide__cell">
+              <p>{{ 'bedding_size_guide.item_2.bed_frame' | t }} 90x190 {{ 'bedding_size_guide.item_2.units' | t }}</p>
+              {%- render 'el_image',  src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/90x90x190.png?v=1650612753', custom_classes: 'begging-size-guide__image', alt: 'some alt text', lazy_loading: true -%}
+            </div>
+          </div>
+          <div class="begging-size-guide__row">
+            <div class="begging-size-guide__cell">
+              <span class="begging-size-guide__row-head">
+                {{ 'bedding_size_guide.item_2.beg_size.size_2' | t }}
+                140x190 {{ 'bedding_size_guide.item_2.units' | t }}
+              </span>
+            </div>
+            <div class="begging-size-guide__cell">
+              <p>{{ 'bedding_size_guide.item_2.bed_covering' | t }} 200x200 {{ 'bedding_size_guide.item_2.units' | t }}</p>
+              {%- render 'el_image',  src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/140x200x200.png?v=1650612753', custom_classes: 'begging-size-guide__image', alt: 'some alt text', lazy_loading: true -%}
+            </div>
+            <div class="begging-size-guide__cell">
+              <p>{{ 'bedding_size_guide.item_2.bed_covering' | t }} 240x220 {{ 'bedding_size_guide.item_2.units' | t }}</p>
+              {%- render 'el_image',  src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/140x240x220.png?v=1650612753', custom_classes: 'begging-size-guide__image', alt: 'some alt text', lazy_loading: true -%}
+            </div>
+            <div class="begging-size-guide__cell">
+              <p>{{ 'bedding_size_guide.item_2.bed_frame' | t }} 140x190 {{ 'bedding_size_guide.item_2.units' | t }}</p>
+              {%- render 'el_image',  src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/140x140x190.png?v=1650612753', custom_classes: 'begging-size-guide__image', alt: 'some alt text', lazy_loading: true -%}
+            </div>
+          </div>
+          <div class="begging-size-guide__row">
+            <div class="begging-size-guide__cell">
+              <span class="begging-size-guide__row-head">
+                {{ 'bedding_size_guide.item_2.beg_size.size_2' | t }}
+                160x190 {{ 'bedding_size_guide.item_2.units' | t }}
+              </span>
+            </div>
+            <div class="begging-size-guide__cell">
+              <p>{{ 'bedding_size_guide.item_2.bed_covering' | t }} 240x220 {{ 'bedding_size_guide.item_2.units' | t }}</p>
+              {%- render 'el_image',  src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/160x240x220.png?v=1650612753', custom_classes: 'begging-size-guide__image',  alt: 'some alt text', lazy_loading: true -%}
+            </div>
+            <div class="begging-size-guide__cell">
+              <p>{{ 'bedding_size_guide.item_2.bed_covering' | t }} 260x240 {{ 'bedding_size_guide.item_2.units' | t }}</p>
+              {%- render 'el_image',  src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/169x260x240.png?v=1650612753', custom_classes: 'begging-size-guide__image',  alt: 'some alt text', lazy_loading: true -%}
+            </div>
+            <div class="begging-size-guide__cell">
+              <p>{{ 'bedding_size_guide.item_2.bed_frame' | t }} 160x200 {{ 'bedding_size_guide.item_2.units' | t }}</p>
+              {%- render 'el_image',  src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/160x160x220.png?v=1650612753', custom_classes: 'begging-size-guide__image',  alt: 'some alt text', lazy_loading: true -%}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="begging-size-guide__item">
+        <h3>{{ 'bedding_size_guide.item_3.title' | t }}</h3>
+        <p>{{ 'bedding_size_guide.item_3.description' | t  }}</p>
+      </div>
+  </div>
+</div>

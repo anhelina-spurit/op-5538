@@ -1,0 +1,54 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.order-returns-app__container {
+  padding: to-rem(34px) 0;
+  @include media-breakpoint-up(lg) {
+    padding: to-rem(80px) 0;
+    background-color: $palette-quarter-pearl-lusta;
+  }
+}
+
+/* stylelint-disable */
+app-order-return {
+  max-width: 750px;
+  background-color: $palette-white;
+  border: none;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.8px);
+}
+
+app-order-return h2 {
+  font-size: to-rem(16px);
+  line-height: 1.5;
+  color: $palette-dark-slate-grey;
+}
+
+app-order-return .headings-flex {
+  font-weight: 300;
+  text-transform: uppercase;
+  color: $palette-dark;
+}
+
+app-order-return .returns--product-separator {
+  border-top: 1px dotted $palette-dark-slate-grey;
+  margin-bottom: 20px;
+  margin-top: 20px;}
+
+.returns--download-pdf.button {
+  display: block;
+  margin: auto;
+  border: to-rem(1px) solid $palette-dark-slate-grey;
+  background: $palette-dark-slate-grey;
+  color: $palette-white;
+  padding: to-rem(13px) to-rem(43px);
+  font-size: to-rem(9px);
+}
+
+
+.returns--download-pdf.button:hover {
+  background: $palette-white;
+  color: $palette-dark-slate-grey;
+}
+/* stylelint-enable */

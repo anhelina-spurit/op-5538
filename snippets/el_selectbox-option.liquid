@@ -1,0 +1,36 @@
+{%- comment -%}
+  @summary Renders a custom selectbox
+
+  @param {string} id - id
+  @param {string} option_text - option text
+  @param {string} option_value - option value handle
+  @param {boolean} selected - value for aria-selected attribute
+  @param {string} [custom_classes] - additional classes
+  @param {boolean} [disabled] - disabled attribute
+  @param {string} [attributes] - option attibutes
+  @param {boolean} [dropdown_mode] - option attibutes
+
+
+
+  @example
+  {%-
+    render 'el_selectbox-option',
+    id: 'option_1',
+    option_value: "127238239137913",
+    selected: true,
+    option_text: '100ML',
+    attributes: 'data-option'
+  -%}
+{%- endcomment -%}
+
+{% assign dropdown_mode = dropdown_mode | default: false %}
+<div role="option"
+     id="{{ id }}"
+     class="selectbox__option {% if selected %} selectbox__option--active {% endif %} {{ custom_classes }}"
+     aria-selected="{% if selected %}true{% else %}false{% endif %}"
+     {% if dropdown_mode %} data-dropdown {% endif %}
+     {% if disabled != blank %} aria-disabled="{{ disabled }}" {% endif %}
+     data-option-value="{{ option_value }}"
+      {{ attributes }}>
+  {{ option_text }}
+</div>

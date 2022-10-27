@@ -1,0 +1,23 @@
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+{% liquid
+  assign parsed_terms = search.terms | split: ' OR '
+  assign handles = nil
+  for parsed_term in parsed_terms
+    assign id = parsed_term | split: 'id:' | last | times: 1
+    for product in search.results
+      if product.id == id
+        assign handles = handles | append: ',' | append: product.handle
+        break
+      endif
+    endfor
+  endfor
+  assign handles = handles | replace_first: ',' | split: ','
+  if handles.size > 0
+    assign heading = 'recently_products.heading' | t
+    echo '<div class="recently-viewed-products__body">'
+      render 'el_heading', level: 2, id: 'recently-viewed-products', text: heading, custom_classes: 'recently-viewed-products__heading', modifiers: 'xs'
+      render 'c_product-slider', products: handles, custom_classes: 'product-slider'
+    echo '</div>'
+  endif
+%}
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}

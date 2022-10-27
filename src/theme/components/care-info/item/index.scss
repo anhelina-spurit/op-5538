@@ -1,0 +1,40 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+@import '../../../constants/palette';
+
+.care-item {
+  padding-top: to-rem(24px);
+  padding-bottom: to-rem(24px);
+  color: $palette-dark-slate-grey;
+
+  @include media-breakpoint-up(lg) {
+    padding-top: to-rem(24px);
+    padding-bottom: to-rem(17px);
+  }
+}
+
+.care-item__media {
+  display: flex;
+  width: to-rem(48px);
+  flex-shrink: 0;
+  justify-content: center;
+  margin-bottom: to-rem(20px);
+
+  @include media-breakpoint-up(lg) {
+    justify-content: flex-start;
+    margin-right: to-rem(32px);
+    margin-bottom: 0;
+  }
+}
+
+.care-item__text {
+  margin: 0;
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(0.4px);
+  line-height: to-rem(26px);
+  text-align: center;
+
+  @include media-breakpoint-up(lg) {
+    text-align: left;
+  }
+}

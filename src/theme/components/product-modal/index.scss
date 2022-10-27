@@ -1,0 +1,118 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.product-modal__modal .modal__close {
+  top: to-rem(30px);
+  right: to-rem(30px);
+  width: to-rem(8px);
+  height: to-rem(8px);
+
+  @include media-breakpoint-down(md) {
+    top: to-rem(7px);
+    right: to-rem(7px);
+  }
+}
+
+.product-modal__modal .modal__container {
+  width: to-rem(850px);
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+}
+
+.product-modal__modal .modal__body {
+  display: flex;
+  flex-wrap: wrap;
+  @include media-breakpoint-down(md) {
+    position: relative;
+  }
+}
+
+.product-modal__media {
+  width: 45%;
+  margin-right: to-rem(44px);
+
+  @include media-breakpoint-down(md) {
+    width: 20%;
+    margin-right: to-rem(16px);
+  }
+}
+
+.product-modal__content {
+  max-width: to-rem(270px);
+  margin-top: 30px;
+  margin-right: 44px;
+  margin-left: 44px;
+
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+.product-modal__section {
+  padding-bottom: to-rem(16px);
+  border-bottom: to-rem(0.5px) solid $palette-dark-slate-grey;
+  margin-bottom: to-rem(16px);
+}
+
+.product-modal__section:first-of-type:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.product-modal__description {
+  padding-top: to-rem(8px);
+  padding-bottom: to-rem(20px);
+}
+
+.product-modal__description p {
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(0.67px);
+  line-height: 1.6;
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(8px);
+    letter-spacing: to-rem(0.53px);
+    line-height: 1.75;
+  }
+}
+
+// stylelint-disable-next-line
+#mailtorapidetoPopupModal,
+.product-modal__description img:not([src]) {
+  display: none;
+}
+
+.product-modal__heading {
+  margin: 0;
+  color: $palette-dark-slate-grey;
+  font-weight: 400;
+  letter-spacing: to-rem(1.13px);
+  line-height: 1.67;
+}
+
+.product-modal__content > .product-modal__heading {
+  @include media-breakpoint-down(md) {
+    position: absolute;
+    top: 0;
+    left: calc(20% + 16px);
+    font-size: to-rem(10px);
+    letter-spacing: to-rem(0.94px);
+    line-height: 1.8;
+  }
+}
+
+.product-modal__heading--care {
+  margin-bottom: to-rem(20px);
+  font-size: to-rem(10px);
+  line-height: 1.4;
+}
+
+.product-modal .product-info__care-list {
+  padding-top: to-rem(20px);
+  padding-bottom: to-rem(20px);
+}

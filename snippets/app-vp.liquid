@@ -1,0 +1,30 @@
+<!-- SNIPPET: app-vp -->
+<!-- Do not remove it, it is necessary for the VPs -->
+<!-- VPs (TheOz) START -->
+
+{%- assign private_sales_are_activated = false -%} 
+{%- assign now = 'now' | date: '%Y-%m-%d %H:%M' | append: settings.sales_gmt | date: "%s" | plus:0 -%} 
+{%- assign start = settings.sales_start | append: settings.sales_gmt | date: "%s" | plus:0 -%} 
+{%- assign end = settings.sales_end | append: settings.sales_gmt | date: "%s" | plus:0 -%} 
+{%- if start <= now and end > now -%} 
+  {%- assign private_sales_are_activated = true -%} 
+{%- endif -%}
+
+<script type="text/javascript">
+  window.__ozjs = {};
+  {% if customer %} window.__ozjs.customerId = '{{ customer.id }}';{% endif %}
+  window.__ozjs.privateSales = {
+    isActivated: '{{ private_sales_are_activated }}' === 'true',
+    testMode: '{{ settings.test_mode }}' === 'true',
+    url: '{{ settings.ps_api_url }}',
+    urlRedirection: '{{ settings.redirect_link }}',
+    translations: {
+      invalidCoupon: `{{ 'ope_com.coupons.invalid_coupon' | t }}`,
+      invalidCartForCoupon: `{{ 'ope_com.coupons.invalid_cart' | t }}`,
+      couponSuccessfullyAdded: `{{ 'ope_com.coupons.successfully_added' | t }}`,
+      couponAlreadyUsed: `{{ 'ope_com.coupons.already_used' | t }}`,
+    }
+  };
+</script>
+
+<!-- VPs (TheOz) END -->

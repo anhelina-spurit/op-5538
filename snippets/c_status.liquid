@@ -1,0 +1,24 @@
+{%- comment -%}
+  @summary Renders a status
+
+  @param {number} content - price
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'c_status',
+    content: 'Successful!',
+    custom_classes: 'custom-class',
+    attributes: 'data-status',
+    modifiers: ''
+  -%}
+{%- endcomment -%}
+
+<p
+  class="{%- render 'f_bem-classes', main_class: 'status', custom_classes: custom_classes, modifiers: modifiers -%}"
+  {% if attributes %}{{ attributes }}{% endif %}
+>
+  {{- content -}}
+</p>

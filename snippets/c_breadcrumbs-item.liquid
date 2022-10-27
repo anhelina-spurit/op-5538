@@ -1,0 +1,44 @@
+{%- comment -%}
+  @summary Renders a breadcrumbs item
+
+  @param {string} text - additional classes
+  @param {string} [href] - additional attributes
+  @param {boolean} [is_current_page] - modifiers
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%- render 'c_breadcrumbs-item' -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture title_class
+    if is_current_page
+      assign title_class_modifiers = 'current'
+      assign title_attributes = 'aria-current="page"'
+    endif
+
+    render 'f_bem-classes', main_class: 'breadcrumbs-item__title', modifiers: title_class_modifiers
+  endcapture
+
+  capture class
+    render 'f_bem-classes', main_class: 'breadcrumbs-item', modifiers: modifiers, custom_classes: custom_classes
+  endcapture
+
+  assign span_text = text | strip_html
+%}
+
+<li class="{{ class }}" {{ attributes }}>
+  {%- unless href -%}
+    <span class="{{ title_class }}" {{ title_attributes }}>{{ span_text }}</span>
+  {%- else -%}
+    {%-
+      render 'el_link',
+      href: href,
+      text: text,
+      custom_classes: title_class,
+      attributes: title_attributes
+    -%}
+  {%- endunless -%}
+</li>

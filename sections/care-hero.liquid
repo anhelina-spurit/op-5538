@@ -1,0 +1,39 @@
+{% liquid
+  capture container_content
+    echo '<div class="care-hero__content">'
+    render 'el_heading', level: 1, text: page.title, custom_classes: 'care-hero__heading'
+    echo '<div class="care-hero__media">'
+    unless section.settings.logo == blank
+      render 'el_icon', icon: 'logo', custom_classes: 'care-hero__logo'
+    endunless
+    unless section.settings.image == blank
+      render 'el_shopify-image', image: section.settings.image
+    endunless
+    echo '</div>'
+    echo '</div>'
+  endcapture
+
+  capture section_content
+    render 'c_breadcrumbs', custom_classes: 'care-hero__breadcrumbs'
+    render 'el_container', content: container_content, modifiers: 'xl'
+  endcapture
+  render 'c_section', id: section.id, name: 'care-hero', content: section_content, tag: 'div'
+%}
+
+{% schema %}
+{
+  "name": "Care Hero",
+  "settings": [
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "logo",
+      "type": "url",
+      "label": "Logo url"
+    }
+  ]
+}
+{% endschema %}

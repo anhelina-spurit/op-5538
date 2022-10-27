@@ -1,0 +1,97 @@
+{% style %}
+    #{{ section.id }} {
+      background: {{ section.settings.background }};
+    }
+{%- endstyle -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '_heading'
+
+  capture container
+    echo '<div class="page-head__heading-block">'
+      if section.settings.image_link != blank
+        echo '<a class="page-head__link" href="' | append: section.settings.image_link.url | append: '">'
+      endif
+      if section.settings.image != blank
+        render 'el_shopify-image', custom_classes: 'page-head__image', image: section.settings.image, lazy_loading: true
+      endif
+      if section.settings.sub_image != blank
+        echo '<div class="page-head__sub-image">'
+          render 'el_image', src: section.settings.sub_image, lazy_loading: true
+        echo '</div>'
+      endif
+      render 'el_heading', level: 1, text: page.title, custom_classes: 'page-head__title'
+      if section.settings.image_link != blank
+        echo '</a>'
+      endif
+    echo '</div>'
+
+    echo '<div class="page-head__content">'
+      if section.settings.quotes
+        echo '<div class="page-head__quotes">' | append: section.settings.quotes | append: '</div>'
+      endif
+
+      render 'el_heading', level: 2, text: section.settings.subtitle, custom_classes: 'page-head__content-heading'
+
+      if section.settings.description
+        echo '<div class="page-head__description">' | append: section.settings.description | append: '</div>'
+      endif
+    echo '</div>'
+
+  endcapture
+
+  capture section_content
+    render 'el_container', content: container, modifiers: 'l', custom_classes: 'page-head__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'page-head', content: section_content, heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Page head",
+  "settings": [
+      {
+        "id": "background",
+        "type": "color",
+        "label": "Background",
+        "default": "#F2ECDF"
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "image_link",
+        "type": "url",
+        "label": "Image link"
+      },
+      {
+        "id": "sub_image",
+        "type": "url",
+        "label": "Sub image"
+      },
+      {
+        "id": "quotes",
+        "type": "text",
+        "label": "Quotes"
+      },
+      {
+        "id": "subtitle",
+        "type": "richtext",
+        "label": "Subtitle"
+      },
+      {
+        "id": "description",
+        "type": "richtext",
+        "label": "Description"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Page head"
+    }
+  ]
+}
+{% endschema %}

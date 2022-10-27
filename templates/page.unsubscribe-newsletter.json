@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "unsubscribe-newsletter": {
+      "type": "unsubscribe-newsletter",
+      "settings": {
+        "link": "shopify:\/\/policies\/privacy-policy"
+      }
+    }
+  },
+  "order": [
+    "unsubscribe-newsletter"
+  ]
+}

@@ -1,0 +1,29 @@
+{% comment %}
+  @summary Renders size guide description
+
+  @param {string} tab_name - tab_name
+  @param {string} [image_src] - image_src
+  @param {number} [circle_number] - 3
+
+  @example
+  {%- render 'c_size-guide-description',
+  tab_name: 'women',
+  image_src: 'https://cdn.shopify.com/s/files/1/0565/1546/1256/files/women-size.png?v=1649255277',
+   circle_number: 3
+   -%}
+{% endcomment %}
+<div class="size-guide__content-description">
+  <div class="size-guide__image-block">
+    {%- render 'el_image', src: image_src, lazy_loading: true, custom_classes: 'size-guide__image' -%}
+    {%- if circle_number and circle_number > 0 -%}
+      {%- for i in (1..circle_number)  -%}
+        <div class="size-guide__image-circle size-guide__image-circle--{{ tab_name }} size-guide__image-circle--{{ i }}">{{ i }}</div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+  <div class="size-guide__content-text">
+    {% assign title = 'size_guide.panel.title' | t %}
+    {% render 'el_heading', tag: 'div', level: 2, text: title, custom_classes: 'size-guide__content-title' %}
+    <p>   {{ 'size_guide.panel.description' | t }}  </p>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{%- liquid
+	section 'heading-with-image'
+
+	capture container_content
+		render 'c_gift-e-card-form'
+		render 'c_gift-card-confirm'
+	endcapture
+
+	render 'el_container', content: container_content, tag: 'div', modifiers: 'xl'
+-%}

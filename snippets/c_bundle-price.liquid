@@ -1,0 +1,35 @@
+{% comment %}
+  @summary Renders min sum for bundle product
+
+  @param {object} product - product
+
+  @example
+  {%- render 'c_bundle-price', product: product -%}
+{% endcomment %}
+
+{%- if product.metafields.bundle.components != blank -%}
+  <div class="bundle-price">
+    {%- liquid
+      assign components = product.metafields.bundle.components | split: ','
+      assign price = 0
+
+      for component in components
+        assign handle = component | strip
+        assign component_product = all_products[handle]
+
+        unless component_product == empty
+          assign price = price | plus: component_product.price_min
+        endunless
+      endfor
+      assign title = 'products.bundle_title' | t | escape
+    -%}
+    <span class="bundle-price__title">{{ title }}</span>
+    {%- render 'c_price', price: price, product_tags: product.tags -%}
+  </div>
+{%- else -%}
+  {%- render 'c_price',
+          price: product.price,
+          custom_classes: 'vp-original-prices product-card__price vp-original-prices',
+          compare_at_price: product.compare_at_price
+          product_tags: product.tags -%}
+{%- endif -%}

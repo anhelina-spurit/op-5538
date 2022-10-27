@@ -1,0 +1,5 @@
+{%- if video_settings != blank -%}
+<div class="video-block">
+  <div class="video-block__iframe {{ classes }}" data-video-settings='{{ video_settings }}' data-host='{{ request.host }}' data-autoplay="{% if autoplay %}true{% else %}false{% endif %}"></div>
+</div>
+{%- endif -%}

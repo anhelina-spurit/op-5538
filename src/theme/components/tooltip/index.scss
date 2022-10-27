@@ -1,0 +1,62 @@
+@import '../../utils/to-rem/index';
+@import '../../constants/palette';
+
+.tooltip {
+  z-index: 2;
+  display: none;
+  max-width: 80%;
+  padding: to-rem(16px);
+  background: $palette-white;
+  border-radius: 0;
+  box-shadow: 0 0 10px rgba($palette-dark, 0.5);
+  color: $palette-dark;
+  font-size: to-rem(12px);
+  text-align: left;
+}
+
+.tooltip.active {
+  display: block;
+}
+
+.tooltip__arrow,
+.tooltip__arrow::before {
+  position: absolute;
+  width: to-rem(8px);
+  height: to-rem(8px);
+  background: inherit;
+}
+
+.tooltip__arrow {
+  visibility: hidden;
+}
+
+.tooltip__arrow::before {
+  left: 0;
+  content: '';
+  transform: rotate(45deg);
+  visibility: visible;
+}
+
+.tooltip__close {
+  position: absolute;
+  top: to-rem(10px);
+  right: to-rem(10px);
+  border: none;
+  font-size: to-rem(7px);
+}
+
+.tooltip[data-popper-placement^='top'] > .tooltip__arrow {
+  bottom: to-rem(-4px);
+}
+
+.tooltip[data-popper-placement^='bottom'] > .tooltip__arrow {
+  top: to-rem(-4px);
+}
+
+.tooltip[data-popper-placement^='left'] > .tooltip__arrow {
+  right: to-rem(-4px);
+}
+
+.tooltip[data-popper-placement^='right'] > .tooltip__arrow {
+  left: to-rem(-4px);
+}

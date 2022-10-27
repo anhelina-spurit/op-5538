@@ -1,0 +1,401 @@
+@import '../../../utils/to-rem/index';
+@import '../../../constants/palette/index';
+@import '../../../utils/breakpoints/index';
+@import '../../../utils/visually-hidden/index';
+
+@mixin size-guide-circle {
+  display: inline-block;
+  width: to-rem(12px);
+  height: to-rem(12px);
+  padding-top: to-rem(0.5px);
+  margin-right: to-rem(5px);
+  background: $palette-loblolly;
+  border-radius: 50%;
+  color: $palette-white;
+  font-size: to-rem(7px);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.size-guide-wrapper {
+  @include media-breakpoint-down(md) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.size-guide__tabs {
+  margin-bottom: to-rem(43px);
+
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.size-guide__tabs .tabs__list {
+  margin: 0;
+
+  @include media-breakpoint-down(lg) {
+    flex-direction: unset;
+  }
+}
+
+.size-guide__tabs .tab {
+  padding: to-rem(10px) to-rem(50px);
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(1px);
+  line-height: to-rem(18px);
+}
+
+.size-guide__tabs .tab[aria-selected='false'] {
+  color: $palette-silver-chalice;
+}
+
+.size-guide__tabs .tab[aria-selected='true'] {
+  border-bottom: none;
+  color: $palette-dark-slate-grey;
+  letter-spacing: to-rem(0.7px);
+
+  // stylelint-disable-next-line max-nesting-depth
+  &::after {
+    position: relative;
+    z-index: 1;
+    bottom: to-rem(-6.5px);
+    display: block;
+    width: 100%;
+    height: 0.5px;
+    background: $palette-dark-slate-grey;
+    content: '';
+  }
+}
+
+.size-guide-wrapper .tabpanel {
+  width: 100%;
+}
+
+.size-guide__content {
+  display: flex;
+  justify-content: center;
+  color: $palette-dark-slate-grey;
+
+  @include media-breakpoint-down(md) {
+    flex-direction: column-reverse;
+    margin: auto;
+  }
+}
+
+.size-guide__content-description {
+  width: to-rem(155px);
+  margin-top: to-rem(32px);
+  margin-right: to-rem(85px);
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    margin-top: to-rem(12px);
+    margin-right: 0;
+  }
+}
+
+.size-guide__image-block {
+  position: relative;
+}
+
+.size-guide__image-circle {
+  @include size-guide-circle;
+  position: absolute;
+  left: 16%;
+
+  @include media-breakpoint-down(md) {
+    left: 15%;
+  }
+}
+
+.size-guide__image-circle--women.size-guide__image-circle--1 {
+  top: 31%;
+
+  @include media-breakpoint-down(md) {
+    top: 26%;
+  }
+}
+
+.size-guide__image-circle--women.size-guide__image-circle--2 {
+  top: 43%;
+
+  @include media-breakpoint-down(md) {
+    top: 38%;
+  }
+}
+
+.size-guide__image-circle--women.size-guide__image-circle--3 {
+  top: 57%;
+
+  @include media-breakpoint-down(md) {
+    top: 50%;
+  }
+}
+
+.size-guide__image {
+  display: block;
+  margin: 0 auto to-rem(44px);
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    margin-right: to-rem(28px);
+    margin-left: to-rem(-14px);
+  }
+}
+
+.size-guide__content-title {
+  margin-bottom: to-rem(19px);
+  font-size: to-rem(11px);
+  line-height: to-rem(18px);
+  text-decoration: underline;
+}
+
+.size-guide__content-text {
+  width: 88%;
+  margin: 0 auto;
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(0.9px);
+  line-height: to-rem(20px);
+
+  @include media-breakpoint-down(md) {
+    width: auto;
+    max-width: to-rem(150px);
+    margin-top: to-rem(27px);
+  }
+}
+
+.size-guide__content-text .heading {
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.size-guide__tables-list {
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(0.42px);
+  text-align: left;
+
+  @include media-breakpoint-down(md) {
+    overflow: auto;
+    max-width: 100%;
+    padding-bottom: to-rem(15px);
+  }
+}
+
+.size-guide__table {
+  margin-bottom: to-rem(30px);
+  border-collapse: collapse;
+
+  @include media-breakpoint-down(md) {
+    margin: to-rem(20px) auto 0;
+  }
+}
+
+.size-guide__table th {
+  font-weight: 400;
+}
+
+.size-guide__table-head th {
+  padding: to-rem(8px) to-rem(7px) to-rem(7px);
+  line-height: to-rem(14px);
+  vertical-align: top;
+}
+
+.size-guide__table-head th:first-child {
+  padding-left: 0;
+}
+
+.size-guide__table-body td,
+.size-guide__table-body th {
+  padding: to-rem(21px) to-rem(7px) 0;
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(10px);
+  }
+}
+
+.size-guide__table-body td:first-child,
+.size-guide__table-body th:first-child {
+  padding-left: 0;
+}
+
+// stylelint-disable selector-no-qualifying-type
+.size-guide__table-body td.size-guide__row-head,
+.size-guide__table-body th.size-guide__row-head {
+  // stylelint-enable selector-no-qualifying-type
+  padding-left: to-rem(18px);
+
+  @include media-breakpoint-down(md) {
+    padding-left: to-rem(20px);
+  }
+}
+
+.size-guide__table--dresses {
+  width: to-rem(658px);
+  margin-bottom: to-rem(41px);
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(25px);
+  }
+}
+
+.size-guide__table--dresses .size-guide__table-head th:first-child {
+  width: to-rem(108px);
+
+  @include media-breakpoint-down(md) {
+    width: to-rem(110px);
+  }
+}
+
+.size-guide__table--sweaters {
+  width: to-rem(571px);
+  margin-bottom: to-rem(28px);
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(25px);
+  }
+}
+
+.size-guide__table--sweaters .size-guide__table-head th:first-child {
+  width: to-rem(121px);
+}
+
+.size-guide__table--parka {
+  width: to-rem(403px);
+  margin-bottom: to-rem(37px);
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(25px);
+  }
+}
+
+.size-guide__table--parka .size-guide__table-head th:first-child {
+  width: to-rem(110px);
+}
+
+.size-guide__table--other-contries {
+  width: to-rem(590px);
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(25px);
+  }
+}
+
+.size-guide__table--other-contries .size-guide__table-head th:first-child {
+  width: to-rem(114px);
+}
+
+.size-guide__table-caption {
+  padding-bottom: to-rem(8px);
+  text-align: left;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(md) {
+    @include visually-hidden;
+  }
+}
+
+.size-guide__table-head {
+  border-top: to-rem(0.5px) solid $palette-dark-slate-grey;
+  border-bottom: to-rem(0.5px) solid $palette-dark-slate-grey;
+  font-weight: 400;
+}
+
+.size-guide__th-note {
+  font-size: to-rem(8px);
+  letter-spacing: to-rem(0.33px);
+}
+
+[data-size-guide-table='hidden'] {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.size-guide__row-head {
+  position: relative;
+}
+
+.size-guide__row-head::before {
+  @include size-guide-circle;
+  position: absolute;
+  top: to-rem(21px);
+  left: to-rem(-2px);
+  content: '';
+
+  @include media-breakpoint-down(md) {
+    top: to-rem(10px);
+    left: to-rem(4px);
+  }
+}
+
+.size-guide__row-head--first::before {
+  content: '1';
+}
+
+.size-guide__row-head--second::before {
+  content: '2';
+}
+
+.size-guide__row-head--third::before {
+  content: '3';
+}
+
+.size-guide__row-head--fourth::before {
+  content: '4';
+}
+
+.size-guide__selectbox-tables {
+  margin: auto;
+  letter-spacing: to-rem(0.91px);
+  line-height: to-rem(18px);
+}
+
+.size-guide-wrapper .selectbox {
+  display: none;
+
+  @include media-breakpoint-down(md) {
+    display: block;
+    width: to-rem(400px);
+    max-width: 100%;
+    color: $palette-dark-slate-grey;
+    font-size: to-rem(10px);
+  }
+
+  // stylelint-disable-next-line max-nesting-depth
+  &::after {
+    width: to-rem(8px);
+    height: to-rem(8px);
+    border-color: $palette-dark-slate-grey;
+  }
+}
+
+.size-guide-wrapper .size-guide__selectbox-tab,
+.size-guide-wrapper .size-guide__selectbox-tables {
+  // stylelint-disable-next-line max-nesting-depth
+  &::after {
+    right: to-rem(2px);
+  }
+}
+
+.size-guide-wrapper .selectbox__combo {
+  min-height: to-rem(36px);
+  align-items: center;
+  padding: to-rem(10px) to-rem(25px) to-rem(10px) 0;
+  border: 0;
+  border-bottom: to-rem(0.5px) solid $palette-dark-slate-grey;
+
+  @include media-breakpoint-down(md) {
+    outline: none;
+  }
+}
+
+.size-guide__selectbox-tables .selectbox {
+  width: 100%;
+}

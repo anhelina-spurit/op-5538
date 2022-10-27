@@ -1,0 +1,72 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints/index';
+
+.filter-active {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  @include media-breakpoint-down(md) {
+    overflow: hidden;
+    max-height: to-rem(36px);
+  }
+}
+
+.filter-active.active {
+  max-height: 100%;
+}
+
+.filter-active__list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  line-height: 2;
+  list-style-type: none;
+}
+
+.filter-active__item {
+  display: inline-block;
+  padding-right: to-rem(20px);
+  font-size: to-rem(12px);
+  font-weight: 500;
+  letter-spacing: to-rem(1.5px);
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(9px);
+  }
+}
+
+.filter-active__remove {
+  width: to-rem(7px);
+  height: to-rem(7px);
+  padding: 0;
+  border-bottom: none;
+  margin-left: to-rem(4px);
+  font-size: to-rem(6px);
+}
+
+.filter-active__remove:hover {
+  border-bottom: none;
+}
+
+.filter-active__btn {
+  display: flex;
+  min-width: max-content;
+  padding: 0;
+  border-bottom: none;
+  font-size: to-rem(9px);
+  text-decoration: underline;
+  text-transform: lowercase;
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.filter-active__btn::before {
+  display: block;
+  content: '-';
+}
+
+.filter-active__btn.active::before {
+  display: block;
+  content: '+';
+}

@@ -1,0 +1,41 @@
+{%- comment -%}
+  @summary Renders a tab item
+
+  @param {string} id - tab id
+  @param {string} content - tab title
+  @param {string} panel_id - tab panel id
+  @param {boolean} [selected] - selected state
+  @param {string} [tabindex] - tabindex attribute value
+
+  @example
+  {%-
+    render 'el_tab',
+    id: id,
+    content: 'Title',
+    panel_id: 'tab_panel_id',
+    selected: false,
+    tabindex: '-1'
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  unless selected
+    assign selected = false
+  endunless
+
+  if tabindex != blank
+    assign attr_tabindex = tabindex | prepend: 'tabindex="' | append: '"'
+  endif
+-%}
+
+{%- if id != blank and content != blank and panel_id != blank -%}
+  <a
+    id="{{ id }}"
+    class="{%- render 'f_bem-classes', main_class: 'tab', custom_classes: custom_classes, modifiers: modifiers -%}"
+    href="#{{ panel_id }}"
+    role="tab"
+    aria-controls="{{ panel_id }}"
+    aria-selected="{{ selected }}"
+    {{- attr_tabindex -}}
+    >{{ content }}</a>
+{%- endif -%}

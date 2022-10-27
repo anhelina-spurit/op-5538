@@ -1,0 +1,34 @@
+{%- comment -%}
+    It creates a url for data-srcset attribute for lazy loading.
+
+    Dependencies:
+    @dependency: Lazysizes plugin (https://github.com/aFarkas/lazysizes) which enable responsive image with faster load time and better performance.
+
+    Accepts:
+    @param {Object} image {Required}: shopify image object
+    @param {Enum} crop (top,center,bottom,left,right): parameter to make sure that the resulting image's dimensions match the requested dimensions
+    @param {String} format (jpg, pjpg): lets you specify what file format to use for the displayed image
+    @param {Number} width: width of the image (if "crop" is set, crops the image to the following size)
+    @param {Number} height: height of the image (if "crop" is set, crops the image to the following size)
+
+    Usage:
+    {%-
+        render 'f_lazy-loading-image-url',
+        image: image,
+        crop: 'center',
+        format: 'jpg',
+        width: 500,
+        height: 500
+    -%}
+{%- endcomment -%}
+
+{%- liquid
+  if width == blank and height != blank
+    assign width = height | times: image.aspect_ratio | round
+  endif
+
+  if width != blank and height == blank
+    assign height = width | divided_by: image.aspect_ratio | round
+  endif
+-%}
+{{ image | image_url: width: width, height: height, crop: crop, format: format }} {{ width }}w {{ height }}h

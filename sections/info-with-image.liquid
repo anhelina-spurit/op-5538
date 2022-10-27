@@ -1,0 +1,118 @@
+{% liquid
+  assign heading_id = section.id | append: '_heading'
+
+  assign text_preview_classes = 'info-with-image__content'
+  assign media_classes = 'info-with-image__media'
+  if section.settings.content_large
+    assign text_preview_classes = text_preview_classes | append: ' info-with-image__content--full'
+    assign media_classes = media_classes | append: ' info-with-image__media--full'
+  endif
+
+  capture section_content
+    echo '<div class="info-with-image__column">'
+      echo '<div class="info-with-image__row">'
+          echo '<div class="' | append: media_classes | append: '">'
+            if section.settings.image != blank and section.settings.image_link != blank
+              echo '<a class="info-with-image__link" href="' | append: section.settings.image_link.url | append: '">'
+            endif
+            if section.settings.image != blank
+              render 'el_shopify-image', image: section.settings.image, width: 368, height: 382, lazy_loading: true, format: 'pjpg'
+              else
+              render 'el_placeholder', name: 'product-1'
+            endif
+            if section.settings.image != blank and section.settings.image_link != blank
+              echo '</a>'
+            endif
+          echo '</div>'
+      echo '</div>'
+      echo '<div class ="info-with-image__row">'
+          render 'c_text-preview', heading: section.settings.heading, description: section.settings.description, custom_classes: text_preview_classes, link: section.settings.link, link_title: section.settings.link_text, link_2: section.settings.link_2, link_2_title: section.settings.link_2_text, link_custom_classes: 'button button--secondary', separate_actions: true
+      echo '</div>'
+    echo '</div>'
+  endcapture
+
+  capture content
+    render 'el_container', content: section_content, modifiers: 'xl'
+  endcapture
+
+  assign name_modifiers = blank
+  if section.settings.mobile_hidden
+    assign name_modifiers = name_modifiers | append: ' mobile-hidden'
+  endif
+  render 'c_section', id: section.id, name: 'info-with-image', content: content, heading_id: heading_id, name_modifiers: name_modifiers
+%}
+
+{% schema %}
+{
+  "name": "Info with image",
+  "settings": [
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "image_link",
+        "type": "url",
+        "label": "Image link"
+      },
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Heading",
+        "default": "Lorem Ipsum is simply dummy text"
+      },
+      {
+        "id": "description",
+        "type": "textarea",
+        "label": "Description",
+        "default": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+      },
+      {
+        "type": "header",
+        "content": "First CTA"
+      },
+      {
+        "id": "link_text",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Second CTA"
+      },
+      {
+        "id": "link_2_text",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "id": "link_2",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "content_large",
+        "type": "checkbox",
+        "label": "Content large",
+        "default": false
+      },
+      {
+        "id": "mobile_hidden",
+        "type": "checkbox",
+        "label": "Mobile hidden",
+        "default": false
+      }
+  ],
+  "presets": [
+    {
+      "name": "Info with image"
+    }
+  ]
+}
+{% endschema %}

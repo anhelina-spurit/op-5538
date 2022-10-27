@@ -1,0 +1,60 @@
+<style>
+  .separator {
+    --desktop-height: {{ section.settings.desktop_height }}px;
+    --tablet-height: {{ section.settings.tablet_height }}px;
+    --mobile-height: {{ section.settings.mobile_height }}px;
+  }
+</style>
+
+{%- liquid
+  capture content
+    echo '<div class="separator__body"></div>'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'separator', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Separator",
+  "settings": [
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "min": 10,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "label": "Desktop section height",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "tablet_height",
+      "min": 10,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "label": "Tablet section height",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "min": 10,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "label": "Tablet section height",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Separator",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

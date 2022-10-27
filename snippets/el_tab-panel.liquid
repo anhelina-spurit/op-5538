@@ -1,0 +1,31 @@
+{%- comment -%}
+  @summary Renders a tab panel
+
+  @param {string} id - tab panel id
+  @param {string} content - tab panel content
+  @param {string} tab_id - tab id
+  @param {boolean} [hidden] - hidden state
+
+  @example
+  {%-
+    render 'el_tab-panel',
+    id: id,
+    content: 'Tab Content',
+    tab_id: 'tab_id',
+    hidden: false
+  -%}
+{%- endcomment -%}
+
+{%- if id != blank and content != blank and tab_id != blank -%}
+
+<div
+  id="{{ id }}"
+  class="tabpanel"
+  role="tabpanel"
+  aria-labelledby="{{ tab_id }}"
+  tabindex="0"
+  {% if hidden %}hidden{% endif %}
+>
+  {{ content }}
+</div>
+{% endif %}

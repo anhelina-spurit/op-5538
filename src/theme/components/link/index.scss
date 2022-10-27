@@ -1,0 +1,21 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+
+%link {
+  position: relative;
+  padding-bottom: to-rem(2px);
+  border-bottom: to-rem(0.5px) solid $palette-dark;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.1s linear;
+}
+
+%link:hover,
+%link:active {
+  border-bottom: to-rem(0.5px) solid transparent;
+  color: inherit;
+}
+
+.link {
+  @extend %link;
+}

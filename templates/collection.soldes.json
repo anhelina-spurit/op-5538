@@ -1,0 +1,106 @@
+{
+  "sections": {
+    "section": {
+      "type": "empty",
+      "settings": {
+      }
+    },
+    "1657725971af259edb": {
+      "type": "banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Banner-Soldes5-10_FR_547cd2be-bfa2-48fc-958f-e898c23e795b.jpg",
+        "image_ratio": 22,
+        "alignment": "left",
+        "heading_text": "",
+        "heading_level": "1",
+        "heading_color": "#000000",
+        "description": "",
+        "description_color": "#000000",
+        "button_text": "",
+        "button_url": "",
+        "button_background": "#000000",
+        "button_background_hover": "#ffffff",
+        "button_color": "#ffffff",
+        "button_color_hover": "#000000"
+      }
+    },
+    "16577259870aa894aa": {
+      "type": "advantages",
+      "blocks": {
+        "1657725987b55b8180-0": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Femme",
+            "url": "shopify:\/\/collections\/soldes-femme"
+          }
+        },
+        "1657725987b55b8180-1": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Homme",
+            "url": "shopify:\/\/collections\/soldes-homme"
+          }
+        },
+        "1657725987b55b8180-2": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Fille",
+            "url": "shopify:\/\/collections\/soldes-fille"
+          }
+        },
+        "1657725987b55b8180-3": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Garçon",
+            "url": "shopify:\/\/collections\/soldes-garcon"
+          }
+        },
+        "1657725987b55b8180-4": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Bébé",
+            "url": "shopify:\/\/collections\/soldes-bebe"
+          }
+        },
+        "1657725987b55b8180-5": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Maison",
+            "url": "shopify:\/\/collections\/soldes-maison"
+          }
+        }
+      },
+      "block_order": [
+        "1657725987b55b8180-0",
+        "1657725987b55b8180-1",
+        "1657725987b55b8180-2",
+        "1657725987b55b8180-3",
+        "1657725987b55b8180-4",
+        "1657725987b55b8180-5"
+      ],
+      "settings": {
+        "heading": "Advantages",
+        "is_heading_visible": false
+      }
+    },
+    "164882170123666d2a": {
+      "type": "collection-template",
+      "settings": {
+        "allow_infinite_scroll": true,
+        "has_filter": true
+      }
+    }
+  },
+  "order": [
+    "section",
+    "1657725971af259edb",
+    "16577259870aa894aa",
+    "164882170123666d2a"
+  ]
+}

@@ -1,0 +1,23 @@
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+  capture container_content
+    render 'el_heading', level: 1, id: heading_id, text: page.title, custom_classes: 'page-header__heading', modifiers: 'xs'
+    echo '<p class="page-header__description">' | append: page.content | append: '</p>'
+  endcapture
+
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xl'
+  endcapture
+  render 'c_section', id: section.settings.id, name: 'page-header', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Page header",
+  "presets": [
+    {
+      "name": "Page header"
+    }
+  ]
+}
+{% endschema %}

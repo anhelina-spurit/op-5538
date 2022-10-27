@@ -1,0 +1,132 @@
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+@import '../../constants/transitions';
+
+.unsubscribe-newsletter {
+  padding: to-rem(50px) to-rem(20px);
+}
+
+.unsubscribe-newsletter__container {
+  max-width: to-rem(528px);
+}
+
+.unsubscribe-newsletter__heading {
+  margin: 0 0 to-rem(10px);
+  color: $palette-pickled-bluewood;
+  font-size: to-rem(16px);
+  font-weight: 400;
+  letter-spacing: to-rem(2.5px);
+  line-height: 1.4375;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(20px);
+    font-size: to-rem(12px);
+    letter-spacing: to-rem(2.25px);
+    line-height: 1.5;
+    text-align: center;
+  }
+}
+
+.unsubscribe-newsletter__policy-text {
+  color: $palette-silver-chalice;
+  font-size: to-rem(11px);
+  font-weight: 300;
+  line-height: 1.91;
+}
+
+.unsubscribe-newsletter__policy-text a {
+  border-bottom: to-rem(1px) solid $palette-silver-chalice;
+  color: $palette-silver-chalice;
+}
+
+.unsubscribe-newsletter__email-notes {
+  margin: 0 0 to-rem(24px);
+  color: $palette-silver-chalice;
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(1px);
+  line-height: 1.4;
+  @include media-breakpoint-down(lg) {
+    letter-spacing: to-rem(0.7px);
+  }
+}
+
+.unsubscribe-newsletter-form__field--buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: to-rem(28px);
+
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+    margin-bottom: to-rem(18px);
+  }
+}
+
+.unsubscribe-newsletter-form__button {
+  padding-top: to-rem(12px);
+  padding-bottom: to-rem(12px);
+
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+  }
+}
+
+.unsubscribe-newsletter-form__button:not(:last-child) {
+  margin-right: to-rem(20px);
+  @include media-breakpoint-down(lg) {
+    margin-right: 0;
+    margin-bottom: to-rem(36px);
+  }
+}
+
+.unsubscribe-newsletter-form__field {
+  position: relative;
+  display: flex;
+  padding-top: to-rem(20px);
+}
+
+.unsubscribe-newsletter-form__field:not(:first-child) {
+  padding: 0;
+}
+
+.unsubscribe-newsletter-form__field .label {
+  position: absolute;
+  top: to-rem(22px);
+  display: block;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(1.2px);
+  line-height: 1.5;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: top $transition-duration-fastest;
+
+  @include media-breakpoint-down(lg) {
+    top: to-rem(18px);
+  }
+}
+
+.unsubscribe-newsletter-form__field .input {
+  width: 100%;
+  min-height: to-rem(24px);
+  box-sizing: content-box;
+  border: 0;
+  border-bottom: 1px solid $palette-silver;
+  margin-bottom: to-rem(16px);
+  text-overflow: ellipsis;
+  transition: border-bottom-color $transition-duration-fastest;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(10px);
+  }
+}
+
+.unsubscribe-newsletter-form__field .input:focus {
+  border-bottom-color: $palette-dark;
+}
+
+.unsubscribe-newsletter-form__field .input:focus ~ .label,
+.unsubscribe-newsletter-form__field .input:not(:focus):valid ~ .label,
+.unsubscribe-newsletter-form__field .input:not(:placeholder-shown) ~ .label,
+.unsubscribe-newsletter-form__field .input:-webkit-autofill ~ .label {
+  top: to-rem(-8px);
+}

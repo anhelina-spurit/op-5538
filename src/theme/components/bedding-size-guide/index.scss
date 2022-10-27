@@ -1,0 +1,121 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.size-guide-modal--bedding .modal__container {
+  width: to-rem(920px);
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.begging-size-guide {
+  position: relative;
+  padding-top: to-rem(20px);
+}
+
+.begging-size-guide::before {
+  position: absolute;
+  top: to-rem(10px);
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: to-rem(1px);
+  background: $palette-alto;
+  content: '';
+}
+
+.begging-size-guide__header {
+  position: relative;
+  height: to-rem(220px);
+  margin-top: to-rem(30px);
+  background-image: url('https://cdn.shopify.com/s/files/1/0565/1546/1256/files/size-guide-bg.jpg?v=1650612753');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include media-breakpoint-down(md) {
+    height: to-rem(140px);
+    margin-right: to-rem(40px);
+    margin-left: to-rem(40px);
+    background-position: 15%;
+  }
+}
+
+.bedding-size-guide__title {
+  position: absolute;
+  top: 50%;
+  left: to-rem(65px);
+  margin: 0;
+  font-size: to-rem(35px);
+  font-weight: 400;
+  transform: translate(0, -50%);
+
+  @include media-breakpoint-down(md) {
+    left: to-rem(25px);
+    font-size: to-rem(22px);
+  }
+}
+
+.begging-size-guide__item-list {
+  padding-left: to-rem(28px);
+}
+
+.begging-size-guide__item {
+  padding: to-rem(40px) to-rem(60px) to-rem(30px) to-rem(40px);
+  font-size: to-rem(14px);
+
+  @include media-breakpoint-down(md) {
+    padding-right: to-rem(40px);
+  }
+}
+
+.begging-size-guide__item--bg-gray {
+  background: $palette-concrete;
+}
+
+.begging-size-guide__item-title {
+  margin-bottom: to-rem(16px);
+  font-size: to-rem(16px);
+}
+
+.begging-size-guide__row {
+  display: grid;
+  width: 100%;
+  padding: to-rem(10px) 0 to-rem(20px);
+  border-top: 1px solid $palette-mercury;
+  font-size: to-rem(12px);
+  font-weight: 700;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.begging-size-guide__row-head {
+  display: block;
+  max-width: to-rem(90px);
+  font-size: to-rem(14px);
+  line-height: to-rem(21px);
+  text-align: left;
+
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    margin-top: to-rem(25px);
+    margin-bottom: to-rem(20px);
+    font-size: to-rem(18px);
+    text-align: center;
+  }
+}
+
+.begging-size-guide__cell p {
+  margin: 0;
+}
+
+.begging-size-guide__image {
+  display: block;
+  width: 100%;
+  max-width: to-rem(240px);
+  margin: auto;
+}

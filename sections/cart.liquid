@@ -1,0 +1,28 @@
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+  assign title = 'cart.title' | t
+  capture container_content
+    render 'el_heading', id: 'cart_heading', level: 1, text: title, custom_classes: 'cart__heading', modifiers: 'sm'
+      echo '<div class="cart-modal__notice" data-cart-notice></div>'
+    render 'c_cart-form', id: 'cart-form'
+  endcapture
+
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xxl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'cart', content: content, heading_id: heading_id
+-%}
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}
+{% schema %}
+{
+    "name": "Cart",
+    "class": "shopify-section--has-padding",
+    "presets": [
+        {
+            "name": "Cart"
+        }
+    ]
+}
+{% endschema %}

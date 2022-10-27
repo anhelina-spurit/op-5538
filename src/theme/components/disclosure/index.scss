@@ -1,0 +1,14 @@
+.disclosure {
+  position: relative;
+  z-index: 1;
+}
+
+.disclosure__list {
+  position: absolute;
+  left: 0;
+  display: none;
+}
+
+.disclosure__list.visible {
+  display: block;
+}

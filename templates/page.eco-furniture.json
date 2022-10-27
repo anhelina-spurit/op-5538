@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "section": {
+      "type": "eco-furniture",
+      "settings": {
+        "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/eco-mobilier.svg?v=1652425354"
+      }
+    }
+  },
+  "order": [
+    "section"
+  ]
+}

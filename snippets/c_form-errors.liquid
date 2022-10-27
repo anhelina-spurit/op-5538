@@ -1,0 +1,36 @@
+{%- comment -%}
+  @summary Renders errors of the form
+
+  @param {Shopify.form} form - form
+  @param {string} label - label
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'c_form-errors',
+    form: form,
+    modifiers: ''
+    custom_classes: 'form__errors',
+    attributes: '',
+  -%}
+{%- endcomment -%}
+
+{%- if form and form.errors -%}
+  <div class="errors">
+    {%- assign list_label_id = id | append: '_label' -%}
+    <span id="{{ list_label_id }}" class="visually-hidden" aria-hidden="true">{{ label }}</span>
+    <ul id="{{ id }}" class="form-errors" aria-labelledby="{{ list_label_id }}">
+      {%- for field in form.errors -%}
+        <li class="form-errors__item">
+          {%- if field == 'form' -%}
+            {{- form.errors.messages[field] -}}
+          {%- else -%}
+            {{- form.errors.translated_fields[field] -}} - {{- form.errors.messages[field] -}}
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}

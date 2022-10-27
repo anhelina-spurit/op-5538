@@ -1,0 +1,69 @@
+{%- comment -%}
+  @summary Renders a breadcrumbs
+
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+  @param {string[]} [custom_item] - custom item breadcrumb
+
+  @example
+  {%- render 'c_breadcrumbs' -%}
+{%- endcomment -%}
+
+<span class="visually-hidden" aria-hidden="true" id="breadcrumbs_title">{{ 'breadcrumbs.title' | t }}</span>
+<nav class="{%- render 'f_bem-classes', main_class: 'breadcrumbs', custom_classes: custom_classes, modifiers: modifiers -%}" role="navigation" aria-labelledby="breadcrumbs_title">
+  <ol class="breadcrumbs__list">
+    {%- liquid
+      assign item_class = 'breadcrumbs__item'
+      assign text = 'breadcrumbs.home' | t
+
+      render 'c_breadcrumbs-item', custom_classes: item_class, text: text, href: '/', is_current_page: false
+
+      case template.name
+        when 'page'
+          render 'c_breadcrumbs-item', custom_classes: item_class, text: page.title, is_current_page: true
+
+        when 'product'
+          if collection.url
+            render 'c_breadcrumbs-item', custom_classes: item_class, text: collection.title, href: collection.url
+          endif
+          capture title
+            render 'f_product-title', product: product
+          endcapture
+          render 'c_breadcrumbs-item', custom_classes: item_class, text: title, is_current_page: true
+
+        when 'collection' and collection.handle
+          for link in linklists.main-menu.links
+              if link.child_active and link.active == false
+                render 'c_breadcrumbs-item', custom_classes: item_class, text: link.title, href: link.url
+              endif
+          endfor
+          render 'c_breadcrumbs-item', custom_classes: item_class, text: collection.title, is_current_page: true
+        when 'list-collections' and collection.handle
+          render 'c_breadcrumbs-item', custom_classes: item_class, text: page_title, href: routes.collections_url
+
+          if custom_item != blank
+            render 'c_breadcrumbs-item', custom_classes: item_class, text: custom_item
+          endif
+
+        when 'blog'
+          if current_tags
+            render 'c_breadcrumbs-item', custom_classes: item_class, text: blog.title, href: blog.url
+
+            assign text = current_tags | join: '+'
+
+            render 'c_breadcrumbs-item', custom_classes: item_class, text: text, is_current_page: true
+          else
+            render 'c_breadcrumbs-item', custom_classes: item_class, text: blog.title, is_current_page: true
+          endif
+
+        when 'article'
+          render 'c_breadcrumbs-item', custom_classes: item_class, text: blog.title, href: blog.url
+          render 'c_breadcrumbs-item', custom_classes: item_class, text: article.title, is_current_page: true
+
+        else
+          render 'c_breadcrumbs-item', custom_classes: item_class, text: page_title, is_current_page: true
+      endcase
+    -%}
+  </ol>
+</nav>

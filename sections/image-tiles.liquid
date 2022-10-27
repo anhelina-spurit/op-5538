@@ -1,0 +1,121 @@
+{%- capture container_content -%}
+  {%- liquid
+    render 'el_heading', tag: 'div', level: 4, text: section.settings.subheading, custom_classes: 'image-tiles__subheading'
+    render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'image-tiles__heading'
+    render 'el_heading', tag: 'div', level: 3, text: section.settings.description, custom_classes: 'image-tiles__description'
+  -%}
+
+  <div class="image-tiles__slider swiper">
+    <ul class="image-tiles__list swiper-wrapper">
+      {%- for block in section.blocks -%}
+        <li class="image-tiles__item swiper-slide" data-index="{{ forloop.index0 }}">
+          {%- liquid
+            if block.settings.image != blank and block.settings.image_link != blank
+              echo '<div class="link-wrapper">'
+              echo '<a class="link-wrapper__link" href="' | append: block.settings.image_link.url | append: '"></a>'
+            endif
+            if block.settings.image != blank
+              render 'el_shopify-image', image: block.settings.image, lazy_loading: true, format: 'pjpg', custom_classes: 'image-tiles__item_image'
+            else
+              render 'el_placeholder'
+            endif
+            if block.settings.image != blank and block.settings.image_link != blank
+              echo '</div>'
+            endif
+            render 'el_heading', level: 3, text: block.settings.heading, custom_classes: 'image-tiles__item_heading'
+          -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div class="image-tiles__scrollbar swiper-scrollbar"></div>
+  </div>
+
+  {%- render 'el_link', text: section.settings.link_text, href: section.settings.link, custom_classes: 'image-tiles__action_link' -%}
+{%- endcapture -%}
+
+{%- liquid
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xxl,centered'
+  endcapture
+
+  render 'c_section', tag: 'div', id: section.id, name: 'image-tiles', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Image tiles",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "id": "link_text",
+      "type": "text",
+      "label": "Link text"
+    },
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Link"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "item",
+      "type": "item",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "image_link",
+          "type": "url",
+          "label": "Image link"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image tiles",
+      "settings": {
+        "heading": "Nos produits"
+      },
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,84 @@
+{%- if section.blocks.size > 0 -%}
+  {%- capture content -%}
+    <div class="gift-cards__list">
+      {%- for card in section.blocks -%}
+      <div class="gift-cards__item">
+        {%- liquid
+          unless card.settings.icon == blank
+            render 'el_image', src: card.settings.icon, alt: '', lazy_loading: true, lazy_loading_src_enabled: true, custom_classes: 'gift-cards__icon'
+          endunless
+
+          unless card.settings.heading == blank
+            render 'el_heading', level: 2, text: card.settings.heading, custom_classes: 'gift-cards__heading'
+          endunless
+        -%}
+        {%- unless card.settings.description == blank -%}
+          <p class="gift-cards__description">{{ card.settings.description }}</p>
+        {%- endunless -%}
+        {%- liquid
+          capture button_classes
+            render 'f_bem-classes', main_class: 'button', modifiers: 'secondary, small', custom_classes: 'gift-cards__button'
+          endcapture
+        -%}
+        {%- unless card.settings.link == blank -%}
+          <a href="{{ card.settings.link }}" class="{{ button_classes }}">{{ card.settings.link_text }}</a>
+        {%- endunless -%}
+      </div>
+      {%- endfor -%}
+    </div>
+  {%- endcapture -%}
+  {%-
+    render 'el_container',
+    content: content,
+    tag: 'div',
+    modifiers: 'xl'
+  -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Gift cards",
+  "tag": "div",
+  "class": "gift-cards",
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "text",
+          "label": "Icon URL",
+          "info": "It is more priority to use the image in the SVG format. To do this, you need to upload an image to the store's file system, copy path and paste it here."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Button text",
+          "default": "More"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift cards"
+    }
+  ]
+}
+{% endschema %}

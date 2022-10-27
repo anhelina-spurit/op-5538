@@ -1,0 +1,207 @@
+{% capture discover %}
+    <div class="discover__grid">
+    <div class="discover__grid-item">
+      {% render 'c_text-preview', heading: section.settings.heading, heading_level: 2, description: section.settings.description, link: section.settings.link, link_title: section.settings.link_title %}
+
+      {% assign firstBlock = section.blocks[0] %}
+
+      {% if firstBlock != blank %}
+        {% if firstBlock.settings.image_link != blank %}
+          <div class="link-wrapper">
+            <a class="link-wrapper__link" href="{{ firstBlock.settings.image_link }}"></a>
+        {% endif %}
+        {% comment %}theme-check-disable NestedSnippet{% endcomment %}
+        {% render 'c_image-map', id: section.id, block: firstBlock, index: 1, useGif: firstBlock.settings.use_gif %}
+
+        {% if firstBlock.settings.image_link != blank %}
+          </div>
+        {% endif %}
+
+        {% render 'el_heading', level: 3, text: firstBlock.settings.heading %}
+
+        {% if section.settings.description != blank %}
+          <p class="discover__description">{{ section.settings.description }}</p>
+        {% endif %}
+        {% render 'el_link', custom_classes: 'discover__link', href: section.settings.link, text: section.settings.link_title %}
+        {% comment %}theme-check-enable NestedSnippet{% endcomment %}
+      {% endif %}
+    </div>
+    {% comment %}theme-check-disable LiquidTag{% endcomment %}
+    {% unless section.blocks.size <= 1 %}
+      {% for block in section.blocks %}
+       {% if forloop.index == 1 %}
+          {% continue %}
+        {% else %}
+          {% if block.settings.image != blank %}
+            <div class="discover__grid-item">
+            {% if block.settings.image_link != blank %}
+              <div class="link-wrapper">
+                <a class="link-wrapper__link" href="{{ block.settings.image_link }}"></a>
+              {% endif %}
+              {% comment %}theme-check-disable NestedSnippet{% endcomment %}
+              {%- render 'c_image-map', id: section.id, block: block, index: forloop.index, useGif: block.settings.use_gif -%}
+              {%- render 'el_heading', level: 3, text: block.settings.heading, custom_classes: 'discover__grid-item_heading' -%}
+              {% comment %}theme-check-enable NestedSnippet{% endcomment %}
+              {% if block.settings.image_link != blank %}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endunless %}
+    {% comment %}theme-check-enable LiquidTag{% endcomment %}
+    </div>
+  {% endcapture %}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+
+  capture content
+    render 'el_container', content: discover, modifiers: 'xxl', custom_classes: 'discover__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'discover', content: content, heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Discover",
+  "class": "shopify-section--has-padding",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "id": "link_title",
+      "type": "text",
+      "label": "Link title"
+    },
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Link url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "items",
+      "name": "Items",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "image_link",
+          "type": "url",
+          "label": "Image link"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_gif",
+          "label": "Use gif",
+          "default": false
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Image heading"
+        },
+        {
+          "type": "header",
+          "content": "Products"
+        },
+        {
+          "id": "product_1",
+          "type": "product",
+          "label": "Product 1"
+        },
+        {
+          "id": "product_1_top",
+          "type": "number",
+          "label": "Product 1 cord top"
+        },
+        {
+          "id": "product_1_left",
+          "type": "number",
+          "label": "Product 1 cord left"
+        },
+        {
+          "id": "product_2",
+          "type": "product",
+          "label": "Product 2"
+        },
+        {
+          "id": "product_2_top",
+          "type": "number",
+          "label": "Product 2 cord top"
+        },
+        {
+          "id": "product_2_left",
+          "type": "number",
+          "label": "Product 2 cord left"
+        },
+        {
+          "id": "product_3",
+          "type": "product",
+          "label": "Product 3"
+        },
+        {
+          "id": "product_3_top",
+          "type": "number",
+          "label": "Product 3 cord top"
+        },
+        {
+          "id": "product_3_left",
+          "type": "number",
+          "label": "Product 3 cord left"
+        },
+        {
+          "id": "product_4",
+          "type": "product",
+          "label": "Product 4"
+        },
+        {
+          "id": "product_4_top",
+          "type": "number",
+          "label": "Product 4 cord top"
+        },
+        {
+          "id": "product_4_left",
+          "type": "number",
+          "label": "Product 4 cord left"
+        },
+        {
+          "id": "product_5",
+          "type": "product",
+          "label": "Product 5"
+        },
+        {
+          "id": "product_5_top",
+          "type": "number",
+          "label": "Product 5 cord top"
+        },
+        {
+          "id": "product_5_left",
+          "type": "number",
+          "label": "Product 5 cord left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Discover"
+    }
+  ]
+}
+{% endschema %}

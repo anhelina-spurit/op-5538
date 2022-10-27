@@ -1,0 +1,230 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../constants/transitions';
+
+.footer {
+  padding: to-rem(40px) 0 to-rem(30px);
+  background-color: $palette-dark-slate-grey;
+  color: $palette-white;
+  font-size: to-rem(12px);
+
+  @include media-breakpoint-up(lg) {
+    padding: to-rem(127px) 0 to-rem(30px);
+  }
+}
+
+.footer__grid {
+  @include media-breakpoint-up(md) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.footer__column {
+  @include media-breakpoint-up(lg) {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+.footer__column--logo {
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(35px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    order: 2;
+    text-align: center;
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    flex-basis: 100%;
+    text-align: center;
+  }
+}
+
+.footer__logo {
+  display: inline-block;
+
+  @include media-breakpoint-down(lg) {
+    width: 37.96px;
+    height: 48px;
+    opacity: 0.87;
+  }
+
+  @include media-breakpoint-up(lg) {
+    --line-length: 4rem;
+    position: relative;
+    top: to-rem(6px);
+    left: to-rem(5px);
+    padding: var(--line-length) 0;
+  }
+}
+
+.footer__logo::after,
+.footer__logo::before {
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 1px;
+    height: var(--line-length);
+    border-right: 1px solid $palette-white;
+    content: '';
+  }
+}
+
+.footer__logo::before {
+  top: 0;
+}
+
+.footer__logo_img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+
+  @include media-breakpoint-up(lg) {
+    margin: to-rem(15px) 0;
+  }
+}
+
+.footer__column--nav {
+  @include media-breakpoint-up(lg) {
+    order: 3;
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    flex-basis: 33.333%;
+  }
+}
+
+.footer__column--nav-1 {
+  @include media-breakpoint-up(md) {
+    padding-left: to-rem(54px);
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .footer__column--nav:not(:last-child) {
+    padding-bottom: to-rem(20px);
+  }
+}
+
+.footer__column--nav:not(:last-child) {
+  @include media-breakpoint-up(md) {
+    padding-right: to-rem(20px);
+  }
+}
+
+.footer__heading {
+  margin: 0 0 to-rem(25px);
+  letter-spacing: 0.125em;
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(lg) {
+    font-size: to-rem(12px);
+    font-weight: 500;
+  }
+}
+
+.footer-content {
+  @include media-breakpoint-down(lg) {
+    padding-bottom: to-rem(55px);
+    border-bottom: 1px solid rgba($palette-white, 0.75);
+    margin-bottom: to-rem(55px);
+    letter-spacing: 0.083em;
+  }
+
+  @include media-breakpoint-up(lg) {
+    order: 1;
+  }
+
+  @include media-breakpoint-between(md, lg) {
+    flex-basis: 100%;
+    text-align: center;
+  }
+}
+
+.footer-content p {
+  margin-bottom: to-rem(22px);
+  line-height: 2;
+}
+
+.footer-content p:first-of-type {
+  margin-top: 0;
+}
+
+.footer-content p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-content a {
+  display: inline-block;
+  padding: 0.25em 0;
+  color: inherit;
+
+  @include media-breakpoint-down(lg) {
+    padding: 0.5em 0;
+  }
+}
+
+.footer-content [href^='tel'] {
+  text-decoration: none;
+}
+
+.footer__copyright {
+  font-weight: 300;
+  letter-spacing: 0.072em;
+
+  @include media-breakpoint-up(lg) {
+    padding-top: to-rem(13px);
+    padding-right: to-rem(12px);
+    text-align: right;
+  }
+
+  @include media-breakpoint-down(lg) {
+    padding: to-rem(45px) 0 to-rem(15px);
+    border-top: 1px solid rgba($palette-white, 0.75);
+    margin-top: to-rem(45px);
+    letter-spacing: 0.125em;
+    text-transform: uppercase;
+  }
+}
+
+.footer__collapse_header {
+  position: relative;
+}
+
+.footer__collapse_btn {
+  position: absolute;
+  top: to-rem(-10px);
+  right: 0;
+  bottom: to-rem(-10px);
+  left: 0;
+  border: none;
+  background: transparent;
+
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.footer__collapse_btn::before {
+  position: absolute;
+  top: to-rem(6px);
+  right: 0;
+  display: block;
+  width: to-rem(20px);
+  height: to-rem(20px);
+  color: $palette-white;
+  content: '+';
+  font-size: to-rem(20px);
+  line-height: 1;
+  transition: transform $transition-duration-fastest;
+}
+
+.footer__collapse_btn[aria-expanded='true']::before {
+  transform: rotate(45deg);
+}

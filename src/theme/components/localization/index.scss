@@ -1,0 +1,48 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+
+.localization-form__select {
+  display: flex;
+  align-items: center;
+  padding: to-rem(8px);
+  background: none;
+  color: inherit;
+}
+
+.localization-form__select_icon {
+  width: to-rem(18px);
+  height: to-rem(18px);
+  margin: to-rem(2px) 0 0 to-rem(8px);
+}
+
+.localization-form__list {
+  width: 100%;
+  padding: to-rem(3px) to-rem(8px);
+  margin: 0;
+  background-color: $palette-white;
+  box-shadow: 0 0 to-rem(5px) rgb(161 159 159 / 50%);
+  color: $palette-dark;
+  list-style-type: none;
+}
+
+.localization-form__item {
+  margin-bottom: to-rem(10px);
+  font-size: to-rem(12px);
+}
+
+.localization-form__item:last-child {
+  margin-bottom: to-rem(8px);
+}
+
+.localization-form__link {
+  padding-bottom: 0;
+}
+
+.localization-form__link--active {
+  font-weight: 500;
+}
+
+.recommendation-modal__container,
+.recommendation-modal__backdrop {
+  display: none;
+}

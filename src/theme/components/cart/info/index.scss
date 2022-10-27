@@ -1,0 +1,139 @@
+@import '../../../constants/palette';
+@import '../../../utils/to-rem';
+@import '../../../constants/fonts';
+@import '../../../utils/breakpoints';
+@import '../../../utils/hover';
+@import '../../../components/product-label';
+
+.cart-info {
+  margin: to-rem(15px) 0;
+  font-size: to-rem(12px);
+  text-align: left;
+
+  @include media-breakpoint-down(md) {
+    margin-top: 0;
+  }
+}
+
+.cart-info__heading {
+  font-size: to-rem(12px);
+  font-weight: 400;
+  text-transform: inherit;
+}
+
+.cart-info__between {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: to-rem(10px) 0;
+}
+
+.cart-info__between p {
+  margin: 0;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.8px);
+}
+
+.cart-info__benefit-message {
+  padding: to-rem(12px) to-rem(40px);
+  margin: to-rem(15px) 0;
+  background-color: $palette-ecru-white;
+  text-align: center;
+}
+
+.cart-info__custom_wording {
+  padding: to-rem(12px);
+  margin: to-rem(15px) 0;
+  background-color: $palette-ecru-white;
+  color: $palette-dark-slate-grey;
+  text-align: center;
+}
+
+.cart-info__custom_wording p {
+  margin: 0;
+}
+
+.cart-info__benefit-message .heading {
+  color: $palette-leather;
+  font-family: $font-family-lora;
+}
+
+.cart-info__between p:first-child {
+  padding-right: to-rem(10px);
+}
+
+.cart-info__benefit-message .button {
+  border-color: $palette-leather;
+  background-color: $palette-leather;
+  color: $palette-white;
+}
+
+.cart-info__benefit-code {
+  display: flex;
+  margin: to-rem(15px) 0;
+}
+
+.cart-info__total {
+  color: $palette-dark;
+}
+
+.cart-info__control {
+  margin: to-rem(15px) 0;
+}
+
+.cart-info__control-container .button {
+  color: $palette-white;
+
+  @include hover {
+    border: 1px solid $palette-dark;
+    color: $palette-dark;
+  }
+}
+
+.cart-info__control-container .button:nth-child(1) {
+  display: block;
+}
+
+.cart-info__control-container .button:nth-child(2) {
+  display: none;
+}
+
+.cart-info__between .vp-tags {
+  display: flex;
+  width: 100%;
+  flex-flow: wrap;
+  padding-right: 0;
+  margin-bottom: to-rem(7px);
+  text-align: right;
+}
+
+.vp-prices-discount-tags,
+.vp-prices-coupon-tags {
+  width: 100%;
+}
+
+.vp-prices-discount-tag,
+.vp-prices-coupon-tag {
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+  @extend .product-label;
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+  @extend .product-label--discount;
+  display: inline-block;
+  margin-left: to-rem(7px);
+}
+
+.vp-coupons-feedback {
+  font-size: to-rem(12px);
+  text-align: center;
+}
+
+.vp-prices-discount-tag {
+  background-color: $palette-ecru-white;
+}
+
+.vp-prices-coupon-tag {
+  border: none;
+  background-color: $palette-gray;
+  color: $palette-white;
+  cursor: pointer;
+}

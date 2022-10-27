@@ -1,0 +1,124 @@
+{% liquid
+  capture image
+    if section.settings.image != blank
+      render 'el_shopify-image', image: section.settings.image, lazy_loading: true, format: 'pjpg'
+    else
+      render 'el_placeholder', name: 'collection-1'
+    endif
+  endcapture
+
+  assign heading_id = section.id | append: '__heading'
+%}
+
+{%- capture content -%}
+  <div class="promo__grid commitments-promo__grid">
+    <div class="promo__item commitments-promo__item_media">
+      <div class="promo__media commitments-promo__media">
+        {%- render 'el_ratio-container', custom_classes: 'promo__ratio-container', content: image, width: section.settings.image.width, height: section.settings.image.height, size_limited: false, should_image_cover: true -%}
+      </div>
+    </div>
+
+    <div class="promo__item promo__item--info">
+      <div class="promo__content commitments-promo__content">
+        {%- liquid
+          render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'promo__heading', id: heading_id
+          render 'el_heading', level: 3, text: section.settings.subtitle, custom_classes: 'promo__sub-heading commitments-promo__heading'
+
+          if section.settings.description
+            echo '<div class="promo__description commitments-promo__description">' | append: section.settings.description | append: '</div>'
+          endif
+        -%}
+      </div>
+    </div>
+
+    <div class="promo__item commitments-promo_words">
+      {%- if section.settings.words_headings != blank -%}
+        <div class="promo__content-box">
+          <div class="promo__content-box_h">
+            {{ section.settings.words_headings | newline_to_br }}
+          </div>
+          <div class="promo__content-box_p">
+            {{ section.settings.words_description }}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  capture section_content
+    render 'el_container', content: content, modifiers: 'xl'
+  endcapture
+
+  if image != blank
+    render 'c_section', id: section.id, name: 'promo', name_modifiers: 'wide', content: section_content, heading_id: heading_id
+  endif
+-%}
+
+{% style %}
+  #{{ section.id }} {
+    background-color: {{- section.settings.background -}};
+    color: {{- section.settings.text_color -}};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Commitments Promo",
+  "settings": [
+    {
+      "id": "background",
+      "type": "color",
+      "label": "Background",
+      "default": "#697B6B"
+    },
+    {
+      "id": "text_color",
+      "type": "color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Text content"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "Subtitle"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Words content"
+    },
+    {
+      "id": "words_headings",
+      "type": "textarea",
+      "label": "Words"
+    },
+    {
+      "id": "words_description",
+      "type": "textarea",
+      "label": "Description"
+    }
+  ]
+}
+{% endschema %}

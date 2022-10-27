@@ -1,0 +1,25 @@
+{%- comment -%}
+    @summary Renders a control
+
+    @param {string} content - content
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {%-
+        render 'el_control',
+        id: 'control',
+        content: '<input type="text" name="username">',
+        custom_classes: 'form__control',
+        attributes: 'data-custom-label',
+        modifiers: 'lg, light'
+    -%}
+{%- endcomment -%}
+
+<div
+  class="{%- render 'f_bem-classes', main_class: 'control', custom_classes: custom_classes, modifiers: modifiers -%}"
+  {% if attributes %}{{ attributes }}{% endif %}
+>
+  {{- content -}}
+</div>

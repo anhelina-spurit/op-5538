@@ -1,0 +1,131 @@
+{% comment %}
+  @summary Renders size guide for babies
+
+  @param {string} id - id
+
+  @example
+  {%- render 'c_size-guide-babies' -%}
+{% endcomment %}
+
+<div>
+  {% liquid
+    capture options
+      assign tables = 'babies' | split: ','
+
+      for table in tables
+        assign option_id = table | append: '_' | append: id
+        assign option_value = 'option_' | append: option_id
+        assign option_text = 'size_guide.panel.babies.table' | append: forloop.index | append: '_title'
+        assign option_text = option_text | t | capitalize
+        assign selected = forloop.first
+        render 'el_selectbox-option', id: option_id, option_value: option_value, selected: selected, option_text: option_text
+      endfor
+    endcapture
+
+    assign selected_option_text = 'size_guide.panel.babies.table1_title' | t | capitalize
+
+    render 'c_selectbox', id: 'size_guide_table_type',custom_classes: 'size-guide__selectbox-tables', custom_options: options, selected_option_id: 'option_dresses', selected_option_text: selected_option_text
+  %}
+</div>
+
+<div class="size-guide__content size-guide__content--babies">
+  {%- assign image_src = 'baby-size.png' | asset_url -%}
+  {%- render 'c_size-guide-description',
+          tab_name: 'babies',
+          image_src: image_src,
+          circle_number: 0
+  -%}
+  <div class="size-guide__tables-list">
+    <table class="size-guide__table size-guide__table--babies" data-size-guide-table data-size-guide-table-id="babies_{{ id }}" >
+      <caption class="size-guide__table-caption">{{ 'size_guide.panel.babies.table1_title' | t }}</caption>
+      <thead class="size-guide__table-head">
+      <tr>
+        <th>{{ 'size_guide.panel.size' | t }}</th>
+        <th>0M</th>
+        <th>1M</th>
+        <th>3M</th>
+        <th>6M</th>
+        <th>9M</th>
+        <th>12M</th>
+        <th>18M</th>
+        <th>24M</th>
+        <th>36M</th>
+      </tr>
+      </thead>
+      <tbody class="size-guide__table-body">
+      <tr>
+        <th scope="row" class="size-guide__row-head size-guide__row-head--first" >{{ 'size_guide.panel.height' | t }}</th>
+        <th>50</th>
+        <th>56</th>
+        <th>62</th>
+        <th>68</th>
+        <th>71</th>
+        <th>74</th>
+        <th>80</th>
+        <th>86</th>
+        <th>98</th>
+      </tr>
+      <tr>
+        <th scope="row" class="size-guide__row-head size-guide__row-head--second">{{ 'size_guide.panel.chest' | t }}</th>
+        <th>36.5</th>
+        <th>38.5</th>
+        <th>43</th>
+        <th>45.5</th>
+        <th>46</th>
+        <th>47</th>
+        <th>48.5</th>
+        <th>50.5</th>
+        <th>52.5</th>
+      </tr>
+      <tr>
+        {%- liquid
+          assign waist = 'size_guide.panel.waist' | t
+          assign smallest_part = 'size_guide.panel.smallest_part' | t
+          assign smallest_part = smallest_part | prepend: '<br><span class="size-guide__th-note">' | append: '</span>'
+        -%}
+        <th scope="row" class="size-guide__row-head size-guide__row-head--third">{{ waist|append: smallest_part }}</th>
+        <th>36</th>
+        <th>38</th>
+        <th>43</th>
+        <th>45</th>
+        <th>46</th>
+        <th>46.5</th>
+        <th>47</th>
+        <th>49.5</th>
+        <th>51.5</th>
+      </tr>
+      <tr>
+        {%- liquid
+          assign hips = 'size_guide.panel.hips' | t
+          assign widest_part = 'size_guide.panel.widest_part' | t
+          assign widest_part = widest_part | prepend: '<br><span class="size-guide__th-note">' | append: '</span>'
+        -%}
+        <th scope="row" class="size-guide__row-head size-guide__row-head--fourth">{{ hips| append: widest_part }}</th>
+        <th>35</th>
+        <th>37</th>
+        <th>42</th>
+        <th>45</th>
+        <th>46</th>
+        <th>47</th>
+        <th>49</th>
+        <th>51.5</th>
+        <th>53.5</th>
+      </tr>
+      <tr>
+        <th scope="row" >{{ 'size_guide.panel.hand_length' | t}}</th>
+        <th>6.5</th>
+        <th>6.5</th>
+        <th>7</th>
+        <th>7.5</th>
+        <th>8</th>
+        <th>8.5</th>
+        <th>9</th>
+        <th>9.5</th>
+        <th>10.5</th>
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>

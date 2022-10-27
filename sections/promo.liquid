@@ -1,0 +1,226 @@
+{% style %}
+  #{{ section.id }} {
+    background-color: {{- section.settings.background -}};
+  }
+
+  #{{ section.id }} .promo__heading {
+    color: {{- section.settings.heading_color -}};
+  }
+
+  #{{ section.id }} .promo__sub-heading {
+    color: {{- section.settings.subtitle_color -}};
+  }
+
+  #{{ section.id }} .promo__description {
+    color: {{- section.settings.description_color -}};
+  }
+
+  #{{ section.id }} .promo__link {
+    background-color: {{- section.settings.link_background -}};
+    border: 1px solid {{ section.settings.link_background }};
+    color: {{- section.settings.link_color -}};
+  }
+
+  #{{ section.id }} .promo__link:hover {
+    background-color: transparent;
+    border: 1px solid {{ section.settings.link_background }};
+    color: {{- section.settings.link_background -}};
+  }
+{% endstyle %}
+
+{% liquid
+  capture image
+    if section.settings.use_gif
+      render 'el_shopify-image', image: section.settings.image, lazy_loading: true
+    else
+      render 'el_shopify-image', image: section.settings.image, lazy_loading: true, format: 'pjpg'
+    endif
+  endcapture
+
+  capture sub_image
+    render 'el_image', src: section.settings.sub_image, width: 85, height: 108, lazy_loading: true
+  endcapture
+%}
+
+{%- capture content -%}
+  <div class="promo__grid">
+    <div class="promo__item">
+      <div class="promo__media">
+        {%- if section.settings.video != blank -%}
+          {%- render 'c_video-block', video_settings: section.settings.video, classes: 'video-block__iframe--no-controls', autoplay: true -%}
+        {% else %}
+          {%- render 'el_ratio-container', custom_classes: 'promo__ratio-container', content: image, width: section.settings.image.width, height: section.settings.image.height, size_limited: false, should_image_cover: true -%}
+        {%- endif -%}
+
+        {%- unless section.settings.image_link == blank -%}
+          <a class="link-wrapper__link" href="{{ section.settings.image_link }}"></a>
+        {%- endunless -%}
+
+        {%- if sub_image != blank -%}
+          <div class="promo__sub-image">
+            {%- render 'el_ratio-container', content: sub_image, width: 85, height: 108, size_limited: true, should_image_cover: true -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="promo__item promo__item--info">
+      <div class="promo__content">
+        {%- liquid
+          render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'promo__heading'
+          render 'el_heading', level: 3, text: section.settings.subtitle, custom_classes: 'promo__sub-heading'
+          if section.settings.description
+             echo '<div class="promo__description">' | append: section.settings.description | append: '</div>'
+          endif
+          render 'el_link', href: section.settings.link, text: section.settings.link_title, custom_classes: 'promo__link'
+        -%}
+      </div>
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+  assign container_modifiers = ''
+  assign section_modifiers = nil
+
+  if section.settings.variant == 'fullscreen'
+    assign container_modifiers = 'fluid'
+  else
+    assign container_modifiers = 'xxl'
+  endif
+
+  assign section_modifiers = section_modifiers | append: ',' | append: section.settings.variant
+
+  capture content
+    render 'el_container', content: content, modifiers: container_modifiers, custom_classes: 'promo__container'
+  endcapture
+
+  if image != blank
+    render 'c_section', id: section.id, name: 'promo', name_modifiers: section_modifiers, content: content, heading_id: heading_id
+  endif
+-%}
+
+{% schema %}
+{
+  "name": "Promo",
+  "class": "shopify-section--has-padding",
+  "settings": [
+    {
+      "id": "background",
+      "type": "color",
+      "label": "Background",
+      "default": "#697B6B"
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": "Variant",
+      "options": [
+        {
+          "value": "container",
+          "label": "Container"
+        },
+        {
+          "value": "fullscreen",
+          "label": "Fullscreen"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "header",
+      "content": "Main image"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_gif",
+      "label": "Use gif",
+      "default": false
+    },
+    {
+      "id": "video",
+      "type": "text",
+      "label": "Video url"
+    },
+    {
+      "id": "image_link",
+      "type": "url",
+      "label": "Image link"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "sub_image",
+      "type": "url",
+      "label": "Sub image"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "heading_color",
+      "type": "color",
+      "label": "Color heading",
+      "default": "#ffffff"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle"
+    },
+    {
+      "id": "subtitle_color",
+      "type": "color",
+      "label": "Color subtitle",
+      "default": "#ffffff"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "Description"
+    },
+    {
+      "id": "description_color",
+      "type": "color",
+      "label": "Color description",
+      "default": "#ffffff"
+    },
+    {
+      "id": "link_title",
+      "type": "text",
+      "label": "Link title"
+    },
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Link url"
+    },
+    {
+      "id": "link_color",
+      "type": "color",
+      "label": "Link color",
+      "default": "#697B6B"
+    },
+    {
+      "id": "link_background",
+      "type": "color",
+      "label": "Link background",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo"
+    }
+  ]
+}
+{% endschema %}

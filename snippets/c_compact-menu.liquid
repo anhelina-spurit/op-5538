@@ -1,0 +1,88 @@
+{%- comment -%}
+  @summary Renders  compact-menu for header
+  @param {string} labelled_by - labelled by
+  @param {string} store_locator_url - store locator URL
+  @param {string} [custom_classes] - custom_classes
+  @param {string[]('page')} [modifiers] - modifiers
+  @param {string} [attributes] - attributes
+
+  @example
+  {%-
+    render 'c_compact_menu',
+    labelled_by: '#compact-menu',
+    store_locator_url: '#',
+    custom_classes: '.compact-menu',
+  -%}
+{%- endcomment -%}
+
+<div class="compact-menu {{ custom_classes }}" {{ attributes }}>
+  <ul class="compact-menu__list" role="list" aria-labelledby="{{ labelled_by }}">
+    {%- if store_locator_url != blank -%}
+      <li class="compact-menu__item compact-menu__item--store">
+        {% liquid
+          assign link_label = 'sections.header.store' | t
+
+          capture text
+            render 'el_icon', icon: 'store', custom_classes: 'compact-menu__icon'
+            echo '<span class="compact-menu__item_label">' | append: link_label | append: '</span>'
+          endcapture
+
+          render 'el_link', href: store_locator_url, text: text, id: 'store-link', custom_classes: 'compact-menu__link'
+        %}
+      </li>
+    {%- endif -%}
+    <li class="compact-menu__item compact-menu__item--wishlist">
+      {% liquid
+        assign link_label = 'sections.header.wishlist' | t
+
+        capture text
+          render 'el_icon', icon: 'heart', custom_classes: 'compact-menu__icon'
+          echo '<span class="compact-menu__item_label">' | append: link_label | append: '</span>'
+        endcapture
+
+        render 'el_link', href: '/pages/my-wishlist', text: text, id: 'wishlist-link', custom_classes: 'compact-menu__link'
+      %}
+    </li>
+    <li class="compact-menu__item compact-menu__item--account">
+      {% liquid
+        assign link_label = 'sections.header.account' | t
+
+        capture text
+          render 'el_icon', icon: 'person', custom_classes: 'compact-menu__icon'
+          echo '<span class="compact-menu__item_label">' | append: link_label | append: '</span>'
+        endcapture
+
+        render 'el_link', href: routes.account_url, text: text, id: 'account-link', custom_classes: 'compact-menu__link'
+      %}
+    </li>
+    <li class="compact-menu__item compact-menu__item--hidden-desktop compact-menu__item--search">
+      {%- liquid
+        capture btn_content
+          render 'el_icon', icon: 'search', custom_classes: 'compact-menu__icon'
+        endcapture
+
+        assign btn_label = 'search.general.submit' | t
+        assign btn_attr = 'aria-haspopup="dialog" aria-controls="' | append: id | append: '_search_modal' | append: '"'
+
+        render 'el_button', custom_classes: 'search-modal-toggle compact-menu__link', text: btn_content, aria_label: btn_label, attributes: btn_attr
+      -%}
+    </li>
+    <li class="compact-menu__item compact-menu__item--cart">
+      {% liquid
+        capture text
+          render 'el_icon', icon: 'bag', custom_classes: 'compact-menu__icon'
+
+            echo '<div class="compact-menu__count-wrapper">'
+          if cart.item_count > 0
+            echo '<span class="compact-menu__cart-count" data-cart-count>'|append: cart.item_count | append: '</span>'
+            else
+            echo '<span class="compact-menu__cart-count" data-cart-count></span>'
+          endif
+            echo '</div>'
+        endcapture
+
+        render 'el_link', href: routes.cart_url, text: text, id: 'cart-link', custom_classes: 'compact-menu__link'
+      %}
+    </li>
+  </ul>
+</div>

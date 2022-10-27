@@ -1,0 +1,55 @@
+{% liquid
+  assign form_heading_html = 'gift_cards.balance.form_heading_html' | t
+  assign heading_html = 'gift_cards.balance.heading_html' | t
+  assign card_number = 'gift_cards.balance.input_labels.card_number' | t
+  assign card_pass = 'gift_cards.balance.input_labels.card_pass' | t
+  assign submit = 'gift_cards.balance.buttons.submit' | t
+%}
+
+{%- capture container_content -%}
+  <div class="gift-cards-balance">
+    <div class="gift-card-balance__content">
+
+      {% comment %} Result {% endcomment %}
+
+      <div class="gift-card-balance__result">
+        {%- render 'el_heading', level: 2, text: heading_html, custom_classes: 'gift-card-balance__heading' -%}
+
+        <div class="gift-card-balance__summ">
+          <span class="gift-card-balance__summ-num">000</span> {{ cart.currency.symbol }}
+        </div>
+
+        {%- liquid
+          capture button_classes
+            render 'f_bem-classes', main_class: 'button', modifiers: 'secondary, small, full-width'
+          endcapture
+        -%}
+
+        <a href="{{ section.settings.link }}" class="{{ button_classes }}">{{ section.settings.link_text }}</a>
+      </div>
+    </div>
+  </div>
+
+{%- endcapture -%}
+
+{%- render 'el_container', content: container_content, modifiers: 'xl' -%}
+
+{% schema %}
+{
+  "name": "Gift cards balance",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Results link"
+    },
+    {
+      "id": "link_text",
+      "type": "text",
+      "label": "Results link text",
+      "default": "continue shopping"
+    }
+  ]
+}
+{% endschema %}

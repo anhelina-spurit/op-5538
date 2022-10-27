@@ -1,0 +1,159 @@
+{
+  "sections": {
+    "1650548055b9fb16de": {
+      "type": "page-hero-collection",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/IMG_0003.jpg",
+        "sub_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Sigle_Cyrillus_f4047bd2-6221-4368-8e61-5957fff63ea8.svg",
+        "color": "#324d57",
+        "long": false
+      }
+    },
+    "1650555259e7612554": {
+      "type": "themes",
+      "blocks": {
+        "f556372a-c1ad-436a-ba41-7290ea8334f2": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/theme_1_h.jpg",
+            "heading": "Dans le jardin des rêves",
+            "image_1": "shopify:\/\/shop_images\/page_ceremonie_vert_660x869_24b5c6e0-18d0-4d76-8637-2d6f176405ad.jpg",
+            "image_2": "shopify:\/\/shop_images\/page_ceremonie_vert_700x400_935f906f-1af8-45a4-b10e-8ab9ba840653.jpg",
+            "content": "<p>Un paysage d'antan « Toile de Jouy », singulier et délicat, qui traverse les époques ou un vert uni pour une garden-party champêtre et colorée.<br\/><br\/>Programme en Lin et Coton\/Lin.<br\/><br\/><a href=\"\/collections\/fille-robes\" title=\"Fille - Robes\">DÉCOUVRIR LA COLLECTION<\/a><\/p>"
+          }
+        },
+        "b54dfea8-1450-4b77-9525-11d48991e6ac": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/theme_2_h.jpg",
+            "heading": "Envolée de blanc romantique",
+            "image_1": "shopify:\/\/shop_images\/page_ceremonie_blanc_660x869_c6c71aa5-a7ba-41d8-9247-98bd18d465c9.jpg",
+            "image_2": "shopify:\/\/shop_images\/page_ceremonie_blanc_700x400_14c06898-3a6e-4cbd-a885-92096052d8e2.jpg",
+            "content": "<p>Un cortège « Bohème Chic » jouant sur des matières plus légères et sur des détails couture extrêmement raffinés.<br\/><br\/>Petits bijoux de confection signés par nos ateliers malgaches et indiens, reconnus pour leurs expertises sur la broderie main, les smocks, les finitions haut de gamme.<\/p><p><a href=\"\/collections\/fille-robes\" title=\"Fille - Robes\">DÉCOUVRIR LA COLLECTION<\/a><\/p>"
+          }
+        },
+        "00306e43-1fd5-4b98-b0bd-88bb20723e9e": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/theme_3_h.jpg",
+            "heading": "Sweet poetry",
+            "image_1": "shopify:\/\/shop_images\/page_ceremonie_liberty_660x869_3ad2c246-a90f-4562-bfd2-111caf845d1f.jpg",
+            "image_2": "shopify:\/\/shop_images\/page_ceremonie_liberty_700x400_4bd0eae8-c7db-42fd-ba95-de4350843658.jpg",
+            "content": "<p>Fraîcheur du motif Liberty plus prononcé et nuance de rose dragée délicat. Un cortège « so-romantic » aux accents british...<\/p><p>Robe Charlie en tisssu Liberty Meadow Song. Les tissus Liberty sont pour nous un gage de qualité, de raffinement et de créativité, chaque saison nos stylistes choisissent parmi une sélection exclusive de tissus Liberty.<\/p><p><a href=\"\/collections\/fille-robes\" title=\"Fille - Robes\">DÉCOUVRIR LA COLLECTION<\/a><\/p>"
+          }
+        },
+        "e32bd061-1bbd-43e3-aced-cdeb6cbe1039": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/theme_4_h.jpg",
+            "heading": "Esprit classic chic",
+            "image_1": "shopify:\/\/shop_images\/page_ceremonie_chic_660x869_14938d1f-95ed-4124-a35a-114abe838bc4.jpg",
+            "image_2": "shopify:\/\/shop_images\/page_ceremonie_chic_700x400_da1be3ab-be21-42b1-885c-19860afe4267.jpg",
+            "content": "<p>Du blanc, du bleu et des rayures seersucker... le retour des beaux et grands classiques ! Un cortège classe, sobre avec beaucoup de tenue, d'élégance naturelle et de confort.<\/p><p>Costume marine, seersucker ou Blazer super 100 : Retour de pièces iconiques pour les garçons. Le style se veut « sport-chic » mais l’allure impeccable et sélective.<\/p><p><a href=\"\/collections\/fille-robes\" title=\"Fille - Robes\">DÉCOUVRIR LA COLLECTION<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "f556372a-c1ad-436a-ba41-7290ea8334f2",
+        "b54dfea8-1450-4b77-9525-11d48991e6ac",
+        "00306e43-1fd5-4b98-b0bd-88bb20723e9e",
+        "e32bd061-1bbd-43e3-aced-cdeb6cbe1039"
+      ],
+      "settings": {
+        "heading": "Découvrez nos thèmes de collection TEST",
+        "modile_view": "dropdown"
+      }
+    },
+    "1651203223f03b2d22": {
+      "type": "products-discover",
+      "disabled": true,
+      "blocks": {
+        "72920c65-57fd-435e-bde4-2e61d112c433": {
+          "type": "product",
+          "settings": {
+            "product": "m-rangement-panier-ran-bleu-moyen-6406-bleu-moyen-imprime_4995"
+          }
+        },
+        "cd1ade99-f154-47f4-8bbf-57b1cbfb4455": {
+          "type": "product",
+          "settings": {
+            "product": "veste-veste-blaz-bleu-fonce-6399-bleu-fonce-uni_5102"
+          }
+        },
+        "33c71a1e-c258-42a0-b253-d9e43454b0c9": {
+          "type": "product",
+          "settings": {
+            "product": "chemise-blouse-vert-moyen-6722-vert-moyen-carreaux_2929"
+          }
+        },
+        "e5accade-d345-4691-91dd-bcf5d54edad3": {
+          "type": "product",
+          "settings": {
+            "product": "m-petit-meuble-table-bass-noir-fonce-6559-noir-fonce-uni_8954"
+          }
+        },
+        "0aab3855-d980-47f3-bb8b-d16218cd8ae2": {
+          "type": "product",
+          "settings": {
+            "product": "cardigan-cardigan-blanc-moye-6365-blanc-moyen-grise_7754"
+          }
+        }
+      },
+      "block_order": [
+        "72920c65-57fd-435e-bde4-2e61d112c433",
+        "cd1ade99-f154-47f4-8bbf-57b1cbfb4455",
+        "33c71a1e-c258-42a0-b253-d9e43454b0c9",
+        "e5accade-d345-4691-91dd-bcf5d54edad3",
+        "0aab3855-d980-47f3-bb8b-d16218cd8ae2"
+      ],
+      "settings": {
+        "collection": "manteaux-trenchs"
+      }
+    },
+    "1650563098cfa62772": {
+      "type": "themes",
+      "disabled": true,
+      "blocks": {
+        "1f36c84b-28a7-48ec-b3ad-f46e06d4d54b": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/theme_2_h.jpg",
+            "heading": "Envolée de blanc romantique",
+            "content": ""
+          }
+        },
+        "d5526d4e-2b5e-4441-82ac-9cfe16f9b0f2": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/theme_4_h.jpg",
+            "heading": "Esprit classic chic",
+            "content": ""
+          }
+        },
+        "6d17fe83-93f0-4c89-8cfd-ab41649f217e": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/theme_3_h.jpg",
+            "heading": "Sweet poetry",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "1f36c84b-28a7-48ec-b3ad-f46e06d4d54b",
+        "d5526d4e-2b5e-4441-82ac-9cfe16f9b0f2",
+        "6d17fe83-93f0-4c89-8cfd-ab41649f217e"
+      ],
+      "settings": {
+        "heading": "Découvrez nos thèmes de collection",
+        "modile_view": "images"
+      }
+    }
+  },
+  "order": [
+    "1650548055b9fb16de",
+    "1650555259e7612554",
+    "1651203223f03b2d22",
+    "1650563098cfa62772"
+  ]
+}

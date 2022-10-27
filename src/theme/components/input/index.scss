@@ -1,0 +1,72 @@
+@import '../../constants/palette';
+@import '../../constants/transitions';
+@import '../../utils/to-rem';
+
+.input {
+  display: block;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  outline: 0;
+}
+
+.input:focus {
+  border-color: $palette-dark;
+}
+
+.input::-webkit-search-cancel-button {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  appearance: none;
+  // stylelint-disable-next-line function-url-scheme-allowed-list
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z'/%3E%3C/svg%3E");
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-label {
+  line-height: to-rem(18px);
+}
+
+.input-label.label--float {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  transition: top $transition-duration-fastest;
+}
+
+.input--outlined {
+  position: relative;
+  border-width: 0 0 to-rem(0.5px);
+  border-style: solid;
+  border-color: $palette-dark;
+  background: transparent;
+}
+
+.input--outlined:focus ~ .input-label,
+.input--outlined:not(:focus):not(:placeholder-shown):valid ~ .input-label {
+  top: to-rem(-16px);
+}
+
+.input--fullwidth {
+  width: 100%;
+}
+
+.input--sm {
+  width: to-rem(162px);
+}
+
+.input--border-pickled-bluewood {
+  border-color: $palette-pickled-bluewood;
+}
+
+.input--outlined::placeholder {
+  color: transparent;
+}
+// stylelint-disable-next-line
+.input--outlined::-webkit-input-placeholder {
+  color: transparent;
+}

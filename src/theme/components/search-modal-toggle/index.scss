@@ -1,0 +1,16 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+
+.search-modal-toggle .icon {
+  max-width: 95%;
+  opacity: 0.6;
+}
+
+.search-modal-close {
+  padding: to-rem(8px) to-rem(30px);
+  background: transparent;
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}

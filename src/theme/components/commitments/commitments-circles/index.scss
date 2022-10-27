@@ -1,0 +1,87 @@
+@import '../../../constants/palette';
+@import '../../../utils/breakpoints';
+@import '../../../utils/to-rem';
+
+.commitments-circles__list {
+  display: flex;
+  justify-content: center;
+  padding: to-rem(25px) 0 0;
+  margin: 0;
+  list-style: none;
+
+  @include media-breakpoint-down(md) {
+    flex-wrap: wrap;
+    margin-right: to-rem(-10px);
+    margin-left: to-rem(-10px);
+  }
+
+  @include media-breakpoint-down(sm) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.commitments-circles__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: to-rem(30px);
+  margin: to-rem(15px);
+  font-size: to-rem(14px);
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    margin: to-rem(15px) to-rem(10px);
+  }
+}
+
+.commitments-circle__circle {
+  display: flex;
+  align-items: center;
+  padding: to-rem(12px);
+  border: 5px solid $palette-apricot;
+  border-radius: 50%;
+  color: $palette-apricot;
+  font-weight: 600;
+  letter-spacing: 0.107em;
+  white-space: nowrap;
+
+  @include media-breakpoint-down(md) {
+    font-weight: 500;
+  }
+}
+
+.commitments-circle__circle::before {
+  display: block;
+  padding-bottom: 100%;
+  content: '';
+}
+
+.commitments-circles__item:nth-child(2) .commitments-circle__circle {
+  padding: to-rem(17px);
+}
+
+.commitments-circles__item:nth-child(3) .commitments-circle__circle {
+  padding: to-rem(23px);
+
+  @include media-breakpoint-down(md) {
+    padding: to-rem(19px);
+  }
+}
+
+.commitments-circles__item:nth-child(4) .commitments-circle__circle {
+  padding: to-rem(28px);
+
+  @include media-breakpoint-down(md) {
+    padding: to-rem(24px);
+  }
+}
+
+.commitments-circle__title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: $palette-dark-slate-grey;
+}

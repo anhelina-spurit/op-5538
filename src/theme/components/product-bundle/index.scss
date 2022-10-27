@@ -1,0 +1,19 @@
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+
+.product-bundle {
+  position: relative;
+  margin-bottom: to-rem(30px);
+}
+
+.product-bundle__footer {
+  display: flex;
+
+  @include media-breakpoint-up(sm) {
+    padding-left: to-rem(125px);
+  }
+}
+
+.product-bundle__action {
+  flex-basis: 100%;
+}

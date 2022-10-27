@@ -1,0 +1,62 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../components/wysiwyg';
+@import '../../utils/breakpoints';
+@import '../heading';
+
+@include wysiwyg('.shopify-policy__container');
+
+.shopify-policy__container {
+  padding-top: to-rem(80px);
+  padding-bottom: to-rem(30px);
+
+  @include media-breakpoint-down(lg) {
+    padding-top: to-rem(50px);
+  }
+}
+
+.shopify-policy__container h1,
+.shopify-policy__container h2,
+.shopify-policy__container h3,
+.shopify-policy__container h4,
+.shopify-policy__container h5,
+.shopify-policy__container h6 {
+  margin-bottom: to-rem(15px);
+  font-weight: 400;
+  letter-spacing: to-rem(3px);
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.shopify-policy__container h1 {
+  @include heading--sm;
+  margin-bottom: to-rem(36px);
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(29px);
+    font-size: to-rem(12px);
+    text-align: center;
+  }
+}
+
+.shopify-policy__container h2,
+.shopify-policy__container h3,
+.shopify-policy__container h4,
+.shopify-policy__container h5,
+.shopify-policy__container h6 {
+  @include heading--xxs;
+}
+
+.shopify-policy__container p {
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.5px);
+  line-height: to-rem(22px);
+}
+
+.shopify-policy__container * {
+  scroll-margin-top: to-rem(120px);
+
+  @include media-breakpoint-up(lg) {
+    scroll-margin-top: to-rem(220px);
+  }
+}

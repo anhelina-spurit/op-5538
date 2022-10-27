@@ -1,0 +1,28 @@
+{%- comment -%}
+  @summary Renders BEM modifier classes by main class
+
+  @param {string} class - text
+  @param {string[]} [modifiers] - modifiers list divided by comma separator
+
+  @example
+  {% render 'f_modifier-classes', class: 'heading', modifiers: 'xxl, light' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign modifiers = modifiers | remove: ' ' | split: ','
+  assign classes = ''
+  assign index = 0
+
+  for modifier in modifiers
+    if modifier != blank and modifier != nil
+      if index > 0
+        assign classes = classes | append: ' '
+      endif
+
+      assign classes = classes | append: class | append: '--' | append: modifier
+      assign index = index | plus: 1
+    endif
+  endfor
+
+  echo classes
+-%}

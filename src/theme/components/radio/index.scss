@@ -1,0 +1,74 @@
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+@import '../../utils/visually-hidden';
+@import '../../utils/to-rem';
+
+.radio__input {
+  @include visually-hidden;
+}
+
+.radio__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: to-rem(22.75px);
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.5px);
+  line-height: to-rem(22px);
+}
+
+.radio__label::before {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: to-rem(10px);
+  height: to-rem(10px);
+  border: to-rem(1px) solid $palette-pickled-bluewood;
+  border-radius: 50%;
+  content: '';
+}
+
+.radio__label::after {
+  position: absolute;
+  left: to-rem(2px);
+  display: block;
+  width: to-rem(6px);
+  height: to-rem(6px);
+  background: $palette-dark;
+  border-radius: 50%;
+  content: '';
+  opacity: 0;
+  transition-duration: 0.3s;
+  transition-property: opacity;
+}
+
+// stylelint-disable-next-line selector-max-specificity
+.radio__input:checked + .radio__label::before {
+  border-color: $palette-dark;
+}
+
+// stylelint-disable-next-line selector-max-specificity
+.radio__input:checked + .radio__label::after {
+  opacity: 1;
+}
+
+// stylelint-disable-next-line selector-max-specificity
+.radio__input:disabled + .radio__label {
+  opacity: 0.5;
+}
+
+.radio--big .radio__label::before {
+  width: to-rem(15px);
+  height: to-rem(15px);
+}
+
+.radio--big .radio__label::after {
+  width: to-rem(11px);
+  height: to-rem(11px);
+  background: $palette-dark-slate-grey;
+}
+
+.radio--big .radio__input:checked + .radio__label::before,
+.radio--big .radio__label::before {
+  border-color: $palette-dark-slate-grey;
+}

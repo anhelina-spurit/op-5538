@@ -1,0 +1,28 @@
+{%- comment -%}
+  @summary Renders an option
+
+  @param {string} value - value
+  @param {string} content - content
+  @param {string} [selected] - content
+  @param {boolean} [disabled] - disability
+  @param {string} [attributes] - additional attributes
+
+  @example
+  {%-
+      render 'el_option',
+      value: 'option',
+      content: 'content',
+      selected: true,
+      disabled: true,
+      attributes: 'data-custom-option',
+  -%}
+{%- endcomment -%}
+
+<option
+  value="{{ value }}"
+  {% if selected %}selected{% endif %}
+  {% if disabled %}disabled{% endif %}
+  {% if attributes %}{{ attributes }}{% endif %}
+>
+  {{- content -}}
+</option>

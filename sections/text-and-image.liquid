@@ -1,0 +1,193 @@
+{%- liquid
+  capture container
+    assign content_class = 'text-image__content text-image__content--vertical-' | append: section.settings.text_align
+    if section.settings.image_aligment == 'right'
+      assign content_class = content_class | append: ' text-image__content--reverse'
+    endif
+
+    echo '<div class="' | append: content_class | append: '">'
+        assign image_block_class = 'text-image__block text-image__image-block text-image__image-block--size-' | append: section.settings.variant
+        if section.settings.image_outside == true
+          assign image_block_class = image_block_class | append: ' text-image__image-block--outside'
+        endif
+        echo '<div class="' | append: image_block_class | append: '">'
+
+        if section.settings.image != blank
+          capture image
+            if section.settings.image_link != blank
+              echo '<a class="text-image__link" href="' | append: section.settings.image_link.url | append: '">'
+            endif
+            render 'el_shopify-image', custom_classes: 'text-image__image', image: section.settings.image, lazy_loading: true
+            if section.settings.image_link != blank
+              echo '</a>'
+            endif
+          endcapture
+          render 'el_ratio-container', custom_classes: 'text-image__ratio-container', content: image, width: section.settings.image.width, height: section.settings.image.height, size_limited: false, should_image_cover: true
+        endif
+
+        if section.settings.image != blank and section.settings.image_description != blank
+          echo '<span class="text-image__image-description">' | append: section.settings.image_description | append: '</span>'
+        endif
+
+        if section.settings.content_image != blank
+          if section.settings.content_image_link != blank
+            echo '<a class="text-image__content-link" href="' | append: section.settings.content_image_link.url | append: '">'
+          endif
+            render 'el_shopify-image', custom_classes: 'text-image__content-image', image: section.settings.content_image, lazy_loading: true
+          if section.settings.content_image_link != blank
+            echo '</a>'
+          endif
+        endif
+
+    echo '</div>'
+
+    echo '<div class="text-image__block text-image__text-block">'
+      if section.settings.subtitle != blank
+        echo '<div class="text-image__subtitle">' | append: section.settings.subtitle | append: '</div>'
+      endif
+
+      render 'el_heading', level: 2, text: section.settings.title, custom_classes: 'text-image__title', modifiers: 'md'
+
+      if section.settings.description != blank
+        assign description_class = 'text-image__text'
+        if section.settings.description_quotes == true
+          assign description_class = description_class | append: ' text-image__text--quotes'
+        endif
+        echo '<span class="' | append: description_class | append: '">' | append: section.settings.description | append: '</span>'
+      endif
+
+      if section.settings.content_image != blank
+        if section.settings.content_image_link != blank
+          echo '<a class="text-image__content-link" href="' | append: section.settings.content_image_link.url | append: '">'
+        endif
+        render 'el_shopify-image', custom_classes: 'text-image__content-image', image: section.settings.content_image, lazy_loading: true
+        if section.settings.content_image_link != blank
+          echo '</a>'
+        endif
+      endif
+    echo '</div>'
+  echo '</div>'
+
+  endcapture
+
+  capture section_content
+    assign container_classes = 'text-image__container'
+    if section.settings.mobile_border == true
+      assign container_classes = container_classes | append: ' text-image__container--mobile-border'
+    endif
+    render 'el_container', content: container, custom_classes: container_classes
+  endcapture
+
+  render 'c_section', id: section.id, name: 'text-and-image', content: section_content
+-%}
+
+{% schema %}
+{
+  "name": "Text and image",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "mobile_border",
+      "label": "Mobile border bottom",
+      "default": true
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "image_link",
+      "type": "url",
+      "label": "Image link"
+    },
+    {
+      "id": "image_description",
+      "type": "text",
+      "label": "Image description"
+    },
+    {
+      "type": "select",
+      "id": "image_aligment",
+      "label": "Image aligment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_outside",
+      "label": "Outside the container",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Vertical text aligment",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "description_quotes",
+      "label": "Description is quotes",
+      "default": false
+    },
+    {
+      "id": "content_image",
+      "type": "image_picker",
+      "label": "Image after description"
+    },
+    {
+      "id": "content_image_link",
+      "type": "url",
+      "label": "Image after description link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text and image"
+    }
+  ]
+}
+{% endschema %}

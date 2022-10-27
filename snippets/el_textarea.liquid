@@ -1,0 +1,48 @@
+{%- comment -%}
+  @summary Renders a textarea
+
+  @param {string} [id] - id
+  @param {string} [name] - name
+  @param {string} [content] - content
+  @param {string} [label] - label
+  @param {string} [placeholder] - placeholder
+  @param {number} [rows] - content rows
+  @param {boolean} [required] - required
+  @param {boolean} [disabled] - disabled
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'el_textarea',
+    id: 'note',
+    name: 'note',
+    rows: 5,
+    content: 'Good product!',
+    label: 'Note',
+    placeholder: 'Note',
+    required: true,
+    disabled: false,
+    custom_classes: 'product-form__note',
+    attributes: 'min="1"',
+    modifiers: 'lg, light',
+  -%}
+{%- endcomment -%}
+
+{%- assign type = type | default: 'text' -%}
+
+{%- if id != blank and label != blank -%}
+  {%- render 'el_label', for_input: id, content: label, required: required -%}
+{%- endif -%}
+
+<textarea
+  class="{%- render 'f_bem-classes', main_class: 'textarea', custom_classes: custom_classes, modifiers: modifiers -%}"
+  {% if id %}id="{{ id }}"{% endif %}
+  {% if rows %}rows="{{ rows }}"{% endif %}
+  {% if name %}name="{{ name }}"{% endif %}
+  {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+  {% if disabled %}disabled{% endif %}
+  {% if required %}required aria-required="true"{% endif %}
+  {% if attributes %}{{ attributes }}{% endif %}
+>{{- content -}}</textarea>

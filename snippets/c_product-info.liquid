@@ -1,0 +1,78 @@
+{% comment %}
+  @summary Product info
+
+  @param {Shopify.product} product - product
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_product-info',
+    custom_classes: 'accordion-item__panel',
+    attributes: 'data-custom',
+    modifiers: 'lg, light',
+  %}
+{% endcomment %}
+
+{% liquid
+  assign id = 'info_' | append: product.id
+  assign lang = shop_locale.iso_code | default: 'fr' | upcase
+
+  capture description
+    render 'f_product-description', product: product
+  endcapture
+
+  capture class
+    render 'f_bem-classes', main_class: 'product-info', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  echo '<div class="' | append: class | append: '" ' | append: attributes | append: ' data-product-info>'
+  capture accordion_content
+    unless description == blank
+      assign description_accordion_id = 'description_accordion_' | append: product.id
+      assign description_title = 'products.product.info.description' | t
+      assign description_content = '<span class="product-info__content">' | append: description | append: '</span>'
+
+      render 'c_accordion-item', custom_classes: 'product-info__accordion-item', id: description_accordion_id, title: description_title, content: description_content, is_opened: true
+    endunless
+
+    capture care_content
+      assign has_care_items = false
+      echo '<div class="product-info__care-list">'
+      for i in (1..5)
+        assign care_logo = 'Care' | append: i | append: '_Logo_Asset_' | append: lang
+        assign care_description = 'Care' | append: i | append: '_Ref_Description_' | append: lang
+        if product.metafields.erp[care_logo] != blank or product.metafields.erp[care_description] != blank
+          assign has_care_items = true
+          echo '<div class="product-info__care-item">'
+          assign care_logo_url = product.metafields.erp[care_logo] | file_url
+          render 'el_image', src: care_logo_url, lazy_loading: true, custom_classes: 'product-info__care-img'
+          echo '<p class="product-info__care-text">' | append: product.metafields.erp[care_description] | append: '</p>'
+          echo '</div>'
+        endif
+      endfor
+      echo '</div>'
+    endcapture
+
+    if has_care_items == true
+      assign care_accordion_id = 'care_accordion_' | append: product.id
+      assign care_title = 'products.product.info.care' | t
+
+      render 'c_accordion-item', custom_classes: 'product-info__accordion-item', id: care_accordion_id, title: care_title, content: care_content, is_opened: false
+    endif
+
+    assign delivery_metafield = lang | append: "_Delivery"
+    if product.metafields.erp[delivery_metafield] != blank
+      assign delivery_accordion_id = 'delivery_accordion_' | append: product.id
+      assign delivery_title = 'products.product.info.delivery' | t
+      assign delivery_content = '<span class="product-info__content">' | append: product.metafields.erp[delivery_metafield] | append: '</span>'
+
+
+      render 'c_accordion-item', custom_classes: 'product-info__accordion-item', id: delivery_accordion_id, title: delivery_title, content: delivery_content, is_opened: false
+    endif
+  endcapture
+
+  render 'c_accordion', id: id, content: accordion_content, custom_classes: "product-info__accordion"
+  echo '</div>'
+%}

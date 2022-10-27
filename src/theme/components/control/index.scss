@@ -1,0 +1,5 @@
+@import '../../utils/to-rem';
+
+.control:not(:last-child) {
+  margin-bottom: to-rem(24px);
+}

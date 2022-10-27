@@ -1,0 +1,113 @@
+{%- assign heading_id = section.id | append: '_heading' -%}
+
+{%- capture content -%}
+  <div class="product-feature__column product-promo__column">
+    <div class="product-feature__row">
+      <div class="product-feature__content product-promo__content">
+        {%- render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'product-promo__heading' -%}
+
+        {%- if section.settings.section_description != blank -%}
+          <p class="product-feature__description product-promo__description">{{ section.settings.section_description }}</p>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.product != blank -%}
+        <div class="product-promo__product">
+          {%- if section.settings.product_description != blank -%}
+            <div class="product-promo__product_desc">{{ section.settings.product_description }}</div>
+          {%- endif -%}
+          {%- render 'c_product-card', custom_classes: 'product-promo__product_card', product: section.settings.product -%}
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="product-feature__row">
+      {% liquid
+        if section.settings.image != blank
+          render 'el_shopify-image', image: section.settings.image, width: 660, height: 868, lazy_loading: true, format: 'pjpg'
+        else
+          render 'el_placeholder', name: 'collection-2'
+        endif
+      %}
+    </div>
+  </div>
+{%- endcapture -%}
+
+{% liquid
+  capture section_content
+    assign container_classes = 'product-promo__container'
+
+    if section.settings.centerline == true
+      assign container_classes = container_classes | append: ' product-promo__container--centerline'
+    endif
+
+    render 'el_container', content: content, modifiers: 'xl', custom_classes: container_classes
+  endcapture
+
+  assign name_modifiers = ''
+
+  if section.settings.pull_up
+    assign name_modifiers = name_modifiers | append: ' pull-up'
+  endif
+
+  render 'c_section', id: section.id, name: 'product-feature', content: section_content, heading_id: heading_id, name_modifiers: name_modifiers
+%}
+
+{% schema %}
+{
+  "name": "Product promo",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "section_description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "id": "product",
+      "type": "product",
+      "label": "Product"
+    },
+    {
+      "id": "product_description",
+      "type": "textarea",
+      "label": "Product description"
+    },
+    {
+      "type": "header",
+      "content": "View"
+    },
+    {
+      "id": "centerline",
+      "type": "checkbox",
+      "label": "Centerline"
+    },
+    {
+      "id": "pull_up",
+      "type": "checkbox",
+      "label": "Pull up section",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product promo"
+    }
+  ]
+}
+{% endschema %}

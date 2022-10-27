@@ -1,0 +1,45 @@
+@import '../../utils/to-rem/index';
+@import '../../utils/breakpoints/index';
+@import '../../constants/palette/index';
+
+.dot {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  width: to-rem(30px);
+  height: to-rem(30px);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-top: to-rem(-15px);
+  margin-left: to-rem(-15px);
+  background-color: rgba($palette-white, 0.42);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+
+  @include media-breakpoint-down(md) {
+    width: to-rem(20px);
+    height: to-rem(20px);
+    margin-top: to-rem(-10px);
+    margin-left: to-rem(-10px);
+  }
+}
+
+.dot::after {
+  width: to-rem(16px);
+  height: to-rem(16px);
+  background-color: $palette-white;
+  border-radius: 50%;
+  content: '';
+  transition: all 0.2s ease;
+
+  @include media-breakpoint-down(md) {
+    width: to-rem(10px);
+    height: to-rem(10px);
+  }
+}
+
+.dot:hover,
+.dot.active {
+  transform: scale(1.5);
+}

@@ -1,0 +1,98 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.product-media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
+}
+
+.product-media--single-slide .product-media__pagination {
+  display: none;
+}
+
+.product-media__pagination {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: to-rem(28px);
+
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
+
+// stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-compound-selectors
+.product-media .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  width: to-rem(10px);
+  height: to-rem(10px);
+  margin-right: 0;
+  margin-bottom: to-rem(10px);
+  margin-left: 0;
+  background-color: $palette-ecru-white;
+  border-radius: 0;
+  opacity: 1;
+}
+
+// stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-compound-selectors
+.product-media .swiper-pagination-bullets.swiper-pagination-horizontal {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  left: auto;
+  width: auto;
+
+  @include media-breakpoint-down(xxxl) {
+    position: static;
+  }
+}
+
+// stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-compound-selectors
+.product-media .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet:last-child {
+  margin-bottom: 0;
+}
+
+// stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-compound-selectors
+.product-media .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet-active {
+  background-color: $palette-dark-slate-grey;
+}
+
+.product-media__slider {
+  width: 100%;
+  max-width: to-rem(600px);
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.product-media__slides {
+  padding: 0;
+  margin: 0;
+
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
+}
+
+.product-media__slide {
+  list-style: none;
+}
+
+.product-media__image {
+  width: 100%;
+  height: 100%;
+}

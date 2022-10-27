@@ -1,0 +1,139 @@
+{
+  "sections": {
+    "section": {
+      "type": "empty",
+      "settings": {
+      }
+    },
+    "1653032400f9104656": {
+      "type": "page-header",
+      "settings": {
+      }
+    },
+    "165303430978637a61": {
+      "type": "loyalty-points-background",
+      "blocks": {
+        "94fcef3c-8dd4-46e5-a3ce-e01f0030453d": {
+          "type": "conditions",
+          "settings": {
+            "title": "Comment les gagner ?",
+            "description": "1€d’achat = 1 point"
+          }
+        },
+        "714b92d6-5a30-4ee8-91fd-d716a05f48be": {
+          "type": "conditions",
+          "settings": {
+            "title": "Comment les utiliser ?",
+            "description": "200 points = 10€ de réduction"
+          }
+        },
+        "11af9a9c-23fe-4251-b2b1-0717ddb09b58": {
+          "type": "advantages",
+          "disabled": true,
+          "settings": {
+            "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/e-reservation_ae375b6a-c78f-42a9-a0c1-e7aa25bcb7e3.svg?v=1653044105",
+            "title": "sur cyrillus.be",
+            "description": "Lorsque votre solde de points atteint 200, votre remise fidélité de 10€ apparait directement dans votre panier. Il vous suffit de cliquer sur le bouton « je profite de ma remise » avant de valider votre commande."
+          }
+        },
+        "cbea888b-4328-457d-883c-554dddf3ae16": {
+          "type": "advantages",
+          "disabled": true,
+          "settings": {
+            "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/shop.png?v=1653044181",
+            "title": "en boutique",
+            "description": "Je le signale simplement au moment du<br> paiement à la conseillère de vente"
+          }
+        },
+        "066cbf6f-28f1-4411-8891-16f52c0e16b7": {
+          "type": "conditions",
+          "settings": {
+            "title": "Sobald Ihr Punktekonto 200 Punkte erreicht, erscheint Ihr Treuerabatt von 10&nbsp;€ automatisch in Ihrem Warenkorb. Sie müssen nur die Schaltfläche « Ich möchte meinen Rabatt nutzen » anklicken, bevor Sie Ihre Bestellung bestätigen.",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "94fcef3c-8dd4-46e5-a3ce-e01f0030453d",
+        "714b92d6-5a30-4ee8-91fd-d716a05f48be",
+        "11af9a9c-23fe-4251-b2b1-0717ddb09b58",
+        "cbea888b-4328-457d-883c-554dddf3ae16",
+        "066cbf6f-28f1-4411-8891-16f52c0e16b7"
+      ],
+      "settings": {
+        "heading_text": "1 . Mes points fidélité",
+        "link_link": "\/",
+        "link_text": "Conditions d’utilisation"
+      }
+    },
+    "1653046149fe00f68d": {
+      "type": "loyalty-points",
+      "blocks": {
+        "c370095e-b7ba-4e4a-bb24-e92276ea7f2a": {
+          "type": "conditions",
+          "settings": {
+            "title": "2. Mon offre de bienvenue",
+            "description": "Je bénéficie de <b>-20%*<\/b> dès mon 2ème achat et la livraison offerte à domicile ou en relais colis sur toutes les collections."
+          }
+        },
+        "e8979719-980e-4a6a-96e0-287ec0a274bf": {
+          "type": "conditions",
+          "disabled": true,
+          "settings": {
+            "title": "3. Mon cadeau d'anniversaire",
+            "description": "Pour cet évènement, je profite de <b>-10€*<\/b> et la <b>livraison offerte <\/b>à domicile ou en relais colis."
+          }
+        },
+        "c7989808-6d42-46b6-abea-aa747214e241": {
+          "type": "conditions",
+          "settings": {
+            "title": "3. Mes autres avantages",
+            "description": ""
+          }
+        },
+        "9af481b4-9907-4e63-9366-6e43d82acdb5": {
+          "type": "advantages",
+          "settings": {
+            "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Group_20.png?v=1653046385",
+            "title": "Exklusive Angebote das ganze Jahr über",
+            "description": ""
+          }
+        },
+        "94b837e5-6429-45f0-9f6c-978970f04f04": {
+          "type": "advantages",
+          "disabled": true,
+          "settings": {
+            "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Group_22.png?v=1653046385",
+            "title": "Les retouches simples offertes dans votre boutique",
+            "description": ""
+          }
+        },
+        "c5af40d5-37c3-4175-97e0-ed8ab8bdd380": {
+          "type": "advantages",
+          "settings": {
+            "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Stroke_1.png?v=1653046385",
+            "title": "Einladungen zu privaten Sales, Vor-Premieren…",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "c370095e-b7ba-4e4a-bb24-e92276ea7f2a",
+        "e8979719-980e-4a6a-96e0-287ec0a274bf",
+        "c7989808-6d42-46b6-abea-aa747214e241",
+        "9af481b4-9907-4e63-9366-6e43d82acdb5",
+        "94b837e5-6429-45f0-9f6c-978970f04f04",
+        "c5af40d5-37c3-4175-97e0-ed8ab8bdd380"
+      ],
+      "settings": {
+        "link_text": "Ich möchte mein Treuepunktekonto ansehen"
+      }
+    }
+  },
+  "order": [
+    "section",
+    "1653032400f9104656",
+    "165303430978637a61",
+    "1653046149fe00f68d"
+  ]
+}

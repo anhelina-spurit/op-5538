@@ -1,0 +1,64 @@
+{%- capture container_content -%}
+  <div class="login__grid login__grid--reverse">
+    <div class="login__grid-item login__grid-item--sign-up {% unless section.settings.show_sign_in %}login__grid-item--single{% endunless %}">
+      {%- render 'c_sign-up', description: section.settings.sign_up_description -%}
+    </div>
+
+    {%- if section.settings.show_sign_in -%}
+      <div class="login__grid-item">
+        {%- liquid
+          render 'c_sign-in', description: section.settings.sign_in_description
+
+          if section.settings.show_social_sign_in
+            render 'c_social-sign-in', description: section.settings.social_sign_in_description
+          endif
+        -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+
+  capture section_content
+    render 'el_container', content: container_content, modifiers: 'xl', custom_classes: 'login__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'register', content: section_content, custom_classes: 'login', heading_id: heading_id
+-%}
+
+{%- schema -%}
+  {
+    "name": "Register",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "sign_up_description",
+        "label": "Sign-up description"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sign_in",
+        "label": "Show sign-in block",
+        "default": true
+      },
+      {
+        "type": "richtext",
+        "id": "sign_in_description",
+        "label": "Sign-in description"
+      },
+        {
+        "type": "checkbox",
+        "id": "show_social_sign_in",
+        "label": "Show social sign-in block",
+        "default": true
+      },
+      {
+        "type": "richtext",
+        "id": "social_sign_in_description",
+        "label": "Social sign-in description"
+      }
+    ]
+  }
+{%- endschema -%}

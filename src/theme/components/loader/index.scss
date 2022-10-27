@@ -1,0 +1,44 @@
+@import '../../constants/palette/';
+
+.loader {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  font-size: 1rem;
+  text-indent: -9999em;
+}
+
+.loader::after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0.15em solid;
+  border-color: $palette-silver-chalice-200 $palette-dove-gray $palette-dove-gray $palette-dove-gray;
+  animation: spin 1.1s infinite linear;
+  border-radius: 50%;
+  content: '';
+  transform: translateZ(0);
+}
+
+@keyframes spin {
+  0% {
+    border-color: $palette-silver-chalice-200 $palette-dove-gray $palette-dove-gray $palette-dove-gray;
+    transform: rotate(0deg);
+  }
+  25% {
+    border-color: $palette-dove-gray $palette-silver-chalice-200 $palette-dove-gray $palette-dove-gray;
+  }
+  50% {
+    border-color: $palette-dove-gray $palette-dove-gray $palette-silver-chalice-200 $palette-dove-gray;
+  }
+  75% {
+    border-color: $palette-dove-gray $palette-dove-gray $palette-dove-gray $palette-silver-chalice-200;
+  }
+  100% {
+    border-color: $palette-silver-chalice-200 $palette-dove-gray $palette-dove-gray $palette-dove-gray;
+    transform: rotate(360deg);
+  }
+}

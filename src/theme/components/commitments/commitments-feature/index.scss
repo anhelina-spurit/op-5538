@@ -1,0 +1,53 @@
+@import '../../../constants/palette';
+@import '../../../utils/breakpoints';
+@import '../../../utils/to-rem';
+
+.commitments-feature__content {
+  margin-top: to-rem(-100px);
+
+  @include media-breakpoint-between(md, lg) {
+    margin: 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: to-rem(20px);
+    margin: to-rem(-40px) to-rem(-20px) to-rem(38px);
+    background-color: $palette-white-linen;
+  }
+}
+
+.commitments-feature__info {
+  width: 100%;
+  max-width: to-rem(400px);
+  padding: to-rem(20px) to-rem(76px);
+  border: 1px solid $palette-reef;
+  color: $palette-reef;
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    padding: to-rem(16px);
+    margin: 0 auto;
+  }
+}
+
+.commitments-feature__info .image {
+  margin: auto;
+}
+
+.commitments-feature__percent {
+  margin: 0 0 to-rem(15px);
+  font-size: to-rem(46px);
+  line-height: 1;
+}
+
+.commitments-feature__description {
+  max-width: to-rem(206px);
+  font-size: to-rem(18px);
+  letter-spacing: 0.167em;
+  line-height: 1.2;
+
+  @include media-breakpoint-down(md) {
+    margin: to-rem(30px) auto;
+    text-align: center;
+  }
+}

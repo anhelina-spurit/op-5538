@@ -1,0 +1,32 @@
+{% comment %}
+  @summary Renders footer menu
+  @param {Shopify.linklist} link_list - list of links
+  @param {string} labelled_by - labelled by
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+  @example
+  {%
+    render 'c_footer-menu',
+    links: menu.links,
+    custom_classes: 'footer__menu',
+    attributes: 'data-custom',
+    modifiers: 'lg, light',
+  %}
+{% endcomment %}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'footer-menu', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+<nav class="{{ class }}" aria-labelledby="{{ labelled_by }}" {{ attributes }}>
+  <ul class="footer-menu__list" role="list" aria-labelledby="{{ labelled_by }}">
+    {%- for link in link_list.links -%}
+      <li class="footer-menu__item">
+        <a class="footer-menu__link" href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

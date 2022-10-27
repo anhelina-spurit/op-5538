@@ -1,0 +1,102 @@
+{% comment %}
+  @summary Renders filter
+  @param {object} results - Collection or Search object
+  @param {string} [custom_classes] - additional classes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_filter',
+    results: collection,
+    custom_classes: "custom",
+    modifiers: 'lg, light',
+  %}
+{% endcomment %}
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'filter', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  assign title = 'collection.filter.title' | t
+  assign send = 'collection.filter.send' | t
+  assign reset = 'collection.filter.reset' | t
+
+  capture close_icon
+    render 'el_icon', icon: 'close'
+  endcapture
+%}
+
+<div class="{{- class -}}" data-sidebar>
+  {% liquid
+    render 'el_button', text: close_icon, modifiers: 'link', custom_classes: 'mm-ocd__close', attributes: 'data-sidebar-close', type: 'button'
+    echo '<div class="filter__header">'
+    render 'el_heading', level: 2, text: title, modifiers: 'sm'
+    echo '</div>'
+  %}
+  <form class="filter__form" data-filter-form>
+    {%- if results.terms -%}
+      <input type="hidden" name="q" value="{{ results.terms | escape }}">
+      <input type="hidden" name="type" value="product">
+      <input type="hidden" name="options[prefix]" value="last">
+    {%- endif -%}
+    {% comment %}theme-check-disable NestedSnippet{% endcomment %}
+    {% liquid
+      for filter in results.filters
+        assign filter_category_name = filter.label
+        assign downcased_category_name = filter_category_name | downcase
+        assign namespace = filter.param_name | split: "." | last
+        unless namespace == 'subcollection'
+          assign collapse_button_id = 'filter-collapse_' | append: forloop.index
+          echo '<fieldset class="filter__fieldset">'
+          echo '<legend class="filter__legend">'
+          if downcased_category_name contains 'color'
+            assign color_category_label = 'collection.filter.color' | t
+            echo color_category_label
+          else
+            echo filter_category_name
+          endif
+          assign collapase_close = 'collection.filter.button_collapse_close' | t
+          assign collapase_button_text = '<span class="visually-hidden">' | append: collapase_close | append: ' ' | append: filter_category_name | append: '</span>'
+          render 'el_button', id: collapse_button_id, custom_classes: 'filter-collapse__button', text: collapase_button_text, type: 'button', modifiers: 'link'
+          echo '</legend>'
+          capture collapse_content
+            if filter.type == 'price_range'
+              render 'c_price_range', filter: filter
+            else
+              for value in filter.values
+                assign id_input = "filter-checkbox-input-" | append: filter_category_name | handleize | append: forloop.index
+                assign container_id = "checkbox-container-" | append: id_input
+                if downcased_category_name contains 'color'
+                  assign color_data = value.label | split: '/'
+                  assign color_label = color_data[0]
+                  assign color_background = color_data[1]
+
+                  capture color_content
+                    echo '<span class="filter__color" style="background: ' | append: color_background | append: '" aria-hidden="true"></span>'
+                    echo '<span class="filter__color-label">' | append: color_label | append: '</span>'
+                  endcapture
+
+                  render 'el_checkbox', container_id: container_id, container_classes: 'filter__value filter__value--color', input_id: id_input, input_attributes: 'data-filter-control', name: value.param_name, value: value.value, checked: value.active, label: color_content
+                else
+                  render 'el_checkbox', container_id: container_id, container_classes: 'filter__value', input_id: id_input, input_attributes: 'data-filter-control', name: value.param_name, value: value.value, checked: value.active, label: value.label
+                endif
+              endfor
+            endif
+          endcapture
+          render 'c_filter-collapse', content: collapse_content, controlled_id: collapse_button_id, custom_classes: 'filter__fieldset-content'
+          echo '</fieldset>'
+        endunless
+      endfor
+    %}
+    {% comment %}theme-check-enable NestedSnippet{% endcomment %}
+
+    {% liquid
+      echo '<div class = "filter__control">'
+      render 'el_button', text: send, type: 'submit', modifiers: 'primary, full-width'
+      echo '</div>'
+      echo '<div class="filter__control">'
+      render 'el_button', text: reset, modifiers: 'link', custom_classes: '', attributes: 'data-filter-reset', type: 'button'
+      echo '</div>'
+    %}
+  </form>
+</div>

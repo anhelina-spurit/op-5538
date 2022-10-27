@@ -1,0 +1,52 @@
+@import '../../../constants/palette';
+@import '../../../constants/transitions';
+@import '../../../utils/to-rem';
+
+.accordion-item__button {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  padding: to-rem(16px) 0;
+  border: 0;
+  margin: 0;
+  appearance: none;
+  background: none;
+  font-size: to-rem(15px);
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.accordion-item__button::before,
+.accordion-item__button::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: block;
+  width: to-rem(9px);
+  height: to-rem(1px);
+  background: $palette-dark;
+  content: '';
+  transform-origin: 50% 50%;
+  transition-duration: $transition-duration-fast;
+  transition-property: transform;
+}
+
+.accordion-item__button::after {
+  transform: rotate(90deg);
+}
+
+.accordion-item__button[data-collapse-opened]::after {
+  transform: none;
+}
+
+.accordion-item .collapse-panel__content {
+  padding-top: to-rem(16px);
+  padding-bottom: to-rem(16px);
+}
+
+.accordion-item__image {
+  margin-bottom: 0.5rem;
+}

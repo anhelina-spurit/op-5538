@@ -1,0 +1,12 @@
+@import '../../../utils/to-rem';
+
+.commitments-cards {
+  margin-bottom: to-rem(55px);
+}
+
+.commitments-cards__list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

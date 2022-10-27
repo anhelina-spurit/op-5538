@@ -1,0 +1,319 @@
+{%- capture slider -%}
+  {% comment %}theme-check-disable NestedSnippet{% endcomment %}
+  {%  render 'c_collections-preview-slider', blocks: section.blocks %}
+  {% comment %}theme-check-enable NestedSnippet{% endcomment %}
+{%- endcapture -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+
+  capture content
+    render 'el_container', content: slider, modifiers: 'xxl', custom_classes: 'collections-preview__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'collections-preview', content: content, heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Collections preview",
+  "class": "shopify-section--has-padding",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Nos collections"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Collection heading"
+        },
+        {
+          "type": "header",
+          "content": "Slide 1"
+        },
+        {
+          "id": "image_1",
+          "type": "image_picker",
+          "label": "Collection image 1"
+        },
+        {
+          "id": "url_image_1",
+          "type": "url",
+          "label": "Link for Collection image 1"
+        },
+        {
+          "id": "product_1_1",
+          "type": "product",
+          "label": "Product 1"
+        },
+        {
+          "id": "product_1_1_top",
+          "type": "number",
+          "label": "Product 1 cord top"
+        },
+        {
+          "id": "product_1_1_left",
+          "type": "number",
+          "label": "Product 1 cord left"
+        },
+        {
+          "id": "product_1_2",
+          "type": "product",
+          "label": "Product 2"
+        },
+        {
+          "id": "product_1_2_top",
+          "type": "number",
+          "label": "Product 2 cord top"
+        },
+        {
+          "id": "product_1_2_left",
+          "type": "number",
+          "label": "Product 2 cord left"
+        },
+        {
+          "id": "product_1_3",
+          "type": "product",
+          "label": "Product 3"
+        },
+        {
+          "id": "product_1_3_top",
+          "type": "number",
+          "label": "Product 3 cord top"
+        },
+        {
+          "id": "product_1_3_left",
+          "type": "number",
+          "label": "Product 3 cord left"
+        },
+        {
+          "id": "product_1_4",
+          "type": "product",
+          "label": "Product 4"
+        },
+        {
+          "id": "product_1_4_top",
+          "type": "number",
+          "label": "Product 4 cord top"
+        },
+        {
+          "id": "product_1_4_left",
+          "type": "number",
+          "label": "Product 4 cord left"
+        },
+        {
+          "id": "product_1_5",
+          "type": "product",
+          "label": "Product 5"
+        },
+        {
+          "id": "product_1_5_top",
+          "type": "number",
+          "label": "Product 5 cord top"
+        },
+        {
+          "id": "product_1_5_left",
+          "type": "number",
+          "label": "Product 5 cord left"
+        },
+        {
+          "type": "header",
+          "content": "Slide 2"
+        },
+        {
+          "id": "image_2",
+          "type": "image_picker",
+          "label": "Collection image 2"
+        },
+        {
+          "id": "url_image_2",
+          "type": "url",
+          "label": "Link for Collection image 2"
+        },
+        {
+          "id": "product_2_1",
+          "type": "product",
+          "label": "Product 1"
+        },
+        {
+          "id": "product_2_1_top",
+          "type": "number",
+          "label": "Product 1 cord top"
+        },
+        {
+          "id": "product_2_1_left",
+          "type": "number",
+          "label": "Product 1 cord left"
+        },
+        {
+          "id": "product_2_2",
+          "type": "product",
+          "label": "Product 2"
+        },
+        {
+          "id": "product_2_2_top",
+          "type": "number",
+          "label": "Product 2 cord top"
+        },
+        {
+          "id": "product_2_2_left",
+          "type": "number",
+          "label": "Product 2 cord left"
+        },
+        {
+          "id": "product_2_3",
+          "type": "product",
+          "label": "Product 3"
+        },
+        {
+          "id": "product_2_3_top",
+          "type": "number",
+          "label": "Product 3 cord top"
+        },
+        {
+          "id": "product_2_3_left",
+          "type": "number",
+          "label": "Product 3 cord left"
+        },
+        {
+          "id": "product_2_4",
+          "type": "product",
+          "label": "Product 4"
+        },
+        {
+          "id": "product_2_4_top",
+          "type": "number",
+          "label": "Product 4 cord top"
+        },
+        {
+          "id": "product_2_4_left",
+          "type": "number",
+          "label": "Product 4 cord left"
+        },
+        {
+          "id": "product_2_5",
+          "type": "product",
+          "label": "Product 5"
+        },
+        {
+          "id": "product_2_5_top",
+          "type": "number",
+          "label": "Product 5 cord top"
+        },
+        {
+          "id": "product_2_5_left",
+          "type": "number",
+          "label": "Product 5 cord left"
+        },
+        {
+          "type": "header",
+          "content": "Slide 3"
+        },
+        {
+          "id": "image_3",
+          "type": "image_picker",
+          "label": "Collection image 3"
+        },
+        {
+          "id": "url_image_3",
+          "type": "url",
+          "label": "Link for Collection image 3"
+        },
+        {
+          "id": "product_3_1",
+          "type": "product",
+          "label": "Product 1"
+        },
+        {
+          "id": "product_3_1_top",
+          "type": "number",
+          "label": "Product 1 cord top"
+        },
+        {
+          "id": "product_3_1_left",
+          "type": "number",
+          "label": "Product 1 cord left"
+        },
+        {
+          "id": "product_3_2",
+          "type": "product",
+          "label": "Product 2"
+        },
+        {
+          "id": "product_3_2_top",
+          "type": "number",
+          "label": "Product 2 cord top"
+        },
+        {
+          "id": "product_3_2_left",
+          "type": "number",
+          "label": "Product 2 cord left"
+        },
+        {
+          "id": "product_3_3",
+          "type": "product",
+          "label": "Product 3"
+        },
+        {
+          "id": "product_3_3_top",
+          "type": "number",
+          "label": "Product 3 cord top"
+        },
+        {
+          "id": "product_3_3_left",
+          "type": "number",
+          "label": "Product 3 cord left"
+        },
+        {
+          "id": "product_3_4",
+          "type": "product",
+          "label": "Product 4"
+        },
+        {
+          "id": "product_3_4_top",
+          "type": "number",
+          "label": "Product 4 cord top"
+        },
+        {
+          "id": "product_3_4_left",
+          "type": "number",
+          "label": "Product 4 cord left"
+        },
+        {
+          "id": "product_3_5",
+          "type": "product",
+          "label": "Product 5"
+        },
+        {
+          "id": "product_3_5_top",
+          "type": "number",
+          "label": "Product 5 cord top"
+        },
+        {
+          "id": "product_3_5_left",
+          "type": "number",
+          "label": "Product 5 cord left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections preview"
+    }
+  ]
+}
+{% endschema %}

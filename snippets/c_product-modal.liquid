@@ -1,0 +1,58 @@
+{% liquid
+  assign id = 'product-modal_' | append: product.id
+  assign lang = shop_locale.iso_code | default: 'fr' | upcase
+
+  capture modal_content
+    unless product == blank
+      echo '<div class="product-modal__media">'
+      render 'el_shopify-image', image: product.featured_image, lazy_loading: true, custom_classes: 'product-modal__image'
+      echo '</div>'
+      echo '<div class="product-modal__content">'
+      capture title
+        render 'f_product-title', product: product
+      endcapture
+      unless title == blank
+        render 'el_heading', level: 2, text: title, custom_classes: 'product-modal__heading', modifiers: 'xxs'
+      endunless
+      echo '<div class="product-modal__sections">'
+        unless product.description == blank
+          echo '<div class="product-modal__section">'
+            echo '<div class="product-modal__description">'
+              echo product.description
+            echo '</div>'
+          echo '</div>'
+        endunless
+
+        assign has_care_items = false
+        capture care_content
+          echo '<div class="product-info__care-list">'
+          assign care_title = 'products.product.info.care' | t
+          render 'el_heading', level: 3, text: care_title, custom_classes: 'product-modal__heading product-modal__heading--care', modifiers: 'xxs'
+          for i in (1..5)
+            assign care_logo = 'Care' | append: i | append: '_Logo_Asset_' | append: lang
+            assign care_description = 'Care' | append: i | append: '_Ref_Description_' | append: lang
+            if product.metafields.erp[care_logo] != blank or product.metafields.erp[care_description] != blank
+              assign has_care_items = true
+              echo '<div class="product-info__care-item">'
+              assign care_logo_url = product.metafields.erp[care_logo] | file_url
+              render 'el_image', src: care_logo_url, lazy_loading: true, custom_classes: 'product-info__care-img'
+              echo '<p class="product-info__care-text">' | append: product.metafields.erp[care_description] | append: '</p>'
+              echo '</div>'
+            endif
+          endfor
+          echo '</div>'
+        endcapture
+
+        if has_care_items == true
+          echo '<div class="product-modal__section">'
+            echo care_content
+          echo '</div>'
+        endif
+        echo '</div>'
+      echo '</div>'
+    endunless
+  endcapture
+
+  render 'c_modal', id: id, content: modal_content, custom_classes: 'product-modal__modal', attributes: attributes
+%}
+

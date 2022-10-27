@@ -1,0 +1,63 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
+
+.nav-bar__container {
+  width: auto;
+  overflow-y: auto;
+}
+
+.nav-bar__container::-webkit-scrollbar {
+  @media (hover: none) and (pointer: coarse) {
+    width: 0;
+    height: 0;
+    appearance: none;
+  }
+}
+
+.nav-bar__list {
+  display: flex;
+  padding: to-rem(10px) 0 to-rem(5px);
+  margin: 0 to-rem(-5px);
+  list-style: none;
+}
+
+.nav-bar__item {
+  position: relative;
+  width: to-rem(60px);
+  min-width: to-rem(60px);
+  margin: 0 to-rem(5px);
+  text-align: center;
+}
+
+.nav-bar__img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.nav-bar__link {
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(8px);
+  letter-spacing: 0.037em;
+  line-height: 1.375;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-bar__link::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+}

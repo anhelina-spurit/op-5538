@@ -1,0 +1,83 @@
+{% liquid
+	assign heading = section.settings.heading
+	assign heading_id = section.id | append: '__heading'
+	assign faq_href = section.settings.faq_href | default: '#'
+
+	capture button_classes
+  	render 'f_bem-classes', main_class: 'button', modifiers: 'secondary, small', custom_classes: 'gift-cards-faq__button'
+  endcapture
+
+	capture faq
+    render 'el_link', href: faq_href, text: 'F.A.Q'
+  endcapture
+%}
+
+{%- capture container_content -%}
+	{%-
+		render 'el_heading',
+		level: 2,
+		id: heading_id,
+		text: heading,
+		custom_classes: 'visually-hidden'
+	-%}
+	<dl class="gift-cards-faq__list">
+    <div class="gift-cards-faq__row">
+      <dt class="gift-cards-faq__question">Utiliser la carte cadeau ?</dt>
+      <dd class="gift-cards-faq__answer">
+        <div class="gift-cards-faq__column gift-cards-faq__column--text">
+          En boutique, en donnant votre carte cadeau lors de votre passage en caisse ou sur cyrillus.fr lors de votre paiement, sélectionnez le champs «carte cadeau / e-carte cadeau»<br> et complétez les données demandées.
+        </div>
+        <div class="gift-cards-faq__column gift-cards-faq__column--medium gift-cards-faq__column--text">
+          La carte cadeau est valable pour une durée d'un an, son montant peut être compris entre 10€ et 150€.
+        </div>
+      </dd>
+    </div>
+    <div class="gift-cards-faq__row">
+      <dt class="gift-cards-faq__question">Consulter le solde de ma carte cadeau</dt>
+      <dd class="gift-cards-faq__answer">
+        <div class="gift-cards-faq__column gift-cards-faq__column--text gift-cards-faq__column--big">Munissez vous de votre carte cadeau et ou de l'E-carte cadeau contenant le numéro à 12 chiffres et le cryptogramme.</div>
+        <div class="gift-cards-faq__column gift-cards-faq__column--small">
+          <a href="#" class="{{ button_classes }}">Je consulte</a>
+        </div>
+      </dd>
+    </div>
+    <div class="gift-cards-faq__row">
+      <dt class="gift-cards-faq__question">Des questions ?</dt>
+      <dd class="gift-cards-faq__answer">
+        <div class="gift-cards-faq__column gift-cards-faq__column--text gift-cards-faq__column--big">Trouvez toutes les réponses à vos questions en consultant nos {{ faq }}.</div>
+      </dd>
+    </div>
+  </dl>
+{%- endcapture -%}
+{%- liquid
+	capture content
+		render 'el_container', content: container_content, modifiers: 'xl'
+	endcapture
+
+	render 'c_section', id: section.id, name: 'gift-cards-faq', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Gift cards F.A.Q",
+  "tag": "div",
+	"settings": [
+		{
+			"id": "heading",
+			"type": "text",
+			"label": "Section heading",
+			"default": "Gift cards F.A.Q"
+		},
+		{
+			"id": "faq_href",
+			"type": "url",
+			"label": "F.A.Q page link"
+		}
+	],
+  "presets": [
+    {
+      "name": "Gift cards F.A.Q"
+    }
+  ]
+}
+{% endschema %}

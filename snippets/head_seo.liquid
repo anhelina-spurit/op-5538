@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="{{ settings.meta_theme_color }}">
+
+{%- capture seo_page_title -%}
+  {%- if request.page_type == 'search' and search.terms != blank -%}
+    {{ search.terms | split: ' AND ' | last | split: 'product_type:' | last }} - {{ shop.name }}
+  {%- else -%}
+    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'meta.page' | t: page: current_page }}{% endif %}
+  {%- endif -%}
+{%- endcapture -%}
+
+<title>{{- seo_page_title -}}</title>
+
+{%- if page_description -%}
+  <meta name="description" content="{{ page_description | escape }}">
+{%- endif -%}
+
+{% if product == blank and collection and collection.metafields.nosto != blank %}
+  <link rel="canonical" href="{{shop.url}}/collections/{{collection.metafields.nosto.sourceHandle}}">
+{% else %}
+  <link rel="canonical" href="{{ canonical_url }}">
+{% endif %}
+
+{%- if settings.favicon -%}
+  <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 96, height: 96 }}" type="image/png">
+{%- endif -%}

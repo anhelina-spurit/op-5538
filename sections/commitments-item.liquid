@@ -1,0 +1,162 @@
+{%- assign heading_id = section.id | append: '__heading' -%}
+
+{%- capture feature_content -%}
+  <div class="commitments-item__row">
+    <div class="commitments-feature__content">
+      <div class="commitments-feature__info">
+        <p class="commitments-feature__percent">{{ section.settings.feature_number }}</p>
+        <p>{{ section.settings.feature_description }}</p>
+        {%- render 'el_image', src: section.settings.feature_icon, lazy_loading: true -%}
+      </div>
+    </div>
+    <div class="commitments-item__content">
+      {%- render 'el_heading', level: 3, text: section.settings.content_heading, custom_classes: 'commitments-item__subheading' -%}
+      <p class="commitments-item__desc">
+        {{ section.settings.content_text | newline_to_br }}
+      </p>
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- capture collections_content -%}
+  {%- if section.blocks.size > 0 -%}
+    <div class="commitments-cards swiper">
+      <ul class="commitments-cards__list swiper-wrapper">
+        {%- for block in section.blocks -%}
+          <li class="commitments-cards__item swiper-slide">
+            {%- liquid
+              capture image
+                render 'el_shopify-image', image: block.settings.collection_image, custom_classes: 'blog-preview__image'
+              endcapture
+
+              render 'el_ratio-container', custom_classes: 'blog-preview__media', content: image, width: 426, height: 564, size_limited: true
+              render 'el_heading', level: 4, text: block.settings.collection_title, custom_classes: 'text-preview__heading', modifiers: 'md'
+            -%}
+            {% if block.settings.collection_desc != blank %}
+              <p class="text-preview__description">{{ block.settings.collection_desc }}</p>
+            {% endif %}
+          </li>
+        {%- endfor -%}
+      </ul>
+      <div class="commitments-cards__scrollbar swiper-scrollbar"></div>
+    </div>
+  {%- endif -%}
+  <div class="products-discover__action">
+    {%- render 'el_link', href: section.settings.link_url, text: section.settings.link_text, custom_classes: 'products-discover__action_link' -%}
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  capture section_content
+    render 'c_commitments-item-header', count: 1
+    render 'el_container', content: feature_content, modifiers: 'xl'
+    render 'el_container', content: collections_content, modifiers: 'xxl'
+  endcapture
+
+  render 'c_section', id: 'commitments-item-1', content: section_content, name: 'commitments-item', heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Commitments Item 1",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading"
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Feature"
+    },
+    {
+      "id": "feature_number",
+      "type": "text",
+      "label": "Number",
+      "default": "100%"
+    },
+    {
+      "id": "feature_description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "id": "feature_icon",
+      "type": "url",
+      "label": "Icon"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "content_heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "content_text",
+      "type": "textarea",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Link to products"
+    },
+    {
+      "id": "link_url",
+      "type": "url",
+      "label": "Link URL"
+    },
+    {
+      "id": "link_text",
+      "type": "text",
+      "label": "Link Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Collection",
+      "settings": [
+        {
+          "id": "collection_image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "collection_title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "collection_desc",
+          "type": "text",
+          "label": "Description"
+        },
+        {
+          "id": "collection_link",
+          "type": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

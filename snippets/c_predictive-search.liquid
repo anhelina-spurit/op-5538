@@ -1,0 +1,14 @@
+{%- comment -%}
+  @summary Renders a wrapper for predictive search results
+
+  @example
+  {%- render 'c_predictive-search' -%}
+{%- endcomment -%}
+
+<div class="predictive-search" tabindex="-1" data-search-results>
+  <div class="predictive-search__loading-state">
+    {%- render 'el_loader' -%}
+  </div>
+</div>
+
+<span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>

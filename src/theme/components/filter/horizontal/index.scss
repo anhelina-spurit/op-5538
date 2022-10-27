@@ -1,0 +1,84 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+@import '../../../constants/palette';
+
+.filter-horizontal {
+  margin: to-rem(24px) 0;
+}
+
+.filter-horizontal__list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  font-size: to-rem(11px);
+  gap: to-rem(15px) to-rem(20px);
+  list-style-type: none;
+  text-transform: uppercase;
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.filter-horizontal__item {
+  color: $palette-dark-slate-grey;
+  cursor: pointer;
+  letter-spacing: to-rem(1px);
+}
+
+.filter-horizontal__item.active {
+  text-decoration: underline;
+}
+
+.filter-horizontal__item:last-child {
+  order: -1;
+}
+
+.filter-horizontal__select {
+  font-size: to-rem(11px);
+  letter-spacing: to-rem(1px);
+  text-transform: uppercase;
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.filter-horizontal__select .selectbox__combo {
+  min-height: auto;
+  padding: to-rem(10px) 0;
+  border: none;
+  border-bottom: to-rem(1px) solid $palette-dark-slate-grey;
+  color: $palette-dark-slate-grey;
+}
+
+.filter-horizontal__select .selectbox__list {
+  top: 100%;
+  padding-bottom: to-rem(24px);
+  border: none;
+}
+
+.filter-horizontal__select.selectbox--opened .selectbox__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-horizontal__select .selectbox__option {
+  width: 100%;
+  padding: to-rem(16px) 0;
+  border-bottom: to-rem(1px) solid $palette-dark-slate-grey;
+  color: $palette-dark-slate-grey;
+}
+
+.filter-horizontal__select .selectbox__option--last {
+  order: -1;
+}
+
+.filter-horizontal__select .selectbox__option--active {
+  outline: none;
+}
+
+.filter-horizontal__select::after {
+  right: to-rem(5px);
+  border-right: to-rem(1px) solid $palette-dark-slate-grey;
+  border-bottom: to-rem(1px) solid $palette-dark-slate-grey;
+}

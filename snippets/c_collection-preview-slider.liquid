@@ -1,0 +1,91 @@
+{%- comment -%}
+ @summary Renders an collection preview slider
+
+  @param {string} id - sfopify section id
+  @param {object} block - sfopify section block
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+      render 'c_collections-preview-slider',
+      id: section.id
+      blocks: section.blocks
+      attributes: 'min="1"'
+      modifiers: 'lg, light',
+  -%}
+{%- endcomment -%}
+
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'collection-preview-slider', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+  assign products = nil
+%}
+
+{%- if id -%}
+  <div class="{{- class -}}">
+    <div class="swiper collection-preview-slider__media" data-collection-slider>
+      <div class="swiper-wrapper">
+        {% for i in (1..3) %}
+          {% liquid
+            assign image_index = forloop.index
+            assign image_key = 'image_' | append: image_index
+            assign link_key = 'url_image_' | append: image_index
+            assign src = block.settings[image_key]
+            assign link = block.settings[link_key]
+          %}
+          {% if src %}
+            <div class="collection-preview-slider__slide swiper-slide" data-collection-slide>
+              <div class="collection-preview-slider__image">
+                <div class="link-wrapper">
+                  {% unless link == blank %}
+                    <a class="link-wrapper__link" href="{{ link}}"></a>
+                  {% endunless %}
+                  {% render 'el_shopify-image', image: src, width: 762, height: 1020, lazy_loading: true, format: 'pjpg' %}
+                </div>
+                {% for i in (1..5) %}
+                  {% liquid
+                    assign product_index = forloop.index
+                    assign product_key = 'product_' | append: image_index | append: '_' | append: product_index
+                    assign top_key = product_key | append: '_top'
+                    assign left_key = product_key | append: '_left'
+                    assign product = all_products[block.settings[product_key]]
+                    assign product_id = slide_index | append: '_' | append: id | append: '_' | append: product_key
+                    assign product_id_modal = slide_index | append: '_' | append: id | append: '_' | append: product_key | append: '_simple'
+                  %}
+                  {% if product != blank %}
+                    {% capture product_html %}
+                      {% comment %}theme-check-disable NestedSnippet{% endcomment %}
+                      <div id="{{ product_id }}" class="collection-preview-slider__product" data-product>
+                        {%- render 'c_product-card', id: product.id, product: product -%}
+                      </div>
+                      <div id="{{ product_id_modal }}" class="collection-preview-slider__product"  data-product data-product-simple>
+                        {%- render 'c_product-card-simple', id: product.id, product: product -%}
+                      </div>
+                      {% comment %}theme-check-enable NestedSnippet{% endcomment %}
+                    {% endcapture %}
+                    {% liquid
+                      assign products = products | append: product_html
+                      if block.settings[top_key] != blank and block.settings[left_key] != blank
+                        assign dot_attribute = 'data-dot="' | append: product_id | append: '"'
+                        render 'c_dot', top: block.settings[top_key], left: block.settings[left_key], attributes: dot_attribute
+                      endif
+                    %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <ul class="collection-preview-slider__pagination" data-collection-pagination></ul>
+    </div>
+    <div class="collection-preview-slider__products">
+      {{- products -}}
+    </div>
+  </div>
+{%- endif -%}
+
+

@@ -1,0 +1,60 @@
+{% comment %}
+  @summary Renders accordion item
+
+  @param {string} id - id
+  @param {string} title - title text
+  @param {boolean} [is_opened=false] - is accordion item opened
+  @param {string} [title_id] - title id
+  @param {string='div'} [title_tag] - title tag
+  @param {string} content - content
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_accordion-item',
+    id: id,
+    title: link.title,
+    content: accordion_content
+  %}
+{% endcomment %}
+
+{%- liquid
+  assign is_opened = is_opened | default: false
+  assign title_tag = title_tag | default: 'div'
+
+  if title_id == blank
+    assign title_id = id | append: '_title'
+  endif
+
+  assign panel_id = id | append: '_panel'
+
+  capture class
+    render 'f_bem-classes', main_class: 'accordion-item', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+{%- unless id == blank and title == blank and content == blank -%}
+  <div id="{{ id }}" class="{{ class }}" {{ attributes }}>
+    <{{ title_tag }} class="accordion-item__title">
+      {%-
+        render 'c_collapse-button',
+        id: title_id,
+        is_opened: is_opened,
+        controls: panel_id,
+        content: title,
+        custom_classes: 'accordion-item__button'
+      -%}
+    </{{ title_tag }}>
+
+    {%-
+      render 'c_collapse-panel',
+      id: panel_id,
+      is_opened: is_opened,
+      labelled_by: title_id,
+      content: content,
+      custom_classes: 'accordion-item__panel'
+    -%}
+  </div>
+{%- endunless -%}

@@ -1,0 +1,10 @@
+{%- liquid
+  capture container_content
+    echo page.content
+  endcapture
+  capture content
+    render 'el_container', content: container_content, modifiers: 'l', custom_classes: 'page-content__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'page-content', content: content
+-%}

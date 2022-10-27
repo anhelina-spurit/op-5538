@@ -1,58 +1,104 @@
 {%- if predictive_search.performed -%}
-  <div id="predictive-search-results">
-    {%- if predictive_search.resources.products.size > 0 -%} 
-      <h2 id="predictive-search-products" class="predictive-search__heading text-body caption-with-letter-spacing">
-        {{ 'templates.search.products' | t }}
+  {%- capture container_content -%}
+    <div id="predictive-search-results">
 
-        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-        </svg>
-      </h2>
-    {%- endif -%}
-    <ul id="predictive-search-results-list" class="predictive-search__results-list list-unstyled" role="listbox" aria-labelledby="predictive-search-products">
-      {%- for product in predictive_search.resources.products -%}
-        <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item" role="option" aria-selected="false">
-          <a href="{{ product.url }}" class="predictive-search__item predictive-search__item--link link link--text" tabindex="-1">
-            {%- if product.featured_media != blank -%}
-              <img class="predictive-search__image"
-                src="{{ product.featured_media | image_url: width: 150 }}"
-                alt="{{ product.featured_media.alt }}"
-                width="50"
-                height="{{ 50 | divided_by: product.featured_media.preview_image.aspect_ratio }}"
-              >
-            {%- endif -%}
-            <div class="predictive-search__item-content{% unless settings.predictive_search_show_vendor or settings.predictive_search_show_price %} predictive-search__item-content--centered{% endunless %}">
-              {%- if settings.predictive_search_show_vendor -%} 
-                <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span><div class="predictive-search__item-vendor caption-with-letter-spacing">{{ product.vendor }}</div>
-              {%- endif -%}
-              <h3 class="predictive-search__item-heading h5">{{ product.title }}</h3> 
-              {%- if settings.predictive_search_show_price -%}
-                {% render 'price', product: product, use_variant: true, show_badges: false %} 
-              {%- endif -%}
-            </div>
-          </a>
-        </li>
-      {%- endfor -%}
-      <li id="predictive-search-option-search-keywords" class="predictive-search__list-item" role="option">
-        <button class="predictive-search__item predictive-search__item--term link link--text h5 animate-arrow" tabindex="-1">
-          {{ 'templates.search.search_for' | t: terms: predictive_search.terms }}
-          {% render 'icon-arrow' %}
-        </button>
-      </li> 
-    </ul>
+      {%- liquid
+        if predictive_search.resources.products.size > 0
+          capture heading_content
+            echo 'search.general.list_title' | t
+            render 'el_loader'
+          endcapture
 
-    <div class="predictive-search__loading-state" aria-hidden="true">
-      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-      </svg>
+          render 'el_heading', level: 3, text: heading_content, id: 'predictive-search-products', custom_classes: 'predictive-search__heading'
+        endif
+      -%}
+
+      <ul id="predictive-search-results-list" class="predictive-search__results-list" role="listbox" aria-labelledby="predictive-search-products">
+        {%- for product in predictive_search.resources.products -%}
+
+          <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item" role="option" data-vp-handle="{{ product.handle }}">
+            <a href="{{ product.url }}" class="predictive-search__item predictive-search__item--link {% if product.template_suffix == 'bundle' %}
+             predictive-search__item--bundle
+            {% endif %}">
+
+              {%- liquid
+                if product.featured_image.src
+                  render 'el_shopify-image', custom_classes: 'predictive-search__image', image: product.featured_image, width: 120, format: 'pjpg'
+                else
+                  render 'el_placeholder', name: 'product-1', custom_classes: 'predictive-search__image'
+                endif
+              -%}
+
+              <div class="predictive-search__item-content">
+                <div class="predictive-search__item-heading">{{ product.title }}</div>
+                {%- liquid
+                  assign subtitle = product.metafields.erp.GSA_product_subtitle
+
+                  if subtitle
+                    echo '<span class="predictive-search__item-subtitle">' | append: subtitle | append: '</span>'
+                  endif
+
+                  assign min_product_price = product.price
+                  if min_product_price == 0
+                    for variant in product.variants
+                      if variant.price > 0
+                        if variant.price < min_product_price or min_product_price == 0
+                          assign min_product_price = variant.price
+                          break
+                        endif
+                      endif
+                    endfor
+                  endif
+
+                  if product.template_suffix == 'bundle'
+                    render 'c_bundle-price', product: product
+                  else
+                    render 'c_price', custom_classes: 'predictive-search__item-price vp-original-prices', price: min_product_price, product_tags: product.tags
+                  endif
+                -%}
+              </div>
+            </a>
+          </li>
+
+        {%- endfor -%}
+      </ul>
+
+      <div class="predictive-search__all">
+        {%- liquid
+          assign button_text = 'search.general.view_all' | t
+          render 'el_button', type: 'submit', text: button_text, modifiers: 'outline,lg'
+        -%}
+      </div>
+
+      <div class="predictive-search__loading-state" aria-hidden="true">
+        {%- render 'el_loader' -%}
+      </div>
     </div>
-  </div>
 
-  <span class="hidden" data-predictive-search-live-region-count-value>
-    {%- if search.results_count == 0 -%}
-      {{ 'templates.search.no_results' | t: terms: predictive_search.terms }}
-    {%- else -%}
-      {{ 'templates.search.results_with_count' | t: terms: predictive_search.terms, count: predictive_search.resources.products.size }}
-    {%- endif -%}
-  </span>
+    <span hidden data-predictive-search-live-region-count>
+      {%- liquid
+        if search.results_count == 0
+          echo 'templates.search.no_results' | t: terms: predictive_search.terms
+        else
+          echo 'templates.search.results_with_count' | t: terms: predictive_search.terms, count: predictive_search.resources.products.size
+        endif
+      -%}
+    </span>
+
+    {%- liquid
+      capture button_content
+        render 'el_icon', icon: 'close'
+      endcapture
+
+      capture button_attr
+        echo 'data-close-search arila-label="'
+        echo 'search.accessibility.close' | t
+        echo '"'
+      endcapture
+
+      render 'el_button', text: button_content, custom_classes: 'predictive-search__close', attributes: button_attr
+    -%}
+  {%- endcapture -%}
+
+  {%- render 'el_container', content: container_content, modifiers: 'xl' -%}
 {%- endif -%}

@@ -1,0 +1,247 @@
+{% comment %}
+  @summary Renders size guide for women
+
+  @param {string} id - id
+
+  @example
+  {%- render 'c_size-guide-women' -%}
+{% endcomment %}
+
+<div>
+  {% liquid
+    capture options
+      assign tables = 'dresses,sweaters,parka,other_contries' | split: ','
+
+      for table in tables
+        assign option_id = table | append: '_' | append: id
+        assign option_value = 'option_' | append: option_id
+        assign option_text = 'size_guide.panel.women.table' | append: forloop.index | append: '_title'
+        assign option_text = option_text | t | capitalize
+        assign selected = forloop.first
+        render 'el_selectbox-option', id: option_id, option_value: option_value, selected: selected, option_text: option_text
+      endfor
+    endcapture
+
+    assign selected_option_text = 'size_guide.panel.women.table1_title' | t | capitalize
+
+    render 'c_selectbox', id: 'size_guide_table_type',custom_classes: 'size-guide__selectbox-tables', custom_options: options, selected_option_id: 'option_dresses', selected_option_text: selected_option_text
+  %}
+</div>
+
+<div class="size-guide__content size-guide__content--women">
+  {%- assign image_src = 'women-size.png' | asset_url -%}
+  {%- render 'c_size-guide-description',
+          tab_name: 'women',
+          image_src: image_src,
+          circle_number: 0
+  -%}
+  <div class="size-guide__tables-list">
+    <table class="size-guide__table size-guide__table--dresses" data-size-guide-table data-size-guide-table-id="dresses_{{ id }}" >
+      <caption class="size-guide__table-caption">{{ 'size_guide.panel.women.table1_title' | t }}</caption>
+      <thead class="size-guide__table-head">
+        <tr>
+          <th>{{ 'size_guide.panel.size' | t }}</th>
+          <th>34</th>
+          <th>36</th>
+          <th>38</th>
+          <th>40</th>
+          <th>42</th>
+          <th>44</th>
+          <th>46</th>
+        </tr>
+      </thead>
+      <tbody class="size-guide__table-body">
+        <tr>
+          <th scope="row" class="size-guide__row-head size-guide__row-head--first">{{ 'size_guide.panel.chest' | t }}</th>
+          <td>79/81</td>
+          <td>83/85</td>
+          <td>87/89</td>
+          <td>91/93</td>
+          <td>95/97</td>
+          <td>99/101</td>
+          <td>103/105</td>
+        </tr>
+        <tr>
+          <th scope="row" class="size-guide__row-head size-guide__row-head--second" >{{ 'size_guide.panel.waist' | t }}</th>
+          <td>62/64</td>
+          <td>66/68</td>
+          <td>70/72</td>
+          <td>74/76</td>
+          <td>78/80</td>
+          <td>82/84</td>
+          <td>86/88</td>
+        </tr>
+        <tr>
+          <th scope="row" class="size-guide__row-head size-guide__row-head--third">{{ 'size_guide.panel.hips' | t }}</th>
+          <td>87/89</td>
+          <td>91/93</td>
+          <td>95/97</td>
+          <td>99/101</td>
+          <td>103/105</td>
+          <td>107/109</td>
+          <td>111/113</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="size-guide__table size-guide__table--sweaters" data-size-guide-table="hidden" data-size-guide-table-id="sweaters_{{ id }}">
+      <caption class="size-guide__table-caption">{{ 'size_guide.panel.women.table2_title' | t }}</caption>
+      <thead class="size-guide__table-head">
+        <tr>
+          <th>{{ 'size_guide.panel.size' | t }}</th>
+          <th>XXS</th>
+          <th>XS</th>
+          <th>S</th>
+          <th>M</th>
+          <th>L</th>
+          <th>XL</th>
+        </tr>
+        <tr>
+          <th>{{ 'size_guide.panel.correspondance' | t }}</th>
+          <th>34</th>
+          <th>36</th>
+          <th>38</th>
+          <th>40</th>
+          <th>42</th>
+          <th>44</th>
+        </tr>
+      </thead>
+      <tbody class="size-guide__table-body">
+        <tr>
+          <th scope="row" class="size-guide__row-head size-guide__row-head--first">{{ 'size_guide.panel.chest' | t }}</th>
+          <td>79/81</td>
+          <td>83/85</td>
+          <td>87/89</td>
+          <td>91/93</td>
+          <td>95/97</td>
+          <td>99/101</td>
+        </tr>
+        <tr>
+          {%- liquid
+            assign hips = 'size_guide.panel.hips' | t
+            assign plus = 'size_guide.panel.plus' | t
+            assign plus = plus | prepend: '<br><span class="size-guide__th-note">' | append: '</span>'
+          -%}
+          <th scope="row" class="size-guide__row-head size-guide__row-head--second">{{ hips | append: plus }}</th>
+          <td>87/89</td>
+          <td>91/93</td>
+          <td>95/97</td>
+          <td>99/101</td>
+          <td>103/105</td>
+          <td>107/109</td>
+        </tr>
+      </tbody>
+    </table >
+
+    <table class="size-guide__table size-guide__table--parka" data-size-guide-table="hidden" data-size-guide-table-id="parka_{{ id }}">
+      <caption class="size-guide__table-caption">{{ 'size_guide.panel.women.table3_title' | t }}</caption>
+      <thead class="size-guide__table-head">
+        <tr>
+          <th>{{ 'size_guide.panel.size' | t }}</th>
+          <th>XS</th>
+          <th>S</th>
+          <th>M</th>
+          <th>L</th>
+        </tr>
+        <tr>
+          <th>{{ 'size_guide.panel.correspondance' | t }}</th>
+          <th>34</th>
+          <th>36/38</th>
+          <th>40/42</th>
+          <th>44/46</th>
+        </tr>
+      </thead>
+      <tbody class="size-guide__table-body">
+        <tr>
+          <th scope="row" class="size-guide__row-head size-guide__row-head--first">{{ 'size_guide.panel.chest' | t }}</th>
+          <td>79/85</td>
+          <td>87/93</td>
+          <td>95/101</td>
+          <td>103/109</td>
+        </tr>
+        <tr>
+          <th scope="row" class="size-guide__row-head size-guide__row-head--second">{{ 'size_guide.panel.waist' | t }}</th>
+          <td>62/68</td>
+          <td>70/76</td>
+          <td>78/84</td>
+          <td>88/94</td>
+        </tr>
+        <tr>
+          <th scope="row" class="size-guide__row-head size-guide__row-head--third">{{ 'size_guide.panel.hips' | t }}</th>
+          <td>87/93</td>
+          <td>95/101</td>
+          <td>103/109</td>
+          <td>111/117</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table  class="size-guide__table size-guide__table--other-contries" data-size-guide-table="hidden" data-size-guide-table-id="other_contries_{{ id }}">
+      <caption class="size-guide__table-caption">{{ 'size_guide.panel.women.table4_title' | t }}</caption>
+      <thead class="size-guide__table-head">
+        <tr>
+          <th>{{ 'size_guide.panel.other_contries' | t }}</th>
+          <th>XXS</th>
+          <th>XS</th>
+          <th>S</th>
+          <th>M</th>
+          <th>L</th>
+          <th>XL</th>
+          <th>XXL</th>
+        </tr>
+        <tr>
+          <th>{{ 'size_guide.panel.swiss' | t }}</th>
+          <th>34</th>
+          <th>36</th>
+          <th>38</th>
+          <th>40</th>
+          <th>42</th>
+          <th>44</th>
+          <th>46</th>
+        </tr>
+      </thead>
+      <tbody class="size-guide__table-body">
+        <tr>
+          <th scope="row">{{ 'size_guide.panel.germany' | t }}</th>
+          <td>32</td>
+          <td>34</td>
+          <td>36</td>
+          <td>38</td>
+          <td>40</td>
+          <td>42</td>
+          <td>44</td>
+        </tr>
+        <tr>
+          <th scope="row">{{ 'size_guide.panel.uk' | t }}</th>
+          <td>6</td>
+          <td>8</td>
+          <td>10</td>
+          <td>12</td>
+          <td>14</td>
+          <td>16</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <th scope="row">{{ 'size_guide.panel.italy' | t }}</th>
+          <td>38</td>
+          <td>40</td>
+          <td>42</td>
+          <td>44</td>
+          <td>46</td>
+          <td>48</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <th scope="row">{{ 'size_guide.panel.america' | t }}</th>
+          <td>0-2</td>
+          <td>4</td>
+          <td>6</td>
+          <td>8</td>
+          <td>10</td>
+          <td>12</td>
+          <td>14</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

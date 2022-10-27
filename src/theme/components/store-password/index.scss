@@ -1,0 +1,18 @@
+@import '../../utils/to-rem';
+
+.store-password__field {
+  display: flex;
+}
+
+.store-password__input {
+  min-width: 0;
+  padding: to-rem(8px) to-rem(16px);
+  border-width: 1px;
+  border-style: solid;
+  margin-right: to-rem(10px);
+}
+
+.store-password .input-wrapper {
+  display: flex;
+  min-width: 0;
+}

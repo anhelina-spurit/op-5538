@@ -1,0 +1,39 @@
+{% comment %}
+  @summary Renders a link tag and style needed.
+
+  @param {string} id - id
+  @param {string} href {required} - link url
+  @param {string} text {required} - link text
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+  @param {string} [target] - link target
+  @param {string} [aria_label] - for accessibility
+
+  @example
+  {%
+    render 'el_link',
+    href: '#',
+    text: 'View our plans',
+    id: 'test_link',
+    custom_classes: 'button button--primary',
+    attributes: 'data-test data-test-2',
+    modifiers: 'test,test-2',
+    target: '_blank',
+    aria_label: 'View our plans page',
+  %}
+{% endcomment %}
+
+{% if href != blank and text != blank %}
+  <a
+    {% if id %}id="{{ id }}"{% endif %}
+    class="{%- render 'f_bem-classes', main_class: 'link', custom_classes: custom_classes, modifiers: modifiers -%}"
+    href="{{ href }}"
+    {% if target %}target="{{ target }}"{% endif %}
+    {% if target == '_blank' %}aria-describedby="a11y_external_message"{% endif %}
+    {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}
+    {{ attributes }}
+  >
+    {{- text -}}
+  </a>
+{% endif %}

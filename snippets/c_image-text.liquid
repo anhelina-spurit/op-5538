@@ -1,0 +1,55 @@
+{% comment %}
+  @summary Renders content block with image and text columns
+
+  @param {string} id - unique id
+  @param {object} set - block or section settings
+{% endcomment %}
+
+{%- capture content -%}
+  {%- liquid
+    assign container_class = 'image-text-invert__container container-' | append: id
+  -%}
+
+  <div class="image-text-invert__column image-text-invert__column-image {% if set.invert_content %}image-text-invert__column--invert{% endif %}">
+    <div class="image-text-invert__image-container">
+    {%- liquid
+      if set.image != blank
+        assign imageSrc = set.image | image_url
+        render "el_image", src: imageSrc, lazy_loading: true, alt: set.image.alt, custom_classes: 'image-text-invert__image'
+      else
+        render 'el_placeholder', name: 'collection-1', custom_classes: 'image-text-invert__image'
+      endif
+    -%}
+    </div>
+  </div>
+
+  <div class="image-text-invert__column image-text-invert__column-text">
+    <div class="image-text-invert__text-container">
+      <div class="image-text-invert__description">
+        {{ set.description | replace: '&lt;', '<' | replace: '&gt;', '>' }}
+      </div>
+
+      {%- if set.image_last != blank -%}
+        {%- assign image_src = set.image_last | image_url -%}
+        {%- render 'el_image', src: image_src, custom_classes: 'image-text-invert__extra-image' -%}
+      {%- endif -%}
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- render 'el_container', content: content, modifiers: 'xxl', custom_classes: container_class -%}
+
+{% style %}
+  .container-{{ id }} {
+    align-items: {{- set.vertical_alignment -}};
+    padding-bottom: {{ set.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .container-{{ id }} {
+      padding-bottom: {{ set.padding_bottom }}px;
+    }
+  }
+  .container-{{ id }} .image-text-invert__text-container {
+    text-align: {{- set.horizontal_alignment -}};
+  }
+{% endstyle %}

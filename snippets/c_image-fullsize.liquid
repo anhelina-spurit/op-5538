@@ -1,0 +1,81 @@
+{% comment %}
+  @summary Renders fullwidth image with optional heading and overlayed text
+
+  @param {string} id - unique id
+  @param {object} set - block or section settings
+{% endcomment %}
+
+{%- capture content -%}
+  {%- liquid
+    assign heading_id = id | append: '__heading'
+    assign container_class = 'container-' | append: id
+    assign content_class = 'image-fullsize__content'
+
+    capture content_classNames
+      echo content_class | append: ' '
+      echo content_class | append: '--x_' | append: set.align_x | append: ' '
+      echo content_class | append: '--y_' | append: set.align_y | append: ' '
+      echo content_class | append: '--c-' | append: set.text_color
+    endcapture
+
+    render 'el_heading', level: 2, id: heading_id, text: set.heading, custom_classes: 'section-heading image-fullsize__heading'
+    render 'el_heading', level: 3, text: set.subheading, custom_classes: 'section-heading image-fullsize__subheading'
+  -%}
+
+  <div class='image-fullsize__media'>
+    <picture class="image-fullsize__picture">
+      {%- if set.image_sm != blank -%}
+        <source media="(max-width: 767.99px)" srcset="{{ set.image_sm | image_url: width: 768 }}">
+      {%- endif -%}
+      {%- liquid
+        if set.image != blank
+          render 'el_shopify-image', image: set.image, lazy_loading: true, format: 'pjpg'
+        else
+          render 'el_placeholder', name: 'lifestyle-2'
+        endif
+      -%}
+    </picture>
+
+    <div class='{{ content_classNames }}'>
+      {%- liquid
+        assign description_text = set.description | newline_to_br
+        render 'el_heading', tag: 'div', level: 2, text: description_text, custom_classes: 'image-fullsize__desc'
+      -%}
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- render 'el_container', content: content, modifiers: 'xxl', custom_classes: container_class -%}
+
+{% style %}
+  .container-{{ id }} {
+    padding-top: {{ set.padding_top | times: 0.5 | round: 0 }}px;
+    padding-bottom: {{ set.padding_bottom | times: 0.5 | round: 0 }}px;
+  }
+  @media screen and (min-width: 768px) {
+    .container-{{ id }} {
+      padding-top: {{ set.padding_top }}px;
+      padding-bottom: {{ set.padding_bottom }}px;
+    }
+  }
+  {% if set.heading != blank %}
+  .container-{{ id }} .image-fullsize__heading {
+    font-size: {{- set.heading_size -}}px;
+  }
+  @media screen and (max-width: 768px) {
+    .container-{{ id }} .image-fullsize__heading {
+      font-size: {{- set.heading_size | times: 0.888 | round: 0 -}}px;
+    }
+  }
+  {% endif %}
+  {% if set.subheading != blank %}
+  .container-{{ id }} .image-fullsize__subheading {
+    font-size: {{- set.subheading_size -}}px;
+  }
+  @media screen and (max-width: 768px) {
+    .container-{{ id }} .image-fullsize__subheading {
+      font-size: {{- set.subheading_size | times: 0.888 | round: 0 -}}px;
+    }
+  }
+  {% endif %}
+{% endstyle %}

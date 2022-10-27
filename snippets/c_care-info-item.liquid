@@ -1,0 +1,33 @@
+{%- comment -%}
+    @summary Renders care info item
+
+    @param {object} item - item
+    @param {string} [custom_classes] - additional classes
+
+    @example
+    {%-
+        render 'c_care-info-item',
+        item: item,
+        custom_classes: 'custom'
+    -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture classes
+    render 'f_bem-classes', main_class: 'care-item', custom_classes: custom_classes
+  endcapture
+-%}
+
+<section class="{{ classes }}">
+    {% unless item.icon_src == blank %}
+      <div class="care-item__media">
+        <img class="care-item__img" src="{{ item.icon_src }}" alt="" role="presentation" loading="lazy">
+      </div>
+    {% endunless %}
+    {% unless item.title == blank %}
+      {%- render 'el_heading', level: 3, text: item.title, custom_classes: 'visually-hidden' -%}
+    {% endunless %}
+    {% unless item.description == blank %}
+      {{ '<p class="care-item__text">' | append: item.description | remove: '<p>' | remove: '</p>' | append: '</p>' }}
+    {% endunless %}
+</section>

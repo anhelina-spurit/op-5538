@@ -1,0 +1,85 @@
+{%- comment -%}
+    @summary Renders a price
+
+    @param {number} price - price
+    @param {string} [title] - title
+    @param {boolean} [no_discount=false] - no discount label
+    @param {boolean} [is_cart_total=false] - no discount label
+    @param {boolean} [no_aria=false] - no hidden aria labels
+    @param {string} [label] - label
+    @param {number} [compare_at_price] - compared price
+    @param {string} [tag] - html tag
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {%-
+        render 'c_price',
+        price: product.price,
+        compare_at_price: product.compare_at_price,
+    -%}
+{%- endcomment -%}
+
+{% liquid
+    assign amount = nil
+    if compare_at_price > price
+      assign amount = 1.0 | times: price | divided_by: compare_at_price
+      assign amount = 1.0 | minus: amount
+      assign amount = amount | times: 100.0 | round
+    endif
+
+    assign absolute_vp_discount = false
+    if product_tags contains settings.sales_absolute_discounts_tag
+      assign absolute_vp_discount = true
+    endif
+  %}
+
+  {% if price != blank %}
+      {%- assign tag = tag | default: 'p' -%}
+
+      <{{ tag }}
+          class="{%- render 'f_bem-classes', main_class: 'price', custom_classes: custom_classes, modifiers: modifiers -%}"
+          {% if attributes %}{{ attributes }}{% endif %}
+      >
+          {%- if label != blank -%}
+              <span class="price__label">{{ label }} </span>
+          {%- endif -%}
+          {%- unless no_aria -%}
+              <span class="visually-hidden">{% if title %}{{ title }}{% endif %} {{ 'products.price' | t | downcase }}:</span>
+          {%- endunless -%}
+
+          {%- if compare_at_price > price -%}
+              {%- unless no_aria -%}
+                  <span class="visually-hidden">{{ 'products.instead_of' | t | downcase }}</span>
+              {%- endunless -%}
+              <span class="price__value price__value--compare">{{ compare_at_price | money | replace: ' ', ' ' }}</span>
+          {%- endif -%}
+
+          {%- unless no_discount -%}
+
+            {%- unless no_aria -%}
+              <span class="visually-hidden">{{ 'products.discount' | t | downcase }}</span>
+            {%- endunless -%}
+
+            {%- if amount -%} <span class="price__value price__value--discount">{{ amount }}%</span>  {%- endif -%}
+          {%- endunless -%}
+          <span class="price__value price__value--current{% if compare_at_price > price %} price__value--color{% endif %}">
+              {%- if price != 0 -%}
+                  {{ price | money | replace: ' ', ' ' }}
+              {%- endif -%}
+          </span>
+      </{{ tag }}>
+
+      {% assign custom_classes_filtered = custom_classes | remove: 'vp-original-prices' | remove: 'vp-cart-original-total' %}
+
+
+      <{{tag}} class="{%- render 'f_bem-classes', main_class: 'price vp-prices', modifiers: modifiers, custom_classes: custom_classes_filtered -%}" style="display: none;">
+          {% if is_predictive_search %}<span class="vp-prices-discount product-label product-label--discount {% unless absolute_vp_discount == false %}vp-prices-absolute-discount{% endunless %}"></span>{% endif %}
+          <span class="vp-prices-from" style="display: none;">{{ 'ope_com.prices.from' | t }}</span>
+          <span class="{% unless is_cart_total %}vp-prices-max{% endunless %} price__value price__value--compare {% if is_cart_total %}vp-cart-compare-at{% endif %}"></span>
+          {% unless template == 'product' or template contains 'order'  or template contains 'cart' or is_predictive_search %}<span class="vp-prices-discount  price__value price__value--discount {% if absolute_vp_discount %}vp-prices-absolute-discount{% endif %}"></span>{% endunless %}
+          <span class="{% unless is_cart_total %}vp-prices-min{% endunless %} price__value price__value--current price__value--color {% if is_cart_total %}vp-cart-total{% endif %}"></span>
+      </{{tag}}>
+
+  {% endif %}

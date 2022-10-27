@@ -1,0 +1,53 @@
+{% comment %}
+  @summary Renders account menu
+  @param {Shopify.linklist} link_list - list of links
+  @param {string} labelled_by - labelled by
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_account-menu',
+    links: menu.links,
+    custom_classes: 'account__menu',
+    attributes: 'data-custom',
+    modifiers: 'lg, light',
+  %}
+{% endcomment %}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'account-menu', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+{%- liquid
+  assign logoutTitle = 'account.navigation.menu.logout' | t
+  capture logout
+    render 'el_link', href: routes.account_logout_url, text: logoutTitle, custom_classes: 'account-menu__link-logout'
+  endcapture
+-%}
+
+<nav class="{{ class }}" aria-labelledby="{{ labelled_by }}" {{ attributes }}>
+  <ul class="account-menu__list" role="list" aria-labelledby="{{ labelled_by }}">
+    {%- for link in link_list.links -%}
+      {%- assign customClasses = 'account-menu__link' -%}
+      {%- if link.url == page.url -%}
+        {%- assign customClasses = customClasses | append: ' active' -%}
+      {%- endif -%}
+      <li class="account-menu__item">
+        {%- capture text -%}
+          <span class="account-menu__link-content">{{- link.title -}}</span>
+          <span class="account-menu__link-icon">{%- render 'el_icon', icon: 'arrow-chevron-right' -%}</span>
+        {%- endcapture -%}
+        {%- assign attributes = '' -%}
+        {%- if link.url == "/account" -%}
+          {%- assign attributes = 'data-default' -%}
+        {%- endif -%}
+        {% render 'el_link', href: link.url, text: text, custom_classes: customClasses, attributes: attributes %}
+      </li>
+    {%- endfor -%}
+  </ul>
+  {{ logout }}
+</nav>

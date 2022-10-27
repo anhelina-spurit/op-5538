@@ -1,0 +1,100 @@
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/fonts';
+
+.care-symbols__content {
+  padding-top: to-rem(30px);
+
+  @include media-breakpoint-up(lg) {
+    display: grid;
+    padding-top: to-rem(74px);
+    column-gap: to-rem(60px);
+    grid-template-columns: 2fr 3fr;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-bottom: to-rem(54px);
+  }
+}
+
+.care-symbols__heading {
+  margin-top: 0;
+  margin-bottom: to-rem(30px);
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(16px);
+  font-weight: 400;
+  letter-spacing: to-rem(2.67px);
+  line-height: to-rem(26px);
+  text-align: center;
+
+  @include media-breakpoint-up(lg) {
+    padding-left: 72px;
+    margin-bottom: 0;
+    font-size: to-rem(24px);
+    letter-spacing: to-rem(4px);
+    line-height: to-rem(36px);
+    text-align: left;
+  }
+}
+
+.care-symbols__accordion-item {
+  border-top: 0.5px solid $palette-dark-slate-grey;
+}
+
+.care-symbols__accordion-item:last-of-type {
+  border-bottom: 0.5px solid $palette-dark-slate-grey;
+}
+
+.care-symbols__accordion-item .collapse-panel__content {
+  padding-top: to-rem(6px);
+  padding-bottom: to-rem(24px);
+}
+
+.care-symbols__accordion-item .accordion-item__button {
+  padding-top: to-rem(24px);
+  padding-bottom: to-rem(24px);
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(12px);
+  font-weight: 400;
+  letter-spacing: to-rem(0.72px);
+}
+
+.care-symbols__accordion-item .accordion-item__button::before,
+.care-symbols__accordion-item .accordion-item__button::after {
+  color: $palette-dark-slate-grey;
+}
+
+.care-symbols__list {
+  display: grid;
+  padding-left: 0;
+  margin: 0;
+  row-gap: 20px;
+
+  @include media-breakpoint-up(lg) {
+    column-gap: to-rem(72px);
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.care-symbols__item {
+  display: flex;
+  gap: 32px;
+  list-style-type: none;
+}
+
+.care-symbols__icon {
+  width: to-rem(30px);
+  object-fit: scale-down;
+  object-position: left center;
+}
+
+.care-symbols__description {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.72px);
+  line-height: to-rem(18px);
+}

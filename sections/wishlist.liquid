@@ -1,0 +1,28 @@
+{%- liquid
+  assign heading = 'account.navigation.menu.title' | t
+  assign heading_id = section.id | append: '_menu_heading'
+  if section.settings.account_nav == blank
+    assign custom_class = 'wishlist__column--full'
+  endif
+  capture content
+    echo '<div class="wishlist__column' | append: custom_class | append: '">'
+      render 'el_heading', level: 1, text: page.title, custom_classes: 'text-up wishlist__heading'
+      assign label = 'wishlist.count_label' | t
+      echo '<div class="wishlist__description" data-wishlist-count hidden><span></span>' | append: label | append: '</div>'
+      echo '<div class = "wishlist__body" data-wishlist data-customer-id = "' | append: customer.id | append: '"> </div>'
+    echo '</div>'
+  endcapture
+  assign heading_id = section.id | append: '__heading'
+  capture section_content
+    render 'el_container', content: content, modifiers: 'xxl', custom_classes: 'wishlist__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'wishlist', content: section_content, heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Wishlist",
+  "settings": []
+}
+{% endschema %}

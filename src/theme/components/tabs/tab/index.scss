@@ -1,0 +1,29 @@
+@import '../../../constants/palette';
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+
+.tab {
+  color: $palette-gray;
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(2.24px);
+  line-height: 2.14;
+  text-align: left;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(lg) {
+    color: $palette-dark;
+    font-size: to-rem(12px);
+    letter-spacing: to-rem(1.92px);
+    line-height: 2.5;
+  }
+}
+
+.tab[aria-selected='true'] {
+  border-bottom: to-rem(1px) solid $palette-dark;
+  color: $palette-dark;
+
+  @include media-breakpoint-down(lg) {
+    border-bottom: none;
+  }
+}

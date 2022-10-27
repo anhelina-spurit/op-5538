@@ -1,0 +1,37 @@
+@import '../../../utils/to-rem';
+@import '../../../constants/palette';
+@import '../../../utils/breakpoints/index';
+@import '../../../utils/hover/index';
+
+.wishlist-load-more {
+  display: flex;
+  justify-content: space-between;
+  margin: to-rem(50px) 0;
+  gap: to-rem(10px);
+  @include media-breakpoint-down(sm) {
+    display: block;
+    margin: to-rem(30px) 0;
+  }
+}
+
+.wishlist-load-more__row {
+  margin-bottom: to-rem(10px);
+  @include media-breakpoint-down(sm) {
+    display: block;
+  }
+}
+
+.wishlist-load-more__row .button {
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}
+
+.wishlist-load-more__row .link {
+  padding: to-rem(13px) to-rem(23px);
+  border-bottom: to-rem(1px) solid $palette-dark;
+  color: $palette-white;
+  @include hover {
+    color: $palette-dark;
+  }
+}

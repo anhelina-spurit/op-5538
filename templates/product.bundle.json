@@ -1,0 +1,40 @@
+{
+  "sections": {
+  	"product": {
+      "type": "product",
+      "settings": {
+      }
+    },
+    "cross-sell": {
+      "type": "cross-sell",
+      "blocks": {
+        "af07cc50-e4cc-4e31-9235-9a6bbd3a941f": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Compléter le look",
+            "metafield_name": "completer-le-look"
+          }
+        },
+        "7433cb75-8e76-45c9-b894-2395df91d82e": {
+          "type": "tab",
+          "settings": {
+            "tab_name": "Vous aimerez aussi",
+            "metafield_name": "vois-aimerez-aussi"
+          }
+        }
+      },
+      "block_order": [
+        "af07cc50-e4cc-4e31-9235-9a6bbd3a941f",
+        "7433cb75-8e76-45c9-b894-2395df91d82e"
+      ],
+      "settings": {
+        "heading": "Cross sell",
+        "is_heading_visible": false
+      }
+    }
+  },
+  "order": [
+    "product",
+    "cross-sell"
+  ]
+}

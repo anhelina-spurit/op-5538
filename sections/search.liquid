@@ -1,0 +1,85 @@
+{%- assign products_label = 'collection.products' | t -%}
+{%- assign one_product_label = 'collection.one_product' | t -%}
+<script>
+  window.collection = {
+    products: '{{ products_label }}',
+    one_product: '{{ one_product_label }}'
+  }
+</script>
+{%- capture container_content -%}
+  {%- liquid
+    assign heading_text = 'search.general.title' | t
+    assign products_count = settings.products_count | default: 12
+
+    if search.performed
+      assign heading_text = 'templates.search.title' | t
+    endif
+
+    render 'el_heading', level: 1, text: heading_text, modifiers: 'md', custom_classes: 'collection__heading'
+
+    if search.results_count == 0 and search.performed
+      assign no_results_text = 'templates.search.no_results' | t : terms: search.terms
+      render 'el_heading', tag: 'div', text: no_results_text, level: 2
+    endif
+
+    if search.filters != blank and section.settings.enable_filtering
+      render 'c_filter-horizontal', results: search
+    endif
+
+    render 'c_search-form', id: section.id, custom_classes: 'results__search'
+
+    render 'c_filter-navigation', results: search, is_filter: section.settings.enable_filtering
+
+    echo '<p class="collection__product-number"></p>'
+  -%}
+
+  <div class="collection__body" data-allow-infinite-scroll='{{ settings.allow_infinite_scroll }}' >
+    {%- if search.performed -%}
+      {%- liquid
+        if search.filters != blank and section.settings.enable_filtering
+          render 'c_filter', results: search
+        endif
+      -%}
+
+      <div class="collection__column collection__column--products" data-results>
+        {%- liquid
+          paginate search.results by products_count
+            render 'c_product-list', products: search.results, attributes: 'data-product-list', current_page: paginate.current_page
+            render 'c_load-more', paginate: paginate, filter: search.filters, allow_infinite_scroll: settings.allow_infinite_scroll
+          endpaginate
+        -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xl'
+  endcapture
+
+  assign attributes = 'data-collection-url=' | append: routes.search_url | append: ' data-layout-switch-type="basic"'
+
+  render 'c_section', id: section.id, name: 'collection', content: content, attributes: attributes
+-%}
+
+
+{% schema %}
+{
+  "name": "Search results",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "FILTERING AND SORTING"
+    },
+    {
+      "id": "enable_filtering",
+      "type": "checkbox",
+      "label": "Enable filtering",
+      "info": "Customize filters [filtres](\/admin\/menus)",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

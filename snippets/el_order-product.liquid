@@ -1,0 +1,51 @@
+{% comment %}
+  @summary Render order product
+  @param {Object} line_item (required) - order line item
+
+  @example
+  {%
+    render 'el_order-product',
+    line_item: line_item
+  %}
+{% endcomment %}
+
+{%- if line_item != blank -%}
+  {%- liquid
+    assign quantity = 'order.products.quantity.prefix' | t | append: line_item.quantity
+  -%}
+  <div class="order-product">
+    <div class="order-product__info">
+      {%- liquid
+        capture image_src
+          echo line_item | image_url: width: 100, height: 135
+        endcapture
+
+        render "el_image", src: image_src, lazy_loading: true, custom_classes: 'order-product__image', alt: ''
+      -%}
+      <div class="order-product__info-wrapper">
+        {% liquid
+          capture title
+            render 'f_product-title', product: line_item.product
+          endcapture
+        %}
+        <span class="order-product__title">{{ title | strip }}</span>
+        {% unless line_item.product.has_only_default_variant %}
+          <ul class="order-product__options-list">
+            {% for option in line_item.options_with_values %}
+              <li class="order-product__options-item">{{ option.value }}</li>
+            {% endfor %}
+            <li class="order-product__options-item order-product_hidden-desktop">
+              {{- quantity -}}
+            </li>
+          </ul>
+        {% endunless %}
+      </div>
+    </div>
+    <div class="order-product__quantity">
+      <span>{{- quantity -}}</span>
+    </div>
+    <div class="order-product__price">
+      {%- render 'c_price', price: line_item.final_price, compare_at_price: line_item.original_price, tag: 'span',  no_discount:true -%}
+    </div>
+  </div>
+{%- endif -%}

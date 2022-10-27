@@ -1,0 +1,30 @@
+{% comment %}
+
+  @summary Renders a container.
+
+  @param {string} content - content
+  @param {string} [tag] - Tag container
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]('xxl'|'xl'|'lg')} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'el_container',
+    content: '<p>Section content</p>',
+    tag: 'section',
+    custom_classes: 'test test-2',
+    modifiers: 'xl, lg',
+    attributes: 'data-test data-container'
+  %}
+{% endcomment %}
+
+{% liquid
+  assign tag = tag | default: 'div'
+%}
+
+{%- if content != blank -%}
+  <{{ tag }} class="{%- render 'f_bem-classes', main_class: 'container', custom_classes: custom_classes, modifiers: modifiers -%}" {{ attributes }}>
+      {{- content -}}
+  </{{ tag }}>
+{%- endif -%}

@@ -1,0 +1,89 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.account {
+  padding: to-rem(34px) 0;
+  background-color: $palette-quarter-pearl-lusta;
+
+  @include media-breakpoint-up(lg) {
+    padding: to-rem(80px) 0;
+  }
+}
+
+.account__wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+
+  @include media-breakpoint-up(xl) {
+    padding: 0 to-rem(53px);
+  }
+}
+
+.account__column-nav {
+  min-width: to-rem(260px);
+  max-width: unset;
+  margin-right: 0;
+
+  @include media-breakpoint-up(lg) {
+    max-width: to-rem(260px);
+    margin-right: to-rem(64px);
+  }
+
+  @include media-breakpoint-up(xl) {
+    margin-right: to-rem(82px);
+  }
+}
+
+.account__column-content {
+  display: none;
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
+}
+
+.account_width-column {
+  width: 100%;
+}
+
+.account__heading {
+  margin: 0 0 to-rem(13px) 0;
+  color: $palette-dark-slate-grey;
+  letter-spacing: 0.1875em;
+  line-height: 1.5;
+
+  @include media-breakpoint-up(lg) {
+    margin: 0 0 to-rem(19px) 0;
+  }
+}
+
+.account__customer-name {
+  display: block;
+  margin: 0 0 to-rem(32px) 0;
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(14px);
+  letter-spacing: 0.082em;
+
+  @include media-breakpoint-up(lg) {
+    margin: 0 0 to-rem(43px) 0;
+  }
+}
+
+.account.orders {
+  @include media-breakpoint-down(lg) {
+    background-color: $palette-white;
+  }
+}
+
+.account.order,
+.account.refunds {
+  @include media-breakpoint-down(md) {
+    background-color: $palette-white;
+  }
+}
+
+.account .hidden {
+  display: none;
+}

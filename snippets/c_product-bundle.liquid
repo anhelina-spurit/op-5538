@@ -1,0 +1,48 @@
+{%- if product.metafields.bundle.components != blank -%}
+  <div class="product-bundle" data-bundle>
+    {%- liquid
+      assign components = product.metafields.bundle.components | split: ','
+      assign total_price = 0
+      assign all_available = true
+
+      for component in components
+        assign handle = component | strip
+        assign component_product = all_products[handle]
+
+        unless component_product == empty
+          assign selected = component_product.selected_or_first_available_variant
+          assign total_price = total_price | plus: selected.price
+
+          render 'el_product-bundle-item', product: component_product
+
+          if selected.available == false and all_available
+            assign all_available = false
+          endif
+        endunless
+      endfor
+    -%}
+
+    <div class="product-bundle__footer">
+      <div class="product-bundle__price">
+        Total:
+        <span data-bundle-price>{{ total_price | money }}</span>
+      </div>
+      <div class="product-bundle__action">
+        {%- liquid
+          assign button_text = 'products.product.add_to_cart' | t
+          assign button_modifiers = 'full-width,primary'
+          assign button_disabled = false
+          assign button_class = 'product_form__button'
+
+          if all_available == false
+            assign button_text = 'products.product.sold_out' | t
+            assign button_modifiers = button_modifiers | replace: ',primary', ''
+            assign button_disabled = true
+          endif
+
+          render 'el_button', text: button_text, type: 'button', name: 'add', custom_classes: button_class, modifiers: button_modifiers, disabled: button_disabled
+        -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

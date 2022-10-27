@@ -1,0 +1,65 @@
+{%- comment -%}
+  @summary It creates a image tag from Shopify object
+
+  @param {Object} image - shopify image object
+  @param {boolean} [lazy_loading] - toggle lazy loading
+  @param {string} [alt] - alternative text for image
+  @param {string} [custom_classes] - class name of the
+  @param {string} [attributes] - additional HTML attributes of the
+  @param {string} [modifiers] - modifiers 'xl', 'lg'
+  @param {number} [width] - width of the image (if "crop" is set, crops the image to the following size)
+  @param {number} [height] - height of the image (if "crop" is set, crops the image to the following size)
+  @param {string('top'|'center'|'bottom'|'left'|'right')} [crop] - parameter to make sure that the resulting image's dimensions match the requested dimensions
+  @param {string('jpg'|'pjpg')} [format] - lets you specify what file format to use for the displayed image
+
+  @example
+  {%-
+    render 'el_shopify-image',
+    image: section.settings.image,
+    lazy_loading: true,
+    custom_classes: 'custom-class',
+    attributes: 'id="image_id" data-custom="custom"',
+    width: 100,
+    height: 100,
+    crop: 'center',
+    format: 'pjpg',
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  unless image == blank
+    if width == blank and height == blank
+      assign width = width | default: image.width
+      assign height = height | default: image.height
+    endif
+
+    if width == blank and height != blank
+      assign width = height | times: image.aspect_ratio | round
+    endif
+
+    if width != blank and height == blank
+      assign height = width | divided_by: image.aspect_ratio | round
+    endif
+
+    unless alt == '' or alt.size > 0
+      assign alt = image.alt | escape | strip
+    endunless
+
+    capture src
+      echo image | image_url: width: width, height: height, crop: crop, format: format
+    endcapture
+
+    capture lazy_loading_srcset
+      render 'f_image-srcset', image: image, crop: crop, format: format, width: width, height: height
+    endcapture
+
+    if lazy_loading
+      assign lazy_loading_lqip_width = 10
+      assign lazy_loading_lqip_height = 10 | divided_by: image.aspect_ratio | round
+      assign lazy_loading_lqip_src = image | image_url: width: lazy_loading_lqip_width, height: lazy_loading_lqip_height, crop: crop, format: format
+    endif
+
+    render 'el_image', src: src, alt: alt, lazy_loading: lazy_loading, lazy_loading_src_enabled: false, lazy_loading_lqip_src: lazy_loading_lqip_src, lazy_loading_srcset: lazy_loading_srcset, custom_classes: custom_classes, modifiers: modifiers, attributes: attributes
+  endunless
+-%}
+

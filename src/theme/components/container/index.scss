@@ -1,0 +1,32 @@
+@use 'sass:map';
+
+@import '../../utils/to-rem';
+
+$container-widths: (
+  xxl: 1375px,
+  xl: 1220px,
+  l: 980px,
+);
+
+.container {
+  width: 100%;
+  padding-right: to-rem(20px);
+  padding-left: to-rem(20px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container--fluid {
+  max-width: 100%;
+  padding: 0;
+}
+
+.container--centered {
+  text-align: center;
+}
+
+@each $name, $width in $container-widths {
+  .container--#{$name} {
+    max-width: to-rem($width);
+  }
+}

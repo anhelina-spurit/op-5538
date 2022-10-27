@@ -1,0 +1,20 @@
+{% liquid
+  capture breadcrumbs
+    render 'c_breadcrumbs'
+  endcapture
+
+  assign title = 'size_guide.mobile_title' | t
+
+  capture content
+    render 'c_size-guide'
+  endcapture
+
+  capture section_content
+    render 'el_container', content: breadcrumbs, modifiers: 'xxl'
+    render 'el_container', content: title, custom_classes: 'size-guide-title', modifiers: 'xxl'
+    render 'el_container', content: content, modifiers: 'xxl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'size-guide', content: section_content
+%}
+

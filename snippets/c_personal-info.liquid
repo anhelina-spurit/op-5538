@@ -1,0 +1,42 @@
+{%- comment -%}
+  @summary Renders a account personal info tab
+
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%- render 'c_personal-info',
+    custom_classes: 'points__container',
+    attributes: 'data-attribute',
+    modifiers: 'lg, light'
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign heading_t = 'account.personal-info.content.heading' | t
+  assign client_t = 'account.personal-info.content.client' | t | replace: '{client_number}', '<span class="account--details__client-number"></span>  '
+
+  capture form_container
+    echo '<div class="personal-info__personal-form">'
+    render "el_account-content-heading", title: heading_t, custom_classes_link: 'personal-info__heading-mobile'
+    render 'c_text-preview', description: client_t, custom_classes: 'personal-info__client-number'
+    render 'c_personal-details-form'
+    echo '</div>'
+    echo '<div class="personal-info__recover-body">'
+    assign recover_title = 'customer.recover_password.title' | t
+    render 'el_heading',level: 2,text: recover_title, custom_classes: 'recover-password__heading'
+    assign url = routes.account_login_url | append: '#recover'
+    assign link_text = 'customer.recover_password.button_text' | t
+    render 'el_link', href: url, text: link_text, custom_classes: 'recover-password__button button button--secondary button--small'
+    echo '</div>'
+  endcapture %}
+
+<div
+        class="{%- render 'f_bem-classes', main_class: 'personal-info', custom_classes: custom_classes, modifiers: modifiers -%}"
+        {{ attributes }}
+>
+  <div class="personal-info__content">
+    {{ form_container }}
+  </div>
+</div>

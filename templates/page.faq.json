@@ -1,0 +1,657 @@
+{
+  "sections": {
+    "faq-navigation": {
+      "type": "faq-navigation",
+      "blocks": {
+        "577ea923-6f17-460f-8a20-dbd4918260d3": {
+          "type": "nav_item",
+          "settings": {
+            "nav_name": "situation exceptionnelle",
+            "href": "situation exceptionnelle"
+          }
+        },
+        "a1d8f648-2d9a-44d2-857b-78876da17c39": {
+          "type": "nav_item",
+          "settings": {
+            "nav_name": "Mon compte",
+            "href": "Mon compte"
+          }
+        },
+        "a5fddf99-1178-4ebd-814a-8b7180da663f": {
+          "type": "nav_item",
+          "disabled": true,
+          "settings": {
+            "nav_name": "Commande",
+            "href": "commande"
+          }
+        },
+        "d832b9ec-d9a3-44af-a298-caaea3888959": {
+          "type": "nav_item",
+          "disabled": true,
+          "settings": {
+            "nav_name": "Livraison",
+            "href": "livraison"
+          }
+        },
+        "115de28c-d3be-4c3c-9301-eae0623071d2": {
+          "type": "nav_item",
+          "settings": {
+            "nav_name": "Retour",
+            "href": "retour"
+          }
+        },
+        "4d51f37f-cd14-4b84-8b26-c15d21636b26": {
+          "type": "nav_item",
+          "disabled": true,
+          "settings": {
+            "nav_name": "Programme de fidélité",
+            "href": "programme-de-fidelite"
+          }
+        },
+        "dfbd1ed7-896d-43ee-9fe4-0119fad3f414": {
+          "type": "nav_item",
+          "disabled": true,
+          "settings": {
+            "nav_name": "Carte cadeau",
+            "href": "carte-cadeau"
+          }
+        },
+        "69893139-aa07-410b-9a61-451cdc992092": {
+          "type": "nav_item",
+          "disabled": true,
+          "settings": {
+            "nav_name": "Carte cadeau partenaires",
+            "href": "carte-cadeau-partenaires"
+          }
+        },
+        "0748fc1a-5a24-4742-a222-19878f05500f": {
+          "type": "nav_item",
+          "disabled": true,
+          "settings": {
+            "nav_name": "Contactez-nous",
+            "href": "contactez-nous"
+          }
+        },
+        "08d0a6d4-413d-48e7-b024-eb7fa63e179e": {
+          "type": "nav_item",
+          "disabled": true,
+          "settings": {
+            "nav_name": "",
+            "href": ""
+          }
+        }
+      },
+      "block_order": [
+        "577ea923-6f17-460f-8a20-dbd4918260d3",
+        "a1d8f648-2d9a-44d2-857b-78876da17c39",
+        "a5fddf99-1178-4ebd-814a-8b7180da663f",
+        "d832b9ec-d9a3-44af-a298-caaea3888959",
+        "115de28c-d3be-4c3c-9301-eae0623071d2",
+        "4d51f37f-cd14-4b84-8b26-c15d21636b26",
+        "dfbd1ed7-896d-43ee-9fe4-0119fad3f414",
+        "69893139-aa07-410b-9a61-451cdc992092",
+        "0748fc1a-5a24-4742-a222-19878f05500f",
+        "08d0a6d4-413d-48e7-b024-eb7fa63e179e"
+      ],
+      "settings": {
+      }
+    },
+    "165487221844195765": {
+      "type": "faq",
+      "blocks": {
+        "b3b22cc2-81ac-4515-ab8b-ec1fbc9445f6": {
+          "type": "item",
+          "settings": {
+            "heading": "Qu'est ce qui va changer sur le nouveau site ?",
+            "content": "<p>Notre volonté est de vous apporter la meilleure des expériences d'achat. Ainsi, le site bénéficie d'un nouvel écrin. Nous espérons que celui-ci vous plait et vous plonge dans l'univers de notre belle marque. Certaines fonctionnalités sont encore en cours de développement et pour le moment indisponibles. Merci pour votre compréhension.<\/p>"
+          }
+        },
+        "23a2214c-f3b6-4baa-8963-0b6420994960": {
+          "type": "item",
+          "settings": {
+            "heading": "Est-ce que mon compte client existe toujours ?",
+            "content": "<p>Oui, vous pouvez toujours utiliser vos identifiants de connexion pour vous connecter à votre compte.<br\/>Si vous avez une problématique de connexion, vous pouvez réinitialiser votre mot de passe.<\/p>"
+          }
+        },
+        "4d3cc45f-b448-4ead-932b-4ebe845b1a75": {
+          "type": "item",
+          "settings": {
+            "heading": "Est-ce que mes historiques d'achats sont disponibles ?",
+            "content": "<p>Pour le moment cette option n'est pas fonctionnelle. Vos historiques seront de nouveau visibles dans quelques jours.<\/p>"
+          }
+        },
+        "4316ef88-e550-436a-ac17-2711da97bd27": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "heading": "Puis-je passer commande par courrier ?",
+            "content": "<p>La commande par courrier n’est plus possible depuis le 13 juin 2022. Vous pouvez passer une commande en ligne via notre site www.cyrillus.fr ou par téléphone en appelant le . - 09.69.32.35.04  (service gratuit depuis la France métropolitaine + prix d’un appel) du lundi au vendredi de 9h à 18h sauf jours fériés.<\/p>"
+          }
+        },
+        "3d580568-47d1-473e-8945-8272f0b24b93": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "heading": "Je souhaite retourner un article commandé avant le 6 juin 2022",
+            "content": "<p>Pour toute commande passée AVANT le 6 Juin 2022, et si vous n'avez pas pu télécharger votre bon de retour dans votre compte client, rubrique \"retour\", vous pouvez effectuer votre retour en téléchargeant un bon de retour en <a href=\"https:\/\/www.mondialrelay.fr\/envoi-de-colis\/retourner-un-colis\/creer-un-retour?brandId=F2CYRLUS&SiteId=CY_LOG&WeightInGramm=100\" target=\"_blank\" title=\"bon de retour\">cliquant ici<\/a>.<br\/><\/p><p>A l'intérieur de votre colis, vous pouvez insérer un papier libre précisant vos nom, prénom et numéro de commande (il commence par 21...). Nous vous demandons également, afin de faciliter la rapidité de traitement de votre retour, de renvoyer vos articles dans leurs emballages d'origine (pochettes transparentes) ainsi que dans la pochette ou le carton d'expédition Cyrillus d'origine.<\/p>"
+          }
+        },
+        "7daac1d8-e5b2-4307-9061-7d9c0af15934": {
+          "type": "item",
+          "settings": {
+            "heading": "J'avais un bon fidélité, puis-je toujours l'utiliser ?",
+            "content": "<p>Notre programme de fidélité évolue. Votre bon fidélité n'est plus utilisable mais pas de panique, il sera retransformé en points et vous pourrez utiliser ces points très prochainement en boutique ou sur Cyrillus.fr. Encore un peu de patience, notre nouveau programme de fidélité arrive bientôt...<\/p>"
+          }
+        },
+        "ebcd841a-c711-45a9-9ed7-ece2de4583b4": {
+          "type": "item",
+          "settings": {
+            "heading": "Qu'en est-il de mes points fidélité ?",
+            "content": "<p>Vos points de fidélité sont automatiquement transformés sur notre nouveau programme de fidélité. Encore un peu de patience, il arrive bientôt...<\/p>"
+          }
+        },
+        "bbdc554c-46d7-4030-aa26-d9b38786c5e5": {
+          "type": "item",
+          "settings": {
+            "heading": "J'ai une remise anniversaire ou de bienvenue, comment puis-je l'utiliser ?",
+            "content": "<p>L'utilisation de votre remise anniversaire ou de bienvenue est pour le moment indisponible, elles seront, bien evidemment prolongées.<\/p><p>Encore un peu de patience, notre nouveau programme de fidélité arrive bientôt...<\/p>"
+          }
+        },
+        "21f2cf6c-333b-4609-9153-6e1f55fbbdd9": {
+          "type": "item",
+          "settings": {
+            "heading": "Je souhaite acheter une carte cadeau ou une e-carte cadeau",
+            "content": "<p>L'achat d'une carte cadeau ou e-carte cadeau sur notre site internet sera très prochainement disponible.<br\/>En attendant, vous pouvez acheter une carte ou e-carte cadeau dans l'une de nos boutiques.<\/p>"
+          }
+        },
+        "dd9d72d4-926b-4ea6-8fc6-a51fbeacd481": {
+          "type": "item",
+          "settings": {
+            "heading": "J'ai une carte cadeau ou une e-carte cadeau, comment puis-je l'utiliser ?",
+            "content": "<p>Votre carte cadeau ou e-carte cadeau sera utilisable très prochainement sur notre nouveau site et dès aujourd'hui dans nos boutiques. Si celle-ci a une date de fin de validité antérieure au 15 juillet 2022 , sa durée de fin de validité est automatiquement prolongée jusqu'au 15 septembre 2022. <\/p>"
+          }
+        },
+        "6a1767d1-d639-44b2-8e78-f7a18cb813fe": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "heading": "Pourquoi ne puis-je pas réserver un article en boutique ?",
+            "content": "<p>Notre service e-réservation est momentanément indisponible. Merci de votre compréhension.<\/p>"
+          }
+        },
+        "a0ca14c0-f3f4-4310-8362-0188d26889a7": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "heading": "Pourquoi les ventes privées ne sont pas disponibles sur le site ?",
+            "content": "<p>Encore un peu de patience. En attendant, vous pouvez bénéficier des ventes privées en boutique.<\/p>"
+          }
+        },
+        "2404e29a-f98b-4422-9aec-09913ac568e4": {
+          "type": "item",
+          "settings": {
+            "heading": "Pourquoi certains articles Maison ne sont-ils pas disponibles ?",
+            "content": "<p>Afin de vous offrir un service de qualité et pouvoir vous livrer certains articles Maison, ils ne sont pour le moment pas encore disponibles. Merci de votre compréhension.<\/p>"
+          }
+        },
+        "9668cdfd-f6d6-42a2-82e8-cba7efa13b79": {
+          "type": "item",
+          "settings": {
+            "heading": "Est-ce que je peux me faire livrer en boutique Cyrillus ?",
+            "content": "<p>La livraison dans votre boutique Cyrillus est possible. Retrouvez toutes les adresses <a href=\"https:\/\/magasin.cyrillus.fr\/?intcmpid=lesboutiques\" target=\"_blank\" title=\"https:\/\/magasin.cyrillus.fr\/?intcmpid=lesboutiques\">ici<\/a>.<\/p>"
+          }
+        },
+        "e4075755-163a-442e-857d-08fc50575ce2": {
+          "type": "item",
+          "settings": {
+            "heading": "Pourquoi ne puis-je pas saisir de code promo dans mon panier ?",
+            "content": "<p>La saisie de codes promos n'est pas possible pour le moment. Nos équipes travaillent pour réactiver cette fonctionnalité au plus vite. Si vous bénéficiez d'un avantage et que ce dernier prend fin alors que la zone de saisie n'est pas active, nous prolongerons la date de validité de votre offre. Merci de votre compréhension.<\/p>"
+          }
+        },
+        "ded19a2f-e379-4be8-bdb3-3c48fa73372a": {
+          "type": "item",
+          "settings": {
+            "heading": "J’ai un article manquant dans ma commande, mais je n’ai pas été remboursé",
+            "content": "<p>Vous allez être automatiquement remboursé sous 10 jours après réception de votre commande sur le moyen de paiement utilisé lors de l’achat de votre commande. Vous n’avez pas besoin de contacter notre service client.<\/p>"
+          }
+        },
+        "7635755f-66e3-4c61-a05e-f741502d2972": {
+          "type": "item",
+          "settings": {
+            "heading": "J’ai contacté le service client et je n’ai pas encore eu de réponse",
+            "content": "<p>Nos délais de réponse sont actuellement allongés, nous vous prions de nous excuser pour ce temps d’attente. Votre demande a bien été prise en compte, il n’est pas nécessaire de la réitérer.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "b3b22cc2-81ac-4515-ab8b-ec1fbc9445f6",
+        "23a2214c-f3b6-4baa-8963-0b6420994960",
+        "4d3cc45f-b448-4ead-932b-4ebe845b1a75",
+        "4316ef88-e550-436a-ac17-2711da97bd27",
+        "3d580568-47d1-473e-8945-8272f0b24b93",
+        "7daac1d8-e5b2-4307-9061-7d9c0af15934",
+        "ebcd841a-c711-45a9-9ed7-ece2de4583b4",
+        "bbdc554c-46d7-4030-aa26-d9b38786c5e5",
+        "21f2cf6c-333b-4609-9153-6e1f55fbbdd9",
+        "dd9d72d4-926b-4ea6-8fc6-a51fbeacd481",
+        "6a1767d1-d639-44b2-8e78-f7a18cb813fe",
+        "a0ca14c0-f3f4-4310-8362-0188d26889a7",
+        "2404e29a-f98b-4422-9aec-09913ac568e4",
+        "9668cdfd-f6d6-42a2-82e8-cba7efa13b79",
+        "e4075755-163a-442e-857d-08fc50575ce2",
+        "ded19a2f-e379-4be8-bdb3-3c48fa73372a",
+        "7635755f-66e3-4c61-a05e-f741502d2972"
+      ],
+      "settings": {
+        "heading": "situation exceptionnelle : Notre nouveau site est en ligne ! Nos équipes sont encore mobilisées pour le rendre plus rapide, plus ergonomique et plus efficace. Il sera très prochainement opérationnel à 100%.",
+        "id": "situation exceptionnelle"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "6b9c6f1a-b68c-4a5a-bcc3-e76748aaf28e": {
+          "type": "item",
+          "settings": {
+            "heading": "Je n'arrive pas à m'identifier",
+            "content": "<p>Votre identifiant est votre adresse e-mail. Si vous avez égaré votre mot de passe, il vous suffit de cliquer sur «  Mot de passe oublié ?  »,lien qui se trouve au niveau de la page de connexion ; un mail vous sera envoyé pour réinitialiser votre mot de passe.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "6b9c6f1a-b68c-4a5a-bcc3-e76748aaf28e"
+      ],
+      "settings": {
+        "heading": "Mon compte",
+        "id": "Mon compte"
+      }
+    },
+    "1649346526a2c47e6e": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "dd3325aa-0e7e-4147-bf65-bfa27bc4e784": {
+          "type": "item",
+          "settings": {
+            "heading": "Je ne vois pas l'historique de toutes mes commandes",
+            "content": "<p>Vous pouvez accéder à vos commandes en cours et visualiser l'historique de vos commandes des 6 derniers mois depuis votre espace client.<br\/>Pour cela, cliquez ici puis identifiez-vous.<br\/>Vos articles commandés apparaissent dans la rubrique «  Mes commandes  »<br\/>Si vous souhaitez remonter au-delà des 6 mois, vous pouvez prendre prendre contact avec le service client via le formulaire de contact en ligne <\/p>"
+          }
+        },
+        "ddeaf48a-ba47-47d0-b8c7-285c37a1f2f6": {
+          "type": "item",
+          "settings": {
+            "heading": "Je souhaite modifier\/annuler la commande que je viens de valider",
+            "content": "<p>Malheureusement vous ne pouvez pas annuler ou modifier votre commande. Il vous suffira de la retourner dès réception.<\/p>"
+          }
+        },
+        "218d6bdb-9345-4a20-8022-eace396a2534": {
+          "type": "item",
+          "settings": {
+            "heading": "Combien d'articles puis-je insérer dans mon panier ?",
+            "content": "<p>Votre panier peut contenir jusqu'à 25 lignes<\/p>"
+          }
+        },
+        "ea9421b8-f5c8-4429-b1c8-9fecce6bef4d": {
+          "type": "item",
+          "settings": {
+            "heading": "Je n'habite pas en France et je souhaite passer commande",
+            "content": "<p>Si vous vivez à l'étranger ou dans les Dom Tom et que vous souhaitez devenir client Cyrillus, connectez-vous sur www.cyrillus.com<\/p>"
+          }
+        },
+        "f44e851b-453a-4994-b966-22b2997945f1": {
+          "type": "item",
+          "settings": {
+            "heading": "Le code avantage que j'ai indiqué ne m'affiche aucun avantage",
+            "content": "<p>Pour bénéficier d'un code avantage, vous devez simplement le saisir dans votre panier. Si le code n'est pas pris en compte, assurez-vous que vous respectez bien les conditions de l'offre. Pour cela, consultez le détail des conditions d'attribution de votre offre en cliquant sur ce lien «  conditions de nos offres<\/p>"
+          }
+        },
+        "1e9a53f2-0363-40a5-950c-40522515b0b4": {
+          "type": "item",
+          "settings": {
+            "heading": "Puis-je passer commande par courrier ?",
+            "content": "<p>La commande par courrier n’est plus possible depuis le 13 juin 2022. Vous pouvez passer une commande en ligne via notre site www.cyrillus.fr ou par téléphone en appelant le . - 09.69.32.35.04  (service gratuit depuis la France métropolitaine + prix d’un appel) du lundi au vendredi de 9h à 18h sauf jours fériés.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "dd3325aa-0e7e-4147-bf65-bfa27bc4e784",
+        "ddeaf48a-ba47-47d0-b8c7-285c37a1f2f6",
+        "218d6bdb-9345-4a20-8022-eace396a2534",
+        "ea9421b8-f5c8-4429-b1c8-9fecce6bef4d",
+        "f44e851b-453a-4994-b966-22b2997945f1",
+        "1e9a53f2-0363-40a5-950c-40522515b0b4"
+      ],
+      "settings": {
+        "heading": "COMMANDE",
+        "id": "commande"
+      }
+    },
+    "1649346714afde3f09": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "0e4b453f-14be-47be-baca-2f615538c608": {
+          "type": "item",
+          "settings": {
+            "heading": "Je n'habite pas en France et je souhaite me faire livrer dans un autre pays",
+            "content": "<p>Sur le site www.cyrillus.fr l'adresse de facturation et de livraison doivent se situer en France Métropolitaine. Si vous vivez à l'étranger ou dans les Dom Tom et que vous souhaitez vous faire livrer hors de France, connectez-vous sur www.cyrillus.com  !<\/p>"
+          }
+        },
+        "676ac402-cacb-4be7-8bed-58d52c8fcee7": {
+          "type": "item",
+          "settings": {
+            "heading": "Je n'ai pas reçu mon colis (livraison à domicile)",
+            "content": "<p>Vous pouvez suivre les différentes étapes de livraison de votre colis sur :<br\/>• Votre espace client rubrique «  Mes commandes  »<br\/>• Sur le site de notre transporteur Colis Privé <\/p>"
+          }
+        },
+        "9f39bdbc-c46d-4089-88bd-01758ab43f66": {
+          "type": "item",
+          "settings": {
+            "heading": "Je n' ai pas reçu mon colis (livraison en relais)",
+            "content": "<p>Vous pouvez suivre les différentes étapes de livraison de votre colis sur :<br\/>• Votre espace client rubrique «  Mes commandes  »<br\/>• Sur le site du transporteur https:\/\/www.mondialrelay.fr<\/p>"
+          }
+        },
+        "da7208a5-3021-4163-82e4-961feb3059b9": {
+          "type": "item",
+          "settings": {
+            "heading": "Je souhaite modifier la livraison de ma commande, comment faire ?",
+            "content": "<p>La modification du mode ou de l'adresse de livraison n’est malheureusement pas possible.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "0e4b453f-14be-47be-baca-2f615538c608",
+        "676ac402-cacb-4be7-8bed-58d52c8fcee7",
+        "9f39bdbc-c46d-4089-88bd-01758ab43f66",
+        "da7208a5-3021-4163-82e4-961feb3059b9"
+      ],
+      "settings": {
+        "heading": "Livraison",
+        "id": "livraison"
+      }
+    },
+    "1649346779f3745716": {
+      "type": "faq",
+      "blocks": {
+        "4d7eeaaa-f005-4a0a-80b1-b87fa14e6110": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "heading": "Je souhaite obtenir un remboursement",
+            "content": "<p>Si vous optez pour le remboursement, il sera effectué dès réception de votre colis et vérification de son contenu :<br\/>• Directement en boutique<br\/>OU<br\/>• Dès réception de votre colis et vérification de son contenu<br\/>   - Sous 48h pour un crédit sur compte bancaire<br\/> Pour plus d'informations nous vous donnons rendez-vous sur notre page «  Mes retours  »<\/p>"
+          }
+        },
+        "fb3a545d-9617-4a1e-a1c6-ba32132c960e": {
+          "type": "item",
+          "settings": {
+            "heading": "Je souhaite retourner un article commandé AVANT le 6 juin 2022",
+            "content": "<p>Pour toute commande passée AVANT le 6 Juin 2022, et si vous n'avez pas pu télécharger votre bon de retour dans votre compte client, rubrique \"retour\", vous pouvez effectuer votre retour en téléchargeant un bon de retour en <a href=\"https:\/\/www.mondialrelay.fr\/envoi-de-colis\/retourner-un-colis\/creer-un-retour?brandId=F2CYRLUS&SiteId=CY_LOG&WeightInGramm=100\" target=\"_blank\" title=\"bon de retour\">cliquant ici<\/a>.<br\/><\/p><p>A l'intérieur de votre colis, vous pouvez insérer un papier libre précisant vos nom, prénom et numéro de commande (il commence par 21...). Nous vous demandons également, afin de faciliter la rapidité de traitement de votre retour, de renvoyer vos articles dans leurs emballages d'origine (pochettes transparentes) ainsi que dans la pochette ou le carton d'expédition Cyrillus d'origine.<\/p>"
+          }
+        },
+        "38b50c01-1612-4243-ad3d-8cfdd12e12ad": {
+          "type": "item",
+          "settings": {
+            "heading": "Je souhaite retourner un article commandé APRES le 6 juin 2022",
+            "content": "<p>Vous avez changé d'avis ou vous souhaitez simplement réfléchir ? Vous avez un délai de 60 jours pour vous décider. Et pour tout achat (non porté, non retouché, non lavé), vous pouvez demander un remboursement.<br\/><br\/>Vous pouvez opter pour un retour :<br\/><br\/>• En boutique Cyrillus<br\/>Rendez-vous dans l'une de nos boutiques Cyrillus (hors Cyrillus Outlet et Corner Galerie Lafayette), Munissez-vous de votre bon de retour ou de votre facture. Votre retour et votre remboursement seront aussitôt traité.<br\/><br\/><br\/>• En point Mondial Relay<br\/>Il vous suffit de pré-déclarer le retour dans votre <a href=\"https:\/\/cyrillus.fr\/account\/\" title=\"https:\/\/cyrillus.fr\/account\/\">espace client<\/a>, imprimez ensuite votre bon de retour, glissez la partie de gauche dans votre colis et collez la partie de droite sur le colis. Déposez ce dernier dans le Point Relais de votre choix. Suivez votre colis grâce au numéro indiqué sur votre étiquette.<br\/><br\/><em>Les articles de la collection maison sont repris exclusivement en Point Relais. Pour les articles volumineux (meubles), ils seront repris directement à votre domicile.Il est nécessaire de contacter notre service de Relation Client au 0 969 323 504 (Service gratuit + Prix appel) pour établir l'ordre de reprise.<\/em><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "4d7eeaaa-f005-4a0a-80b1-b87fa14e6110",
+        "fb3a545d-9617-4a1e-a1c6-ba32132c960e",
+        "38b50c01-1612-4243-ad3d-8cfdd12e12ad"
+      ],
+      "settings": {
+        "heading": "REtour",
+        "id": "retour"
+      }
+    },
+    "165487028314dced50": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "0668794c-fe8a-4f1d-96ff-8bf2db19cdb9": {
+          "type": "item",
+          "settings": {
+            "heading": "Comment collecter des points ?",
+            "content": "<p>Vos points sont collectés à chaque achat en boutique et sur cyrillus.fr .<br\/>1€ = 1 point. Vos points sont valables 1 an<\/p>"
+          }
+        },
+        "d7741e80-4396-4c82-aa97-bdb11cde768e": {
+          "type": "item",
+          "settings": {
+            "heading": "Comment utiliser mes points ?",
+            "content": "<p>Dès l'atteinte du seuil de 200 points vous pourrez utiliser votre remise de 10€ en boutique ou sur cyrillus.fr lors de votre prochain achat.<\/p>"
+          }
+        },
+        "bc07c538-eec9-4b83-819a-5d6d857bc6ae": {
+          "type": "item",
+          "settings": {
+            "heading": "La remise fidélité",
+            "content": "<p>LA REMISE FIDELITE :  Vous obtiendrez une remise fidélité de 10€ dès l'atteinte du seuil de 200 points. Vos points sont vablables 1 an<\/p>"
+          }
+        },
+        "50911eee-80a2-40bf-9e8e-11a113a58795": {
+          "type": "item",
+          "settings": {
+            "heading": "Comment utiliser mes bons fidélité ?",
+            "content": "<p>Comment utiliser ma remise fidélité  ? Vous pouvez utiliser votre remise de 10€ en boutique ou sur cyrillus.fr . Retrouvez la marche à suivre ici .<\/p>"
+          }
+        },
+        "447def55-8b73-4622-962f-5d2fd6fb0d9e": {
+          "type": "item",
+          "settings": {
+            "heading": "Quand mes points sont-ils remis à zéro ?",
+            "content": "<p>Vos points sont valables 1 an à compter de la date de votre dernier achat.<\/p>"
+          }
+        },
+        "92fd5b9c-00bd-4817-83b6-200e78c827cb": {
+          "type": "item",
+          "settings": {
+            "heading": "Mes points fidélité me donnent droit à des avantages. Comment en bénéficier ?",
+            "content": "<p>Vous trouverez le détail du programme de fidélité sur la page «  Programme fidélité  ».<br\/>Les points fidélité cumulés le jour d'une commande ne sont utilisables qu'à votre prochaine commande.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "0668794c-fe8a-4f1d-96ff-8bf2db19cdb9",
+        "d7741e80-4396-4c82-aa97-bdb11cde768e",
+        "bc07c538-eec9-4b83-819a-5d6d857bc6ae",
+        "50911eee-80a2-40bf-9e8e-11a113a58795",
+        "447def55-8b73-4622-962f-5d2fd6fb0d9e",
+        "92fd5b9c-00bd-4817-83b6-200e78c827cb"
+      ],
+      "settings": {
+        "heading": "Programme de fidélité",
+        "id": "programme de fidélité"
+      }
+    },
+    "1654870978b334754c": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "0892b661-1d8c-4110-9ad6-4bba6336764a": {
+          "type": "item",
+          "settings": {
+            "heading": "Qu'est-ce qu'une carte cadeau ou une e-carte cadeau ?",
+            "content": "<p>Une carte cadeau ou une e-carte cadeau Cyrillus est un bon d'achat qui permet à son bénéficiaire de régler ses achats, en une ou plusieurs fois,jusqu'à l'épuisement du solde ou l'arrivée à terme de sa date de validité, dans les boutiques Cyrillus et\/ou en ligne sur le site cyrillus.fr .<br\/>Elle est valable un an à compter de sa date d'achat, y compris pendant les opérations promotionnelles. Vous choisissez le montant à charger sur la carte cadeaude 10€ à 500 €. Si vous souhaitez une carte cadeau supérieure à 500 €, vous pouvez alors acheter plusieurs cartes cadeaux.<\/p>"
+          }
+        },
+        "fa8eaa57-a12b-48d5-9ebf-1ef2ff05144e": {
+          "type": "item",
+          "settings": {
+            "heading": "Où acheter\/utiliser une carte cadeau ou e-carte cadeau ?",
+            "content": "<p><strong>Votre carte cadeau ou e-carte cadeau sera utilisable très prochainement sur notre nouveau site et dès aujourd'hui dans nos boutiques. Si celle-ci a une date de fin de validité antérieure au 15 juillet 2022 , sa durée de fin de validité sera automatiquement prolongée jusqu'au 15 septembre 2022. <\/strong><\/p><p><\/p><p>Vous pouvez acheter la carte cadeau dans nos boutiques Cyrillus en France et sur notre site cyrillus.fr. L'achat de la e-carte cadeau se fera uniquement sur notre site, www.cyrillus.fr dans la rubrique services «  La Carte Cadeau Cyrillus  ».Vous pouvez utiliser la carte cadeau et la e-carte cadeau dans nos boutiques Cyrillus en France et sur notre site cyrillus.fr .<\/p>"
+          }
+        },
+        "4aac13a7-325d-423a-bdc1-aac7ad1a8e9b": {
+          "type": "item",
+          "settings": {
+            "heading": "Comment utiliser la carte cadeau ou e-carte cadeau sur le site cyrillus.fr ?",
+            "content": "<p><strong>Votre carte cadeau ou e-carte cadeau sera utilisable très prochainement sur notre nouveau site et dès aujourd'hui dans nos boutiques. Si celle-ci a une date de fin de validité antérieure au 15 juillet 2022 , sa durée de fin de validité sera automatiquement prolongée jusqu'au 15 septembre 2022. <\/strong><\/p><p><\/p><p>Lorsque vous choisirez votre mode de paiement sur le site www.cyrillus.fr, cliquez sur « e-carte cadeau ».Renseignez le numéro de votre carte (12 chiffres inscrits au dos de votre carte ou sur l'email E- carte que vous avez reçu)ainsi que le cryptogramme (composé de 3 chiffres figurant au dos de votre carte ou sur votre email e-carte) pour régler vos achats.<\/p>"
+          }
+        },
+        "92f6e693-c4f1-4a2c-8873-a6a16025917a": {
+          "type": "item",
+          "settings": {
+            "heading": "Comment connaître le montant disponible sur ma carte cadeau ?",
+            "content": "<p>Rendez-vous sur ce lien : https:\/\/www.cyrillus.fr\/consultationcartecadeaux.aspx<\/p>"
+          }
+        },
+        "a42d9273-a983-4512-b85a-a1603fcddeb8": {
+          "type": "item",
+          "settings": {
+            "heading": "Les cartes cadeaux ou e-cartes cadeaux sont-elles cumulables ?",
+            "content": "<p>Oui. Vous pouvez régler vos achats avec un maximum de 2 cartes cadeaux.<\/p>"
+          }
+        },
+        "6450b07f-dbd5-4cb9-916f-3c4417a47caa": {
+          "type": "item",
+          "settings": {
+            "heading": "Le solde de ma carte cadeau ou e-carte cadeau est insuffisant pour faire mes achats, comment faire ?",
+            "content": "<p>En boutique ou sur notre site, on vous proposera de compléter vos achats avec le moyen de paiement de votre choix.<\/p>"
+          }
+        },
+        "65640943-04b7-4365-817a-0c44bb4f11e6": {
+          "type": "item",
+          "settings": {
+            "heading": "Puis-je utiliser un code avantage pour acheter une carte cadeau ou e-carte cadeau ?",
+            "content": "<p>Non. Il n'est pas possible d'utiliser une réduction ou un autre avantage pour acheter une carte cadeau ou e-carte cadeau.<br\/>Le bénéficiaire pourra par contre utiliser un code avantage s'il règle une commande avec une carte cadeau ou e-carte cadeau.<\/p>"
+          }
+        },
+        "2f370d77-10e7-476a-b630-2f6b0ca8aa98": {
+          "type": "item",
+          "settings": {
+            "heading": "Que se passe-t-il en cas de perte ou de vol de ma carte cadeau ?",
+            "content": "<p>La perte ou le vol de votre carte cadeau ne peut donner lieu à aucun remboursement même partiel, ni à aucun remplacement de la carte.<\/p>"
+          }
+        },
+        "b889c378-d346-409b-b2b7-3a460c2be2e3": {
+          "type": "item",
+          "settings": {
+            "heading": "Quel est le délai de livraison de ma carte cadeau ou e-carte cadeau ?",
+            "content": "<p>La carte cadeau est envoyée par courrier postal dans un joli emballage avec un message personnalisé au bénéficiaire dans un délai de 72 heures suivant la validation du paiement. La e-carte cadeau est envoyée par email au bénéficiaire dans un délai de 24 heures après l'achat en ligne de la e-carte cadeau.<\/p>"
+          }
+        },
+        "bf2f2ea3-0529-4e94-a7b4-1c70d352979d": {
+          "type": "item",
+          "settings": {
+            "heading": "J'ai commis une erreur dans l'adresse postale d'envoi de la carte cadeau, que puis-je faire ?",
+            "content": "<p>Toute modification dans la commande est possible avant le paiement de celle-ci. Après son règlement, merci de prendre contact, dans les meilleurs délais, avec notre service client 0 969 323 504 (Service gratuit + Prix appel) afin de vous apporter une solution.<\/p>"
+          }
+        },
+        "3dd84564-d093-4841-87f5-3454e1149084": {
+          "type": "item",
+          "settings": {
+            "heading": "Pourquoi le bénéficiaire n'a-t-il pas reçu son e-mail e-carte cadeau ?",
+            "content": "<p>• Soit l'email a atterri dans sa boîte email en courrier indésirable (spam)<br\/>• Soit il s'agit d'une erreur de saisie de l'adresse email du bénéficiaire<br\/>• Soit l'adresse email renseignée n'est pas ou plus valable.<br\/>Nous vous conseillons de prendre contact le service client : 0 969 323 504 (Service gratuit + Prix appel)<\/p>"
+          }
+        },
+        "dbd82780-4214-491e-a2fd-72515e688874": {
+          "type": "item",
+          "settings": {
+            "heading": "Comment puis-je suivre la livraison de ma commande de carte cadeau ?",
+            "content": "<p>Dans les 24 heures suivant le paiement de votre commande, vous recevrez un email de confirmation d'expédition avec le numéro de suivi à 13 chiffres de votre commande.<br\/>La prise en charge de votre commande par les services de la Poste se faisant sous 48 heures ouvrées après le paiement de votre commande,vous pourrez consulter son suivi sous ce délai dans la rubrique «  suivi des envois  » via le site : www.laposte.fr\/Particulier<\/p>"
+          }
+        },
+        "94f0025f-5a5f-4212-aca5-9e18df52ec8d": {
+          "type": "item",
+          "settings": {
+            "heading": "Comment annuler ma commande de carte cadeau ?",
+            "content": "<p>Pour toute annulation de votre commande après la validation de votre paiement, merci de prendre contact, dans les meilleurs délais,avec notre service client au 0 969 323 504 (Service gratuit + Prix appel)<\/p>"
+          }
+        },
+        "1d1f3036-8db3-4c82-855d-15cbfc235dce": {
+          "type": "item",
+          "settings": {
+            "heading": "J'ai commandé une carte cadeau. Elle n'est pas arrivée",
+            "content": "<p>Avez-vous noté la bonne adresse du destinataire ? Si il s'agit d'une e-carte cadeau, la e-carte cadeau est-elle dans vos Spams ? Avec les vérifications bancaires qui sécurisent nos transactions, il se peut que l'envoi de votre carte soit décalé d'une journée.<br\/>Pour toutes réclamations ou précisions sur le suivi de votre commande nous vous conseillons de contacter le service clientau 0 969 323 504 (Service gratuit + Prix appel) qui pourra vous faire un suivi précis sur le sujet.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "0892b661-1d8c-4110-9ad6-4bba6336764a",
+        "fa8eaa57-a12b-48d5-9ebf-1ef2ff05144e",
+        "4aac13a7-325d-423a-bdc1-aac7ad1a8e9b",
+        "92f6e693-c4f1-4a2c-8873-a6a16025917a",
+        "a42d9273-a983-4512-b85a-a1603fcddeb8",
+        "6450b07f-dbd5-4cb9-916f-3c4417a47caa",
+        "65640943-04b7-4365-817a-0c44bb4f11e6",
+        "2f370d77-10e7-476a-b630-2f6b0ca8aa98",
+        "b889c378-d346-409b-b2b7-3a460c2be2e3",
+        "bf2f2ea3-0529-4e94-a7b4-1c70d352979d",
+        "3dd84564-d093-4841-87f5-3454e1149084",
+        "dbd82780-4214-491e-a2fd-72515e688874",
+        "94f0025f-5a5f-4212-aca5-9e18df52ec8d",
+        "1d1f3036-8db3-4c82-855d-15cbfc235dce"
+      ],
+      "settings": {
+        "heading": "Carte cadeau",
+        "id": "carte cadeau"
+      }
+    },
+    "1654871617ba5c1ee2": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "b4a8a6ef-25af-43bf-b216-2920b8eb35cc": {
+          "type": "item",
+          "settings": {
+            "heading": "Illicado",
+            "content": "<p>Nous acceptons les cartes cadeaux Illicado uniquement dans nos boutiques Cyrillus.<\/p>"
+          }
+        },
+        "fb03af81-43e5-4f6d-b0fe-ed137be7d360": {
+          "type": "item",
+          "settings": {
+            "heading": "Wedoogift",
+            "content": "<p>Nous acceptons les cartes cadeaux Wedoogift dans nos boutiques Cyrillus et sur cyrillus.fr<\/p>"
+          }
+        },
+        "a40181cd-eff7-4dd3-901b-f076403ec820": {
+          "type": "item",
+          "settings": {
+            "heading": "Chèques cadeaux Kadeos",
+            "content": "<p>Nous acceptons les Ticket Kadeos Infini uniquement dans nos boutiques Cyrillus.<\/p>"
+          }
+        },
+        "4088069d-dcf9-472b-8a13-7f891a3b5bc2": {
+          "type": "item",
+          "settings": {
+            "heading": "CADO Carte",
+            "content": "<p>Nous acceptons les cartes CADO Carte et CADO carte extra uniquement dans nos boutiques Cyrillus.<\/p>"
+          }
+        },
+        "62413bb3-dbb0-4ea0-bbd5-bc12e320351b": {
+          "type": "item",
+          "settings": {
+            "heading": "Spirit of cadeau",
+            "content": "<p>Nous acceptons les cartes Spirit of cadeau et Spirit of cadeau plus uniquement dans nos boutiques Cyrillus.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "b4a8a6ef-25af-43bf-b216-2920b8eb35cc",
+        "fb03af81-43e5-4f6d-b0fe-ed137be7d360",
+        "a40181cd-eff7-4dd3-901b-f076403ec820",
+        "4088069d-dcf9-472b-8a13-7f891a3b5bc2",
+        "62413bb3-dbb0-4ea0-bbd5-bc12e320351b"
+      ],
+      "settings": {
+        "heading": "carte cadeau partenaires",
+        "id": "carte cadeau partenaires"
+      }
+    }
+  },
+  "order": [
+    "faq-navigation",
+    "165487221844195765",
+    "faq",
+    "1649346526a2c47e6e",
+    "1649346714afde3f09",
+    "1649346779f3745716",
+    "165487028314dced50",
+    "1654870978b334754c",
+    "1654871617ba5c1ee2"
+  ]
+}

@@ -1,0 +1,14 @@
+.link-wrapper {
+  position: relative;
+}
+
+.link-wrapper__link {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  text-decoration: none;
+}

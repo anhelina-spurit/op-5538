@@ -1,0 +1,68 @@
+{%- comment -%}
+  @summary Renders a menu
+
+  @param {string} id - id
+  @param {link_list} link_list - links list
+  @param {string} [custom_classes] - additional classes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'c_menu',
+    id: menu_id,
+    link_list: section.settings.menu,
+    custom_classes: 'header__menu',
+    modifiers: 'lg, dark',
+  -%}
+{%- endcomment -%}
+
+{%- if id != blank and link_list != blank -%}
+  {% assign label_id = id | append: '_title' %}
+
+  <nav
+    id="{{ id }}"
+    class="menu {{ custom_classes }}"
+    aria-labelledby="{{ label_id }}"
+    {{ attributes }}
+  >
+    <span id="{{ label_id }}" class="visually-hidden" aria-hidden="true">{{ link_list.title }}</span>
+
+    <ul class="menu__list" role="menubar" aria-labelledby="{{ label_id }}">
+      {%- for link in link_list.links -%}
+        <li class="menu__item" role="none">
+          {%- render 'el_menu-link', link: link -%}
+
+          {%- if link.links != blank -%}
+            <ul class="disclosure-menu">
+              {%- for childlink in link.links -%}
+                <li class="disclosure-menu__item">
+                  {%- render 'el_menu-link', link: childlink -%}
+
+                  {%- if childlink.links != blank -%}
+                    <ul class="disclosure-submenu">
+                      {%- for grandchildlink in childlink.links -%}
+                        <li class="disclosure-submenu__item">
+                          {%- render 'el_menu-link', link: grandchildlink -%}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {%- endif -%}
+                </li>
+              {% endfor %}
+
+              {%- assign menu_item_low = link.title | downcase -%}
+              {%- for card in cards -%}
+                {%- assign card_item_low = card.settings.menu_item | downcase -%}
+                {%- if card_item_low == menu_item_low -%}
+                <li class="disclosure-menu__item disclosure-menu__item--card">
+                  {%- render 'el_menu-card', card: card -%}
+                </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{%- endif -%}

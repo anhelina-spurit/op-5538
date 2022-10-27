@@ -1,0 +1,142 @@
+{
+  "sections": {
+    "page-head": {
+      "type": "page-head",
+      "settings": {
+        "background": "#f2ecdf",
+        "image": "shopify:\/\/shop_images\/page_marque_haut_982x489_5e0e5566-c689-474f-b3a8-823dedf6ca4c.jpg",
+        "sub_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Sigle_Cyrillus_f4047bd2-6221-4368-8e61-5957fff63ea8.svg?v=1649698775",
+        "quotes": "\"Nous croyons en une mode durable faite de pièces intemporelles qui se transmettent et racontent des histoires...\"",
+        "subtitle": "<p>IL Y A PLUS DE 40 ANS...<br\/><em>Une femme a imaginé et créé Cyrillus.<\/em><\/p>",
+        "description": "<p>Cyrillus, c'est la jolie histoire d'une Femme-entrepreneure qui décide <br\/>de créer une ligne de beaux classiques pour ses enfants. L'envie grandit, une première collection inspirée par les maisons de couture se dessine. Des tissus haut de gamme, des coupes structurées, des codes <br\/>emblématiques se posent sur les premières créations. Le beau, le chic, l'élégance deviennent accessibles à tous...<br\/><br\/>Aujourd’hui, c’est toujours la famille, le goût des belles choses qui se transmettent, le savoir-faire et la même passion qui nous animent…<\/p>"
+      }
+    },
+    "1649919085f6e3918b": {
+      "type": "text-and-image",
+      "settings": {
+        "mobile_border": true,
+        "image": "shopify:\/\/shop_images\/page_marque_bebe_633x779_c2f8b09f-6649-4444-902a-6f3909f2324a.jpg",
+        "image_description": "",
+        "image_aligment": "right",
+        "image_outside": true,
+        "text_align": "center",
+        "subtitle": "Philosophie",
+        "title": "Vous, vos enfants, votre famille... vous guidez nos créations.",
+        "description": "<p>\"Créer des vêtements références, des modèles durables qui accompagnent vos instants de vie.\"<\/p><p>Nous croyons en une mode durable faite de pièces intemporelles qui se transmettent et racontent des histoires. Nous privilégions le style, un style sobre et distingué à la signature classique et décontractée. Nous pensons que les belles choses prennent du temps et requièrent beaucoup de savoir-faire, de délicatesse et de justesse. Nos collections sont le reflet de nos exigences, elles portent nos ambitions d’une mode pour vous, avec nous… et tournée vers demain !<\/p>",
+        "description_quotes": false
+      }
+    },
+    "1649919151229df6cc": {
+      "type": "text-and-image",
+      "settings": {
+        "mobile_border": false,
+        "image": "shopify:\/\/shop_images\/page_marque_detail_539x650_12b1e41f-2d54-409e-ac67-fe42502339d1.jpg",
+        "image_description": "",
+        "image_aligment": "left",
+        "image_outside": false,
+        "text_align": "center",
+        "subtitle": "Style",
+        "title": "Le classique à la française",
+        "description": "<p>C'est notre style, <br\/>classique avec une touche de twist !<\/p><p><\/p><p>Un parfait équilibre entre l'esprit masculin\/féminin et les inspirations anglo-saxonnes qui l'enrichissent : les codes traditionnels anglais, les tissus Prince de Galles, Liberty, William Morris, les laines nobles et le style preppy de la côte-est américaine avec ses prestigieuses universités.<\/p><p>Nos stylistes, modélistes imaginent et réalisent des pièces intemporelles, des créations exclusives et élégantes qui s'inscrivent dans l'air du temps et qui portent notre définition du \"classique à la française\".<\/p>",
+        "description_quotes": false
+      }
+    },
+    "16499192171f6a368c": {
+      "type": "text-and-image",
+      "settings": {
+        "mobile_border": true,
+        "image": "shopify:\/\/shop_images\/page_marque_style_655x369_83667412-4d49-403c-adcc-beee88afb489.png",
+        "image_description": "",
+        "image_aligment": "right",
+        "image_outside": false,
+        "text_align": "center",
+        "subtitle": "",
+        "title": "",
+        "description": "<p>\" Le style Cyrillus c'est un équilibre de beaux classiques masculins\/féminins pimentés d'accents anglo-saxons et d'une touche de charme, sans oublier une forme de nostalgie heureuse.\"<br\/><br\/>Géraldine D,<br\/>Directrice du Style Cyrillus<\/p>",
+        "description_quotes": true
+      }
+    },
+    "1649919260eaabc06c": {
+      "type": "text-and-image",
+      "settings": {
+        "mobile_border": true,
+        "image": "shopify:\/\/shop_images\/page_marque_atelier_657x436_5bc411ee-c7c8-4a92-b248-32826ba6d2c1.jpg",
+        "image_description": "Notre Studio de création, Paris.",
+        "image_aligment": "left",
+        "image_outside": false,
+        "text_align": "center",
+        "subtitle": "savoir-faire",
+        "title": "Notre savoir-faire 1 studio de création, <br> 1 atelier de modélisme",
+        "description": "<p>Toutes nos créations sont uniques, imaginées, dessinées et mises en volume par notre équipe de stylistes et modélistes.<\/p><p><\/p><p><a href=\"#\" title=\"#\">toutes les étapes de création<\/a><\/p>",
+        "description_quotes": false
+      }
+    },
+    "16499193389b865aaf": {
+      "type": "text-and-image",
+      "settings": {
+        "mobile_border": false,
+        "image": "shopify:\/\/shop_images\/page_marque_maison_666x821_0dc9b2b5-c38a-42ad-9261-6e03af56f3ca.jpg",
+        "image_description": "",
+        "image_aligment": "right",
+        "image_outside": false,
+        "text_align": "center",
+        "subtitle": "Qualité",
+        "title": "Nous vous devons la qualité...",
+        "description": "<p>Du croquis à la réalisation, nous <br\/>souhaitons être fiers de chacune de nos pièces, nous les voulons intemporelles et belles très longtemps. Nous privilégions les matières naturelles et durables, nous apportons un soin particulier aux coupes, volumes et finitions, nous contrôlons rigoureusement chaque étape de création.<\/p>",
+        "description_quotes": false
+      }
+    },
+    "16499193849d07e76f": {
+      "type": "small-image-and-text",
+      "settings": {
+        "without_margin": true,
+        "image": "shopify:\/\/shop_images\/page_marque_qualite_315x377_154d19b2-34bc-4f27-b928-106e681fe731.jpg",
+        "description": "<p>\"Nos créations sont majoritairement composées de matières naturelles plus durables et résistantes.\"<\/p>"
+      }
+    },
+    "1649919407983d2beb": {
+      "type": "text-and-image",
+      "settings": {
+        "mobile_border": true,
+        "image": "shopify:\/\/shop_images\/page_marque_fabrication_721x480_2c10dcc5-d9b9-4e30-9a6d-6d665109deaa.jpg",
+        "image_description": "",
+        "image_aligment": "left",
+        "image_outside": false,
+        "text_align": "top",
+        "subtitle": "Fabrication",
+        "title": "Main dans la main...",
+        "description": "<p>Nous fabriquons partout dans le monde, et surtout là où se trouvent le savoir-faire, l'exigence et le respect de nos engagements.<br\/><br\/>Même si le chemin est long et complexe, nous prévoyons pour les prochaines saisons de rapprocher nos sources de production. Tous nos fournisseurs, fabricants et ateliers sont choisis pour leur expertise. C’est une relation de confiance et de respect mutuel qui nous lient.<\/p>",
+        "description_quotes": false,
+        "content_image": "shopify:\/\/shop_images\/page_marque_fab_343x352_dc43ff99-6e1d-4a4c-916d-46aca4bf973b.gif"
+      }
+    },
+    "164991947263e60794": {
+      "type": "engagements",
+      "settings": {
+        "background_image": "shopify:\/\/shop_images\/engagements.jpg",
+        "logo": "shopify:\/\/shop_images\/engagements-title.png",
+        "description": "<p><em>Produire mieux, consommer mieux et respecter ce qui nous entoure : nous nous engageons pour des vêtements durables qui respectent les hommes et la planète.<\/em><\/p>",
+        "link": "#",
+        "link_text": "Nos engagements"
+      }
+    },
+    "1649919550b32ae907": {
+      "type": "chain-end",
+      "settings": {
+        "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Sigle_Cyrillus_f4047bd2-6221-4368-8e61-5957fff63ea8.svg?v=1649698775"
+      }
+    }
+  },
+  "order": [
+    "page-head",
+    "1649919085f6e3918b",
+    "1649919151229df6cc",
+    "16499192171f6a368c",
+    "1649919260eaabc06c",
+    "16499193389b865aaf",
+    "16499193849d07e76f",
+    "1649919407983d2beb",
+    "164991947263e60794",
+    "1649919550b32ae907"
+  ]
+}

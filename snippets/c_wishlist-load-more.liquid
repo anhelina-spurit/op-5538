@@ -1,0 +1,38 @@
+{% comment %}
+  @summary Renders load more
+  @param {object} paginate - paginate
+
+  @example
+  {% render 'c_load-more', paginate: paginate %}
+{% endcomment %}
+
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'wishlist-load-more', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+  assign link_text = 'wishlist.continue_shopping' | t
+  assign button_text = 'collection.paginate.load_more' | t
+  assign button_attribute = "data-load-more-button"
+%}
+<div class="{{ class }}">
+  <div class="wishlist-load-more__row">
+    {%
+        render 'el_link',
+        href: routes.all_products_collection_url,
+        text: link_text,
+        custom_classes: 'button button--xs button--secondary'
+    %}
+  </div>
+  {% if paginate.next.is_link %}
+    <div class="wishlist-load-more__row" data-load-more>
+      {%
+        render 'el_button',
+        text: button_text,
+        modifiers: 'primary,xs',
+        attributes: button_attribute,
+        type: 'button'
+      %}
+    </div>
+  {% endif %}
+</div>
+

@@ -1,0 +1,17 @@
+{% assign store_locale = request.locale.iso_code | splice: 0,1 | downcase %}
+<script>
+  (function() {
+      var _scs = [];
+      _scs.push(['app_key', '{{settings.socloz_appkey}}']);
+      {% if store_locale != 'fr' %}
+        _scs.push(['locale', 'en']);
+      {% endif %}
+      (function(d, s, id, _scs) {
+          if (d.getElementById(id)) return;
+          var i, sc = d.createElement(s), sj = d.getElementsByTagName(s)[0];
+          sc.id = id; sc.async = true; sc.src = '{{settings.socloz_api}}/v4/js/popup.js';
+          for (i = 0; i < _scs.length; i++) sc.setAttribute('data-socloz-'+_scs[i][0], _scs[i][1]);
+          sj.parentNode.insertBefore(sc, sj);
+      })(document, 'script', 'soclozjs', _scs);
+  })();
+</script>

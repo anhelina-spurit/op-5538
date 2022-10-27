@@ -1,0 +1,79 @@
+{%- comment -%}
+  @summary It creates a image tag
+
+  @param {string} src - image source
+  @param {boolean} [lazy_loading] - is lazy loading enabled
+  @param {boolean} [lazy_loading_src_enabled] - lazy loading enabled
+  @param {boolean} [lazy_loading_lqip_src] - lazy loading Low Quality Image Placeholder source
+  @param {boolean} [lazy_loading_srcset] - lazy loading srcset
+  @param {string} [alt] - alternative text for image
+  @param {string} [custom_classes] - class name
+  @param {string} [modifiers] - modifiers 'xl', 'lg'
+  @param {string} [attributes] - additional HTML attributes
+
+  @example
+  {%-
+    render 'el_image',
+    src: section.settings.image,
+    alt: 'some alt text'
+    lazy_loading: true,
+    lazy_loading_src_enabled: true,
+    lazy_loading_lqip_src: '/image.png',
+    lazy_loading_srcset: '/image.png',
+    custom_classes: 'custom-class',
+    modifiers: 'md, lg'
+    attributes: 'data-image'
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  unless src == blank
+    assign actual_src = src
+
+    if lazy_loading
+      unless lazy_loading_lqip_src == blank
+        assign actual_src = lazy_loading_lqip_src
+      else
+        assign actual_src = ''
+      endunless
+
+      if lazy_loading_src_enabled != true and lazy_loading_src_enabled != false
+        assign lazy_loading_src_enabled = true
+      endif
+    endif
+
+    capture class
+      render 'f_bem-classes', main_class: 'image', custom_classes: custom_classes, modifiers: modifiers
+
+      if lazy_loading
+        echo ' lazy lazy--initial'
+      endif
+    endcapture
+
+    capture attributes
+      echo 'class="' | append: class | append: '"'
+      echo 'src="' | append: actual_src | append: '"'
+      echo 'alt="' | append: alt | append: '"'
+
+      if alt == blank
+        echo 'role="presentation"'
+      endif
+
+      if lazy_loading
+        echo 'data-sizes="auto"'
+
+        if lazy_loading_src_enabled
+          echo 'data-src="' | append: src | append: '"'
+        endif
+
+        unless lazy_loading_srcset == blank
+          echo 'data-srcset="' | append: lazy_loading_srcset | append: '"'
+        endunless
+      endif
+
+      echo attributes
+    endcapture
+
+    echo '<img ' | append: attributes | append: '/>'
+  endunless
+-%}

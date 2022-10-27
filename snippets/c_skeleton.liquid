@@ -1,0 +1,25 @@
+{%- comment -%}
+    @summary Renders a skeleton
+
+    @param {string} content - content
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {%-
+        render 'c_skeleton',
+        content: 'Skeleton',
+        custom_classes: 'octoly__skeleton',
+        modifiers: 'lg, light',
+        attributes: 'data-custom'
+    -%}
+{%- endcomment -%}
+
+{%- liquid
+    capture class
+        render 'f_bem-classes', main_class: 'skeleton', custom_classes: custom_classes, modifiers: modifiers
+    endcapture
+%}
+
+<div class="{{ class }}"{{ attributes }}>{{ content }}</div>

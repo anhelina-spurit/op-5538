@@ -1,0 +1,123 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../constants/fonts';
+
+.custom-image-text {
+  padding-top: to-rem(80px);
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(40px);
+  }
+}
+
+.custom-image-text__container {
+  max-width: to-rem(1068px);
+}
+
+.custom-image-text__heading {
+  margin: 0;
+  margin-bottom: to-rem(10px);
+  font-size: to-rem(24px);
+  font-weight: 400;
+  letter-spacing: to-rem(4px);
+  line-height: to-rem(44px);
+  text-align: center;
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(24px);
+  }
+}
+
+.custom-image-text__column {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: to-rem(128px);
+
+  @include media-breakpoint-down(md) {
+    display: block;
+    gap: 0;
+  }
+}
+
+.custom-image-text__column--right {
+  flex-direction: row-reverse;
+}
+
+.custom-image-text__column--align-top {
+  align-items: flex-start;
+}
+
+.custom-image-text__row {
+  flex: 1;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    flex: auto;
+  }
+}
+
+.custom-image-text__row:last-child {
+  @include media-breakpoint-down(md) {
+    order: -1;
+  }
+}
+
+.custom-image-text__media {
+  width: 100%;
+  @include media-breakpoint-down(md) {
+    max-width: to-rem(300px);
+    margin: to-rem(10px) auto;
+  }
+}
+
+.custom-image-text__media--large {
+  @include media-breakpoint-up(md) {
+    width: 120%;
+    margin-left: -20%;
+  }
+}
+
+.custom-image-text__content {
+  width: 100%;
+  max-width: to-rem(295px);
+  color: $palette-bismark;
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+.custom-image-text__column--right .custom-image-text__content {
+  @include media-breakpoint-up(md) {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right;
+  }
+}
+
+.custom-image-text__content .text-preview__heading {
+  font-family: $font-family-lora;
+  font-size: to-rem(22px);
+  letter-spacing: to-rem(1px);
+  text-transform: inherit;
+}
+
+.custom-image-text__column--align-top .text-preview__heading {
+  @include media-breakpoint-up(md) {
+    margin-top: to-rem(50px);
+  }
+}
+
+.custom-image-text__content .text-preview__description {
+  line-height: to-rem(24px);
+}
+
+.custom-image-text__content .text-preview__link {
+  display: inline-block;
+  padding: to-rem(18px) to-rem(40px);
+  border: to-rem(1px) solid;
+  margin-bottom: to-rem(30px);
+  background-color: $palette-bismark;
+  color: $palette-white;
+  font-size: to-rem(9px);
+}

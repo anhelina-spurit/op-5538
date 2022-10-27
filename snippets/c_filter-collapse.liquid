@@ -1,0 +1,28 @@
+{% comment %}
+  @summary Renders filter collapse
+  @param {string} content - content
+  @param {string} controlled_id - id button
+  @param {string} [custom_classes] - additional classes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_filter-collapse',
+    content: '<span class="filter__color-label">{{ value.label }}</span>',
+    controlled_id: '1asgd',
+    custom_classes: "custom",
+    modifiers: 'lg, light',
+  %}
+{% endcomment %}
+
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'filter-collapse', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+{%- if content != blank and controlled_id != blank -%}
+  <div class="{{- class -}}" data-filter-collapse data-filter-collapse-controlled-by="{{ controlled_id }}">
+    {{ content }}
+  </div>
+{%- endif -%}
+

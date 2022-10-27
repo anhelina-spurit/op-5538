@@ -1,0 +1,65 @@
+{%- liquid
+  capture container
+    assign content_classes = 'small-section__content'
+    if section.settings.without_margin == true
+      assign content_classes = content_classes | append: ' small-section__content--without-margin'
+    endif
+    echo '<div class="' | append: content_classes | append: '">'
+      if section.settings.image
+        if section.settings.image_link != blank
+          echo '<a class="small-section__link" href="' | append: section.settings.image_link.url | append: '">'
+        endif
+        render 'el_shopify-image', custom_classes: 'small-section__image', image: section.settings.image, lazy_loading: true
+        if section.settings.image_link != blank
+          echo '</a>'
+        endif
+      endif
+
+      if section.settings.description
+        echo '<div class="small-section__text">' | append: section.settings.description | append: '</div>'
+      endif
+    echo '</div>'
+
+  endcapture
+
+  capture section_content
+    render 'el_container', content: container, custom_classes: 'small-section__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'small-section', content: section_content
+-%}
+
+{% schema %}
+{
+  "name": "Small image and text",
+  "settings": [
+      {
+        "type": "checkbox",
+        "id": "without_margin",
+        "label": "Without top margin",
+        "default": false
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "image_link",
+        "type": "url",
+        "label": "Image link"
+      },
+      {
+        "id": "description",
+        "type": "richtext",
+        "label": "Description"
+      }
+
+  ],
+  "presets": [
+    {
+      "name": "Small image and text"
+    }
+  ]
+}
+{% endschema %}

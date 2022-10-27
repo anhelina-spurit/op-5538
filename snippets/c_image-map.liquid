@@ -1,0 +1,49 @@
+{%- comment -%}
+  @summary Renders a image map
+
+  @param {string} id - id
+  @param {object} block - shopify setting block
+  @param {number} index - block forloop index
+
+  @example
+  {%-
+    render 'c_image-map',
+    id: id,
+    block: section.settings.block,
+    index: 1
+  -%}
+{%- endcomment -%}
+<div class="image-map">
+  {% liquid
+    if useGif
+      render 'el_shopify-image', image: block.settings.image, lazy_loading: true, scale: 1
+      else
+      render 'el_shopify-image', image: block.settings.image, lazy_loading: true, scale: 1, format: "pjpg"
+    endif
+    for i in (1..5)
+      assign product_key = 'product_' | append: forloop.index
+      assign top_key = product_key | append: '_top'
+      assign left_key = product_key | append: '_left'
+
+      assign product = all_products[block.settings[product_key]]
+      assign subcollection = product.metafields.global.product_label.value
+
+      assign dot_id = id | append: '_' | append: index | append: '_' | append: product_key
+      capture title
+        render 'f_product-title', product: product
+      endcapture
+      capture tooltip_content
+        if subcollection
+          echo '<span class="image-map__subcollection">' | append: subcollection | append: '</span>'
+        endif
+        echo '<p class="image-map__title">' | append: title | append: '</p>'
+        render 'c_product-card-simple', id: product.id, product: product
+      endcapture
+
+      if block.settings[top_key] != blank and block.settings[left_key] != blank and product != blank
+        render 'c_dot', id: dot_id, top: block.settings[top_key], left: block.settings[left_key], attributes: 'data-dot'
+        render 'c_tooltip', controlled_by: dot_id, content: tooltip_content
+      endif
+    endfor
+  %}
+</div>

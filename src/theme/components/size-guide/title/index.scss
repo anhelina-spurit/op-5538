@@ -1,0 +1,20 @@
+@import '../../../utils/to-rem/index';
+@import '../../../constants/palette/index';
+@import '../../../utils/breakpoints/index';
+
+.size-guide-title {
+  display: none;
+
+  @include media-breakpoint-down(sm) {
+    display: block;
+    padding-top: to-rem(18px);
+    padding-bottom: to-rem(18px);
+    background-color: $palette-ecru-white;
+    color: $palette-dark-slate-grey;
+    font-size: to-rem(10px);
+    letter-spacing: to-rem(0.6px);
+    line-height: to-rem(14px);
+    text-align: center;
+    text-transform: uppercase;
+  }
+}

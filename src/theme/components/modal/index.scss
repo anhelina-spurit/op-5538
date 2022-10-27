@@ -1,0 +1,141 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.modal {
+  --modal-transition-duration: 0.6s;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  opacity: 0;
+  overflow-y: auto;
+  transition: opacity 0.3s ease;
+}
+
+.modal__wrapper {
+  position: relative;
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: to-rem(16px);
+}
+
+.modal__backdrop {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($palette-dark, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal__container {
+  position: relative;
+  z-index: 1;
+  width: to-rem(464px);
+  max-width: 100%;
+  padding: to-rem(40px);
+  background: $palette-white;
+  outline: none;
+
+  @include media-breakpoint-down(md) {
+    padding: to-rem(24px);
+  }
+}
+
+.modal__header {
+  padding-right: to-rem(30px);
+  margin-bottom: to-rem(32px);
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(16px);
+  }
+}
+
+.modal__heading {
+  margin-top: 0;
+  margin-bottom: to-rem(24px);
+  font-size: to-rem(36px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(26px);
+  }
+}
+
+.modal__body {
+  font-size: to-rem(16px);
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(14px);
+  }
+}
+
+.modal__body > *:first-child {
+  margin-top: 0;
+}
+
+.modal__body > *:last-child {
+  margin-bottom: 0;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  width: to-rem(44px);
+  height: to-rem(44px);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal__close--outer {
+  z-index: 1;
+  top: to-rem(16px);
+  right: to-rem(16px);
+  background: $palette-white;
+}
+
+.modal__icon {
+  width: to-rem(16px);
+  height: to-rem(16px);
+  pointer-events: none;
+}
+
+.modal--visible {
+  display: block;
+}
+
+.modal--active {
+  display: block;
+  opacity: 1;
+}
+
+.modal--active .modal__backdrop {
+  opacity: 1;
+}
+
+.modal--outer-close .modal__wrapper {
+  padding-top: to-rem(60px);
+}
+
+.modal--outer-close .modal__header {
+  padding-right: 0;
+}

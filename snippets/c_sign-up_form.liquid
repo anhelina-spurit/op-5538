@@ -1,0 +1,185 @@
+{%- liquid
+  form 'create_customer', class: 'login__form form', id: id, name: 'register'
+    assign form_errors_id = id | append: '_errors'
+    assign form_errors_label = 'accessibility.error' | t
+
+    echo '<div class="form-errors-wrapper" hidden></div>'
+    render 'c_form-errors', id: form_errors_id, form: form, label: form_errors_label
+
+    capture error_attributes
+      echo 'aria-invalid="true" aria-describedby="' | append: form_errors_id | append : '"'
+    endcapture
+
+    capture civility_fieldset_content
+      capture civility
+        assign civility_name = 'civility'
+        assign civility_mme_id = 'civility_mme'
+        assign civility_mme_value = 'civility_MRS'
+        assign civility_mme_label = 'customer.register.mme' | t
+        assign civility_m_id = 'civility_m'
+        assign civility_m_value = 'civility_MR'
+        assign civility_m_label = 'customer.register.m' | t
+
+        render 'el_radio', input_id: civility_mme_id, name: civility_name, value: civility_mme_value, checked: true, label: civility_mme_label
+        render 'el_radio', input_id: civility_m_id, name: civility_name, value: civility_m_value, checked: false, label: civility_m_label
+      endcapture
+
+      render 'c_control', content: civility, custom_classes: 'login-control login-radio-control login-radio-control--row'
+    endcapture
+
+    assign civility_fieldset_id = id | append: '_civility'
+    assign civility_fieldset_legend = 'customer.register.civility' | t
+
+    render 'el_fieldset', id: civility_fieldset_id, custom_classes: 'login-fieldset login-fieldset--row', legend: civility_fieldset_legend, content: civility_fieldset_content
+
+    capture first_name_input
+      assign first_name_id = id | append: '_first_name'
+      assign first_name_label = 'customer.register.first_name' | t
+
+      capture first_name_attributes
+        echo 'autocomplete="given-name"'
+        if form.errors
+          echo error_attributes
+        endif
+      endcapture
+
+      render 'el_input', id: first_name_id, type: 'text', name: 'customer[first_name]', required: true, custom_classes: 'login-input', attributes: first_name_attributes, placeholder: ' '
+      render 'el_label', content: first_name_label, for_input: first_name_id, required: true, custom_classes: 'login-label'
+    endcapture
+
+    render 'c_control', content: first_name_input, custom_classes: 'login-control'
+
+    capture last_name_input
+      assign last_name_id = id | append: '_last_name'
+      assign last_name_label = 'customer.register.last_name' | t
+
+      capture last_name_attributes
+        echo 'autocomplete="family-name"'
+        if form.errors
+          echo error_attributes
+        endif
+      endcapture
+
+      render 'el_input', id: last_name_id, type: 'text', name: 'customer[last_name]', required: true, custom_classes: 'login-input', attributes: last_name_attributes, placeholder: ' '
+      render 'el_label', content: last_name_label, for_input: last_name_id, required: true, custom_classes: 'login-label'
+    endcapture
+
+    render 'c_control', content: last_name_input, custom_classes: 'login-control'
+
+    capture email_input
+      assign email_id = id | append: '_email'
+      assign email_label = 'customer.register.email' | t
+
+      capture email_attributes
+        if form.errors
+          echo error_attributes
+        endif
+      endcapture
+
+      render 'el_input', id: email_id, type: 'email', name: 'customer[email]', required: true, custom_classes: 'login-input', attributes: email_attributes, placeholder: ' '
+      render 'el_label', content: email_label, for_input: email_id, required: true, custom_classes: 'login-label'
+    endcapture
+
+    render 'c_control', content: email_input, custom_classes: 'login-control'
+
+    capture email_confirmation_input
+      assign email_confirmation_id = id | append: '_email_confirmation'
+      assign email_confirmation_label = 'customer.register.email_confirmation' | t
+
+      capture email_confirmation_attributes
+        if form.errors
+          echo error_attributes
+        endif
+      endcapture
+
+      render 'el_input', id: email_confirmation_id, type: 'email', name: 'customer_email_confirmation', required: true, custom_classes: 'login-input', attributes: email_confirmation_attributes, placeholder: ' '
+      render 'el_label', content: email_confirmation_label, for_input: email_confirmation_id, required: true, custom_classes: 'login-label'
+    endcapture
+
+    render 'c_control', content: email_confirmation_input, custom_classes: 'login-control'
+
+    capture password_input
+      assign password_id = id | append: '_password'
+      assign password_label = 'customer.register.password' | t
+
+      capture password_attributes
+        echo 'autocomplete="current-password"'
+        if form.errors
+          echo error_attributes
+        endif
+      endcapture
+
+      echo '<div class="login-password-control__inner">'
+        render 'el_input', id: password_id, type: 'password', name: 'customer[password]', required: true, custom_classes: 'login-input login-password-control__input', attributes: password_attributes, placeholder: ' '
+        render 'el_label', content: password_label, for_input: password_id, required: true, custom_classes: 'login-label'
+
+        assign password_view_button_label = 'customer.register.toggle_password_view' | t
+        capture password_view_button_content
+          render 'el_icon', icon: 'password-show', custom_classes: 'login-password-control__icon'
+          render 'el_icon', icon: 'password-hide', custom_classes: 'login-password-control__icon'
+        endcapture
+
+        render 'el_button', custom_content: password_view_button_content, custom_classes: 'login-password-control__button login-password-control__button--view', attributes: 'data-toggle-password-view', aria_label: password_view_button_label
+      echo '</div>'
+    endcapture
+
+    render 'c_control', content: password_input, custom_classes: 'login-control login-password-control'
+
+    capture phone_input
+      assign phone_id = 'mobilePhoneNumber'
+      assign phone_name = 'mobilePhoneNumber'
+      assign phone_label = 'customer.register.phone' | t
+
+      capture phone_attributes
+        if form.errors
+          echo error_attributes
+        endif
+      endcapture
+
+      render 'el_input', id: phone_id, type: 'text', name: phone_name, required: true, custom_classes: 'login-input', attributes: phone_attributes, placeholder: ' '
+      render 'el_label', content: phone_label, for_input: phone_id, required: true, custom_classes: 'login-label'
+    endcapture
+
+    render 'c_control', content: phone_input, custom_classes: 'login-control login-phone-control'
+
+    capture accepts_terms
+      assign accepts_terms_id = id | append: '_accepts_terms'
+      assign accepts_terms_prefix = 'customer.register.accepts_terms_prefix' | t
+      assign accepts_terms_postfix = 'customer.register.accepts_terms_postfix' | t
+      assign accepts_terms_link_text = 'customer.register.accepts_terms_link_text' | t
+      assign terms_of_sale_link_href = ''
+
+      for policy in shop.policies
+        if policy.url contains 'terms-of-sale'
+          assign terms_of_sale_link_href = policy.url
+        endif
+      endfor
+
+      assign accepts_terms_link = accepts_terms_link_text | link_to: terms_of_sale_link_href, target: '_blank'
+      assign accepts_terms_label = accepts_terms_prefix | append: ' ' | append: accepts_terms_link | append: ' ' | append: accepts_terms_postfix
+
+      render 'el_checkbox', value: 'off', input_id: accepts_terms_id, name: 'customer_accepts_terms', label: accepts_terms_label, required: true
+    endcapture
+
+    capture accepts_marketing
+      assign accepts_marketing_id = id | append: '_accepts_marketing'
+      assign accepts_marketing_label = 'customer.register.accepts_marketing' | t
+
+      render 'el_checkbox', value: 'on', input_id: accepts_marketing_id, name: 'customer[accepts_marketing]', label: accepts_marketing_label
+    endcapture
+
+    echo '<div class="login-controls-wrapper login-controls-wrapper--register">'
+      render 'c_control', content: accepts_terms, custom_classes: 'login-checkbox-control'
+      render 'c_control', content: accepts_marketing, custom_classes: 'login-checkbox-control'
+    echo '</div>'
+
+    capture form_action
+      assign submit_text = 'customer.register.submit' | t
+      assign submit_id = id | append: '_submit'
+
+      render 'el_button', id: submit_id, text: submit_text, custom_classes: 'login-action-control__button', modifiers: 'primary, full-width', type: 'submit'
+    endcapture
+
+    render 'c_control', content: form_action, custom_classes: 'login-action-control login-action-control--sign-up'
+  endform
+-%}

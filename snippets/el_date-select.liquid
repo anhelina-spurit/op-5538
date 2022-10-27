@@ -1,0 +1,112 @@
+{%- comment -%}
+  @summary Renders a date selects
+
+  @param {string} [id] - id
+  @param {string} [name] - name
+  @param {string} [label] - label
+  @param {boolean} [required] - required
+  @param {boolean} [disabled] - disabled
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'el_date-select',
+    id: 'date-select',
+    name: 'date-select-name',
+    label: 'Date select',
+    required: true,
+    disabled: false,
+    custom_classes: 'custom-date-select',
+    attributes: 'data-custom-date-select',
+    modifiers: 'lg, light'
+  -%}
+
+{%- endcomment -%}
+
+{% liquid
+  assign months = 'elements.date-select.months' | t | split : ' '
+  assign day_label_t = 'elements.date-select.day_label' | t
+  assign month_label_t = 'elements.date-select.month_label' | t
+  assign year_label_t = 'elements.date-select.year_label' | t
+
+  assign day_select_id = id | append: '-day'
+  assign month_select_id = id | append: '-month'
+  assign year_select_id = id | append: '-year'
+  assign day_select_name = name | append: '-day'
+  assign month_select_name = name | append: '-month'
+  assign year_select_name = name | append: '-year'
+%}
+
+{% capture day_options %}
+  <option value disabled selected></option>
+  {% for i in (1..31) %}
+    <option value="{% if i < 10 %}0{% endif %}{{ i }}">{{ i }}</option>
+  {% endfor %}
+{% endcapture %}
+
+{% capture month_options %}
+  <option disabled selected value></option>
+  {% for i in (1..12) %}
+    {% assign monthIndex = i | minus: 1 %}
+    <option value="{% if i < 10 %}0{% endif %}{{ i }}">{{ months[monthIndex] }}</option>
+  {% endfor %}
+{% endcapture %}
+
+{% capture year_options %}
+  <option disabled selected value></option>
+  {% capture current_year %}{{ 'now' | date: "%YYYY" }}{% endcapture %}
+  {% capture min_year %}{{ current_year | minus: 18 }}{% endcapture %}
+  {% for i in (min_year..current_year) reversed %}
+    <option value="{{i}}">{{i }}</option>
+  {% endfor %}
+{% endcapture %}
+
+{%- if id != blank and label != blank -%}
+  {%- render 'el_label', for_input: id, content: label, required: required -%}
+{%- endif -%}
+
+<div
+  class="{%- render 'f_bem-classes', main_class: 'date-select', custom_classes: custom_classes, modifiers: modifiers -%}"
+  {% if id %}id="{{ id }}"{% endif %}
+  {% if attributes %}{{ attributes }}{% endif %}
+>
+
+  <div class="select-wrapper">
+    {%- assign id = day_select_id -%}
+    {%- render 'el_select',
+      id: id,
+      name: day_select_name,
+      required: required,
+      disabled: disabled,
+      options: day_options,
+      modifiers: 'sm, outlined'
+    -%}
+    {%- render 'el_label', for_input: id, content: day_label_t, required: required, custom_classes: 'select-label select-label--outlined' -%}
+  </div>
+  <div class="select-wrapper">
+    {%- assign id = month_select_id -%}
+    {%- render 'el_select',
+      id: id,
+      name: month_select_name,
+      required: required,
+      disabled: disabled,
+      options: month_options,
+      modifiers: 'sm, outlined'
+    -%}
+    {%- render 'el_label', for_input: id, content: month_label_t, required: required, custom_classes: 'select-label select-label--outlined' -%}
+  </div>
+  <div class="select-wrapper">
+    {%- assign id = year_select_id -%}
+    {%- render 'el_select',
+      id: id,
+      name: year_select_name,
+      required: required,
+      disabled: disabled,
+      options: year_options,
+      modifiers: 'sm, outlined'
+    -%}
+    {%- render 'el_label', for_input: id, content: year_label_t, required: required, custom_classes: 'select-label select-label--outlined' -%}
+  </div>
+</div>

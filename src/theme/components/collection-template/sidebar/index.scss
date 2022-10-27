@@ -1,0 +1,25 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+
+.mm-ocd__content {
+  z-index: 4;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.mm-ocd__close {
+  position: absolute;
+  top: to-rem(68px);
+  right: to-rem(30px);
+  border: none;
+  @include media-breakpoint-down(md) {
+    top: to-rem(38px);
+    right: to-rem(18px);
+  }
+}
+
+.mm-ocd__close:hover {
+  border: none;
+}

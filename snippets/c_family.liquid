@@ -1,0 +1,64 @@
+{%- comment -%}
+    @summary Renders a account family tab
+
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {%-
+        render 'c_family',
+        custom_classes: 'points__container',
+        attributes: 'data-attribute',
+        modifiers: 'lg, light'
+    -%}
+{%- endcomment -%}
+
+{% capture child_list %}
+  <noscript id="child-item-render">
+    {% capture close_icon %}
+      {% render 'el_icon', icon: 'close' %}
+    {% endcapture %}
+    {% render 'el_button', text: close_icon, modifiers: 'link', custom_classes: 'child--delete' %}
+    {% render 'c_text-preview', heading: 'Test', heading_level: 6, description: 'Née le 2011-06-13' %}
+    {% render 'el_button', text: 'Modifier', modifiers: 'link', custom_classes: 'child--update' %}
+  </noscript>
+  {% capture edit_form %}
+    {% render 'c_family-form', is_edit: true %}
+  {% endcapture %}
+  {% render 'c_modal', id: 'child-edit-modal', content: edit_form, attributes: 'data-modal-child-quid' %}
+{% endcapture %}
+
+{%- liquid
+  assign heading_t = 'account.family.content.heading' | t
+  assign list_description_t = 'account.family.content.list.description' | t
+  assign form_description_t = 'account.family.content.form.description' | t
+
+  capture family_list
+    render 'c_text-preview', description: list_description_t
+    render 'el_container', content: child_list, custom_classes: 'children children-placeholder'
+  endcapture
+
+  capture family_form
+    render 'c_text-preview', description: form_description_t
+    render 'c_family-form'
+  endcapture
+
+  capture content
+    render "el_heading", text: heading_t, level: 2, modifiers: 'xxs', custom_classes: 'family__heading'
+    render 'el_container', content: family_list, modifiers: 'xxl', custom_classes: 'family-list'
+    render 'el_container', content: family_form, modifiers: 'xxl', custom_classes: 'family-form'
+  endcapture
+%}
+
+<div
+  class="{%- render 'f_bem-classes', main_class: 'family', custom_classes: custom_classes, modifiers: modifiers -%}"
+  {{ attributes }}
+>
+  <div class="family__container">
+    <div class="family__back-link">
+      {% render "el_account-content-heading", title: title, custom_classes_title: 'account-content-heading__title_offset--small' %}
+    </div>
+    {% render 'el_container', content: content, modifiers: 'xxl', custom_classes: 'family-content' %}
+  </div>
+</div>

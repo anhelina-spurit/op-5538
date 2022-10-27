@@ -1,0 +1,51 @@
+@import '../../constants/transitions';
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+@import '../../utils/visually-hidden';
+
+.field {
+  position: relative;
+  display: flex;
+}
+
+.field__input {
+  position: relative;
+  width: 100%;
+  height: to-rem(48px);
+  padding: 1.25rem;
+  border: solid 1px $palette-alto;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 0;
+  color: $palette-dark;
+  font-size: 1rem;
+  transition: box-shadow $transition-duration-fastest ease;
+}
+
+.field__label {
+  position: absolute;
+  top: 50%;
+  left: 1.25rem;
+  margin-bottom: 0;
+  color: $palette-dark;
+  font-size: to-rem(14px);
+  line-height: 1.5;
+  pointer-events: none;
+  transform: translate(0, -50%);
+  transition: top $transition-duration-fastest ease, font-size $transition-duration-fastest ease;
+}
+
+// stylelint-disable-next-line selector-max-type
+.field__input:focus ~ .field__label,
+.field__input:not(:placeholder-shown) ~ .field__label,
+.field__input:-webkit-autofill ~ .field__label {
+  @include visually-hidden;
+}
+
+.field__input::placeholder {
+  opacity: 0;
+}
+
+.field__button {
+  border-radius: 0;
+}

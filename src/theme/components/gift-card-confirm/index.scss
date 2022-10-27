@@ -1,0 +1,78 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.gift-card-confirm .modal__container {
+  width: to-rem(733px);
+}
+
+.gift-card-confirm__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gift-card-confirm .modal__header {
+  margin-bottom: to-rem(35px);
+}
+
+.gift-card-confirm .modal__heading {
+  margin-bottom: 0;
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(12px);
+  font-weight: 400;
+  letter-spacing: to-rem(0.6px);
+  line-height: to-rem(18px);
+  text-align: center;
+}
+
+.gift-card-confirm__row {
+  display: flex;
+  align-items: center;
+  margin-bottom: to-rem(29px);
+
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+}
+
+.gift-card-confirm__image {
+  max-width: to-rem(160px);
+  max-height: to-rem(105px);
+  margin-right: to-rem(18px);
+
+  @include media-breakpoint-down(md) {
+    max-width: unset;
+    max-height: unset;
+    margin-right: 0;
+    margin-bottom: to-rem(28px);
+  }
+}
+
+.gift-card-confirm__image .image {
+  transform: rotate(-5deg);
+  transform-origin: center;
+}
+
+.gift-card-confirm__text {
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(1px);
+  line-height: to-rem(18px);
+}
+
+.gift-card-confirm__text p {
+  margin-top: 0;
+  margin-bottom: to-rem(18px);
+}
+
+.gift-card-confirm__text p:last-child {
+  margin-bottom: 0;
+}
+
+.gift-card-confirm__link {
+  margin-top: to-rem(25px);
+  font-size: to-rem(9px);
+  letter-spacing: to-rem(1.35px);
+  line-height: to-rem(13px);
+  text-transform: uppercase;
+}

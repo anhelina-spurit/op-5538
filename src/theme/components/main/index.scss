@@ -1,0 +1,17 @@
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+
+.main--account {
+  padding-top: to-rem(70px);
+  padding-bottom: to-rem(70px);
+
+  @include media-breakpoint-up(md) {
+    background-color: $palette-quarter-pearl-lusta;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(40px);
+    padding-bottom: to-rem(40px);
+  }
+}

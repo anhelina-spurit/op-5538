@@ -1,0 +1,66 @@
+{%- capture content -%}
+  <div class="products-discover__slider swiper">
+    <div class="swiper-wrapper">
+    {%- for block in section.blocks -%}
+      {%- unless block.settings.product == blank and block.settings.product == nil -%}
+        <div class="products-discover__item swiper-slide" data-index="{{ forloop.index0 }}">
+          {%- render 'c_product-card', custom_classes: 'products-discover__card', product: block.settings.product -%}
+        </div>
+      {%- endunless -%}
+    {%- endfor -%}
+    </div>
+    <div class="products-discover__scrollbar swiper-scrollbar"></div>
+  </div>
+
+  {%- if section.settings.collection != blank -%}
+    <div class="products-discover__action">
+      {%-
+        render 'el_link',
+        href: section.settings.collection.url,
+        text: section.settings.collection.title,
+        custom_classes: 'products-discover__action_link'
+      -%}
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+  capture section_content
+    render 'el_container', content: content, modifiers: 'fluid', custom_classes: 'products-discover__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'products-discover', content: section_content, heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Products discover",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    }
+  ],
+  "blocks": [
+     {
+      "type": "product",
+      "name": "product",
+      "settings": [
+       {
+         "id": "product",
+          "type": "product",
+          "label": "Product"
+        }
+      ]
+     }
+  ],
+  "presets": [
+    {
+      "name": "Products discover"
+    }
+  ]
+}
+{% endschema %}

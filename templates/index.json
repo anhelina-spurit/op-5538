@@ -1,211 +1,664 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "section": {
+      "type": "empty",
+      "settings": {
+      }
+    },
+    "1647440538259b2d2a": {
+      "type": "main-slider",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "11e618c8-546b-4deb-ad84-4761a47a1629": {
+          "type": "slide",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
+            "image": "shopify:\/\/shop_images\/page_hero_2.jpg",
+            "video": "https:\/\/www.youtube.com\/watch?v=f7-RzSIMQWc",
+            "heading": "Esprit Libre<br>JE DÉCOUVRE",
+            "navigation": "menu-rentr-e-des-b-b-section-main-slider",
+            "color": "#ffffff",
+            "url": "shopify:\/\/collections\/nouvelle-collection"
           }
         },
-        "text": {
-          "type": "text",
+        "84ab3e2b-2f74-45ee-ac22-a937942b493a": {
+          "type": "slide",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "image": "shopify:\/\/shop_images\/Main-Slider_HP_JDH_311fbb7b-5e66-4cc5-aaad-8c1e9e91e691.jpg",
+            "video": "",
+            "heading": "Heading",
+            "navigation": "",
+            "color": "#ffffff",
+            "url": ""
           }
         },
-        "button": {
-          "type": "buttons",
+        "53c18faa-2115-400f-abf2-5fc92cca4561": {
+          "type": "slide_with_countdown",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "image": "shopify:\/\/shop_images\/Main-Slider_HP_JDH.jpg",
+            "video": "",
+            "heading": "Heading",
+            "navigation": "",
+            "color": "#ffffff",
+            "url": "shopify:\/\/collections\/bebe",
+            "sale_heading": "FLASH SALE",
+            "date_start": "October 27, 2022 08:50:00",
+            "date_end": "November 15, 2022 23:59:00",
+            "sale_position": "center-center"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "11e618c8-546b-4deb-ad84-4761a47a1629",
+        "84ab3e2b-2f74-45ee-ac22-a937942b493a",
+        "53c18faa-2115-400f-abf2-5fc92cca4561"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "adapt_height_first_image": false,
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
       }
     },
-    "rich_text": {
-      "type": "rich-text",
+    "16564187783d3babb3": {
+      "type": "banner",
+      "settings": {
+        "image_ratio": 1,
+        "alignment": "left",
+        "heading_text": "",
+        "heading_level": "1",
+        "heading_color": "#000000",
+        "description": "",
+        "description_color": "#000000",
+        "button_text": "",
+        "button_url": "",
+        "button_background": "#000000",
+        "button_background_hover": "#ffffff",
+        "button_color": "#ffffff",
+        "button_color_hover": "#000000"
+      }
+    },
+    "165816047953d0e691": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Main-Slider_HP_BAF_d5aed72c-e8ed-46b0-8ee6-f369a8940e4e.jpg",
+        "image_centered": false,
+        "url_image": "shopify:\/\/collections\/prix-legers-de-lete",
+        "image_description": "",
+        "invert_content": true,
+        "centerline": false,
+        "label_action": "",
+        "heading": "<p style=\"color:#000000\">LES PRIX LÉGERS DE L’ÉTÉ<\/p>",
+        "richtext": "<p>sur une sélection Prêt‑à‑porter et Maison*<\/p>",
+        "extra_first": "",
+        "extra_large": "",
+        "url_extra_image": "",
+        "extra_last": "",
+        "read_more_url": "shopify:\/\/collections\/prix-legers-de-lete",
+        "read_more_label": "J'en profite",
+        "horizontal_alignment": "right",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 43,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#b76a5a"
+      }
+    },
+    "165453322206c4f44d": {
+      "type": "banner",
+      "settings": {
+        "image_ratio": 1,
+        "alignment": "left",
+        "heading_text": "",
+        "heading_level": "1",
+        "heading_color": "#000000",
+        "description": "",
+        "description_color": "#000000",
+        "button_text": "",
+        "button_url": "",
+        "button_background": "#000000",
+        "button_background_hover": "#ffffff",
+        "button_color": "#ffffff",
+        "button_color_hover": "#000000"
+      }
+    },
+    "1658142002f132f14e": {
+      "type": "discover",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "53ba20d1-6a9e-4d18-9fb3-964641d928d1": {
+          "type": "items",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "image": "shopify:\/\/shop_images\/HP_NEWCO_discover_push-1_ac15a42a-959a-461f-a057-9956c134abc9.jpg",
+            "image_link": "",
+            "use_gif": false,
+            "heading": "",
+            "product_1": "chemise-blouse-ecru-marine_5377",
+            "product_1_top": 55,
+            "product_1_left": 40,
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": ""
           }
         },
-        "text": {
-          "type": "text",
+        "7e32106b-4147-4b78-909c-f6863e57c546": {
+          "type": "items",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "image": "shopify:\/\/shop_images\/HP_NEWCO_discover_push-2_10bb0dd2-0c99-41b4-88eb-aab79f6cfc8c.jpg",
+            "image_link": "shopify:\/\/collections\/bebe",
+            "use_gif": false,
+            "heading": "",
+            "product_1": "blouse-blouse-bleu-chambray-raye_4619",
+            "product_1_top": 31,
+            "product_1_left": 35,
+            "product_2": "chemise-blouse-ecru-marine_5377",
+            "product_2_top": 56,
+            "product_2_left": 40,
+            "product_3": "manteau-trench-iconique-6319-beige-fonce-uni_587",
+            "product_3_top": 85,
+            "product_3_left": 45,
+            "product_4": "",
+            "product_5": ""
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "53ba20d1-6a9e-4d18-9fb3-964641d928d1",
+        "7e32106b-4147-4b78-909c-f6863e57c546"
       ],
       "settings": {
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "heading": "<br>Flâneries en ville",
+        "description": "Ralentir le rythme de nos vies, contempler ce qui nous entoure,\ndonner du sens, prendre le temps de créer, de produire mieux et durablement.\n<br>Une nouvelle histoire s’écrit…",
+        "link_title": "LA NOUVELLE COLLECTION",
+        "link": "shopify:\/\/collections\/nouvelle-collection"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "16545334083e7c8c49": {
+      "type": "image-with-text",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "background-1",
-        "show_view_all": false,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 28,
-        "padding_bottom": 36
+        "image": "shopify:\/\/shop_images\/HP_Tabliers_push-2-HORIZONTALb.jpg",
+        "url_image": "shopify:\/\/collections\/les-indispensables-de-la-rentree",
+        "use_gif": false,
+        "heading": "<br>INDISPENSABLES DE LA RENTRÉE<br><div style=\"text-transform: lowercase;\">-30% sur le deuxième article<sup>∗<\/sup>\n<\/div>",
+        "mobile_heading_italic": false,
+        "richtext": "<p><a href=\"\/collections\/les-indispensables-de-la-rentree\" title=\"Indispensables de la rentrée\">JE PRÉPARE LEUR RENTRÉE<\/a><\/p>",
+        "background": "#ffffff"
       }
     },
-    "collage": {
-      "type": "collage",
+    "16587521318e397246": {
+      "type": "promo",
+      "settings": {
+        "background": "#697b6b",
+        "variant": "fullscreen",
+        "image": "shopify:\/\/shop_images\/visu_carre_homata_4abd012d-c35b-4f98-b60c-9a5b0399e8e7.gif",
+        "use_gif": false,
+        "video": "https:\/\/www.youtube.com\/watch?v=f7-RzSIMQWc",
+        "image_link": "",
+        "sub_image": "",
+        "heading": "Collection Rentrée&nbsp;des&nbsp;classes",
+        "heading_color": "#ffffff",
+        "subtitle": "Notre magazine en ligne<br>L’ECOLE DE LA FORÊT",
+        "subtitle_color": "#ffffff",
+        "description": "<p>Etudier la faune, la flore et les fougères sauvages, réviser son alphabet avec des brindilles, observer les mésanges, les vers et les coccinelles, câliner les arbres, fabriquer un herbier, s’improviser botaniste... Une école au grand air où tout n’est que découverte et beauté. <\/p><p><br\/><em>La collection  arrive au fil de l’eau... Découvrez tous les jours en ligne et dans nos boutiques de nouveaux modèles.<\/em><\/p>",
+        "description_color": "#ffffff",
+        "link_title": "Je feuillette",
+        "link": "https:\/\/it1v7.interactiv-doc.fr\/html\/4197_3c5_bd_643\/",
+        "link_color": "#697b6b",
+        "link_background": "#ffffff"
+      }
+    },
+    "1647604326484ab329": {
+      "type": "promo",
+      "settings": {
+        "background": "#697b6b",
+        "variant": "container",
+        "image": "shopify:\/\/shop_images\/HP_la-marque.jpg",
+        "use_gif": false,
+        "video": "",
+        "image_link": "",
+        "sub_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0639\/8266\/5985\/files\/Sigle_Cyrillus.svg?v=1651589388",
+        "heading": "IL Y A PLUS DE 40 ANS...",
+        "heading_color": "#ffffff",
+        "subtitle": "La belle histoire :",
+        "subtitle_color": "#ffffff",
+        "description": "<p>Cyrillus, c'est la jolie histoire d'une Femme<strong>‑<\/strong>entrepreneure qui décide de créer une ligne de beaux classiques pour ses enfants. L'envie grandit, une première collection inspirée par les maisons de couture se dessine. Des tissus haut de gamme, des coupes structurées, des codes emblématiques se posent sur les premières créations. Le beau, le chic, l'élégance deviennent accessibles à tous.<br\/><br\/>Aujourd’hui, c’est toujours la famille, le goût des belles choses qui se transmettent, le savoir-faire et la même passion qui nous animent…<\/p>",
+        "description_color": "#ffffff",
+        "link_title": "Découvrez notre marque",
+        "link": "shopify:\/\/pages\/la-marque",
+        "link_color": "#697b6b",
+        "link_background": "#ffffff"
+      }
+    },
+    "1655396287105fd769": {
+      "type": "image-tiles",
+      "disabled": true,
       "blocks": {
-        "collection-0": {
-          "type": "collection",
+        "165539628780036bb0-0": {
+          "type": "item",
           "settings": {
-            "collection": ""
+            "image": "shopify:\/\/shop_images\/Push-layers-Tablier.jpg",
+            "image_link": "",
+            "heading": "Look 1"
           }
         },
-        "product": {
+        "165539628780036bb0-1": {
+          "type": "item",
+          "settings": {
+            "image_link": "",
+            "heading": ""
+          }
+        },
+        "165539628780036bb0-2": {
+          "type": "item",
+          "settings": {
+            "image_link": "",
+            "heading": ""
+          }
+        },
+        "165539628780036bb0-3": {
+          "type": "item",
+          "settings": {
+            "image_link": "",
+            "heading": ""
+          }
+        },
+        "cf730db0-f0a1-4304-a53c-ff5250d91a8b": {
+          "type": "item",
+          "settings": {
+            "image_link": "",
+            "heading": ""
+          }
+        }
+      },
+      "block_order": [
+        "165539628780036bb0-0",
+        "165539628780036bb0-1",
+        "165539628780036bb0-2",
+        "165539628780036bb0-3",
+        "cf730db0-f0a1-4304-a53c-ff5250d91a8b"
+      ],
+      "settings": {
+        "subheading": "",
+        "heading": "Un nouveau site...",
+        "description": "Plus efficace, rapide et séduisant !\n<br>Nos équipes ont fait le maximum mais certaines fonctionnalités sont encore en cours d'amélioration, merci pour votre compréhension. Retrouvez toutes les réponses à vos questions dans notre rubrique FAQ.",
+        "link_text": "Consultez notre FAQ",
+        "link": "shopify:\/\/pages\/faq"
+      }
+    },
+    "1647503892035620dc": {
+      "type": "discover",
+      "disabled": true,
+      "blocks": {
+        "cbe84294-2d58-4788-a453-c2e099161807": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/HP_NEWCO_discover_push-1.jpg",
+            "image_link": "",
+            "use_gif": false,
+            "heading": "",
+            "product_1": "manteau-trench-iconique-6319-beige-fonce-uni_587",
+            "product_1_top": 84,
+            "product_1_left": 45,
+            "product_2": "blouse-blouse-bleu-chambray-raye_4619",
+            "product_2_top": 33,
+            "product_2_left": 36,
+            "product_3": "chemise-blouse-ecru-marine_5377",
+            "product_3_top": 57,
+            "product_3_left": 40,
+            "product_4": "",
+            "product_5": ""
+          }
+        },
+        "d8c0dabd-5ad4-473f-9205-f8112023bb2e": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/HP_NEWCO_discover_push-2.jpg",
+            "image_link": "",
+            "use_gif": false,
+            "heading": "",
+            "product_1": "",
+            "product_1_top": 60,
+            "product_1_left": 60,
+            "product_2": "",
+            "product_2_top": 0,
+            "product_2_left": 0,
+            "product_3": "",
+            "product_4": "",
+            "product_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "cbe84294-2d58-4788-a453-c2e099161807",
+        "d8c0dabd-5ad4-473f-9205-f8112023bb2e"
+      ],
+      "settings": {
+        "heading": "<br>Flâneries en ville",
+        "description": "Ralentir le rythme de nos vies, contempler ce qui nous entoure,\ndonner du sens, prendre le temps de créer, de produire mieux et durablement.\n<br>Une nouvelle histoire s’écrit…",
+        "link_title": "LA NOUVELLE COLLECTION",
+        "link": "shopify:\/\/collections\/nouvelle-collection"
+      }
+    },
+    "1647604484288be3b4": {
+      "type": "products-promo",
+      "disabled": true,
+      "blocks": {
+        "3fbb1c19-78e9-4d24-b34b-050227150e0b": {
           "type": "product",
           "settings": {
-            "product": "",
-            "second_image": false
+            "product": "robe-large-smock-6408-bleu-moyen-raye_8277"
           }
         },
-        "collection-1": {
+        "1d636bda-b976-4942-9346-2261c1dae788": {
+          "type": "product",
+          "settings": {
+            "product": "chemise-chemise-liberty-6646-rose-moyen-imprime_6069"
+          }
+        },
+        "03c9b594-1851-4e42-a08a-103b4bb10bbe": {
+          "type": "product",
+          "settings": {
+            "product": "short-bermuda-rayure-bleu-6388-bleu-clair-raye_3545"
+          }
+        }
+      },
+      "block_order": [
+        "3fbb1c19-78e9-4d24-b34b-050227150e0b",
+        "1d636bda-b976-4942-9346-2261c1dae788",
+        "03c9b594-1851-4e42-a08a-103b4bb10bbe"
+      ],
+      "settings": {
+        "heading": "<p style=\"color:#b76a5a\"><br>Les Prix légers de l’été<br><\/p><div style=\"text-transform: lowercase; color:#b76a5a\">sur les collections Printemps‑Été mode et maison<sup>∗<\/sup>\n<\/div>",
+        "description": "",
+        "link_title": "<p style=\"color:#b76a5a; text-decoration : underline\">J'en profite<\/p>",
+        "link": "shopify:\/\/collections"
+      }
+    },
+    "16540009632d9e3d94": {
+      "type": "image-with-text-invert",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/message-FAQ-HP_01.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": false,
+        "centerline": false,
+        "label_action": "",
+        "heading": "Un nouveau site...",
+        "richtext": "<p>Plus efficace, rapide et séduisant !<br\/>Nos équipes ont fait le maximum mais certaines fonctionnalités sont  encore en cours d'amélioration, merci pour votre compréhension. Retrouvez toutes les réponses à vos questions dans notre rubrique <a href=\"\/pages\/faq\" title=\"FAQ\">FAQ<\/a><\/p><p><\/p>",
+        "extra_first": "",
+        "extra_large": "",
+        "url_extra_image": "",
+        "extra_last": "",
+        "read_more_url": "",
+        "read_more_label": "consultez notre FAQ",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 35,
+        "background": "#f2ecdf"
+      }
+    },
+    "164750389070993234": {
+      "type": "collections-preview",
+      "disabled": true,
+      "blocks": {
+        "3143d771-f490-4742-a691-c14f4d904cef": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "heading": "La Femme",
+            "image_1": "shopify:\/\/shop_images\/Img_big_shop_the_look.png",
+            "url_image_1": "",
+            "product_1_1": "",
+            "product_1_1_top": 40,
+            "product_1_1_left": 45,
+            "product_1_2": "combi-salopette-combi-shor-bleu-moyen-6410-bleu-moyen-uni-avec-decor_5995",
+            "product_1_2_top": 70,
+            "product_1_2_left": 70,
+            "product_1_3": "la-veste-worker-intemporel-n-2-test",
+            "product_1_3_top": 30,
+            "product_1_3_left": 30,
+            "product_1_4": "",
+            "product_1_5": "",
+            "image_2": "shopify:\/\/shop_images\/Img_big_shop_the_look.png",
+            "url_image_2": "",
+            "product_2_1": "",
+            "product_2_2": "",
+            "product_2_3": "",
+            "product_2_4": "",
+            "product_2_5": "",
+            "image_3": "shopify:\/\/shop_images\/Img_big_shop_the_look.png",
+            "url_image_3": "",
+            "product_3_1": "",
+            "product_3_2": "",
+            "product_3_3": "",
+            "product_3_4": "",
+            "product_3_5": ""
+          }
+        },
+        "ae6d7d69-0fb9-4beb-8638-91c1bd772392": {
+          "type": "collection",
+          "settings": {
+            "heading": "La fille",
+            "image_1": "shopify:\/\/shop_images\/Img_big_shop_the_look.png",
+            "url_image_1": "",
+            "product_1_1": "",
+            "product_1_2": "",
+            "product_1_3": "",
+            "product_1_4": "",
+            "product_1_5": "",
+            "url_image_2": "",
+            "product_2_1": "",
+            "product_2_2": "",
+            "product_2_3": "",
+            "product_2_4": "",
+            "product_2_5": "",
+            "url_image_3": "",
+            "product_3_1": "",
+            "product_3_2": "",
+            "product_3_3": "",
+            "product_3_4": "",
+            "product_3_5": ""
+          }
+        },
+        "1df2f729-1f18-4409-9cd2-83880cca3d0d": {
+          "type": "collection",
+          "settings": {
+            "heading": "Nouvelle collection",
+            "image_1": "shopify:\/\/shop_images\/Img_big_shop_the_look.png",
+            "url_image_1": "",
+            "product_1_1": "",
+            "product_1_2": "",
+            "product_1_3": "",
+            "product_1_4": "",
+            "product_1_5": "",
+            "url_image_2": "",
+            "product_2_1": "",
+            "product_2_2": "",
+            "product_2_3": "",
+            "product_2_4": "",
+            "product_2_5": "",
+            "url_image_3": "",
+            "product_3_1": "",
+            "product_3_2": "",
+            "product_3_3": "",
+            "product_3_4": "",
+            "product_3_5": ""
+          }
+        },
+        "be43422b-79f8-41ba-ac2c-6ddcde46e064": {
+          "type": "collection",
+          "settings": {
+            "heading": "Mode éco-responsables",
+            "image_1": "shopify:\/\/shop_images\/Img_big_shop_the_look.png",
+            "url_image_1": "",
+            "product_1_1": "",
+            "product_1_2": "",
+            "product_1_3": "",
+            "product_1_4": "",
+            "product_1_5": "",
+            "url_image_2": "",
+            "product_2_1": "",
+            "product_2_2": "",
+            "product_2_3": "",
+            "product_2_4": "",
+            "product_2_5": "",
+            "url_image_3": "",
+            "product_3_1": "",
+            "product_3_2": "",
+            "product_3_3": "",
+            "product_3_4": "",
+            "product_3_5": ""
+          }
+        },
+        "1f3031f1-a254-437c-b449-bdf64ce7b628": {
+          "type": "collection",
+          "settings": {
+            "heading": "Collection bébé",
+            "image_1": "shopify:\/\/shop_images\/Img_big_shop_the_look.png",
+            "url_image_1": "",
+            "product_1_1": "",
+            "product_1_2": "",
+            "product_1_3": "",
+            "product_1_4": "",
+            "product_1_5": "",
+            "url_image_2": "",
+            "product_2_1": "",
+            "product_2_2": "",
+            "product_2_3": "",
+            "product_2_4": "",
+            "product_2_5": "",
+            "url_image_3": "",
+            "product_3_1": "",
+            "product_3_2": "",
+            "product_3_3": "",
+            "product_3_4": "",
+            "product_3_5": ""
           }
         }
       },
       "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
+        "3143d771-f490-4742-a691-c14f4d904cef",
+        "ae6d7d69-0fb9-4beb-8638-91c1bd772392",
+        "1df2f729-1f18-4409-9cd2-83880cca3d0d",
+        "be43422b-79f8-41ba-ac2c-6ddcde46e064",
+        "1f3031f1-a254-437c-b449-bdf64ce7b628"
       ],
       "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Avant-Première Nouvelle Collection"
       }
     },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
+    "165418038002a55582": {
+      "type": "themes",
+      "disabled": true,
       "blocks": {
-        "column1": {
-          "type": "column",
+        "31c70e67-85f7-4f98-bee8-7d2e70c04c96": {
+          "type": "items",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "url_image": "",
+            "heading": "Valise d'été <br> A porter sous le soleil exactement...",
+            "url_image_1": "",
+            "url_image_2": "",
+            "content": ""
           }
         },
-        "column2": {
-          "type": "column",
+        "3c98f93e-1b20-4f7c-b576-16a373af0025": {
+          "type": "items",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "url_image": "",
+            "heading": "Collection Sandales <br>Synonymes de vacances et d'élégance.",
+            "url_image_1": "",
+            "url_image_2": "",
+            "content": ""
           }
         },
-        "column3": {
-          "type": "column",
+        "fb7c97fb-c0cc-438f-9de6-fc5d81bd9743": {
+          "type": "items",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "url_image": "",
+            "heading": "Fêtes & Mariages  <br> De l’art, du cœur et du savoir‑faire...",
+            "url_image_1": "",
+            "url_image_2": "",
+            "content": ""
           }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
+        "31c70e67-85f7-4f98-bee8-7d2e70c04c96",
+        "3c98f93e-1b20-4f7c-b576-16a373af0025",
+        "fb7c97fb-c0cc-438f-9de6-fc5d81bd9743"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Histoires d'été à la Une...",
+        "modile_view": "images"
+      }
+    },
+    "1647947016293abe1f": {
+      "type": "blog-preview",
+      "disabled": true,
+      "settings": {
+        "heading": "Actueel",
+        "blog": "journal"
+      }
+    },
+    "1647604335e9e6fe18": {
+      "type": "promo",
+      "disabled": true,
+      "settings": {
+        "background": "#f2ecdf",
+        "variant": "fullscreen",
+        "image": "shopify:\/\/shop_images\/img_fid_e4bf278c-e6fb-4a60-9614-e487c4301a3a.png",
+        "use_gif": false,
+        "video": "",
+        "image_link": "",
+        "sub_image": "",
+        "heading": "Cyrillus & ik",
+        "heading_color": "#9c7d5e",
+        "subtitle": "Votre programme de fidélité",
+        "subtitle_color": "#000000",
+        "description": "<p>À chaque achat collectez des points et transformez-les en remise. Le programme fidélité vous permet aussi de profiter de nombreux avantages tout au long de l’année.<\/p>",
+        "description_color": "#000000",
+        "link_title": "Découvrez vos avantages",
+        "link": "shopify:\/\/pages\/votre-programme-fidelite-cyrillus-moi",
+        "link_color": "#ffffff",
+        "link_background": "#9c7d5e"
+      }
+    },
+    "164802939415d9be53": {
+      "type": "instafeed",
+      "disabled": true,
+      "settings": {
+        "heading": "@CYRILLUSOFFICIEL",
+        "description": "Partagez vos photos et vos instants \"bonheur\" sur Instagram avec le #cyrillusetvous",
+        "link_title": "Je m’inspire",
+        "link": "#"
+      }
+    },
+    "nosto-recommendations": {
+      "type": "nosto-recommendations",
+      "settings": {
+        "show": false,
+        "widget_id": ""
       }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
-    "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "section",
+    "1647440538259b2d2a",
+    "16564187783d3babb3",
+    "165816047953d0e691",
+    "165453322206c4f44d",
+    "1658142002f132f14e",
+    "16545334083e7c8c49",
+    "16587521318e397246",
+    "1647604326484ab329",
+    "1655396287105fd769",
+    "1647503892035620dc",
+    "1647604484288be3b4",
+    "16540009632d9e3d94",
+    "164750389070993234",
+    "165418038002a55582",
+    "1647947016293abe1f",
+    "1647604335e9e6fe18",
+    "164802939415d9be53",
+    "nosto-recommendations"
   ]
 }

@@ -1,0 +1,65 @@
+{% form 'customer', class: 'newsletter-form' %}
+  {%- render 'el_input', id: id, type: 'hidden', name: 'contact[tags]', value: 'newsletter' -%}
+
+  <div class="newsletter-form__field-wrap">
+    {%- liquid
+      assign input_id = 'NewsletterForm-' | append: section.id
+      assign input_label = 'newsletter.label' | t
+      assign input_placeholder = 'newsletter.placeholder' | t
+      assign input_attriputes = 'autocorrect="off" autocapitalize="off" autocomplete="email"'
+
+      if form.errors
+        assign input_attriputes = input_attriputes | append: 'autofocus' | append: 'aria-invalid="true"' | append: 'aria-describedby="Newsletter-error-' | append: section.id | append: '"'
+      elsif form.posted_successfully?
+        assign input_attriputes = input_attriputes | append: 'aria-describedby="Newsletter-success-' | append: section.id | append: '"'
+      endif
+    -%}
+
+    <div class="field newsletter-form__field">
+      {%-
+        render 'el_input',
+        id: input_id,
+        type: 'email',
+        name: 'contact[email]',
+        value: form.email,
+        placeholder: input_placeholder,
+        required: true,
+        attributes: input_attriputes,
+        custom_classes: 'field__input'
+      -%}
+
+      {%-
+        render 'el_label',
+        for: input_id,
+        content: input_label,
+        custom_classes: 'field__label'
+      -%}
+
+      {%- liquid
+        capture button_content
+          render 'el_icon', icon: 'arrow-right'
+        endcapture
+      -%}
+
+      {%-
+        render 'el_button',
+        text: button_content,
+        custom_classes: 'field__button newsletter-form__button',
+        attributes: 'name="commit"',
+        type: 'submit',
+      -%}
+    </div>
+
+    {%- if form.errors -%}
+      <ins class="newsletter-form__message" id="Newsletter-error--{{ section.id }}">
+        {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+      </ins>
+    {%- endif -%}
+  </div>
+
+  {%- if form.posted_successfully? -%}
+    <h3 class="newsletter-form__message newsletter-form__message--success" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>
+      {{ 'newsletter.success' | t }}
+    </h3>
+  {%- endif -%}
+{% endform %}

@@ -1,0 +1,141 @@
+{%- comment -%}
+    @summary Renders a cart item
+
+    @param {object} item - item
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {%-
+        render 'c_cart-item',
+        item: item,
+        custom_classes: 'custom',
+        modifiers: 'xl',
+    -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture classes
+    render 'f_bem-classes', main_class: 'cart-item', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+  capture title
+    render 'f_product-title', product: line_item.product
+  endcapture
+  assign alt = line_item.product.featured_image.alt | default: title
+  assign color_label = line_item.product.metafields.swatch.label
+  assign erp_stat = line_item.product.metafields.FRONT.erp_stat_f.value
+  assign erp_eco_part = line_item.product.metafields.erp.DEAFRA | strip_html | times: line_item.quantity
+  assign color_labels = 'color,couleur,farbig,cor,color,väri,色' | split: ','
+  assign size_label = 'size,taille,größe,tamanho,tamaño,koko,サイズ' | split: ','
+  assign price = line_item.final_line_price
+  assign compare_at_price = line_item.original_line_price
+  assign remove_text = 'cart.remove' | t
+  assign modifier_text = 'cart.modifier' | t
+-%}
+
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+<div id="{{- line_item.key -}}"
+     class="{{- classes -}}"
+     data-cart-item="{{ line_item.id }}"
+     data-vp-id="{{line_item.variant_id}}"
+     data-vp-qty="{{line_item.quantity}}">
+  <div class="cart-item__media">
+    {% capture image %}
+      {%-
+              render 'el_shopify-image',
+              image: line_item.product.featured_image,
+              lazy_loading: true,
+              width: 144,
+              height: 192,
+              crop: 'center',
+              alt: alt,
+              ratio_container: true
+      -%}
+    {% endcapture %}
+    {% render 'el_link', custom_classes: '', href: line_item.url, text: image %}
+  </div>
+  <div class="cart-item__info">
+    {%- liquid
+      echo '<div class="cart-item__column">'
+      echo '<div class="cart-item__row">'
+      capture link
+        render 'el_link', custom_classes: 'cart-item__link', href: line_item.url, text: title
+      endcapture
+      render 'el_heading', custom_classes: 'cart-item__title', tag: 'div', level: 3, text: link, modifiers: 'xs'
+      echo '<div class="cart-item__price cart-item__price--mobile">'
+      render 'c_product-label-discount', tag: 'p', price: price, compare_at_price: compare_at_price, product_tags: line_item.product.tags
+      render 'c_price', custom_classes: 'cart-item__price-value vp-original-prices', price: price, compare_at_price: compare_at_price, no_discount: true
+      echo '</div>'
+      if line_item.variant.options.size > 0
+        echo '<ul class="cart-item__options">'
+        unless section.id == blank
+          if color_label
+            echo '<li class="cart-item__option">' | append: color_label | append: '</li>'
+          endif
+        else
+          for option in line_item.options_with_values
+            assign name = option.name | downcase
+            if color_labels contains name
+              echo '<li class="cart-item__option">' | append: option.value | append: '</li>'
+            endif
+          endfor
+        endunless
+        for option in line_item.options_with_values
+          assign name = option.name | downcase
+          if size_label contains name
+            echo '<li class="cart-item__option">' | append: option.value | append: '</li>'
+          endif
+        endfor
+        echo '</ul>'
+      endif
+      render 'c_cart-quantity', item: line_item, custom_classes: 'cart-item__quantity', modifiers: 'desktop'
+      echo '</div>'
+
+      echo '<div class="cart-item__row">'
+      echo '<div class="cart-item__price cart-item__price--desktop">'
+      render 'c_product-label-discount', tag: 'p', price: price, compare_at_price: compare_at_price, product_tags: line_item.product.tags
+      render 'c_price', custom_classes: 'cart-item__price-value vp-original-prices', price: price, compare_at_price: compare_at_price, no_discount: true
+      echo '</div>'
+      if settings.cart_enable_eco_part_wording and erp_eco_part != blank and erp_eco_part > 0
+        assign eco_part_wording = 'cart.eco_part_wording' | t: amount: erp_eco_part
+        echo '<div class="cart-item__price-detail">' | append: eco_part_wording | append: '</div>'
+      endif
+      echo '<div class="vp-prices-discount-tags"></div>'
+      echo '</div>'
+      echo '</div>'
+      echo '<div class="cart-item__column">'
+      echo '<div class="cart-item__row">'
+      render 'c_cart-quantity', item: line_item, custom_classes: 'cart-item__quantity', modifiers: 'mobile'
+      if erp_stat == "TE"
+        echo '<div class="cart-item__subinfo">'
+        render 'el_icon', icon: 'delivery', custom_classes: 'cart-item__icon'
+        assign bulky = 'cart.bulky' | t
+        assign learn_more = 'cart.learn_more' | t
+        if settings.bulky_link != blank
+          capture learn_more_link
+            echo '<a href="' | append: settings.bulky_link | append: '">' | append: learn_more | append: '</a>'
+          endcapture
+        endif
+        echo '<p>' | append: bulky | append: learn_more_link | append: '</p>'
+        echo '</div>'
+      endif
+      echo '</div>'
+      echo '<div class="cart-item__row">'
+      echo '<div class="cart-item__wishlist" data-card-wishlist>'
+        echo '<span class="smartwishlist smartwishlist--secondary cartwishlist" data-product="' | append: line_item.product_id | append: '" data-variant="' | append: line_item.product.first_available_variant.id | append: '"></span>'
+        render 'el_icon', icon: 'heart', custom_classes: 'smartwishlist__icon'
+      echo '</div>'
+      echo '<div class="cart-item__remove">'
+      render 'el_button', text: remove_text, modifiers: 'link', type: 'button', custom_classes: 'cart-item__button', attributes: 'data-cart-remove'
+      echo '</div>'
+      echo '<div class="cart-item__modifier">'
+      assign modifier_attributes = 'data-cart-modifier ' | append: 'data-cart-modifier-url="' | append: line_item.url | append: '"'
+      render 'el_button', text: modifier_text, modifiers: 'link', type: 'button', custom_classes: 'cart-item__button', attributes: modifier_attributes
+      echo '</div>'
+      echo '</div>'
+      echo '</div>'
+    -%}
+  </div>
+</div>
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}

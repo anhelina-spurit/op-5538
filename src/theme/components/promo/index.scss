@@ -1,0 +1,311 @@
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../constants/fonts';
+@import '../../utils/to-rem';
+
+.promo {
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media-breakpoint-down(md) {
+    text-align: center;
+  }
+}
+
+.promo--fullscreen {
+  margin-right: to-rem(14px);
+  margin-left: to-rem(14px);
+}
+
+.promo__grid {
+  display: grid;
+  padding-bottom: to-rem(98px);
+  grid-gap: to-rem(48px);
+  grid-template-columns: 1fr 1fr;
+
+  @include media-breakpoint-down(md) {
+    padding-bottom: 0;
+    grid-gap: 0;
+    grid-template-columns: 1fr;
+  }
+}
+
+.promo__item--info {
+  display: flex;
+  align-items: center;
+}
+
+.promo__content {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: to-rem(30px) 0;
+}
+
+.promo__content-box {
+  padding: to-rem(10px) to-rem(32px);
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    align-items: center;
+    padding: to-rem(30px) to-rem(32px);
+    border: 1px solid $palette-white;
+  }
+}
+
+.promo__content-box_h {
+  font-size: to-rem(18px);
+  letter-spacing: 0.056em;
+  line-height: 1.556em;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(md) {
+    position: relative;
+    padding-bottom: to-rem(20px);
+    margin-bottom: to-rem(20px);
+  }
+
+  @include media-breakpoint-up(md) {
+    padding-right: to-rem(22px);
+    border-right: 1px solid $palette-white;
+    margin-right: to-rem(22px);
+    text-align: right;
+  }
+}
+
+.promo__content-box_h::after {
+  @include media-breakpoint-down(md) {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    display: block;
+    width: 90%;
+    height: 1px;
+    background-color: $palette-dark-slate-grey;
+    content: '';
+  }
+}
+
+.promo__content-box_p {
+  font-size: to-rem(14px);
+  line-height: 1.857;
+}
+
+.promo__media {
+  position: relative;
+  max-width: to-rem(490px);
+
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    padding: 0 to-rem(30px);
+  }
+}
+
+.promo__media .video-block {
+  @include media-breakpoint-down(md) {
+    min-height: 300px;
+  }
+}
+
+.promo__sub-image {
+  position: absolute;
+  bottom: to-rem(-43px);
+  left: 50%;
+  max-width: to-rem(85px);
+  transform: translateX(-50%);
+
+  @include media-breakpoint-down(md) {
+    bottom: to-rem(-10px);
+    max-width: to-rem(49px);
+  }
+}
+
+.promo--full .promo__sub-image {
+  bottom: to-rem(10px);
+}
+
+.promo__heading,
+.promo__sub-heading {
+  width: 100%;
+}
+
+.promo__heading {
+  margin: 0 0 to-rem(24px);
+}
+
+.promo__sub-heading {
+  order: -1;
+  margin-top: 0;
+  margin-bottom: to-rem(32px);
+  text-transform: initial;
+}
+
+.promo__description {
+  margin: 0 0 to-rem(40px);
+  font-size: to-rem(16px);
+  line-height: 1.6;
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(13px);
+    line-height: 1.85;
+  }
+}
+
+.promo__description > *:first-child {
+  margin-top: 0;
+}
+
+.promo__description > *:last-child {
+  margin-bottom: 0;
+}
+
+.promo__link {
+  display: block;
+  width: to-rem(380px);
+  max-width: 100%;
+  padding: to-rem(20px);
+  font-size: to-rem(12px);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.2s;
+
+  @include media-breakpoint-down(md) {
+    padding: to-rem(16px) to-rem(25px);
+    margin: auto;
+  }
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}
+
+.promo--container .promo__content {
+  max-width: to-rem(480px);
+}
+
+.promo--container .promo__heading,
+.promo--container .promo__sub-heading {
+  font-family: $font-family-lora;
+  font-size: to-rem(25px);
+  font-style: italic;
+  letter-spacing: to-rem(2.5px);
+  line-height: 1.28;
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(14px);
+  }
+}
+
+.promo--container .promo__sub-heading {
+  margin-bottom: to-rem(32px);
+}
+
+.promo--container .promo__heading {
+  margin-bottom: to-rem(24px);
+}
+
+.promo--container .promo__description {
+  max-width: to-rem(452px);
+  margin-bottom: to-rem(38px);
+  font-size: to-rem(16px);
+  letter-spacing: to-rem(0.6px);
+  line-height: 1.625;
+}
+
+.promo--container .promo__description > p:not(:last-child) {
+  margin-bottom: to-rem(26px);
+}
+
+.promo--container .promo__link {
+  letter-spacing: to-rem(1.8px);
+}
+
+.promo--fullscreen .promo__grid {
+  padding-bottom: 0;
+}
+
+.promo--fullscreen .promo__content {
+  max-width: to-rem(355px);
+  padding-right: to-rem(20px);
+  padding-left: to-rem(20px);
+  margin: auto;
+}
+
+.promo--fullscreen .promo__media {
+  max-width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.promo--fullscreen .promo__ratio-container {
+  height: 100%;
+}
+
+.promo--fullscreen .promo__heading {
+  margin: 0 0 to-rem(26px);
+  font-family: $font-family-lora;
+  font-size: to-rem(30px);
+  letter-spacing: to-rem(2.5px);
+  text-transform: none;
+  @include media-breakpoint-down(sm) {
+    font-size: to-rem(24px);
+  }
+}
+
+.promo--fullscreen .promo__sub-heading {
+  margin: 0 0 to-rem(24px);
+  font-family: $font-family-sweet-sans-pro;
+  font-size: to-rem(12px);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: to-rem(2px);
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(16px);
+  }
+}
+
+.promo--fullscreen .promo__description {
+  margin: 0 0 to-rem(34px);
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(0.6px);
+  line-height: 1.71;
+}
+
+.promo--fullscreen .promo__link {
+  width: 100%;
+  padding: to-rem(12.75px) to-rem(20px);
+  letter-spacing: to-rem(1.8px);
+}
+
+.promo--wide .promo__content {
+  @include media-breakpoint-up(md) {
+    max-width: to-rem(547px);
+  }
+}
+
+.promo--wide .promo__heading,
+.promo--wide .promo__sub-heading {
+  font-family: $font-family-lora;
+  font-size: to-rem(22px);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.273;
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(16px);
+  }
+}
+
+.promo--wide .promo__heading {
+  margin-bottom: to-rem(45px);
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(30px);
+  }
+}

@@ -1,0 +1,64 @@
+{%- assign tcs_url = shop.url | append: shop.terms_of_sale.url -%}
+
+{%- assign tcs_attr_name = 'terms_and_conditions' -%}
+{%- assign tcs_attr_value = 0 -%}
+{%- assign tcs_checked = '' -%}
+
+<div id="checkout-tcs" class="hidden">
+    <div class="step_tcs">
+
+        {% comment %} List existing checkout attribute values {% endcomment %}
+        {% for attribute in checkout.attributes %}
+            {%- if attribute.first == tcs_attr_name -%}
+                {%- assign tcs_attr_value = attribute.last -%}
+            {%- else -%}
+                <input type="hidden" name="checkout[attributes][{{ attribute.first }}]" value="{{ attribute.last }}" />
+            {%- endif -%}
+        {% endfor %}
+
+        {% comment %} Check checkbox if a user has already gave the agreement and returned to this step {% endcomment %}
+        {%- if tcs_attr_value == '1' -%}
+            {%- assign tcs_checked = 'checked' -%}
+        {%- endif -%}
+
+        <div class="customer-tcs">
+            <div class="checkbox-wrapper">
+                <div class="checkbox__input">
+                <input class="input-checkbox" 
+                    type="checkbox" 
+                    value="1"
+                    name="checkout[attributes][{{ tcs_attr_name }}]" 
+                    id="checkout-tcs-input"
+                    {{ tcs_checked }} />
+                </div>
+                <span id="checkout-tcs-label" class="checkbox__label">
+                    {{ 'checkout.terms_and_conditions.agreement_html' | t: terms_url: tcs_url }}
+                </span>
+            </div>
+            <div id="checkout-tcs-warning" class="field__message field__message--error hidden">
+                {{ 'checkout.terms_and_conditions.confirmation' | t }}
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <script src="{{ 'checkout-tcs-checkbox.js' | asset_url }}"></script>
+
+{% style %}
+    #checkout-tcs {
+        margin-top: 12px;
+    }
+
+    #continue_button.disabled {
+        cursor: not-allowed;
+        opacity: .4;
+    }
+
+    #checkout-tcs-warning:not(.hidden) {
+        display: block;
+    }
+
+    #checkout-tcs-label a {
+        text-decoration: underline;
+    }
+{% endstyle %}

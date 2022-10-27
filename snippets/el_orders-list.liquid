@@ -1,0 +1,92 @@
+{%- comment -%}
+  @summary Renders table with order informatio
+
+  @param {string} custom_class - value
+  @param {customer.orders} customer_orders (required) - customer orders
+  @param {string('orders'|'refunds')} typeTable - type table
+
+  @example
+  {%-
+    render 'el_orders-list',
+    customer_orders: customer.orders,
+    custom_class: 'custom_class',
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign typeOrders = 'orders'
+  assign typeRefunds = 'refunds'
+  assign isGlobalEStore = false
+
+  if shop.permanent_domain == 'cyrillus-the-oz.myshopify.com' or shop.permanent_domain == 'cyrillus-global-e.myshopify.com'
+    assign isGlobalEStore = true
+  endif
+
+  if typeTable == blank
+    assign typeTable = typeOrders
+  endif
+-%}
+
+{%- if customer_orders and customer_orders.size > 0 -%}
+  {%- assign content = '' -%}
+  {%- for order in customer_orders -%}
+    {%- liquid
+      assign trackingUrl = nil
+      assign trackingNumber = nil
+
+      for line_item in order.line_items
+        unless trackingNumber
+          if line_item.fulfillment.tracking_number
+            assign trackingNumber = line_item.fulfillment.tracking_number
+          endif
+        endunless
+        unless trackingUrl
+          if line_item.fulfillment.tracking_url
+            assign trackingUrl = line_item.fulfillment.tracking_url
+          endif
+        endunless
+      endfor
+
+      capture link
+        assign text = '№' | append: ' ' | append: order.name
+        render 'el_link', href: order.customer_url, text: text
+      endcapture
+    -%}
+
+    {%- capture tmpContent -%}
+      <li class="orders-list__item">
+        <div class="orders-list__content">
+          <span class="orders-list__content-url">{{ link }}</span>
+          <span class="orders-list__content-date">{{ order.created_at | date: '%d/%m/%Y' }}</span>
+          <span class="orders-list__content-price">{{ order.total_price | money }}</span>
+          {%- if typeTable == typeRefunds -%}
+            {% if order.financial_status == 'refunded' %}
+              {% assign labelFinancialStatus = 'refunds.table.actions.refunded' | t %}
+              {% render 'el_link', href: order.customer_url, text: labelFinancialStatus, custom_classes: 'orders-list__content-refund-action' %}
+            {% elsif order.financial_status == 'partially_refunded' %}
+              {% assign labelFinancialStatus = 'refunds.table.actions.partially_refunded' | t %}
+              {% render 'el_link', href: order.customer_url, text: labelFinancialStatus, custom_classes: 'orders-list__content-refund-action' %}
+            {% endif %}
+            {%- if isGlobalEStore == false and settings.enable_order_return_app -%}
+              {% render 'account-order-return-links', order: order, customLinkClasses: 'orders-list__content-refund-action' %}
+            {% elsif isGlobalEStore and settings.enable_globale_returns and settings.globale_return_portal_link != blank %}
+              {% render 'globale-account-order-return-links' %}
+            {% endif %}
+          {%- endif -%}
+        </div>
+        {%- capture link_content -%}
+          <span>
+          {% render 'el_icon', icon: 'arrow-chevron-right', custom_classes: 'orders-list__content-icon' %}
+        </span>
+        {%- endcapture -%}
+        {% render 'el_link', href: order.customer_url, text: link_content,  custom_classes: 'orders-list__content-link'%}
+      </li>
+    {%- endcapture -%}
+    {%- assign content = content | append: tmpContent -%}
+  {%- endfor -%}
+  {%- if content %}
+    <ul class="orders-list">
+      {{ content }}
+    </ul>
+  {%- endif -%}
+{%- endif -%}

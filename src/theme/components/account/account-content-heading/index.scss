@@ -1,0 +1,68 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+@import '../../../constants/palette';
+
+.account-content-heading {
+  margin-bottom: to-rem(12px);
+}
+
+.account-content-heading__title {
+  padding: 0;
+  margin: 0;
+  color: $palette-dark;
+  font-weight: 300;
+  letter-spacing: 0.1025em;
+  line-height: to-rem(24px);
+}
+
+.account-content-heading__title_offset {
+  padding: 0 to-rem(36px);
+}
+
+.account-content-heading__title_offset--small {
+  padding: 0 to-rem(20px);
+}
+
+.account-content-heading__link {
+  position: relative;
+  display: flex;
+  max-width: to-rem(320px);
+  align-items: center;
+  border-bottom: unset;
+}
+
+.account-content-heading__link:focus,
+.account-content-heading__link:active,
+.account-content-heading__link:hover {
+  border: unset;
+}
+
+.account-content-heading__link-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  height: to-rem(14px);
+}
+
+.account-content-heading__link-content {
+  width: 100%;
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(12px);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.account-content-heading_hidden-mobile {
+  display: none;
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
+}
+
+.account-content-heading_hidden-desktop {
+  display: block;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}

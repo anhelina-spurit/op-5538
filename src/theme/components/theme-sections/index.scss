@@ -1,0 +1,16 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+
+.shopify-section--has-padding {
+  padding-top: to-rem(72px);
+  padding-bottom: to-rem(72px);
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(24px);
+    padding-bottom: to-rem(24px);
+  }
+}
+
+.shopify-section:not(.shopify-section--has-padding) + .shopify-section--has-padding {
+  padding-top: 0;
+}

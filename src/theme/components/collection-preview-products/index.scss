@@ -1,0 +1,25 @@
+@import '../../utils/to-rem/index';
+@import '../../utils/breakpoints/index';
+@import '../../constants/palette/index';
+
+.collection-preview-slider__products .collection-preview-slider__product:not(.active) {
+  display: none;
+}
+
+.collection-preview-slider__products .product-card {
+  max-width: 100%;
+}
+
+.collection-preview-slider__products .product-card__button {
+  display: block;
+}
+
+/* stylelint-disable-next-line selector-max-class */
+.collection-preview-slider__products .product-card.active .product-card__form {
+  opacity: 1;
+  visibility: visible;
+}
+
+.collection-preview-slider__products .product-card--simple {
+  display: none;
+}

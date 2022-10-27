@@ -1,0 +1,34 @@
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+
+.breadcrumbs {
+  padding: to-rem(25px) 0 to-rem(25px);
+}
+
+.breadcrumbs__list {
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  list-style: none;
+}
+
+.breadcrumbs__item {
+  display: inline-block;
+  color: $palette-silver-chalice;
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(0.83px);
+  line-height: 1.4;
+}
+
+.breadcrumbs__item:not(:last-child)::after {
+  display: inline-block;
+  margin: 0 to-rem(2px);
+  content: '—';
+}
+
+.breadcrumbs__item a {
+  border: none;
+  color: $palette-dark;
+  text-decoration: none;
+}

@@ -1,0 +1,73 @@
+{%- liquid
+  assign swatches_enabled = settings.enable_custom_related_products_swatches
+  assign selected_product = product.selected_or_first_available_variant
+  assign component_image = product.featured_media.preview_image
+  assign size_label = 'size,taille,größe,tamanho,tamaño,koko,サイズ' | split: ','
+  assign color_label = 'color,colour,couleur,colore,farbe,색,色,färg,farve' | split: ','
+-%}
+
+<div class="bundle-item" data-bundle-item>
+  <div class="bundle-item__media">
+    {%- render 'el_shopify-image', image: component_image, custom_classes: 'bundle-item__image', width: 100, lazy_loading: true, format: 'pjpg' -%}
+  </div>
+  <div class="bundle-item__info">
+    {%- liquid
+      capture title
+        render 'f_product-title', product: product
+      endcapture
+      capture heading_text
+        echo '<button class="bundle-item__modal-btn" data-bundle-item-modal-btn>' | append: title | append: '</button>'
+      endcapture
+      render 'el_heading', level: 2, text: heading_text, modifiers: 'xxs', custom_classes: 'bundle-item__heading'
+      render 'c_price', price: selected_product.price, compare_at_price: selected_product.compare_at_price, custom_classes: 'bundle-item__price vp-original-prices' tag: 'div', product_tags: product.tags
+    -%}
+
+    {%- form 'product', product, data-bundle-item-form: '', class: 'bundle-item__form' -%}
+      {%- render 'el_input', type: 'hidden': name: 'id', value: selected_product.id -%}
+      {%- render 'el_input', type: 'hidden': name: 'handle', value: product.handle -%}
+      {%- unless product.has_only_default_variant -%}
+        <div class="product-form__options product-form__options--row">
+          <div data-option-swatches>
+            {%- liquid
+              if swatches_enabled
+                echo '<div class="bundle-item__swatches">'
+                  render 'oz-related-products-swatches', current_product: product
+                echo '</div>'
+              endif
+            -%}
+          </div>
+
+          <div class="bundle-item__controls">
+            {%- liquid
+              for option in product.options_with_values
+                assign downcase_option = option.name | downcase
+                assign select_option = nil
+
+                if color_label contains downcase_option
+                  if swatches_enabled == false
+                    render 'el_product-option', option: option, id: product.id
+                  else
+                    assign color_value = option.selected_value | escape
+                    render 'el_input', type: 'hidden', name: option.name, attributes: 'data-option-value', value: color_value
+                  endif
+                endif
+
+                if size_label contains downcase_option
+                  render 'el_product-option', option: option, type: 'select', id: product.id
+                endif
+              endfor
+
+              render 'c_quantity', id: product.id, product: selected_product, custom_classes: 'product-form__input product-form__quantity'
+            -%}
+          </div>
+        </div>
+      {%- endunless -%}
+      <script type="application/json" data-bundle-item-json>
+        {{ product.variants | json }}
+      </script>
+    {% endform %}
+  </div>
+  {%- liquid
+    render 'c_product-modal', product: product, custom_classes: 'bundle-item', attributes: 'data-bundle-item-modal'
+  -%}
+</div>

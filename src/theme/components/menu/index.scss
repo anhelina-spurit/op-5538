@@ -1,0 +1,176 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../constants/transitions/';
+
+.menu {
+  overflow: hidden;
+}
+
+.menu__list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0 to-rem(-20px);
+}
+
+.menu__item {
+  padding: 0 to-rem(20px);
+  list-style: none;
+}
+
+.menu__link {
+  display: block;
+  padding: to-rem(10px) 0;
+  border: 0;
+  font-size: to-rem(11px);
+  font-weight: 400;
+  letter-spacing: to-rem(1px);
+  line-height: 1.4;
+  text-align: left;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(lg) {
+    padding: 0.75rem 0;
+  }
+}
+
+.menu__link:hover {
+  border: none;
+  text-decoration: none;
+}
+
+.disclosure-menu__card {
+  position: relative;
+}
+
+.disclosure-menu__card_link {
+  border-bottom: 1px solid rgba($palette-dark-slate-grey, 0.5);
+  color: inherit;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.disclosure-menu__card_link:hover {
+  border-color: $palette-dark-slate-grey;
+}
+
+.disclosure-menu__card_link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+}
+
+.disclosure-menu__card_image {
+  display: block;
+  width: to-rem(230px);
+  margin-bottom: to-rem(12px);
+}
+
+.disclosure-menu__card_title {
+  margin-bottom: to-rem(12px);
+}
+
+@include media-breakpoint-up(lg) {
+  .disclosure-menu {
+    position: absolute;
+    z-index: 50;
+    right: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    padding: to-rem(28px) calc(50% - #{to-rem(684px)}) to-rem(35px);
+    margin: 0 auto;
+    background-color: $palette-white;
+    font-size: to-rem(12px);
+    letter-spacing: 0.072em;
+    list-style: none;
+  }
+
+  .menu__item:hover > .disclosure-menu {
+    display: flex;
+  }
+
+  .disclosure-menu .menu__link {
+    display: inline;
+    padding: to-rem(3px) 0;
+    border-bottom: 1px solid transparent;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .disclosure-menu .menu__link:hover,
+  .disclosure-menu .menu__link--active {
+    border-color: $palette-dark-slate-grey;
+    font-weight: 500;
+  }
+
+  .disclosure-menu__item {
+    max-width: 20%;
+    flex-basis: 0;
+    flex-grow: 1;
+    padding: 0 1.25%;
+  }
+
+  .disclosure-submenu {
+    padding: to-rem(20px) 0 0;
+    list-style: none;
+    text-transform: none;
+  }
+
+  .disclosure-submenu .menu__link {
+    font-weight: 400;
+    text-transform: none;
+  }
+
+  .disclosure-submenu__item {
+    margin-bottom: to-rem(8px);
+  }
+}
+
+.mm-spn.mm-spn--light {
+  background: $palette-white;
+  color: $palette-dark-slate-grey;
+
+  --mm-spn-item-height: 35px;
+  --mm-spn-line-height: 15px;
+}
+
+.mm-spn .menu__link {
+  padding: to-rem(12px) 0;
+}
+
+.mm-spn li::before {
+  right: to-rem(6px);
+}
+
+.mm-spn.mm-spn--navbar::before {
+  left: to-rem(2px);
+}
+
+.mm-spn li::after,
+.mm-spn.mm-spn--navbar ul::before,
+.mm-spn a:not(:last-child)::after {
+  display: none;
+}
+
+.mm-spn.mm-spn--navbar::after {
+  font-size: to-rem(10px);
+  text-transform: uppercase;
+}
+
+.mm-spn .disclosure-menu__item--card {
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+}
+
+/* TEMP STYLES. ONLY FOR DEMO.
+   REMOVE BEFORE DEPLOY TO PRODUCTION */
+.disclosure-menu .menu__link--active {
+  border-color: transparent;
+}

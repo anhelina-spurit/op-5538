@@ -1,0 +1,38 @@
+<div class="login__block login__block--sign-up">
+  <div class="login__block-header">
+    {%- liquid
+      assign level = nil
+      assign text = 'customer.register.title' | t
+      assign notice = 'customer.register.notice' | t
+      assign id = nil
+
+      if template contains 'customers/register'
+        assign level = 1
+        assign id = section.id | append: '__heading'
+      else
+        assign level = 2
+      endif
+
+      render 'el_heading', level: level, text: text, id: id, custom_classes: 'login__block-title', modifiers: 'xxs'
+      render 'el_heading', level: level, tag: 'div', text: notice, custom_classes: 'login__block-notice login__block-notice--sign-up'
+
+      assign collapse_button_id = 'sign_up_collapse_button'
+      assign collapse_button_controls = 'sign_up_collapse_panel'
+      assign collapse_button_text = 'customer.register.submit' | t
+      render 'c_collapse-button', id: collapse_button_id, controls: collapse_button_controls, content: collapse_button_text, custom_classes: 'button button--primary button--full-width login__collapse-button'
+    -%}
+  </div>
+
+  <div class="login__collapse-panel" id="sign_up_collapse_panel" data-collapse-panel>
+    <div class="login__collapse-content" data-collapse-content>
+      {%- liquid
+        if description != blank
+          echo '<p class="login__block-description">' | append: description | remove: '<p>' | remove: '</p>' | append: '</p>'
+        endif
+
+        assign sign_up_form_id = 'sign_up_form'
+        render 'c_sign-up_form', id: sign_up_form_id
+      -%}
+    </div>
+  </div>
+</div>

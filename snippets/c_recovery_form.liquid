@@ -1,0 +1,60 @@
+{%- liquid
+  form 'recover_customer_password', class: 'login__form form', id: id, style: 'display: none'
+    capture fieldset_content
+      if form.posted_successfully?
+        assign status_content = 'customer.recover_password.success' | t
+
+        render 'c_status', content: status_content
+      else
+        assign form_errors_id = id | append: '_errors'
+        assign form_errors_label = 'accessibility.error' | t
+
+        echo '<div class="form-errors-wrapper form-errors-wrapper--recovery" hidden></div>'
+        render 'c_form-errors', id: form_errors_id, form: form, label: form_errors_label
+
+        capture email_input
+          assign email_id = id | append: '_email'
+          assign email_label = 'customer.login.email' | t
+
+          capture email_attributes
+            if form.errors
+              echo 'aria-invalid="true" aria-describedby="' | append: form_errors_id | append : '"'
+            endif
+          endcapture
+
+          render 'el_input', id: email_id, type: 'email', name: 'email', required: true, custom_classes: 'login-input', modifiers: 'full-width', attributes: email_attributes, placeholder: ' '
+          render 'el_label', content: email_label, for_input: email_id, required: true, custom_classes: 'login-label'
+        endcapture
+
+        render 'c_control', content: email_input, custom_classes: 'login-control'
+
+        capture form_action
+          assign submit_text = 'customer.recover_password.submit' | t
+          assign submit_id = id | append: '_submit'
+
+          render 'el_button', id: submit_id, text: submit_text, custom_classes: 'login-action-control__button', modifiers: 'primary', type: 'submit'
+
+          capture back_to_login_text
+            echo 'customer.recover_password.or' | t | append: ' '
+            echo 'customer.recover_password.cancel' | t
+          endcapture
+
+          render 'el_button', text: back_to_login_text, modifiers: 'link', attributes: 'data-show-sign-in', custom_classes: 'login-action-control__button login-action-control__button--cancel'
+        endcapture
+
+        render 'c_control', content: form_action, custom_classes: 'login-action-control login-action-control--recovery'
+
+        assign recover_subtext = 'customer.recover_password.subtext' | t
+        render 'c_control', content: recover_subtext, custom_classes: 'login-info-control'
+
+        assign spam_note = 'customer.recover_password.spam_note' | t
+        render 'c_control', content: spam_note, custom_classes: 'login-info-control'
+      endif
+    endcapture
+
+    assign fieldset_id = id | append: '_fieldset'
+    assign fieldset_legend = 'customer.recover_password.title' | t
+
+    render 'el_fieldset', id: fieldset_id, custom_classes: 'login-fieldset login-fieldset--recovery', attributes: 'data-recovery', legend: fieldset_legend, content: fieldset_content
+  endform
+-%}

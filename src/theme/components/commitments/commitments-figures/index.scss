@@ -1,0 +1,66 @@
+@import '../../../utils/breakpoints';
+@import '../../../utils/to-rem';
+
+.commitments-figures {
+  max-width: to-rem(1090px);
+
+  @include media-breakpoint-up(md) {
+    margin: 0 auto to-rem(55px);
+  }
+}
+
+.commitments-figures__list {
+  padding: 0;
+  margin: 0 to-rem(-10px);
+  list-style: none;
+
+  @include media-breakpoint-down(md) {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.commitments-figures__figure {
+  padding: 0 to-rem(10px);
+  margin: 0;
+}
+
+.commitments-figures__caption {
+  margin-top: to-rem(10px);
+  font-size: to-rem(14px);
+  line-height: 1.71;
+}
+
+@include media-breakpoint-down(md) {
+  .commitments-figures__item {
+    margin-bottom: to-rem(20px);
+  }
+
+  .commitments-figures__item:nth-child(2) {
+    width: 35.8vw;
+  }
+
+  .commitments-figures__item--captioned {
+    grid-column: 1 / span 2;
+  }
+
+  .commitments-figures__item--captioned .commitments-figures__figure {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+  }
+
+  .commitments-figures__item--captioned .image {
+    max-width: 50%;
+  }
+
+  .commitments-figures__caption {
+    min-width: to-rem(150px);
+    padding-left: 12%;
+  }
+}

@@ -1,0 +1,85 @@
+{%- comment -%}
+  @summary Renders a account loyalty pointers tab
+
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+      render 'el_points',
+      custom_classes: 'points__container',
+      attributes: 'data-attribute',
+      modifiers: 'lg, light'
+  -%}
+{%- endcomment -%}
+
+{%- comment -%}
+
+
+{%- liquid
+  assign points_action_heading_t = 'account.loyalty-points.content.points-action.heading' | t
+  assign points_action_button_t = 'account.loyalty-points.content.points-action.button' | t
+  assign points_action_button_mobile_t = 'account.loyalty-points.content.points-action.button_mobile' | t
+-%}
+
+{%- capture actionButtonLabel -%}
+  <span class="points_hide-mobile">{{- points_action_button_t -}}</span>
+  <span class="points_hide-desktop">{{- points_action_button_mobile_t -}}</span>
+{%- endcapture -%}
+
+{%- liquid
+  assign points_headind_t = 'account.loyalty-points.content.heading' | t
+  assign points_count_headind_t = 'account.loyalty-points.content.points-count.count' | t
+  assign points_count_description_t = 'account.loyalty-points.content.points-count.description' | t
+  assign points_count_cost_t = 'account.loyalty-points.content.points-count.cost' | t
+  assign points_loyalty-card = 'account.loyalty-points.content.points-count.loyalty_card' | t
+  assign points_action_description_t = 'account.loyalty-points.content.points-action.description' | t
+
+  capture points_count
+    render 'el_heading', level: 3, text: points_count_headind_t, id: 'loyalty-points-count', modifiers: 'md', custom_classes: 'points__count-heading invisible'
+    render 'el_status-bar', value: 50, id: 'pointers-status-bar', custom_classes: 'points__progress-bar'
+    render 'c_text-preview', description: points_count_description_t, id: 'missing-loyalty-points-count', custom_classes: 'points__count-description'
+    render 'c_text-preview', description: points_count_cost_t, custom_classes: 'points__count-cost'
+    render 'c_text-preview', description: points_loyalty-card, custom_classes: 'points__loyalty-card invisible'
+  endcapture
+
+  capture points_action
+    render 'el_heading', level: 3, text: points_action_heading_t, id: 'loyalty-discounts-heading', modifiers: 'xxs', custom_classes: 'points__action-heading'
+    render 'c_text-preview', description: points_action_description_t,  id: 'loyalty-discounts-description', custom_classes: 'points__action-description'
+    render 'el_link', href: routes.root_url, text: actionButtonLabel, id: 'loyalty-discounts-button', custom_classes: 'points__action-button'
+  endcapture
+%}
+
+{% capture points_container %}
+  <div class="points__column points__column_border-vertical">
+    {{- points_count -}}
+  </div>
+  <div class="points__column text-center invisible" id="loyalty-discounts-column">
+    <div class="points__content-action">{{- points_action -}}</div>
+  </div>
+{% endcapture %}
+
+<div
+  class="{%- render 'f_bem-classes', main_class: 'points', custom_classes: custom_classes, modifiers: modifiers -%}"
+  {{ attributes }}
+>
+  {% render "el_account-content-heading", title: points_headind_t %}
+  <div class="points__container container--xxl">
+    {{ points_container }}
+  </div>
+</div>
+
+
+{%- endcomment -%}
+
+    <h2 class="heading heading--xxs account-content-heading__title account-content-heading__title_offset">Compte Fidélité</h2>  
+  <br>
+
+  <p>Notre programme de fidélité est en cours d'évolution, il sera très prochainement disponible. <br>
+    <strong>Vos bons et vos points fidélités ne sont pas perdus et vous continuez à cumuler des points à chacun de vos achats.</strong><br>
+Merci pour votre patience.
+
+
+</p>
+  

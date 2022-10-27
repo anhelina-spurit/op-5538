@@ -1,0 +1,45 @@
+{% comment %}
+  @summary Renders collapse panel
+
+  @param {string} id - id
+  @param {string} controls - collapsible panel id
+  @param {string} content - content
+  @param {boolean} [is_opened=false] - is accordion item opened
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+      render 'c_collapse-button',
+      id: 'collapse',
+      controls: 'panel_id',
+      content: '<span>Collapse it</span>',
+      modifiers: 'lg, light',
+      custom_classes: 'accordion-item__btn',
+      attributes: 'data-custom',
+  %}
+{% endcomment %}
+
+{%- liquid
+  assign is_opened = is_opened | default: false
+
+  unless auto_init == false
+    assign auto_init = true
+  endunless
+
+  capture class
+    render 'f_bem-classes', main_class: 'collapse-button', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+<button
+  id="{{ id }}"
+  class="{{ class }}"
+  aria-expanded="{% if is_opened %}true{% else %}false{% endif %}"
+  aria-controls="{{ controls }}"
+  data-collapse-button {{ attributes }}
+  {% if is_opened %}data-collapse-opened{% endif %}
+>
+  {{- content -}}
+</button>

@@ -1,0 +1,14 @@
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+
+.info-with-image-slider {
+  padding: to-rem(50px) 0;
+  background-color: $palette-ecru-white;
+}
+
+.info-with-image-slider__item {
+  box-sizing: border-box;
+  padding: to-rem(70px);
+  background-color: $palette-white;
+}

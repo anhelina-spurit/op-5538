@@ -1,0 +1,42 @@
+{%- comment -%}
+    @summary Renders a discount label
+
+    @param {number} price - product price
+    @param {number} compare_at_price - product compare_at_price
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {% render 'c_price_label', tag: 'li', price: 100, compare_at_price: 120 %}
+{%- endcomment -%}
+
+{% liquid
+  assign modifiers = modifiers | append: ' discount'
+  capture class
+    render 'f_bem-classes', main_class: 'product-label', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  assign tag = tag | default: 'div'
+  if compare_at_price > price
+    assign amount = 1.0 | times: price | divided_by: compare_at_price
+    assign amount = 1.0 | minus: amount
+    assign amount = amount | times: 100.0 | round
+  endif
+
+  assign absolute_vp_discount = false
+  if product_tags contains settings.sales_absolute_discounts_tag
+    assign absolute_vp_discount = true
+  endif
+%}
+
+{%- if compare_at_price > price and price != blank and compare_at_price != blank and amount > 0 -%}
+  <{{ tag }} class="{{ class }} vp-original-prices">{{ amount }}%</{{ tag }}>
+{%- endif -%}
+
+<{{ tag }} class="{{ class }} vp-prices" style="display: none;">
+  <span class="vp-prices-discount {% if absolute_vp_discount %}vp-prices-absolute-discount{% endif %}"></span>
+</{{ tag }}>
+
+
+

@@ -1,0 +1,102 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../utils/hover';
+@import '../../constants/palette';
+
+.image-map {
+  position: relative;
+}
+
+.image-map__subcollection {
+  padding: to-rem(5px) 0;
+  font-size: to-rem(10px);
+  text-transform: uppercase;
+}
+
+.image-map__title {
+  padding: 0 to-rem(7px);
+  margin: to-rem(10px) 0;
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(0.6px);
+  text-transform: uppercase;
+}
+
+/* stylelint-disable-next-line selector-max-class */
+.image-map .product-card.active .product-card__form {
+  position: static;
+  display: block;
+  padding: 0;
+  margin: to-rem(15px) 0 to-rem(25px) 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-map .product-card__form {
+  display: none;
+}
+
+.image-map .product-card__title {
+  display: none;
+}
+
+.image-map .oz-related-products-swatches--wrapper {
+  text-align: left;
+}
+
+.image-map .product-card__controls {
+  padding: 0 to-rem(7px);
+  gap: to-rem(35px);
+  @include media-breakpoint-down(md) {
+    gap: to-rem(10px);
+  }
+}
+
+.image-map .product-card__controls > * {
+  width: auto;
+  padding: 0 0 to-rem(5px) 0;
+  border: none;
+  border-bottom: to-rem(1px) solid $palette-dark;
+  background-color: transparent;
+  color: $palette-dark;
+  font-size: to-rem(10px);
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(7px);
+  }
+}
+
+.image-map .product-card__controls > *:hover {
+  border-bottom: to-rem(1px) solid $palette-white;
+  background-color: transparent;
+  color: $palette-dark;
+}
+
+/* stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-compound-selectors */
+.image-map .product-card.active .product-card__controls button {
+  display: none;
+}
+
+.image-map .product-card__price-wrap {
+  padding: 0 to-rem(7px);
+}
+
+/* stylelint-disable-next-line selector-max-class */
+.image-map .product-card.active .product-card__price-wrap {
+  display: none;
+}
+
+.image-map .product-card__options--size {
+  justify-content: flex-start;
+}
+
+.image-map .product-card__close {
+  z-index: 3;
+  top: to-rem(3px);
+  right: to-rem(5px);
+  width: to-rem(17px);
+  height: to-rem(17px);
+  padding: to-rem(5px);
+  border: none;
+  background-color: $palette-white;
+  line-height: 1;
+}

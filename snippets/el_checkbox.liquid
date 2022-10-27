@@ -1,0 +1,70 @@
+{%- comment -%}
+  @summary Renders a checkbox form control
+
+  @param {string} input_id - input id
+  @param {string} label - label
+  @param {string} name - input name
+  @param {string} value - input value
+  @param {boolean} [disabled] - input disability
+  @param {boolean} [checked] - is the input checked
+  @param {boolean} [required] - is the input required
+  @param {string} [input_attributes] - additional input attributes
+  @param {string} [container_id] - container id
+  @param {string} [container_classes] - additional container classes
+  @param {string} [container_attributes] - additional container attributes
+  @param {string[]} [container_modifiers] - container modifiers
+
+  @example
+  {% render 'el_checkbox', input_id: 'checkbox', label: 'I am not robot', name: 'robot', value: 'no' %}
+
+  @example
+  {%
+    render 'el_checkbox',
+    container_id: 'checkbox_container',
+    container_classes: 'custom-class',
+    container_modifiers: 'xxl, xl',
+    container_attributes: 'data-custom="container"',
+
+    input_id: 'checkbox_input',
+    input_attributes: 'data-custom="input"',
+
+    name: 'robot',
+    value: 'no',
+    disabled: false,
+    required: true,
+    label: 'I am not robot',
+  %}
+{%- endcomment -%}
+
+{%-
+  if
+  input_id and input_id != blank and
+  label and label != blank and
+  name and name != blank and
+  value and value != blank
+-%}
+  {%- capture container_classes -%}
+    checkbox {% render 'f_modifier-classes', class: 'checkbox', modifiers: container_modifiers %} {{ container_classes }}
+  {%- endcapture -%}
+
+  {%- assign container_classes = container_classes | strip | strip_newlines -%}
+
+  <div
+    {% if container_id %}id="{{ container_id }}"{% endif %}
+    class="{{ container_classes }}"
+    {{ container_attributes }}
+  >
+    <input
+      id="{{ input_id }}"
+      class="checkbox__input"
+      type="checkbox"
+      name="{{ name }}"
+      value="{{ value }}"
+      {% if disabled %}disabled{% endif %}
+      {% if checked %}checked{% endif %}
+      {% if required %}required{% endif %}
+      {{ input_attributes }}
+    >
+    <label class="checkbox__label" for="{{ input_id }}">{{ label }}</label>
+  </div>
+{%- endif -%}

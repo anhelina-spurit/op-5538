@@ -1,0 +1,107 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../constants/fonts';
+@import '../../components/theme-sections';
+
+.collection-trends {
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+  @extend .shopify-section--has-padding;
+}
+
+.collection-trends__column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: to-rem(80px);
+  @include media-breakpoint-down(md) {
+    gap: 0;
+  }
+}
+
+.collection-trends__row {
+  flex: 1;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    flex: auto;
+  }
+}
+
+.collection-trends__info {
+  max-width: to-rem(368px);
+  text-align: right;
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+.collection-trends__sub-media {
+  max-width: to-rem(293px);
+  margin: to-rem(20px) 0 to-rem(20px) auto;
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.collection-trends__content {
+  max-width: to-rem(260px);
+  margin: to-rem(46px) 0 to-rem(46px) auto;
+  color: $palette-bismark;
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    margin-top: 0;
+  }
+}
+
+.collection-trends__media {
+  @include media-breakpoint-down(md) {
+    display: flex;
+    gap: to-rem(10px);
+  }
+}
+
+.collection-trends__media-item {
+  @include media-breakpoint-down(md) {
+    width: 50%;
+  }
+}
+
+.collection-trends__media-item:first-child {
+  display: none;
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+}
+
+.collection-trends__content .text-preview__heading {
+  font-family: $font-family-lora;
+  text-transform: inherit;
+}
+
+.collection-trends__content .text-preview__sub-heading {
+  display: none;
+  color: $palette-bismark;
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(1.67px);
+  text-transform: uppercase;
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+}
+
+.collection-trends__content .text-preview__link {
+  padding: to-rem(18px) to-rem(40px);
+  border: to-rem(1px) solid;
+  background-color: $palette-bismark;
+  color: $palette-white;
+  font-size: to-rem(9px);
+  @include media-breakpoint-down(md) {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: $palette-dark;
+    font-size: to-rem(12px);
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+}

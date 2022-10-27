@@ -1,0 +1,22 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.cart__heading {
+  margin-top: to-rem(44px);
+  margin-bottom: to-rem(61px);
+  margin-bottom: to-rem(28px);
+  color: $palette-dark-slate-grey;
+  font-weight: 400;
+  letter-spacing: to-rem(3px);
+  text-align: center;
+  @include media-breakpoint-down(md) {
+    margin-top: to-rem(11px);
+    margin-bottom: to-rem(11px);
+    font-size: to-rem(9px);
+  }
+}
+
+.section.cart .cart-page__hidden {
+  display: none;
+}

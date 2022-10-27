@@ -1,0 +1,62 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../constants/fonts';
+@import '../../utils/breakpoints';
+@import '../../utils/hover';
+
+.loyalty-points {
+  padding: to-rem(40px) 0;
+  text-align: center;
+  @include media-breakpoint-down(md) {
+    padding: to-rem(20px) 0;
+  }
+}
+
+.loyalty-points__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.loyalty-points__list--conditions .loyalty-points__item {
+  max-width: to-rem(570px);
+  padding-bottom: to-rem(60px);
+  margin: auto;
+}
+
+.loyalty-points__list--conditions .heading {
+  display: inline-block;
+  padding-bottom: to-rem(10px);
+  border-bottom: to-rem(1px) solid $palette-leather;
+  margin: to-rem(18px) 0;
+  color: $palette-leather;
+  font-family: $font-family-lora;
+  font-size: to-rem(18px);
+  font-style: italic;
+  letter-spacing: to-rem(1px);
+  text-transform: inherit;
+}
+
+.loyalty-points__list--conditions p {
+  margin: to-rem(18px) 0;
+  color: $palette-dark-slate-grey;
+}
+
+.loyalty-points__list--advantages {
+  display: grid;
+  margin-bottom: to-rem(66px);
+  grid-gap: to-rem(40px);
+  grid-template-columns: repeat(3, 1fr);
+  @include media-breakpoint-down(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.loyalty-points__link {
+  padding: to-rem(15px) to-rem(48px);
+  color: $palette-white;
+  font-size: to-rem(9px);
+  @include hover {
+    border-bottom: to-rem(1px) solid $palette-dark-slate-grey;
+  }
+}

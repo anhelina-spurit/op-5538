@@ -1,0 +1,96 @@
+{%- liquid
+  assign heading_id = section.id | append: section.settings.id | append: '__heading'
+  assign heading_custom_classes = 'faq__heading faq__heading--main '
+
+  capture container_content
+    unless section.settings.heading == blank
+      assign block_id = section.settings.id | handleize
+      echo '<div class="faq__anchor" id="'|append: block_id | append: '">'
+      render 'el_heading', level: 3, id: heading_id, text: section.settings.heading, custom_classes: heading_custom_classes
+    endunless
+
+    if section.blocks.size > 0
+      capture mobile_accordion_item_content
+        capture accordion_content
+          for block in section.blocks
+            capture content
+              if block.settings.image != blank
+                render 'el_shopify-image', image: block.settings.image, lazy_loading: true, custom_classes: 'accordion-item__image'
+              endif
+
+              echo block.settings.content
+            endcapture
+
+            assign accordion_item_id = block.settings.heading | handleize | append: forloop.index
+            render 'c_accordion-item', id: accordion_item_id, title: block.settings.heading, content: content, custom_classes: 'faq__accordion-item'
+          endfor
+        endcapture
+
+        assign accordion_id = section.settings.id | append: '__accordion'
+        render 'c_accordion', id: accordion_id, content: accordion_content, custom_classes: 'faq__accordion', attributes: 'data-faq-accordion'
+      endcapture
+
+      capture mobile_accordion_content
+        assign mobile_accordion_id = section.id | append: '-mobile'
+        render 'c_accordion-item', id: mobile_accordion_id, title: section.settings.heading, is_opened: true, content: mobile_accordion_item_content, custom_classes: 'faq__accordion-item faq__accordion-item--main'
+      endcapture
+
+      assign accordion_id = section.settings.id | append: '__accordion--mobile'
+      render 'c_accordion', id: accordion_id, content: mobile_accordion_content, custom_classes: 'faq__accordion faq__accordion--main', attributes: 'data-main-faq-accordion'
+    endif
+    echo '</div>'
+  endcapture
+
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'faq', content: container_content
+-%}
+
+{% schema %}
+{
+  "name": "Faq",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "id",
+      "type": "text",
+      "label": "Id",
+      "info": "Using for navigation"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Item's heading"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Item's image"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Item's content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Faq"
+    }
+  ]
+}
+{% endschema %}

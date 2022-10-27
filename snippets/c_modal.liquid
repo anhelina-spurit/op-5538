@@ -1,0 +1,98 @@
+{% comment %}
+    @summary Renders modal window
+
+    @requires /src/theme/modal/index.js
+    @requires /src/theme/modal/modals-manager.js
+
+    @param {string} id - id
+    @param {string} [heading] - heading text
+    @param {string} [content] - content
+    @param {string} [outer_close=false] - is close button outside of the modal
+    @param {string} [custom_classes] - custom classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    <caption>Render html</caption>
+    {% render 'c_modal',
+        id: 'modal',
+        heading: 'Modal heading',
+        outer_close: false,
+        content: '<p>Modal content</p>',
+        custom_classes: 'product-description__modal',
+        attributes: 'data-product-id="{producID}"',
+        modifiers: 'modifier-1, modifier-2',
+    %}
+    <button type="button" data-modal-id="modal">Open modal</button>
+
+    @example
+    <caption>JS API</caption>
+    <script>
+        const modalElement = document.getElementById('modal');
+        const modal = window.shell.modal.create(modalElement, {
+            callbacks: {
+                onShow: () => {
+                    console.log('show modal callback');
+                },
+                onHide: () => {
+                    console.log('hide modal callback');
+                },
+            },
+        });
+
+        modal.show();
+    </script>
+{% endcomment %}
+
+{%- liquid
+  if outer_close
+    assign modifiers = modifiers | append: ',outer-close'
+  endif
+-%}
+
+<div
+  id="{{ id }}"
+  class="{%- render 'f_bem-classes', main_class: 'modal', custom_classes: custom_classes, modifiers: modifiers -%}"
+  role="dialog"
+  aria-modal="true"
+  {% if heading %}aria-labelledby="{{ id }}_heading"{% endif %}
+  {{ attributes }}
+>
+  <div class="modal__wrapper">
+    <div class="modal__container" tabindex="0"  data-modal-inital-focus>
+      {%- if heading != blank -%}
+        <div class="modal__header">
+          {%-
+            liquid
+            assign heading_id = id | append: '_heading'
+            render 'el_heading', level: 2, text: heading, id: heading_id, custom_classes: 'modal__heading', modifiers: 'sm'
+          %}
+        </div>
+      {%- endif -%}
+      <div class="modal__body">
+        {{ content }}
+      </div>
+      {%- unless outer_close -%}
+        <button type="button" class="modal__close modal__close--inner" data-modal-close>
+          {%-
+            render 'el_icon',
+            icon: 'close',
+            custom_classes: 'modal__icon modal__icon--close'
+          -%}
+          <span class="visually-hidden">{{ 'modal.close' | t }}</span>
+        </button>
+      {%- endunless -%}
+    </div>
+    {%- if outer_close -%}
+      <button type="button" class="modal__close modal__close--outer" data-modal-close>
+        {%-
+          render 'el_icon',
+          icon: 'close',
+          custom_classes: 'modal__icon modal__icon--close'
+        -%}
+        <span class="visually-hidden">{{ 'modal.close' | t }}</span>
+      </button>
+    {%- endif -%}
+    <div class="modal__backdrop" data-modal-close></div>
+  </div>
+</div>

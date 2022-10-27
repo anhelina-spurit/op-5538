@@ -1,0 +1,36 @@
+{%- comment -%}
+  @summary Renders a select
+
+  @param {string} [options] - options
+  @param {string} [id] - id
+  @param {string} [name] - name
+  @param {string} [label] - label
+  @param {boolean} [required] - required
+  @param {boolean} [disabled] - disabled
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'el_select',
+    id: 'select',
+    label: 'How many people are you cooking for?',
+    options: '<option value="1">1</option><option value="2">2</option>',
+  -%}
+{%- endcomment -%}
+
+{%- if id != blank and label != blank -%}
+  {%- render 'el_label', for_input: id, content: label, required: required -%}
+{%- endif -%}
+
+<select
+  class="{%- render 'f_bem-classes', main_class: 'select', custom_classes: custom_classes, modifiers: modifiers -%}"
+  {% if id %}id="{{ id }}"{% endif %}
+  {% if name %}name="{{ name }}"{% endif %}
+  {% if disabled %}disabled{% endif %}
+  {% if required %}required{% endif %}
+  {% if attributes %}{{ attributes }}{% endif %}
+>
+  {%- if options -%}{{- options -}}{%- endif -%}
+</select>

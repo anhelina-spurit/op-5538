@@ -1,376 +1,719 @@
 {
   "current": {
-    "colors_solid_button_labels": "#ffffff",
-    "colors_accent_1": "#121212",
-    "gradient_accent_1": "",
-    "colors_accent_2": "#334fb4",
-    "gradient_accent_2": "",
-    "colors_text": "#121212",
-    "colors_outline_button_labels": "#121212",
-    "colors_background_1": "#ffffff",
-    "gradient_background_1": "",
-    "colors_background_2": "#f3f3f3",
-    "gradient_background_2": "",
-    "type_header_font": "assistant_n4",
-    "heading_scale": 100,
-    "type_body_font": "assistant_n4",
-    "body_scale": 100,
-    "page_width": 1200,
-    "spacing_sections": 0,
-    "spacing_grid_horizontal": 8,
-    "spacing_grid_vertical": 8,
-    "buttons_border_thickness": 1,
-    "buttons_border_opacity": 100,
-    "buttons_radius": 0,
-    "buttons_shadow_opacity": 0,
-    "buttons_shadow_horizontal_offset": 0,
-    "buttons_shadow_vertical_offset": 4,
-    "buttons_shadow_blur": 5,
-    "variant_pills_border_thickness": 1,
-    "variant_pills_border_opacity": 55,
-    "variant_pills_radius": 40,
-    "variant_pills_shadow_opacity": 0,
-    "variant_pills_shadow_horizontal_offset": 0,
-    "variant_pills_shadow_vertical_offset": 4,
-    "variant_pills_shadow_blur": 5,
-    "inputs_border_thickness": 1,
-    "inputs_border_opacity": 55,
-    "inputs_radius": 0,
-    "inputs_shadow_opacity": 0,
-    "inputs_shadow_horizontal_offset": 0,
-    "inputs_shadow_vertical_offset": 4,
-    "inputs_shadow_blur": 5,
-    "card_style": "standard",
-    "card_image_padding": 0,
-    "card_text_alignment": "left",
-    "card_color_scheme": "background-2",
-    "card_border_thickness": 0,
-    "card_border_opacity": 10,
-    "card_corner_radius": 0,
-    "card_shadow_opacity": 0,
-    "card_shadow_horizontal_offset": 0,
-    "card_shadow_vertical_offset": 4,
-    "card_shadow_blur": 5,
-    "text_boxes_border_thickness": 0,
-    "text_boxes_border_opacity": 10,
-    "text_boxes_radius": 0,
-    "text_boxes_shadow_opacity": 0,
-    "text_boxes_shadow_horizontal_offset": 0,
-    "text_boxes_shadow_vertical_offset": 4,
-    "text_boxes_shadow_blur": 5,
-    "media_border_thickness": 1,
-    "media_border_opacity": 5,
-    "media_radius": 0,
-    "media_shadow_opacity": 0,
-    "media_shadow_horizontal_offset": 0,
-    "media_shadow_vertical_offset": 4,
-    "media_shadow_blur": 5,
-    "popup_border_thickness": 1,
-    "popup_border_opacity": 10,
-    "popup_corner_radius": 0,
-    "popup_shadow_opacity": 0,
-    "popup_shadow_horizontal_offset": 0,
-    "popup_shadow_vertical_offset": 4,
-    "popup_shadow_blur": 5,
-    "drawer_border_thickness": 1,
-    "drawer_border_opacity": 10,
-    "drawer_shadow_opacity": 0,
-    "drawer_shadow_horizontal_offset": 0,
-    "drawer_shadow_vertical_offset": 4,
-    "drawer_shadow_blur": 5,
-    "badge_position": "bottom left",
-    "badge_corner_radius": 40,
-    "sale_badge_color_scheme": "accent-2",
-    "sold_out_badge_color_scheme": "inverse",
-    "accent_icons": "text",
-    "social_twitter_link": "",
-    "social_facebook_link": "",
-    "social_pinterest_link": "",
-    "social_instagram_link": "",
-    "social_tiktok_link": "",
-    "social_tumblr_link": "",
-    "social_snapchat_link": "",
-    "social_youtube_link": "",
-    "social_vimeo_link": "",
-    "predictive_search_enabled": true,
-    "predictive_search_show_vendor": false,
-    "predictive_search_show_price": false,
-    "currency_code_enabled": true,
+    "products_count": 24,
+    "social_facebook_link": "https:\/\/www.facebook.com\/Cyrillus.fr",
+    "social_pinterest_link": "http:\/\/pinterest.com\/cyrillus\/",
+    "social_instagram_link": "http:\/\/instagram.com\/cyrillusofficiel",
+    "social_youtube_link": "https:\/\/www.youtube.com\/channel\/UCkhdyyPmhU53dWjkwbulxlw",
+    "enable_custom_related_products_swatches": true,
+    "show_current_colour": false,
+    "show_tooltip": false,
+    "custom_related_products_swatches_options_number": "1",
+    "app_client_api_url": "https:\/\/cy-clients-api.the-oz.com\/fr",
+    "enable_order_return_app": true,
+    "returns_page_handle": "order-returns",
+    "orders_page_suffix": "\/account#refunds",
+    "returns_codes": "Y01;Y02;Y03;Y04;Y05;Y06;Y07;Y08;Y09;Y10;Y11;Y12;Y13;Y14;Y15",
+    "enable_select_products_wording": true,
+    "storefront_token": "3e32851d404b5dcd157e4d99a6c6a2a5",
+    "spinner_color": "#f2ecdf",
+    "enable_socloz": true,
+    "socloz_api": "https:\/\/api.socloz.com",
+    "socloz_appkey": "f82790cbf14bb12dfbb13ac3f5bd4ce6",
+    "enable_globale_returns": false,
+    "globale_return_portal_link": "",
+    "cart_enable_custom_wording": true,
+    "cart_enable_eco_part_wording": true,
+    "cart_custom_wording": "<p>Livraison offerte dès 79€ d'achat.<\/p>",
+    "cart_max_lines_products": 25,
+    "cart_max_line_product": 10,
+    "enable_pick_up_in_store": true,
+    "pick_up_in_store_maps_key": "AIzaSyDbxN7TY2Zf0-qLMKLrd2FtQfhuK27xiYE",
+    "add_shipping_methods_wording": true,
+    "enable_tres_encombrant_delivery": true,
+    "enable_mondial_relay_widget": true,
+    "test_mode": false,
+    "sales_enable_coupons": false,
+    "sales_enable_fidelity_coupons": false,
+    "sales_start": "2022-05-24 06:00",
+    "sales_end": "2023-08-30 22:00",
+    "sales_gmt": "+01:00",
+    "ps_api_url": "https:\/\/shopify-price.the-oz.com\/api",
+    "redirect_link": "shopify:\/\/pages\/ventes-privees",
+    "show_newsletter_modal": false,
+    "gift_card_confirm_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/gift-card.png?v=1653472535",
+    "continue_link": "\/",
+    "buy_new_card_link": "\/",
+    "checkout_logo_image": "shopify:\/\/shop_images\/new_logo_def.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "small",
+    "checkout_sidebar_background_color": "#324d57",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#000000",
     "sections": {
-      "announcement-bar": {
-        "type": "announcement-bar",
+      "header": {
+        "type": "header",
         "blocks": {
-          "announcement-bar-0": {
-            "type": "announcement",
+          "8549cfd2-6614-4632-9119-61e289b4c3e4": {
+            "type": "discover",
             "settings": {
-              "text": "Welcome to our store",
-              "color_scheme": "background-1",
-              "link": ""
+              "menu_item": "Nouvelle Collection",
+              "title": "La Femme",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_FE.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FEMME&sort_by=best-selling"
+            }
+          },
+          "1e0f7a8d-acc4-4cb4-8a8a-ec85776e13cf": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Nouvelle Collection",
+              "title": "L'Homme",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_HO.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=HOMME&sort_by=best-selling"
+            }
+          },
+          "f34cfc98-5b64-4148-ab1c-9392964476bc": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Nouvelle Collection",
+              "title": "La Fille",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_FI.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FILLE&sort_by=best-selling"
+            }
+          },
+          "ca9f6237-2cfa-4bcb-961f-388e7478d4f0": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Nouvelle Collection",
+              "title": "Le Garçon",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_GA.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=GARCON&sort_by=best-selling"
+            }
+          },
+          "3ea2e5c3-ea88-4d07-9dfd-56a612bfe35c": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Nouvelle Collection",
+              "title": "Le Bébé",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_BB.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=BEBE&sort_by=best-selling"
+            }
+          },
+          "aba25f42-8052-4b1f-89b8-80106a42f273": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Nouvelle Collection",
+              "title": "La Maison",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_maison.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=MAISON&sort_by=best-selling"
+            }
+          },
+          "e91dc57b-67b2-47d8-b0ef-34fe1d451111": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Femme",
+              "title": "Nouvelle Collection",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_FE.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FEMME&sort_by=best-selling"
+            }
+          },
+          "513ac56d-3bbc-4bd5-bcac-e60844958434": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Femme",
+              "title": "Les Prix Légers de l'été",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_FE.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=FEMME&sort_by=best-selling"
+            }
+          },
+          "b971dcaa-852a-4000-b5a3-33f4b38d4e1c": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Femme",
+              "title": "Made with Liberty Fabric",
+              "image": "shopify:\/\/shop_images\/Push-layers_format-visu-web_768x1024_FE-Liberty.jpg",
+              "link": "shopify:\/\/collections\/liberty"
+            }
+          },
+          "406adf4d-0eb0-4f0e-bec4-0c1b0b089696": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Femme",
+              "title": "Les robes d'été",
+              "image": "shopify:\/\/shop_images\/Push-layers_format-visu-web_768x1024_FE-robe.jpg",
+              "link": "shopify:\/\/collections\/femme-robes"
+            }
+          },
+          "52c27f78-2868-4c64-86d7-98a274710533": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Homme",
+              "title": "Nouvelle Collection",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_HO_b3369f41-cdb0-40c1-b074-97806d9adbad.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=HOMME&sort_by=best-selling"
+            }
+          },
+          "85de7307-8eeb-43be-9e05-d7ae9bc1bc58": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Homme",
+              "title": "Les Prix Légers de l'été",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_HO.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=HOMME&sort_by=best-selling"
+            }
+          },
+          "f9f79226-fcc7-4113-9724-5c23c7ccc260": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Homme",
+              "title": "Les polos",
+              "image": "shopify:\/\/shop_images\/Push-layers_format-visu-web_768x1024_HO-polos.jpg",
+              "link": "shopify:\/\/collections\/homme-t-shirts-polos"
+            }
+          },
+          "1d8dd901-fa0c-4e38-8e19-fba0b7f75d46": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Homme",
+              "title": "Les bermudas",
+              "image": "shopify:\/\/shop_images\/Push-layers_format-visu-web_768x1024_HO-shorts.jpg",
+              "link": "shopify:\/\/collections\/homme-shorts-bermudas"
+            }
+          },
+          "0014b67a-c91b-4867-a353-21664989bb4d": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Fille",
+              "title": "Nouvelle Collection",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_FI.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FILLE&sort_by=best-selling"
+            }
+          },
+          "13c2fa0a-1bc2-404b-91b9-63ccbb60dbf1": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Fille",
+              "title": "-30% sur le deuxième Indispensable de Rentrée<sup>∗<\/sup>",
+              "image": "shopify:\/\/shop_images\/Push-layers-Tablier.jpg",
+              "link": "shopify:\/\/collections\/les-indispensables-de-la-rentree"
+            }
+          },
+          "00041805-24df-4453-af1e-ed79c0e0e88e": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Fille",
+              "title": "Les Prix Légers de l'été",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_FI.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=FILLE&sort_by=best-selling"
+            }
+          },
+          "f8b7f842-68f1-44ac-919e-46807c80905a": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Fille",
+              "title": "Notre magazine en ligne<br>L’ECOLE DE LA FORÊT",
+              "image": "shopify:\/\/shop_images\/Push-layers-mag-RDC_cadre.jpg",
+              "link": "https:\/\/it1v7.interactiv-doc.fr\/html\/4197_3c5_bd_643\/"
+            }
+          },
+          "ad569431-4fae-42dd-b53e-2a7c33ce0d5f": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Fille",
+              "title": "Made with Liberty Fabric",
+              "image": "shopify:\/\/shop_images\/Push-layers_format-visu-web_768x1024_FI-Liberty.jpg",
+              "link": "shopify:\/\/collections\/liberty"
+            }
+          },
+          "a42f369c-1888-44c8-985e-9c4e902f66c6": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Fille",
+              "title": "Les robes d'été",
+              "image": "shopify:\/\/shop_images\/Push-layers_format-visu-web_768x1024_FI-robe.jpg",
+              "link": "shopify:\/\/collections\/fille-robes"
+            }
+          },
+          "90436e65-1a41-471e-a073-413d436de955": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Garçon",
+              "title": "Nouvelle Collection",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_GA.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=GARCON&sort_by=best-selling"
+            }
+          },
+          "4d576a8c-7bf4-408b-8c1f-20d25a78ddf6": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Garçon",
+              "title": "-30% sur le deuxième Indispensable de Rentrée<sup>∗<\/sup>",
+              "image": "shopify:\/\/shop_images\/Push-layers-Tablier.jpg",
+              "link": "shopify:\/\/collections\/les-indispensables-de-la-rentree"
+            }
+          },
+          "7b1d4fa7-a2fc-4123-8a08-23bb51578db7": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Garçon",
+              "title": "Les Prix Légers de l'été",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_GA.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=GARCON&sort_by=best-selling"
+            }
+          },
+          "53403d84-e5e6-45db-80a8-bc15d80bdce3": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Garçon",
+              "title": "Notre magazine en ligne<br>L’ECOLE DE LA FORÊT",
+              "image": "shopify:\/\/shop_images\/Push-layers-mag-RDC_cadre.jpg",
+              "link": "https:\/\/it1v7.interactiv-doc.fr\/html\/4197_3c5_bd_643\/"
+            }
+          },
+          "d550a914-5d4b-4455-9888-4e4ade2999cf": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Garçon",
+              "title": "Les polos",
+              "image": "shopify:\/\/shop_images\/Push-layers_format-visu-web_768x1024_GA-polos.jpg",
+              "link": "shopify:\/\/collections\/garcon-t-shirts-polos"
+            }
+          },
+          "3b69e925-8b20-4c65-8256-a7e1ac1a3397": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Garçon",
+              "title": "Les shorts",
+              "image": "shopify:\/\/shop_images\/Push-layers_format-visu-web_768x1024_GA-shorts.jpg",
+              "link": "shopify:\/\/collections\/garcon-shorts-bermudas"
+            }
+          },
+          "7e4f1a8a-4c45-48b5-a66d-032c0b8b9bf9": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Bébé",
+              "title": "Nouvelle Collection",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_BB.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=BEBE&sort_by=best-selling"
+            }
+          },
+          "68378f68-0750-4b58-ad12-68d8b85af937": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Bébé",
+              "title": "Les Prix Légers de l'été",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_BB.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=BEBE&sort_by=best-selling"
+            }
+          },
+          "49fc0c89-5815-41fb-83fb-5b7b53c1466b": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Maison",
+              "title": "Nouvelle Collection",
+              "image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_maison.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=MAISON&sort_by=best-selling"
+            }
+          },
+          "a00ea54c-f628-4599-a25c-85982a3987f3": {
+            "type": "discover",
+            "disabled": true,
+            "settings": {
+              "menu_item": "Maison",
+              "title": "Les Prix Légers de l'été",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_Maison.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=MAISON&sort_by=best-selling"
+            }
+          },
+          "bc53b641-c74a-4099-900b-351c477c443a": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Prix Légers",
+              "title": "La Femme",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_FE.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=FEMME&sort_by=best-selling"
+            }
+          },
+          "3fdf8141-a7cd-4e90-a334-91e03d6d62cb": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Prix Légers",
+              "title": "L'Homme",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_HO.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=HOMME&sort_by=best-selling"
+            }
+          },
+          "1613a65c-4bf8-4409-9cbf-6f3adb700044": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Prix Légers",
+              "title": "La Fille",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_FI.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=FILLE&sort_by=best-selling"
+            }
+          },
+          "0938a322-26bb-42a8-aba1-47775b394eda": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Prix Légers",
+              "title": "Le Garçon",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_GA.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=GARCON&sort_by=best-selling"
+            }
+          },
+          "5339e719-fcd3-4a69-a9b7-b82d91cef264": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Prix Légers",
+              "title": "Le Bébé",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_BB.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=BEBE&sort_by=best-selling"
+            }
+          },
+          "72ffa854-69dd-4533-ac57-b13fc773ef66": {
+            "type": "discover",
+            "settings": {
+              "menu_item": "Prix Légers",
+              "title": "La Maison",
+              "image": "shopify:\/\/shop_images\/Push-layers-BAF_Maison.jpg",
+              "link": "https:\/\/cyrillus.fr\/collections\/prix-legers-de-lete?filter.p.m.filter.secteur=MAISON&sort_by=best-selling"
             }
           }
         },
         "block_order": [
-          "announcement-bar-0"
+          "8549cfd2-6614-4632-9119-61e289b4c3e4",
+          "1e0f7a8d-acc4-4cb4-8a8a-ec85776e13cf",
+          "f34cfc98-5b64-4148-ab1c-9392964476bc",
+          "ca9f6237-2cfa-4bcb-961f-388e7478d4f0",
+          "3ea2e5c3-ea88-4d07-9dfd-56a612bfe35c",
+          "aba25f42-8052-4b1f-89b8-80106a42f273",
+          "e91dc57b-67b2-47d8-b0ef-34fe1d451111",
+          "513ac56d-3bbc-4bd5-bcac-e60844958434",
+          "b971dcaa-852a-4000-b5a3-33f4b38d4e1c",
+          "406adf4d-0eb0-4f0e-bec4-0c1b0b089696",
+          "52c27f78-2868-4c64-86d7-98a274710533",
+          "85de7307-8eeb-43be-9e05-d7ae9bc1bc58",
+          "f9f79226-fcc7-4113-9724-5c23c7ccc260",
+          "1d8dd901-fa0c-4e38-8e19-fba0b7f75d46",
+          "0014b67a-c91b-4867-a353-21664989bb4d",
+          "13c2fa0a-1bc2-404b-91b9-63ccbb60dbf1",
+          "00041805-24df-4453-af1e-ed79c0e0e88e",
+          "f8b7f842-68f1-44ac-919e-46807c80905a",
+          "ad569431-4fae-42dd-b53e-2a7c33ce0d5f",
+          "a42f369c-1888-44c8-985e-9c4e902f66c6",
+          "90436e65-1a41-471e-a073-413d436de955",
+          "4d576a8c-7bf4-408b-8c1f-20d25a78ddf6",
+          "7b1d4fa7-a2fc-4123-8a08-23bb51578db7",
+          "53403d84-e5e6-45db-80a8-bc15d80bdce3",
+          "d550a914-5d4b-4455-9888-4e4ade2999cf",
+          "3b69e925-8b20-4c65-8256-a7e1ac1a3397",
+          "7e4f1a8a-4c45-48b5-a66d-032c0b8b9bf9",
+          "68378f68-0750-4b58-ad12-68d8b85af937",
+          "49fc0c89-5815-41fb-83fb-5b7b53c1466b",
+          "a00ea54c-f628-4599-a25c-85982a3987f3",
+          "bc53b641-c74a-4099-900b-351c477c443a",
+          "3fdf8141-a7cd-4e90-a334-91e03d6d62cb",
+          "1613a65c-4bf8-4409-9cbf-6f3adb700044",
+          "0938a322-26bb-42a8-aba1-47775b394eda",
+          "5339e719-fcd3-4a69-a9b7-b82d91cef264",
+          "72ffa854-69dd-4533-ac57-b13fc773ef66"
         ],
         "settings": {
-        }
-      },
-      "header": {
-        "type": "header",
-        "settings": {
-          "color_scheme": "background-1",
-          "logo_width": 90,
-          "logo_position": "middle-left",
           "menu": "main-menu",
-          "show_line_separator": true,
-          "enable_sticky_header": true,
-          "margin_bottom": 0
+          "store_locator_url": "https:\/\/magasin.cyrillus.fr\/"
         }
       },
       "footer": {
         "type": "footer",
         "blocks": {
-          "footer-0": {
-            "type": "link_list",
+          "b7a5282d-320a-4327-9e56-758ee1938645": {
+            "type": "menu",
             "settings": {
-              "heading": "Quick links",
+              "title": "Cyrillus",
               "menu": "footer"
             }
           },
-          "footer-1": {
-            "type": "link_list",
+          "350db38d-1b58-4486-a9c9-65f56ea35ff8": {
+            "type": "menu",
             "settings": {
-              "heading": "Info",
-              "menu": "footer"
+              "title": "TOUT SAVOIR",
+              "menu": "footer-tout-savoir"
             }
           },
-          "footer-2": {
-            "type": "text",
+          "f1d78ff9-92eb-4f93-b477-ae074bbc775d": {
+            "type": "menu",
             "settings": {
-              "heading": "Our mission",
-              "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+              "title": "Mieux vous servir",
+              "menu": "mieux-vous-servir"
             }
           }
         },
         "block_order": [
-          "footer-0",
-          "footer-1",
-          "footer-2"
+          "b7a5282d-320a-4327-9e56-758ee1938645",
+          "350db38d-1b58-4486-a9c9-65f56ea35ff8",
+          "f1d78ff9-92eb-4f93-b477-ae074bbc775d"
         ],
         "settings": {
-          "color_scheme": "background-1",
-          "newsletter_enable": true,
-          "newsletter_heading": "Subscribe to our emails",
-          "show_social": true,
-          "enable_country_selector": false,
-          "enable_language_selector": false,
-          "payment_enable": true,
-          "margin_top": 48,
-          "padding_top": 36,
-          "padding_bottom": 36
+          "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Cyrillus_d8f2862d-7a62-493d-a07c-45d81e4a7836.svg?v=1647330724",
+          "content_heading": "Entre vous et nous",
+          "content_text": "<p><a href=\"\/pages\/faq\" title=\"FAQ\">Consultez notre FAQ<\/a> ou<br\/><a href=\"\/pages\/contact\" title=\"Contact\">contactez-nous en ligne<\/a>.<\/p><p><\/p><p><em>Nos délais de réponses sont<br\/>allongés, toutes les demandes ont bien été prises en compte, elle seront traitées dans les meilleurs délais<\/em><\/p>",
+          "copyright": "cyrillus"
         }
       },
-      "main-password-header": {
-        "type": "main-password-header",
+      "advantages": {
+        "type": "advantages",
+        "blocks": {
+          "92dc5df7-0a57-4364-b198-d5c884ee2ab2": {
+            "type": "item",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/reassurance_livraison_offerte.svg?v=1647336667",
+              "heading": "LIVRAISON OFFERTE",
+              "url": "https:\/\/www.cyrillus.fr\/pages\/livraison-retours"
+            }
+          },
+          "07223106-15d1-43a0-b1ef-985928576dd7": {
+            "type": "item",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/reassurance_secured_payment.svg?v=1647336666",
+              "heading": "PAIEMENT SÉCURISÉ",
+              "url": "https:\/\/www.cyrillus.fr\/pages\/paiement-securise"
+            }
+          },
+          "1daa4695-a308-465d-81ec-7b15792bdc4f": {
+            "type": "item",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/reassurance_retours_gratuits.svg?v=1647336666",
+              "heading": "RETOURS GRATUITS",
+              "url": "shopify:\/\/pages\/livraison-retours"
+            }
+          },
+          "0652d77f-8694-4ee2-8bf0-64d6101bc88f": {
+            "type": "item",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/reassurance_reservation.svg?v=1647336666",
+              "heading": "SERVICE<br>E‑RÉSERVATION",
+              "url": "shopify:\/\/pages\/service-e-reservation"
+            }
+          },
+          "2a006dad-6571-4cbc-b701-e94f509bde70": {
+            "type": "item",
+            "disabled": true,
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/reassurance_gift.svg?v=1647336666",
+              "heading": "PROGRAMME FIDÉLITÉ",
+              "url": "https:\/\/www.cyrillus.fr\/pages\/votre-programme-fidelite-cyrillus-moi"
+            }
+          },
+          "481f27dc-32db-45d7-a064-2f53d352c253": {
+            "type": "item",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/reassurance_shop.svg?v=1647336666",
+              "heading": "PLUS DE 50 BOUTIQUES",
+              "url": "https:\/\/magasin.cyrillus.fr\/?intcmpid=lesboutiques"
+            }
+          }
+        },
+        "block_order": [
+          "92dc5df7-0a57-4364-b198-d5c884ee2ab2",
+          "07223106-15d1-43a0-b1ef-985928576dd7",
+          "1daa4695-a308-465d-81ec-7b15792bdc4f",
+          "0652d77f-8694-4ee2-8bf0-64d6101bc88f",
+          "2a006dad-6571-4cbc-b701-e94f509bde70",
+          "481f27dc-32db-45d7-a064-2f53d352c253"
+        ],
         "settings": {
-          "logo_max_width": 100,
-          "color_scheme": "background-1"
+          "heading": "Voordelen",
+          "is_heading_visible": false
         }
       },
-      "main-password-footer": {
-        "type": "main-password-footer",
+      "newsletter": {
+        "type": "newsletter",
         "settings": {
-          "color_scheme": "background-1"
+          "heading": "INSCRIVEZ-VOUS À LA NEWSLETTER",
+          "subheading": "Recevez nos actualités et offres personnalisées",
+          "social_heading": "Rejoignez la tribu #cyrillus"
         }
-      }
-    }
-  },
-  "presets": {
-    "Default": {
-      "colors_solid_button_labels": "#ffffff",
-      "colors_accent_1": "#121212",
-      "gradient_accent_1": "",
-      "colors_accent_2": "#334fb4",
-      "gradient_accent_2": "",
-      "colors_text": "#121212",
-      "colors_outline_button_labels": "#121212",
-      "colors_background_1": "#ffffff",
-      "gradient_background_1": "",
-      "colors_background_2": "#f3f3f3",
-      "gradient_background_2": "",
-      "type_header_font": "assistant_n4",
-      "heading_scale": 100,
-      "type_body_font": "assistant_n4",
-      "body_scale": 100,
-      "page_width": 1200,
-      "spacing_sections": 0,
-      "spacing_grid_horizontal": 8,
-      "spacing_grid_vertical": 8,
-      "buttons_border_thickness": 1,
-      "buttons_border_opacity": 100,
-      "buttons_radius": 0,
-      "buttons_shadow_opacity": 0,
-      "buttons_shadow_horizontal_offset": 0,
-      "buttons_shadow_vertical_offset": 4,
-      "buttons_shadow_blur": 5,
-      "variant_pills_border_thickness": 1,
-      "variant_pills_border_opacity": 55,
-      "variant_pills_radius": 40,
-      "variant_pills_shadow_opacity": 0,
-      "variant_pills_shadow_horizontal_offset": 0,
-      "variant_pills_shadow_vertical_offset": 4,
-      "variant_pills_shadow_blur": 5,
-      "inputs_border_thickness": 1,
-      "inputs_border_opacity": 55,
-      "inputs_radius": 0,
-      "inputs_shadow_opacity": 0,
-      "inputs_shadow_horizontal_offset": 0,
-      "inputs_shadow_vertical_offset": 4,
-      "inputs_shadow_blur": 5,
-      "card_style": "standard",
-      "card_image_padding": 0,
-      "card_text_alignment": "left",
-      "card_color_scheme": "background-2",
-      "card_border_thickness": 0,
-      "card_border_opacity": 10,
-      "card_corner_radius": 0,
-      "card_shadow_opacity": 0,
-      "card_shadow_horizontal_offset": 0,
-      "card_shadow_vertical_offset": 4,
-      "card_shadow_blur": 5,
-      "text_boxes_border_thickness": 0,
-      "text_boxes_border_opacity": 10,
-      "text_boxes_radius": 0,
-      "text_boxes_shadow_opacity": 0,
-      "text_boxes_shadow_horizontal_offset": 0,
-      "text_boxes_shadow_vertical_offset": 4,
-      "text_boxes_shadow_blur": 5,
-      "media_border_thickness": 1,
-      "media_border_opacity": 5,
-      "media_radius": 0,
-      "media_shadow_opacity": 0,
-      "media_shadow_horizontal_offset": 0,
-      "media_shadow_vertical_offset": 4,
-      "media_shadow_blur": 5,
-      "popup_border_thickness": 1,
-      "popup_border_opacity": 10,
-      "popup_corner_radius": 0,
-      "popup_shadow_opacity": 0,
-      "popup_shadow_horizontal_offset": 0,
-      "popup_shadow_vertical_offset": 4,
-      "popup_shadow_blur": 5,
-      "drawer_border_thickness": 1,
-      "drawer_border_opacity": 10,
-      "drawer_shadow_opacity": 0,
-      "drawer_shadow_horizontal_offset": 0,
-      "drawer_shadow_vertical_offset": 4,
-      "drawer_shadow_blur": 5,
-      "badge_position": "bottom left",
-      "badge_corner_radius": 40,
-      "sale_badge_color_scheme": "accent-2",
-      "sold_out_badge_color_scheme": "inverse",
-      "accent_icons": "text",
-      "social_twitter_link": "",
-      "social_facebook_link": "",
-      "social_pinterest_link": "",
-      "social_instagram_link": "",
-      "social_tiktok_link": "",
-      "social_tumblr_link": "",
-      "social_snapchat_link": "",
-      "social_youtube_link": "",
-      "social_vimeo_link": "",
-      "predictive_search_enabled": true,
-      "predictive_search_show_vendor": false,
-      "predictive_search_show_price": false,
-      "currency_code_enabled": true,
-      "sections": {
-        "announcement-bar": {
-          "type": "announcement-bar",
-          "blocks": {
-            "announcement-bar-0": {
-              "type": "announcement",
-              "settings": {
-                "text": "Welcome to our store",
-                "color_scheme": "background-1",
-                "link": ""
-              }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "text": "<p><a href=\"https:\/\/cyrillus.fr\/pages\/livraison-retours\" title=\"https:\/\/cyrillus.fr\/pages\/livraison-retours\">Livraison offerte dans toute la france*<\/a><\/p>"
             }
           },
-          "block_order": [
-            "announcement-bar-0"
-          ],
-          "settings": {
+          "bdd27a33-82db-4513-894e-8257b54ae70b": {
+            "type": "announcement",
+            "settings": {
+              "text": "<p><strong>NOUVEAU SITE<\/strong> : Retrouvez toutes les réponses à vos questions dans notre rubrique <a href=\"\/pages\/faq\" title=\"FAQ\"><strong>FAQ<\/strong><\/a><\/p>"
+            }
           }
         },
-        "header": {
-          "type": "header",
-          "settings": {
-            "color_scheme": "background-1",
-            "logo_width": 90,
-            "logo_position": "middle-left",
-            "menu": "main-menu",
-            "show_line_separator": true,
-            "enable_sticky_header": true,
-            "margin_bottom": 0
-          }
-        },
-        "footer": {
-          "type": "footer",
-          "blocks": {
-            "footer-0": {
-              "type": "link_list",
-              "settings": {
-                "heading": "Quick links",
-                "menu": "footer"
-              }
-            },
-            "footer-1": {
-              "type": "link_list",
-              "settings": {
-                "heading": "Info",
-                "menu": "footer"
-              }
-            },
-            "footer-2": {
-              "type": "text",
-              "settings": {
-                "heading": "Our mission",
-                "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
-              }
+        "block_order": [
+          "announcement-bar-0",
+          "bdd27a33-82db-4513-894e-8257b54ae70b"
+        ],
+        "settings": {
+        }
+      },
+      "newsletter-modal": {
+        "type": "newsletter-modal",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/02951663b11c96b199e66ff1c9eac6b6.png",
+          "delay": 30,
+          "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/logo_cc1df125-cbdb-4afd-9e1d-a9727195a5f2.svg?v=1648027904",
+          "heading": "INSCRIVEZ-VOUS MAINTENANT ET BÉNÉFICIEZ DE −20% SUR TOUTES LES COLLECTIONS MODE ET MAISON",
+          "description": "<p>Nouveautés, tendances, exclusivités, offres privilèges, surprises, ventes privées… Suivez-nous !<\/p>",
+          "legal_notes": "<p>* En cliquant sur «M’inscrire», vous acceptez la Politique de Confidentialité, et les conditions de la promotion.<\/p>"
+        }
+      },
+      "nav-bar": {
+        "type": "nav-bar",
+        "blocks": {
+          "cfa752a5-72e6-4b98-b1a2-3288d33635fc": {
+            "type": "item",
+            "settings": {
+              "link_title": "Femme",
+              "link": "shopify:\/\/collections\/femme",
+              "image": "shopify:\/\/shop_images\/category-mobile-FE_d6ee1474-a1d1-40bd-a533-e4ab4482ef01.png"
             }
           },
-          "block_order": [
-            "footer-0",
-            "footer-1",
-            "footer-2"
-          ],
-          "settings": {
-            "color_scheme": "background-1",
-            "newsletter_enable": true,
-            "newsletter_heading": "Subscribe to our emails",
-            "show_social": true,
-            "enable_country_selector": false,
-            "enable_language_selector": false,
-            "payment_enable": true,
-            "margin_top": 48,
-            "padding_top": 36,
-            "padding_bottom": 36
+          "b6724ecf-ced6-46d3-868f-55dce68fbabb": {
+            "type": "item",
+            "settings": {
+              "link_title": "Homme",
+              "link": "shopify:\/\/collections\/homme",
+              "image": "shopify:\/\/shop_images\/category-mobile-HO_82da4b3e-d4c9-4010-8fb5-dce59920b39b.png"
+            }
+          },
+          "fe31a486-5c68-4cac-9025-be1e1e329ce0": {
+            "type": "item",
+            "settings": {
+              "link_title": "Fille",
+              "link": "shopify:\/\/collections\/fille",
+              "image": "shopify:\/\/shop_images\/category-mobile-FI.png"
+            }
+          },
+          "90f704ee-ecb6-4fc4-b00a-b170884ac56a": {
+            "type": "item",
+            "settings": {
+              "link_title": "Garçon",
+              "link": "shopify:\/\/collections\/garcon",
+              "image": "shopify:\/\/shop_images\/category-mobile-GA.png"
+            }
+          },
+          "fb2ad7d4-c334-4c60-b418-d47b0defffc0": {
+            "type": "item",
+            "settings": {
+              "link_title": "Bébé",
+              "link": "shopify:\/\/collections\/bebe",
+              "image": "shopify:\/\/shop_images\/category-mobile-BB.png"
+            }
+          },
+          "56fadf0f-aa6f-475e-9f09-230e80e72107": {
+            "type": "item",
+            "settings": {
+              "link_title": "Maison",
+              "link": "shopify:\/\/collections\/maison",
+              "image": "shopify:\/\/shop_images\/category-mobile-Maison_b0505a5b-49ee-423d-8f23-30dd3ee261a7.png"
+            }
           }
         },
-        "main-password-header": {
-          "type": "main-password-header",
-          "settings": {
-            "logo_max_width": 100,
-            "color_scheme": "background-1"
+        "block_order": [
+          "cfa752a5-72e6-4b98-b1a2-3288d33635fc",
+          "b6724ecf-ced6-46d3-868f-55dce68fbabb",
+          "fe31a486-5c68-4cac-9025-be1e1e329ce0",
+          "90f704ee-ecb6-4fc4-b00a-b170884ac56a",
+          "fb2ad7d4-c334-4c60-b418-d47b0defffc0",
+          "56fadf0f-aa6f-475e-9f09-230e80e72107"
+        ],
+        "settings": {
+        }
+      },
+      "wishlist": {
+        "type": "wishlist",
+        "settings": {
+        }
+      },
+      "heading-with-image": {
+        "type": "heading-with-image",
+        "settings": {
+          "heading": "Consuler mon solde de ma carte ou  e-carte cadeau",
+          "image": "shopify:\/\/shop_images\/Carte-cadeau.jpg",
+          "background": "#324d57",
+          "logo_style": "light"
+        }
+      },
+      "gift-cards": {
+        "type": "gift-cards",
+        "blocks": {
+          "36b31de0-647f-480b-8a6d-4d92d3ada890": {
+            "type": "card",
+            "disabled": true,
+            "settings": {
+              "icon": "",
+              "heading": "",
+              "description": "",
+              "link": ""
+            }
+          },
+          "47ca4d0b-775c-493c-aae2-d01406e393da": {
+            "type": "card",
+            "settings": {
+              "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Stroke_1.png?v=1653046385",
+              "heading": "Titre",
+              "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt\nut labore et dolore magna",
+              "link": "shopify:\/\/products\/accessoire-cheveux-couronne-fleur-6639-rose-fonce-uni_9805"
+            }
+          },
+          "7a755469-35e1-44f8-8d6a-61bdbad02180": {
+            "type": "card",
+            "settings": {
+              "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Stroke_1.png?v=1653046385",
+              "heading": "titre2",
+              "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt\nut labore et dolore magna",
+              "link": "shopify:\/\/products\/accessoire-cheveux-couronne-fleur-6349-blanc-clair-uni_7462"
+            }
           }
         },
-        "main-password-footer": {
-          "type": "main-password-footer",
-          "settings": {
-            "color_scheme": "background-1"
-          }
+        "block_order": [
+          "36b31de0-647f-480b-8a6d-4d92d3ada890",
+          "47ca4d0b-775c-493c-aae2-d01406e393da",
+          "7a755469-35e1-44f8-8d6a-61bdbad02180"
+        ],
+        "settings": {
+        }
+      },
+      "gift-cards-faq": {
+        "type": "gift-cards-faq",
+        "settings": {
+          "heading": "Gift cards F.A.Q",
+          "faq_href": ""
+        }
+      },
+      "gift-cards-balance-result": {
+        "type": "gift-cards-balance-result",
+        "settings": {
+          "link": "",
+          "link_text": "Je continue mon shopping"
         }
       }
-    }
+    },
+    "content_for_index": [
+
+    ]
   }
 }

@@ -1,0 +1,65 @@
+{% comment %}
+  @summary Render customer subscription information
+  @param {string} title - title
+
+  @example
+  {%
+    render 'c_orders',
+    title: 'Orders'
+  %}
+{% endcomment %}
+
+{%- liquid
+  unless title
+    assign title = 'subscriptions.title' | t
+  endunless
+
+  assign labelNewsletter = 'subscriptions.form.input_labels.newsletter' | t
+  assign labelSms = 'subscriptions.form.input_labels.sms' | t
+  assign mobilePhoneNumberLabel = 'subscriptions.form.input_labels.mobilePhoneNumber' | t | newline_to_br
+  assign mobilePhoneNumberPlaceholder = 'subscriptions.form.input_labels.mobilePhoneNumberPlaceholder' | t
+  assign buttonLabel = 'subscriptions.form.button.label' | t
+  assign buttonAria = 'subscriptions.form.button.aria_label' | t
+  assign prefixCheckbox = 'input-checkbox-'
+-%}
+
+<div class="subscriptions">
+  {% render "el_account-content-heading",
+    title: title
+  %}
+  <div class="subscriptions__container">
+    {%- assign description = 'subscriptions.description' | t  -%}
+    {%- if description != blank -%}
+      <p class="subscriptions__description">{{- description -}}</p>
+    {%- endif -%}
+    <form class="subscriptions__form" id="account--subscriptions__form">
+      {%- assign inputIdNewsletter = prefixCheckbox | append: 'newsletter' -%}
+      {%- assign inputIdSms = prefixCheckbox | append: 'sms' -%}
+      <div class="subscriptions__form-section subscriptions__form-section--checkboxes">
+        <div class="subscriptions__form-row">
+          {% render "el_checkbox", input_id: inputIdNewsletter, label: labelNewsletter, name: "marketingEmail", value: 'false' %}
+        </div>
+        <div class="subscriptions__form-row">
+          {% render "el_checkbox", input_id: inputIdSms, label: labelSms, name: "marketingSMS", value: 'false' %}
+        </div>
+      </div>
+      <div class="subscriptions__form-section subscriptions__form-section--phone hidden">
+        <p class="subscriptions__mobile-phone-required">{{- mobilePhoneNumberLabel -}}</p>
+        <div class="subscriptions__form-row">
+          {%- liquid
+            assign id = "mobilePhoneNumber"
+            assign required = false
+            render 'el_input', id: id, name: 'mobilePhoneNumber', required: required, modifiers: 'outlined, sm', placeholder: mobilePhoneNumberPlaceholder
+            render 'el_label', for_input: id, content: mobilePhoneNumberPlaceholder, required: required, custom_classes: 'input-label', modifiers: 'float' 
+          -%}
+        </div>
+      </div>
+      <div class="subscriptions__form-section subscriptions__form-section--feedback">
+        <div class="success hidden">{{ 'subscriptions.form.feedback.success' | t }}</div>
+        <div class="error hidden">{{ 'subscriptions.form.feedback.error' | t }}</div>
+      </div>
+
+      {% render "el_button", type: "submit", text: buttonLabel, aria_label: buttonAria, modifiers: 'secondary, small', custom_classes: 'subscriptions__form-submit' %}
+    </form>
+  </div>
+</div>

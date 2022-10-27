@@ -1,0 +1,62 @@
+{% if section.settings.show %}
+  <section class="Section Section--spacingNormal" data-section-id="{{ section.id }}" data-section-type="nosto-recommendations" data-section-settings='{{ section_settings }}'>
+    {% if section.settings.widget_id != blank %}
+      <div class="nosto_element" id={{ section.settings.widget_id | json }}></div>
+    {% endif %}
+  </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Nosto recommendations",
+    "class": "shopify-section-nosto",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show",
+        "label": "Show section",
+        "info": "This option helps to hide the section if one has been hardcoded into the template",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "widget_id",
+        "label": "Widget id",
+        "info": "Look up for the value in Nosto App > Placements > Edit placements > Injected Nosto element"
+      }
+    ],
+    "presets": [
+      {
+        "category": "Product",
+        "name": "Nosto recommendations",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}
+
+{%- comment -%}
+  Index template
+    {% render 'nosto-element', id:'frontpage-nosto-1' %}
+    {% render 'nosto-element', id:'frontpage-nosto-2' %}
+    {% render 'nosto-element', id:'frontpage-nosto-3' %}
+    {% render 'nosto-element', id:'frontpage-nosto-4' %}
+  404 template
+    {% render 'nosto-element', id:'notfound-nosto-1' %}
+    {% render 'nosto-element', id:'notfound-nosto-2' %}
+    {% render 'nosto-element', id:'notfound-nosto-3' %}
+  Cart template
+    {% render 'nosto-element', id:'cartpage-nosto-1' %}
+    {% render 'nosto-element', id:'cartpage-nosto-2' %}
+    {% render 'nosto-element', id:'cartpage-nosto-3' %}
+  Collection template
+    {% render 'nosto-element', id:'categorypage-nosto-1' %}
+    {% render 'nosto-element', id:'categorypage-nosto-2' %}
+  Search template
+    {% render 'nosto-element', id:'searchpage-nosto-1' %}
+    {% render 'nosto-element', id:'searchpage-nosto-2' %}
+  Product template
+    {% render 'nosto-element', id:'productpage-nosto-1' %}
+    {% render 'nosto-element', id:'productpage-nosto-2' %}
+    {% render 'nosto-element', id:'productpage-nosto-3' %}
+{%- endcomment -%}

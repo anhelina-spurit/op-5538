@@ -1,0 +1,127 @@
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+  assign heading_custom_classes = 'advantages__heading advantages__heading--main '
+
+  unless section.settings.is_heading_visible == true
+    assign heading_custom_classes = heading_custom_classes| append: 'visually-hidden'
+  endunless
+-%}
+{%- capture container_content -%}
+  {%-
+    render 'el_heading',
+    level: 2,
+    id: heading_id,
+    text: section.settings.heading,
+    custom_classes: heading_custom_classes
+  -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="advantages__slider swiper">
+      <ul class="advantages__list swiper-wrapper" role="list"  aria-labelledby="{{ heading_id }}" >
+        {%- for block in section.blocks -%}
+          <li class="advantages__item swiper-slide" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+            {%- if block.settings.image != blank -%}
+              <div class="advantages__media">
+                <img class="advantages__image" src="{{ block.settings.image }}" alt="" role="presentation" loading="lazy">
+              </div>
+            {%- endif -%}
+
+            {%- liquid
+              assign heading_text = block.settings.heading
+
+              unless block.settings.url == blank
+                capture heading_text
+                  echo '<a class="advantages__link" href="' | append: block.settings.url | append: '">' | append: block.settings.heading |append: '</a>'
+                endcapture
+              endunless
+
+              render 'el_heading', level: 3, text: heading_text, custom_classes: 'advantages__heading advantages__heading--item'
+            -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+      <div class="advantages__scrollbar swiper-scrollbar"></div>
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- liquid
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xxl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'advantages', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Advantages",
+  "class": "shopify-section--has-padding",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Advantages"
+    },
+    {
+      "id": "is_heading_visible",
+      "type": "checkbox",
+      "label": "Heading visible",
+      "default": false,
+      "info": "By default heading is hidden"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "limit": 6,
+      "settings": [
+        {
+          "id": "image",
+          "type": "text",
+          "label": "Image URL",
+          "info": "It is more priority to use the image in the SVG format. To do this, you need to upload an image to the store's file system, copy path and paste it here."
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advantages",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

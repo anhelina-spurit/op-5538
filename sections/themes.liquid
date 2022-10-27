@@ -1,0 +1,210 @@
+{%- liquid
+  assign heading_id = section.id | append: '_heading'
+  assign items_ids = nil
+  assign is_dropdown = false
+
+  if section.settings.modile_view == 'dropdown'
+    assign is_dropdown = true
+  endif
+-%}
+
+{%- capture themes_content -%}
+  {%- render 'el_heading', id: heading_id, level: 2, text: section.settings.heading, custom_classes: 'themes__heading' -%}
+
+  {%- if section.blocks.size > 0 -%}
+    {%- if is_dropdown -%}<div class="dropdown-tabs themes__dropdown-tabs" data-dropdown-tabs>{%- endif -%}
+        <div class="themes__grid {% if is_dropdown %}themes__dropdown-tabs-list dropdown-tabs-list{% endif %}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign has_description = false
+
+            if block.settings.image_1 != blank or block.settings.image_2 != blank or block.settings.content != blank
+              assign has_description = true
+            endif
+          -%}
+
+          <div class="themes-item {% if is_dropdown and has_description %}dropdown-tabs__item{% endif %}">
+            {%- liquid
+              if block.settings.image != blank
+                echo '<div class="link-wrapper">'
+                unless block.settings.url_image == blank
+                  echo '<a class="link-wrapper__link" href="' | append: block.settings.url_image | append: '">'
+                  echo '</a>'
+                endunless
+                render 'el_shopify-image', image: block.settings.image, lazy_loading: true, format: 'pjpg', custom_classes: 'themes-item__img link-wrapper__image'
+                echo '</div>'
+              else
+                render 'el_placeholder'
+              endif
+
+              assign heading_class = 'themes-item__heading'
+
+              if has_description
+                assign selected = true
+
+                if items_ids
+                  assign selected = false
+                endif
+
+                assign items_ids = items_ids | append: ',' | append: forloop.index0
+                assign theme_item_id = section.id | append: '-theme_item-' | append: forloop.index0
+                assign theme_tab_id = theme_item_id | append: '-tab'
+                assign heading_class = heading_class | append: ' themes-item__tab'
+
+                render 'el_tab', id: theme_tab_id, panel_id: theme_item_id, content: block.settings.heading, custom_classes: heading_class, selected: selected
+              else
+                render 'el_heading', level: 3, text: block.settings.heading, custom_classes: heading_class
+              endif
+            -%}
+          </div>
+        {%- endfor -%}
+      </div>
+      {%- if is_dropdown -%}</div>{%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture description_content -%}
+  {%- assign items_ids = items_ids | replace_first: ',' | split: ',' -%}
+
+  {%- if items_ids.size > 0 -%}
+    {%- for item_id in items_ids -%}
+      {%- liquid
+        assign numeral_id = item_id | plus: 0
+        assign theme_item_id = section.id | append: '-theme_item-' | append: item_id
+        assign block = section.blocks[numeral_id]
+      -%}
+
+      <div id="{{ theme_item_id }}" {% if forloop.index > 1 %}hidden{% endif %}>
+        <div class="theme__description">
+          {%- if block.settings.image_1 != blank -%}
+            <div class="theme__description_item">
+              <div class="link-wrapper">
+                {% unless block.settings.url_image_1 == blank %}
+                <a class="link-wrapper__link" href="{{ block.settings.url_image_1 }}"></a>
+                {% endunless %}
+                {%- render 'el_shopify-image', image: block.settings.image_1, lazy_loading: true, format: 'pjpg' -%}
+                </div>
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.image_2 != blank -%}
+            <div class="theme__description_item">
+              <div class="link-wrapper">
+                {% unless block.settings.url_image_2 == blank %}
+                  <a class="link-wrapper__link" href="{{ block.settings.url_image_2 }}"></a>
+                {% endunless %}
+                {%- render 'el_shopify-image', image: block.settings.image_2, lazy_loading: true, format: 'pjpg' -%}
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.content != blank -%}
+            <div class="theme__description_item--text">
+              {%- render 'el_heading', tag: 'div', level: 3, text: block.settings.heading, custom_classes: 'theme__description_heading' -%}
+              {%- render 'el_wysiwyg', content: block.settings.content -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- liquid
+  capture content
+    render 'el_container', content: themes_content, modifiers: 'xxl,centered'
+    render 'el_container', content: description_content, modifiers: 'fluid'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'themes', content: content, heading_id: heading_id, name_modifiers: name_modifiers
+-%}
+
+{% schema %}
+{
+  "name": "Collection themes",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Découvrez nos thèmes de collection"
+    },
+    {
+      "id": "modile_view",
+      "type": "select",
+      "label": "On mobile screens show:",
+      "options": [
+        {
+          "value": "images",
+          "label": "images like on the desktop"
+        },
+        {
+          "value": "dropdown",
+          "label": "dropdown with headings"
+        }
+      ],
+      "default": "images"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "items",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Heading image",
+          "info": "576x426 px"
+        },
+        {
+          "id": "url_image",
+          "type": "url",
+          "label": "Link for heading image"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading text"
+        },
+        {
+          "type": "header",
+          "content": "Description"
+        },
+        {
+          "id": "image_1",
+          "type": "image_picker",
+          "label": "First content image",
+          "info": "700x1050 px"
+        },
+        {
+          "id": "url_image_1",
+          "type": "url",
+          "label": "Link for first content image"
+        },
+        {
+          "id": "image_2",
+          "type": "image_picker",
+          "label": "Second content image",
+          "info": "510x510 px"
+        },
+        {
+          "id": "url_image_2",
+          "type": "url",
+          "label": "Link for second content image"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection themes"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,201 @@
+{%- assign heading_id = section.id | append: '_heading' -%}
+
+{%- capture content -%}
+  <div class="page-hero__media">
+    {% if section.settings.image_link != blank %}
+      <a class="page-hero__link" href="{{- section.settings.image_link.url -}}">
+    {% endif %}
+    {%- liquid
+      if section.settings.image != blank
+        assign image_w = 980
+
+        if section.settings.image_size == 'xxl'
+          assign image_w = 1375
+        endif
+
+        render 'el_shopify-image', image: section.settings.image, width: image_w, height: 488, lazy_loading: true, format: 'pjpg', custom_classes: 'page-hero__image'
+      else
+        render 'el_placeholder', name: 'lifestyle-1'
+      endif
+      assign subimage_classes = 'page-hero__sub_image page-hero__sub_image--' | append: section.settings.subimage_position
+
+      render 'el_image', src: section.settings.sub_image, lazy_loading: true, custom_classes: subimage_classes
+      render 'el_image', src: section.settings.sub_mobile_image, lazy_loading: true, custom_classes: 'page-hero__sub_mobile_image'
+    -%}
+
+    <div class="page-hero__content" style="color:{{ section.settings.color }}">
+      <p class="page-hero__sub-heading">{{ section.settings.heading }}</p>
+      {%- render 'el_heading', id: 'page-hero-heading', level: 1, text: page.title, custom_classes: 'page-hero__heading', modifiers: 'xxl' -%}
+    </div>
+    {% if section.settings.image_link != blank %}
+      </a>
+    {% endif %}
+  </div>
+
+  {%- if page.content != blank -%}
+    <div class="page-hero__main" style="color:{{ section.settings.content_color }}">
+      {%- render 'el_wysiwyg', content: page.content -%}
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- liquid
+  capture section_content
+    render 'el_container', content: content, modifiers: section.settings.image_size
+  endcapture
+
+  assign name_modifiers = blank
+
+  if section.settings.long
+    assign name_modifiers = name_modifiers | append: ' long'
+  endif
+
+  render 'c_section', id: section.id, name: 'page-hero', content: section_content, heading_id: heading_id, name_modifiers: name_modifiers
+-%}
+
+{%- style -%}
+  #{{ section.id }} .page-hero__content {
+    justify-content: {{- section.settings.heading_alignment -}};
+  }
+
+  @media screen and (min-width: 768px) {
+    #{{ section.id }} .page-hero__sub-heading {
+      font-size: {{- section.settings.subheading_size -}}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Page hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main image"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "image_link",
+      "type": "url",
+      "label": "Image link"
+     },
+    {
+      "id": "image_size",
+      "type": "select",
+      "label": "Image size",
+      "options": [
+        {
+          "value": "xl",
+          "label": "xl"
+        },
+        {
+          "value": "xxl",
+          "label": "xxl"
+        }
+      ],
+      "default": "xl"
+    },
+    {
+      "type": "header",
+      "content": "Sub image"
+    },
+    {
+      "id": "sub_image",
+      "type": "url",
+      "label": "Sub image"
+    },
+    {
+      "id": "subimage_position",
+      "type": "select",
+      "label": "Sub image desktop position",
+      "options": [
+        {
+          "value": "tr",
+          "label": "top right"
+        },
+        {
+          "value": "ub",
+          "label": "under bottom"
+        }
+      ],
+      "default": "tr"
+    },
+    {
+      "id": "sub_mobile_image",
+      "type": "url",
+      "label": "Sub mobile image"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading text",
+      "default": "cyrillus s’engage"
+    },
+    {
+      "id": "subheading_size",
+      "type": "range",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading font size",
+      "default": 12
+    },
+    {
+      "id": "color",
+      "type": "color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "center",
+          "label": "Middle"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Text content"
+    },
+    {
+      "id": "content_color",
+      "type": "color",
+      "label": "Content color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Section bottom size"
+    },
+    {
+      "id": "long",
+      "type": "checkbox",
+      "label": "Section long",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page hero"
+    }
+  ]
+}
+{% endschema %}

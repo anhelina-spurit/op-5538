@@ -1,0 +1,52 @@
+{%- comment -%}
+  @summary Renders a Shopify section
+
+  @param {string} id - id
+  @param {string} name - name
+  @param {string} heading_id - id of heading for a11y
+  @param {string} [content] - content
+  @param {string} [custom_classes] - custom classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [name_modifiers] - name modifiers (block name modifiers: name--MODIFIER)
+  @param {string[]} [section_modifiers] - default section modifiers (section--NAME)
+  @param {string} [tag] - tag for section element, by default section
+
+  @example
+  {%-
+      render 'c_section',
+      id: section.id,
+      name: 'promo',
+      heading_id: 'promo_heading',
+      content: '<h1 id="promo_heading" class="heading">Promo</h1><p>This is promo section</p>',
+      custom_classes: 'no-animations no-print',
+      attributes: 'data-analytics-target',
+      name_modifiers: 'light, wide',
+      section_modifiers: 'no-paddings, no-bg',
+      tag: 'section'
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture section_classes
+    render 'f_bem-classes', main_class: 'section', modifiers: section_modifiers
+  endcapture
+
+  capture name_classes
+    render 'f_bem-classes', main_class: name, custom_classes: custom_classes, modifiers: name_modifiers
+  endcapture
+
+  assign class = section_classes | append: ' ' | append: name_classes
+
+  assign tag = tag | default: 'section'
+-%}
+
+{% capture section_attributes %}
+  id="{{ id }}"
+  class="{{ class }}"
+  data-section-id="{{ id }}"
+  data-section-type="{{ name }}"
+  {% if heading_id %}aria-labelledby="{{ heading_id }}"{% endif %}
+  {% if attributes %}{{ attributes }}{% endif %}
+{% endcapture %}
+
+<{{ tag }} {{- section_attributes -}}>{{- content -}}</{{ tag }}>

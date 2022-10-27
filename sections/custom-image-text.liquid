@@ -1,0 +1,143 @@
+{% style %}
+  .custom-image-text {
+  color: {{- section.settings.color -}};
+  }
+{% endstyle %}
+
+{% liquid
+  assign heading_id = section.id | append: '_heading'
+  assign column_classes = 'custom-image-text__column' | append: ' custom-image-text__column--' | append: section.settings.alignment
+  assign media_classes = 'custom-image-text__media'
+
+  if section.settings.small_image != blank
+    assign column_classes = 'custom-image-text__column' | append: ' custom-image-text__column--align-top'
+
+  endif
+
+  if section.settings.large_image == true
+    assign media_classes = media_classes | append: ' custom-image-text__media--large'
+  endif
+
+
+    capture section_content
+    if  section.settings.heading != blank
+       render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'custom-image-text__heading'
+    endif
+    echo '<div class="' | append: column_classes | append: '">'
+      echo '<div class="custom-image-text__row">'
+          echo '<div class="' | append: media_classes | append: '">'
+            if section.settings.image != blank
+              if section.settings.image_link != blank
+                echo '<a class="custom-image-text__link" href="' | append: section.settings.image_link.url | append: '">'
+              endif
+              render 'el_shopify-image', image: section.settings.image, lazy_loading: true, format: 'pjpg'
+              if section.settings.image_link != blank
+                echo '</a>'
+              endif
+            endif
+          echo '</div>'
+      echo '</div>'
+      echo '<div class ="custom-image-text__row">'
+          render 'c_text-preview', heading: section.settings.title, heading_level: 3,  custom_classes: 'custom-image-text__content', description: section.settings.description, image: section.settings.small_image, image_link: section.settings.small_image_link, link: section.settings.link, link_title: section.settings.link_text, link_custom_classes: 'button button--secondary'
+      echo '</div>'
+    echo '</div>'
+  endcapture
+
+  capture content
+    render 'el_container', custom_classes: 'custom-image-text__container', content: section_content, modifiers: 'xl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'custom-image-text', content: content, heading_id: heading_id
+%}
+
+{% schema %}
+{
+  "name": "Custom image and text",
+  "settings": [
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Section Heading",
+        "default": "Les styles"
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "image_link",
+        "type": "url",
+        "label": "Image link"
+      },
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title",
+        "default": "Tendance casual"
+      },
+      {
+        "id": "description",
+        "type": "textarea",
+        "label": "Description"
+      },
+      {
+        "id": "small_image",
+        "type": "image_picker",
+        "label": "Small Image after text"
+      },
+      {
+        "id": "small_image_link",
+        "type": "url",
+        "label": "Small Image after text link"
+       },
+      {
+        "id": "link_text",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Styles"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Image alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "id": "color",
+        "type": "color",
+        "label": "Text color",
+        "default": "#7D95A9"
+      },
+      {
+        "id": "large_image",
+        "type": "checkbox",
+        "label": "Large image",
+        "default": false
+      }
+  ],
+  "presets": [
+    {
+      "name": "Custom image and text"
+    }
+  ]
+}
+{% endschema %}

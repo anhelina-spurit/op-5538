@@ -1,0 +1,9 @@
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+{% liquid
+  paginate search.results by 999
+    render 'c_product-list', products: search.results, attributes: 'data-product-list', current_page: paginate.current_page
+
+  endpaginate
+%}
+{% comment %}render 'c_wishlist-load-more', paginate: paginate{% endcomment %}
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}

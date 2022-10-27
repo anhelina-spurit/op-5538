@@ -1,0 +1,51 @@
+{%- comment -%}
+  @summary Renders an input
+
+  @param {string} [id] - id
+  @param {string} [type='text'] - type
+  @param {string} [name] - name
+  @param {*} [value=''] - value
+  @param {string} [label] - label
+  @param {string} [placeholder] - placeholder
+  @param {boolean} [required] - required
+  @param {boolean} [disabled] - disabled
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+      render 'el_input',
+      id: 'select',
+      type: 'text',
+      name: 'quantity',
+      value: 1,
+      label: 'Quantity',
+      placeholder: 'Quantity'
+      required: true,
+      disabled: false,
+      custom_classes: 'product-form__quantity',
+      attributes: 'min="1"'
+      modifiers: 'lg, light',
+  -%}
+{%- endcomment -%}
+
+{%- assign type = type | default: 'text' -%}
+
+{%- if id != blank and label != blank -%}
+ {%- render 'el_label', for_input: id, content: label, required: required -%}
+{%- endif -%}
+
+<input
+  class="{%- render 'f_bem-classes', main_class: 'input', custom_classes: custom_classes, modifiers: modifiers -%}"
+  type="{{ type }}"
+  {% if id %}id="{{ id }}"{% endif %}
+  {% if name %}name="{{ name }}"{% endif %}
+  {% if placeholder %}placeholder="{{ placeholder }}"{% else %}placeholder=" "{% endif %}
+  {% if value %}value="{{ value }}"{% endif %}
+  {% if disabled %}disabled{% endif %}
+  {% if required %}required aria-required="true"{% endif %}
+  {% if attributes %}{{ attributes }}{% endif %}
+/>
+
+

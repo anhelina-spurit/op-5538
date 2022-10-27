@@ -1,0 +1,89 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../constants/fonts';
+@import '../../components/theme-sections';
+
+.product-feature {
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+  @extend .shopify-section--has-padding;
+}
+
+.product-feature--pull-up {
+  padding-top: 0;
+  margin-top: to-rem(-100px);
+}
+
+.product-feature__column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: to-rem(80px);
+  @include media-breakpoint-down(md) {
+    gap: 0;
+  }
+}
+
+.product-feature__row {
+  display: flex;
+  flex: 1;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    flex: auto;
+  }
+}
+
+.product-feature__quote {
+  max-width: to-rem(411px);
+  margin: 0 0 0 auto;
+  color: $palette-bismark;
+  font-family: $font-family-lora;
+  font-size: to-rem(18px);
+  letter-spacing: to-rem(2px);
+  text-align: right;
+  @include media-breakpoint-down(md) {
+    margin: to-rem(30px) auto;
+    font-size: to-rem(12px);
+    text-align: center;
+  }
+}
+
+.product-feature__info {
+  width: 100%;
+  max-width: to-rem(400px);
+  padding: to-rem(20px) to-rem(76px);
+  border: to-rem(1px) solid $palette-bismark;
+  margin: to-rem(70px) 0 to-rem(70px) auto;
+  color: $palette-bismark;
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    padding: to-rem(16px);
+    margin: to-rem(30px) auto;
+  }
+}
+
+.product-feature__info .image {
+  margin: auto;
+}
+
+.product-feature__percent {
+  margin: to-rem(20px) 0;
+  font-size: to-rem(46px);
+  line-height: 0.5;
+}
+
+.product-feature__description {
+  max-width: to-rem(206px);
+  margin-left: auto;
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(0.6px);
+  text-align: right;
+
+  @include media-breakpoint-down(md) {
+    margin: to-rem(30px) auto;
+    color: $palette-bismark;
+    text-align: center;
+  }
+}

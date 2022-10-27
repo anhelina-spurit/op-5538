@@ -1,0 +1,54 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.cross-sell__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.cross-sell__heading--main {
+  order: 0;
+  text-align: center;
+}
+
+.cross-sell__heading--tab {
+  display: none;
+
+  @include media-breakpoint-down(lg) {
+    display: block;
+    margin-bottom: to-rem(34px);
+    color: $palette-dark;
+    font-size: to-rem(12px);
+    font-weight: 400;
+    letter-spacing: to-rem(1.92px);
+    line-height: 2.5;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+}
+
+.cross-sell .tabpanel {
+  order: 1;
+  margin-bottom: to-rem(76px);
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(48px);
+  }
+}
+
+.cross-sell__tablist {
+  order: 0;
+  margin-bottom: to-rem(60px);
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+}
+
+.cross-sell .tab[aria-selected='true'] {
+  padding: 0;
+  margin-right: to-rem(30px);
+  margin-left: to-rem(30px);
+}

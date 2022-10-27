@@ -1,0 +1,214 @@
+{
+  "sections": {
+    "16587356923cd1436d": {
+      "type": "page-hero",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/CYRILLUS-STUDIO-BD-30.jpg",
+        "image_size": "xxl",
+        "sub_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Sigle_Cyrillus_f4047bd2-6221-4368-8e61-5957fff63ea8.svg",
+        "subimage_position": "ub",
+        "sub_mobile_image": "",
+        "heading": "cyrillus s’engage",
+        "subheading_size": 24,
+        "color": "#ffffff",
+        "heading_alignment": "flex-end",
+        "content_color": "#000000",
+        "long": true
+      }
+    },
+    "1658756739363085c6": {
+      "type": "product-promo",
+      "settings": {
+        "heading": "Nos motifs exclusifs",
+        "section_description": "Fait-maison ou commandés à des designers et artistes, nous passons un temps infini à les préciser, les rectifier, les sublimer. Dans l'air du temps, nos imprimés puisent leurs inspirations de modèles héritage et haut de gamme. Ils sont notre signature et notre fierté !",
+        "image": "shopify:\/\/shop_images\/studio-s2-1.jpg",
+        "product": "m-applique-applique-rotin-6321-beige-moyen-bicolor-multicolor_8584",
+        "product_description": "Coup de cœur pour cet imprimé héritage : Un fleuri vintage inspiré des tapisseries anciennes aux grands motifs floraux. \n\nCréation exclusive Cyrillus",
+        "centerline": true,
+        "pull_up": true
+      }
+    },
+    "1658829476bc271e4d": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/studio-s3-1.jpg",
+        "image_centered": true,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": false,
+        "centerline": true,
+        "label_action": "",
+        "heading": "",
+        "richtext": "<p>Original British design since 1875.<br\/>Des motifs dessinés ou peints à la main par l’équipe Liberty à Londres, puis transposés au tissu dans l’imprimerie italienne de Liberty.<br\/>Les tissus Liberty sont pour nous un gage de qualité, de raffinement et de créativité, chaque saison nos stylistes choisissent parmi une sélection exclusive les tissus Liberty qui composent nos collections. C’est une histoire de savoir-faire, d’amour des imprimés qui nous lient à cette marque prestigieuse.<\/p>",
+        "extra_first": "",
+        "extra_large": "",
+        "extra_image": "shopify:\/\/shop_images\/Liberty_logo.png",
+        "url_extra_image": "",
+        "extra_last": "",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 90,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#ffffff"
+      }
+    },
+    "1658829646f302e276": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/studio-s4-1.jpg",
+        "image_centered": true,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": true,
+        "centerline": true,
+        "label_action": "",
+        "heading": "Nos couleurs notre expertise",
+        "richtext": "<p>Tendances, cahiers couleurs, héritage Cyrillus... nous inspirent et nous permettent de travailler chaque saison plus de 40 nuances. Nos couleurs sont travaillées en parfaite harmonie avec nos armoires, aspérités et imprimés pour former des silhouettes coordonnées et dans l'air du temps. <\/p>",
+        "extra_first": "",
+        "extra_large": "",
+        "url_extra_image": "",
+        "extra_last": "",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "right",
+        "vertical_alignment": "flex-end",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#f2ecdf"
+      }
+    },
+    "1658878351b8a4241e": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/studio-s5-1.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": false,
+        "centerline": true,
+        "label_action": "",
+        "heading": "Notre atelier de modélisme",
+        "richtext": "<p>Les architectes du vêtement, ils mettent en forme le dessin du styliste et donnent vie au vêtement. Travail technique et de précision sur les coupes, volumes et tombés avec également pour objectif un confort parfait !<\/p>",
+        "content_image": "shopify:\/\/shop_images\/studio-s5-2.jpg",
+        "extra_first": "",
+        "extra_large": "",
+        "url_extra_image": "",
+        "extra_last": "",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "flex-end",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#f2ecdf"
+      }
+    },
+    "1658878915eb879978": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/studio-s6-1.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": true,
+        "centerline": true,
+        "label_action": "",
+        "heading": "Nos matières et fabrications",
+        "richtext": "<p>Du choix des tissus, des finitions, des volumes jusqu'à la commercialisation : c'est un travail précis et exigeant que nous menons. Nous achetons nos plus beaux tissus en Italie et continuons le \"travail à façon\" en étroite collaboration avec des usines européennes.<\/p>",
+        "extra_first": "",
+        "extra_large": "",
+        "url_extra_image": "",
+        "extra_last": "",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "right",
+        "vertical_alignment": "flex-end",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#f2ecdf"
+      }
+    },
+    "1658878618c9550728": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/studio-s7-1.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": false,
+        "centerline": true,
+        "label_action": "",
+        "heading": "Des partenariats avec les grandes maisons italiennes.",
+        "richtext": "<p>Pour nos manteaux, jupes, robes, vestes et pantalons adultes, nous travaillons avec la très belle maison Manteco®, une référence et un savoir-faire reconnu dans les tissus haut de gamme. L’entreprise est aussi pleinement engagée dans la mode circulaire et a développé de nombreux projets écoresponsables. Derrière son approche verte et ses tissus de première qualité, il y a des générations de savoir-faire, d'héritage et d’exigence.<\/p>",
+        "extra_first": "",
+        "extra_large": "",
+        "url_extra_image": "",
+        "extra_last": "",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#ffffff"
+      }
+    },
+    "16589382945a20b223": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/studio-s8-1_2x_6ea03c77-8783-42d7-897d-8bcfaffb0785.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "Partenaire historique, Madagascar est un haut lieu d’expertise et de maitrise des broderies raffinées. Nous travaillons depuis plus de 20 ans avec les mêmes artisans passionnés et engagés, à l’image de l'atelier de Marion qui confectionne nos robes et blouses tout en développant des projets solidaires. Ces ateliers malgaches labellisés Gots sont également choisis pour leurs engagements écoresponsables.",
+        "invert_content": true,
+        "centerline": true,
+        "label_action": "",
+        "heading": "La broderie, tout un art",
+        "richtext": "<p>Chaque saison, nous achetons des panneaux à des brodeurs de renom et de très grande qualité, nous développons aussi nos propres broderies pour enrichir nos créations.<\/p>",
+        "content_image": "shopify:\/\/shop_images\/studio-s9-1.jpg",
+        "extra_first": "",
+        "extra_large": "",
+        "url_extra_image": "",
+        "extra_last": "",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "right",
+        "vertical_alignment": "flex-end",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#ffffff"
+      }
+    },
+    "chain-end": {
+      "type": "chain-end",
+      "settings": {
+        "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Sigle_Cyrillus_f4047bd2-6221-4368-8e61-5957fff63ea8.svg"
+      }
+    }
+  },
+  "order": [
+    "16587356923cd1436d",
+    "1658756739363085c6",
+    "1658829476bc271e4d",
+    "1658829646f302e276",
+    "1658878351b8a4241e",
+    "1658878915eb879978",
+    "1658878618c9550728",
+    "16589382945a20b223",
+    "chain-end"
+  ]
+}

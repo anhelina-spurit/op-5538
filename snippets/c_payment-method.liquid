@@ -1,0 +1,10 @@
+<div class="payment">
+    <span class="visually-hidden">{{ 'payment.method' | t }}</span>
+    <ul class="payment__icons">
+        {%- for type in shop.enabled_payment_types -%}
+            <li class="payment__icon">
+                {{ type | payment_type_svg_tag | replace: '<stop stop-color', '<stop offset="0%" stop-color' }}
+            </li>
+        {%- endfor -%}
+    </ul>
+</div>

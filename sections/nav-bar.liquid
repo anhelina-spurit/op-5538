@@ -1,0 +1,68 @@
+{%- capture content -%}
+  <ul class="nav-bar__list">
+    {% for block in section.blocks %}
+      <li class="nav-bar__item">
+        {%
+          render 'el_shopify-image',
+          image: block.settings.image,
+          width: 120,
+          height: 120,
+          crop: 'center',
+          lazy_loading: true,
+          format: 'pjpg',
+          custom_classes: 'nav-bar__img',
+        %}
+        <a href="{{ block.settings.link }}" class="nav-bar__link">{{ block.settings.link_title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{%- endcapture -%}
+
+{%- liquid
+  capture section_content
+    render 'el_container', content: content, modifiers: 'xxl', custom_classes: 'nav-bar__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'nav-bar', content: section_content
+-%}
+
+{% schema %}
+{
+  "name": "Navigation Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "The section is only visible below 922px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "link_title",
+          "type": "text",
+          "label": "Link title"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Link url"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image",
+          "info": "120x120 px"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Navigation Bar"
+    }
+  ]
+}
+{% endschema %}

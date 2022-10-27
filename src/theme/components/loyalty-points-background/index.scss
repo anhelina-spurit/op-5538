@@ -1,0 +1,78 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../constants/fonts';
+@import '../../utils/breakpoints';
+
+.loyalty-points-background {
+  padding: to-rem(40px) 0;
+  background-color: $palette-merino;
+  text-align: center;
+}
+
+.loyalty-points-background__heading {
+  display: inline-block;
+  padding-bottom: to-rem(10px);
+  border-bottom: to-rem(1px) solid $palette-dark-slate-grey;
+  color: $palette-dark-slate-grey;
+  font-family: $font-family-lora;
+  font-size: to-rem(18px);
+  font-style: italic;
+  letter-spacing: to-rem(1px);
+  line-height: 1.2;
+  text-align: center;
+  text-transform: inherit;
+}
+
+.loyalty-points-background__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.loyalty-points-background__list--conditions {
+  margin: to-rem(40px) 0;
+  text-align: center;
+}
+
+.loyalty-points-background__list--conditions li:not(:last-child)::after {
+  display: inline-block;
+  width: to-rem(30px);
+  height: to-rem(6px);
+  border-top: to-rem(1px) solid $palette-dark;
+  border-bottom: to-rem(1px) solid $palette-dark;
+  content: '';
+}
+
+.loyalty-points-background__list--conditions .heading {
+  color: $palette-dark-slate-grey;
+  font-family: $font-family-lora;
+  font-size: to-rem(16px);
+  font-style: italic;
+  letter-spacing: to-rem(0.5px);
+  line-height: 1.2;
+  text-transform: initial;
+}
+
+.loyalty-points-background__list--conditions p {
+  color: $palette-leather;
+  font-size: to-rem(18px);
+  text-transform: uppercase;
+}
+
+.loyalty-points-background__list--advantages {
+  display: grid;
+  max-width: to-rem(1020px);
+  margin: to-rem(40px) auto;
+  grid-gap: to-rem(30px);
+  grid-template-columns: repeat(2, 1fr);
+  @include media-breakpoint-down(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.loyalty-points-background__link {
+  padding-bottom: 0;
+  border-color: $palette-leather;
+  color: $palette-leather;
+  font-size: to-rem(12px);
+}

@@ -1,0 +1,297 @@
+{
+  "sections": {
+    "care-hero": {
+      "type": "care-hero",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/care_hero_2.jpg",
+        "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/logo_cc1df125-cbdb-4afd-9e1d-a9727195a5f2.svg?v=1648027904"
+      }
+    },
+    "care-info": {
+      "type": "care-info",
+      "blocks": {
+        "949970f7-5606-49e0-b376-07b31b91a9ce": {
+          "type": "care_info_item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Washing_machine.svg?v=1653472837",
+            "title": "Washing recommendations",
+            "description": "<p>• Séparez toujours les blancs et les couleurs et triez les vêtements selon les températures de lavage indiquées.<br\/>• Ne chargez pas trop votre machine ! Si vous avez acheté des articles en coordonné, essayez au maximum de les laver ensemble pour limiter les écarts de coloris. <br\/>• Lavez à 30 degrés maximum les vêtements à base de soie et de coton, de coloris vifs et les articles contenant de l'élasthanne. <br\/>• Lavez à l'envers tous les velours, les articles avec impression, broderie, transfert, les mailles fantaisie et tous les textiles délavés ou lavés après confection, comme le jean. <br\/>• Le lavage à la main est vivement conseillé pour la pure laine et la maille coton lourde.<\/p>"
+          }
+        },
+        "0697507f-3e6a-477a-acd2-2b95d7866b15": {
+          "type": "care_info_item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Group_3.svg?v=1654168491",
+            "title": "drying recommendations",
+            "description": "<p>• Faites sécher le linge immédiatement après le lavage, en évitant de le laisser humide en boule.<br\/>• Etendez le linge humide sans plis pour éviter les traces blanches, notamment pour les vêtements en coton ou en élasthanne.<br\/>• Séchez à plat les pulls pure laine et les vêtements en maille lourde.<\/p>"
+          }
+        },
+        "33eaa4b0-8e57-48b7-9d13-ac28f7ce9670": {
+          "type": "care_info_item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Group_10.svg?v=1654168491",
+            "title": "ironing recommendations",
+            "description": "<p>• Repassez à l'envers tous les articles comportant des impressions, des broderies, des transferts, tous les velours, ainsi que la soie que vous repasserez légèrement humide. N'oubliez pas de nettoyer régulièrement la semelle de votre fer.<\/p>"
+          }
+        },
+        "404651fd-042b-41a5-9af9-b5854810d23b": {
+          "type": "care_info_item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Stroke_1.svg?v=1654168491",
+            "title": "spot treatment recommendations",
+            "description": "<p>• Dans la mesure du possible, agissez très rapidement, les tâches sont plus faciles à enlever lorsqu'elles sont fraîches. Tout en respectant les indications fournies par l’étiquette du vêtement, détachez la tâche avec un produit approprié avant de laver le vêtement.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "949970f7-5606-49e0-b376-07b31b91a9ce",
+        "0697507f-3e6a-477a-acd2-2b95d7866b15",
+        "33eaa4b0-8e57-48b7-9d13-ac28f7ce9670",
+        "404651fd-042b-41a5-9af9-b5854810d23b"
+      ],
+      "settings": {
+        "heading": "Comment bien entretenir ses vêtements"
+      }
+    },
+    "care-symbols": {
+      "type": "care-symbols",
+      "blocks": {
+        "f1a39a49-4721-459f-b780-889155ba4761": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_symbol_1.svg?v=1654168640",
+            "group": "Lavage",
+            "description": "Lavage à la main"
+          }
+        },
+        "a309cd4f-6af2-45da-ac89-4b98b66ac824": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_symbol_2.svg?v=1654168640",
+            "group": "Lavage",
+            "description": "Lavage interdit"
+          }
+        },
+        "058e255b-d046-4a5c-876d-69a763347002": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_symbol_3.svg?v=1654168640",
+            "group": "Lavage",
+            "description": "Lavage en machine. La&nbsp;barre placée sous la cuve indique un essorage réduit"
+          }
+        },
+        "3788dc84-a811-4fe7-aef1-a639b8fc17dc": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_symbol_4.svg?v=1654168640",
+            "group": "Lavage",
+            "description": "Lavage en machine. Le&nbsp;chiffre indique la température maximum autorisé"
+          }
+        },
+        "223656da-385d-4843-b7b3-44891c9c5a19": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_repassage-01.svg?v=1654265810",
+            "group": "Repassage",
+            "description": "110° C Réglage doux"
+          }
+        },
+        "acf508d1-0279-4284-8206-e281773e0c0a": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_repassage-03.svg?v=1654265810",
+            "group": "Repassage",
+            "description": "150° C Réglage moyen"
+          }
+        },
+        "e92b5fd6-d438-4315-85b6-ef81866e173a": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_repassage-04.svg?v=1654266156",
+            "group": "Repassage",
+            "description": "200° C Réglage fort"
+          }
+        },
+        "e2e83e8d-fc8c-4778-9c55-d3ceac37a7e1": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_repassage-02.svg?v=1654265810",
+            "group": "Repassage",
+            "description": "Ne pas repasser"
+          }
+        },
+        "cf7d7737-dc7c-4ebe-b901-23f3251c0e73": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_nettoyage-04.svg?v=1654266798",
+            "group": "Nettoyage à sec",
+            "description": "Nettoyage à sec autorisé"
+          }
+        },
+        "fd3b2b3f-89d6-4a16-b923-878cddf88ae1": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_nettoyage-02.svg?v=1654265810",
+            "group": "Nettoyage à sec",
+            "description": "Tous les solvants usuels autorisés sauf le Trichloréthylène"
+          }
+        },
+        "1144b4f2-fdf2-4216-84a5-2f5e803a7a46": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_nettoyage-03.svg?v=1654265810",
+            "group": "Nettoyage à sec",
+            "description": "Tous les solvants usuels autorisés"
+          }
+        },
+        "009ef326-1463-4faa-99dd-d8836bdff7c6": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_nettoyage-01.svg?v=1654265810",
+            "group": "Nettoyage à sec",
+            "description": "Nettoyage à sec interdit"
+          }
+        },
+        "4ffc5745-4cdd-4ef6-b371-35cdbb6d6908": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_sechage-04.svg?v=1654265810",
+            "group": "Séchage",
+            "description": "Séchage en tambour autorisé, sans restriction de&nbsp;température"
+          }
+        },
+        "7d4a6638-b987-439b-b49a-bc9f8946ec95": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_sechage-01.svg?v=1654265810",
+            "group": "Séchage",
+            "description": "Séchage en tambour autorisé à température modérée"
+          }
+        },
+        "6e79250e-076a-4330-9915-600ab24551bb": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_sechage-05.svg?v=1654265810",
+            "group": "Séchage",
+            "description": "Sécher à plat"
+          }
+        },
+        "033fbd4f-74bb-4232-af04-02047536d370": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_sechage-03.svg?v=1654265810",
+            "group": "Séchage",
+            "description": "Séchage en tambour interdit"
+          }
+        },
+        "a501bdeb-7ccc-4f58-8bac-eb9443625118": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_javel-02.svg?v=1654265810",
+            "group": "Eau de javel",
+            "description": "Eau de javel autorisée, chlorage dilué et à froid"
+          }
+        },
+        "84d29fc5-2c51-4776-9e97-affb643c2f21": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_javel-01.svg?v=1654265810",
+            "group": "Eau de javel",
+            "description": "Pas d'eau de javel, pas de chlorage"
+          }
+        },
+        "66f2f47c-2bff-4cc2-8c0a-780c96291a63": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_chaussures-bis-01.svg?v=1654268419",
+            "group": "Symboles joints à vos chaususures",
+            "description": "La tige ou dessus de la chaussure"
+          }
+        },
+        "51d16523-4315-4582-b52d-2aa3b732ebda": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_chaussures-02.svg?v=1654268093",
+            "group": "Symboles joints à vos chaususures",
+            "description": "La doublure et la semelle de&nbsp;propreté"
+          }
+        },
+        "60d39cc5-45f2-4d76-a658-b00429b9f510": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_chaussures-02.svg?v=1654268093",
+            "group": "Symboles joints à vos chaususures",
+            "description": "La semelle extérieure"
+          }
+        },
+        "e387c212-519c-432e-b655-fcc83d1578bc": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_chaussures-04.svg?v=1654268094",
+            "group": "Symboles joints à vos chaususures",
+            "description": "Cuir : cuir, croûte de cuir, articles dont la couche d'enduction n'excède pas 0,15&nbsp;mn"
+          }
+        },
+        "10d1dab4-3718-4518-a99f-a6f1fc24703f": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_chaussures-05.svg?v=1654268093",
+            "group": "Symboles joints à vos chaususures",
+            "description": "Cuir enduit : articles dont la&nbsp;couche d'enduction est supérieure à 0,15 mn"
+          }
+        },
+        "6ad991da-a2b2-4ccf-abf3-8cc5152ab367": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_chaussures-06.svg?v=1654268094",
+            "group": "Symboles joints à vos chaususures",
+            "description": "Textile : textiles naturels, textiles synthétiques tissés ou non"
+          }
+        },
+        "3560fdcb-aa62-4867-bc98-ff1c600e95e6": {
+          "type": "care-symbols-item",
+          "settings": {
+            "icon_src": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/care_chaussures-07.svg?v=1654268094",
+            "group": "Symboles joints à vos chaususures",
+            "description": "Autres matériaux : caoutchouc, élastomère, synderme, synthétique, bois..."
+          }
+        }
+      },
+      "block_order": [
+        "f1a39a49-4721-459f-b780-889155ba4761",
+        "a309cd4f-6af2-45da-ac89-4b98b66ac824",
+        "058e255b-d046-4a5c-876d-69a763347002",
+        "3788dc84-a811-4fe7-aef1-a639b8fc17dc",
+        "223656da-385d-4843-b7b3-44891c9c5a19",
+        "acf508d1-0279-4284-8206-e281773e0c0a",
+        "e92b5fd6-d438-4315-85b6-ef81866e173a",
+        "e2e83e8d-fc8c-4778-9c55-d3ceac37a7e1",
+        "cf7d7737-dc7c-4ebe-b901-23f3251c0e73",
+        "fd3b2b3f-89d6-4a16-b923-878cddf88ae1",
+        "1144b4f2-fdf2-4216-84a5-2f5e803a7a46",
+        "009ef326-1463-4faa-99dd-d8836bdff7c6",
+        "4ffc5745-4cdd-4ef6-b371-35cdbb6d6908",
+        "7d4a6638-b987-439b-b49a-bc9f8946ec95",
+        "6e79250e-076a-4330-9915-600ab24551bb",
+        "033fbd4f-74bb-4232-af04-02047536d370",
+        "a501bdeb-7ccc-4f58-8bac-eb9443625118",
+        "84d29fc5-2c51-4776-9e97-affb643c2f21",
+        "66f2f47c-2bff-4cc2-8c0a-780c96291a63",
+        "51d16523-4315-4582-b52d-2aa3b732ebda",
+        "60d39cc5-45f2-4d76-a658-b00429b9f510",
+        "e387c212-519c-432e-b655-fcc83d1578bc",
+        "10d1dab4-3718-4518-a99f-a6f1fc24703f",
+        "6ad991da-a2b2-4ccf-abf3-8cc5152ab367",
+        "3560fdcb-aa62-4867-bc98-ff1c600e95e6"
+      ],
+      "settings": {
+        "heading": "Symboles  et étiquettes des vêtements"
+      }
+    }
+  },
+  "order": [
+    "care-hero",
+    "care-info",
+    "care-symbols"
+  ]
+}

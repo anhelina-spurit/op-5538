@@ -1,0 +1,37 @@
+{%- comment -%}
+  @summary Return value query parameter
+
+  @param {string} param - query parameter name
+
+  @example
+  {%-
+    render 'el_query-params',
+    param: 'page'
+  -%}
+{%- endcomment -%}
+
+{%- assign value = '' -%}
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |
+  replace:'\/','/' |
+  replace:'%20',' ' |
+  replace:'\u0026','&'
+-%}
+
+{%- if pageUrl contains "?" -%}
+  {%- assign pageQuerystring = pageUrl | split:'?' | last -%}
+  {%- assign parts = pageQuerystring | split:'&' -%}
+
+  {%- for part in parts -%}
+    {%- assign keyAndValue = part | split:'=' -%}
+    {%- if keyAndValue.size > 1 -%}
+      {%- assign prepareKey = keyAndValue[0] | strip | downcase -%}
+      {%- assign prepareParams = param | strip | downcase -%}
+      {%- if prepareKey == prepareParams -%}
+        {%- assign value = keyAndValue[1] | strip | downcase -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{{- value -}}

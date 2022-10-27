@@ -1,0 +1,138 @@
+{% liquid
+  assign heading_id = section.id | append: '_heading'
+  assign products = collection[section.settings.collection].products
+  capture section_content
+     echo '<div class="collection-trends__column">'
+      echo '<div class="collection-trends__row">'
+        echo '<div class="collection-trends__info">'
+          echo '<div class="collection-trends__sub-media">'
+            if section.settings.sub_image_link != blank
+              echo '<a class="collection-trends__sub-link" href="' | append: section.settings.sub_image_link.url | append: '">'
+            endif
+            if section.settings.sub_image != blank
+               render 'el_shopify-image', image: section.settings.sub_image, width: 292, height: 337, lazy_loading: true, format: 'pjpg'
+              else
+               render 'el_placeholder', name: 'product-1'
+            endif
+            if section.settings.sub_image_link != blank
+              echo '</a>'
+            endif
+          echo '</div>'
+          render 'c_text-preview', heading: section.settings.heading, sub_heading: section.settings.sub_heading, description: section.settings.description, custom_classes: classes, link: section.settings.link, link_title: section.settings.link_text, custom_classes: 'collection-trends__content', link_custom_classes: 'button button--secondary'
+        echo '</div>'
+      echo '</div>'
+      echo '<div class="collection-trends__row">'
+        echo '<div class="collection-trends__media">'
+           if section.settings.sub_image != blank
+            echo '<div class="collection-trends__media-item">'
+             if section.settings.sub_image_link != blank
+               echo '<a class="collection-trends__link" href="' | append: section.settings.sub_image_link.url | append: '">'
+             endif
+              render 'el_shopify-image', image: section.settings.sub_image, width: 292, height: 337, lazy_loading: true, format: 'pjpg'
+             if section.settings.sub_image_link != blank
+               echo '</a>'
+             endif
+             echo '</div>'
+          else
+            echo '<div class="collection-trends__media-item">'
+             if section.settings.sub_image_link != blank
+               echo '<a class="collection-trends__link" href="' | append: section.settings.sub_image_link.url | append: '">'
+             endif
+              render 'el_placeholder', name: 'product-1'
+             if section.settings.sub_image_link != blank
+               echo '</a>'
+             endif
+            echo '</div>'
+          endif
+          if section.settings.image != blank
+              echo '<div class="collection-trends__media-item">'
+                if section.settings.image_link != blank
+                  echo '<a class="custom-image-text__link" href="' | append: section.settings.image_link.url | append: '">'
+                endif
+                  render 'el_shopify-image', image: section.settings.image, width: 526, height: 779, lazy_loading: true, format: 'pjpg'
+                if section.settings.image_link != blank
+                  echo '</a>'
+                endif
+              echo '</div>'
+            else
+              echo '<div class="collection-trends__media-item">'
+                if section.settings.image_link != blank
+                  echo '<a class="custom-image-text__link" href="' | append: section.settings.image_link.url | append: '">'
+                endif
+                  render 'el_placeholder', name: 'collection-6'
+                if section.settings.image_link != blank
+                  echo '</a>'
+                endif
+              echo '</div>'
+          endif
+        echo '</div>'
+      echo '</div>'
+    echo '</div>'
+  endcapture
+
+  capture content
+    render 'el_container', content: section_content, modifiers: 'xl, centered'
+  endcapture
+  render 'c_section', id: section.id, name: 'collection-trends', content: content, heading_id: heading_id
+%}
+
+{% schema %}
+{
+  "name": "Collection trends",
+  "settings": [
+      {
+        "id": "sub_image",
+        "type": "image_picker",
+        "label": "Sub image"
+      },
+      {
+        "id": "sub_image_link",
+        "type": "url",
+        "label": "Sub image link"
+      },
+      {
+        "id": "sub_heading",
+        "type": "text",
+        "label": "Sub heading"
+      },
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "Heading",
+        "default": "Lorem Ipsum is simply dummy text"
+      },
+      {
+        "id": "description",
+        "type": "textarea",
+        "label": "Description",
+        "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "id": "link_text",
+        "type": "text",
+        "label": "Link text"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "image_link",
+        "type": "url",
+        "label": "Image link"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Collection trends"
+    }
+  ]
+}
+{% endschema %}
+

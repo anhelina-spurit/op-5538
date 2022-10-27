@@ -1,0 +1,43 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+
+.price-range {
+  width: 100%;
+  height: to-rem(1px);
+  padding: 0 to-rem(8px);
+  border: none;
+  margin: to-rem(5px) auto to-rem(30px) auto;
+  background-color: $palette-dark;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.price-range .noUi-handle {
+  top: to-rem(-4px);
+  width: to-rem(10px);
+  height: to-rem(10px);
+  border: none;
+  background-color: $palette-dark;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.price-range .noUi-origin {
+  margin: 0 to-rem(12px);
+}
+
+.price-range .noUi-tooltip {
+  top: to-rem(12px);
+  right: to-rem(-4px);
+  bottom: 0;
+  left: auto;
+  border: none;
+  background: transparent;
+  font-size: to-rem(12px);
+  transform: none;
+}
+
+.price-range .noUi-handle::before,
+.price-range .noUi-handle::after {
+  display: none;
+}

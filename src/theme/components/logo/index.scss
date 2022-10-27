@@ -1,0 +1,23 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.logo__container {
+  max-width: to-rem(168px);
+
+  @include media-breakpoint-down(md) {
+    max-width: to-rem(120px);
+  }
+}
+
+.logo__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.logo__link,
+.logo__link:hover {
+  padding: 0;
+  border: none;
+}

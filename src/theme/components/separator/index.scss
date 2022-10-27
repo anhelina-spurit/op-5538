@@ -1,0 +1,14 @@
+@import '../../utils/breakpoints';
+
+.separator__body {
+  width: 100%;
+  min-height: var(--desktop-height);
+
+  @include media-breakpoint-down(lg) {
+    min-height: var(--tablet-height);
+  }
+
+  @include media-breakpoint-down(md) {
+    min-height: var(--mobile-height);
+  }
+}

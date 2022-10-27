@@ -1,0 +1,169 @@
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+
+.main--faq {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: to-rem(800px);
+  flex-flow: column wrap;
+  align-items: flex-end;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media-breakpoint-down(lg) {
+    padding-right: to-rem(20px);
+    padding-left: to-rem(20px);
+  }
+}
+
+.main--faq > .heading {
+  align-self: flex-start;
+  margin: 0 0 to-rem(26px) 0;
+  font-size: to-rem(20px);
+  font-weight: 400;
+  letter-spacing: to-rem(3.75px);
+  line-height: 1.45;
+
+  @include media-breakpoint-down(lg) {
+    margin: to-rem(32px) auto;
+    font-size: to-rem(12px);
+    letter-spacing: to-rem(2.25px);
+    text-align: center;
+  }
+}
+
+.main--faq .shopify-section[id*='faq-navigation'] {
+  position: absolute;
+  top: to-rem(60px);
+  left: 0;
+  max-width: 25%;
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+}
+
+.main--faq .shopify-section:not(.shopify-section[id*='faq-navigation']) {
+  width: 75%;
+  max-width: to-rem(600px);
+  justify-self: flex-end;
+
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+.faq__heading {
+  padding-bottom: to-rem(3px);
+  margin: 0;
+  box-shadow: 0 0.5px 0 0 $palette-dark;
+  color: $palette-dark;
+  font-size: to-rem(10px);
+  font-weight: 400;
+  letter-spacing: to-rem(0.92px);
+  line-height: 2.4;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+}
+
+.faq__accordion-item {
+  margin-bottom: to-rem(6px);
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(12px);
+  }
+}
+
+.faq__accordion-item .accordion-item__button {
+  padding-top: to-rem(8px);
+  padding-bottom: to-rem(8px);
+  margin-left: to-rem(20px);
+  color: $palette-dark;
+  font-size: to-rem(12px);
+  font-weight: 400;
+  letter-spacing: to-rem(0.5px);
+  line-height: 1.5;
+  text-transform: none;
+}
+
+.faq__accordion-item .accordion-item__button::after {
+  content: none;
+}
+
+.faq__accordion-item .accordion-item__button::before {
+  top: 50%;
+  left: to-rem(-17px);
+  display: block;
+  width: to-rem(5px);
+  height: to-rem(5px);
+  border-top: to-rem(1px) solid $palette-dark;
+  border-right: to-rem(1px) solid $palette-dark;
+  margin-top: to-rem(-2px);
+  background: transparent;
+  content: '';
+  transform: rotate(45deg);
+  transition-duration: 0.1s;
+}
+
+.faq__accordion-item .accordion-item__button[data-collapse-opened]::before {
+  transform: rotate(135deg);
+}
+
+.faq__accordion-item .collapse-panel__content {
+  padding-top: to-rem(10px);
+  padding-bottom: to-rem(10px);
+
+  @include media-breakpoint-down(lg) {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+.faq__accordion-item .collapse-panel__content p {
+  padding: 0;
+  margin: 0;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.5px);
+  line-height: 1.8;
+}
+
+.faq__accordion-item--main > .accordion-item__title {
+  display: none;
+  @include media-breakpoint-down(lg) {
+    display: block;
+  }
+}
+
+.faq__accordion-item--main > .accordion-item__title > .accordion-item__button {
+  width: 100%;
+  margin-left: 0;
+  box-shadow: 0 0.5px 0 0 $palette-dark;
+  font-size: to-rem(10px);
+  font-weight: 400;
+  letter-spacing: to-rem(0.92px);
+  line-height: 2.4;
+  text-transform: uppercase;
+}
+
+.faq__accordion-item--main > .accordion-item__title > .accordion-item__button::before {
+  top: 50%;
+  right: 0;
+  left: auto;
+  width: to-rem(8px);
+  height: to-rem(8px);
+  margin-top: to-rem(-3px);
+  margin-right: to-rem(2px);
+}
+
+.faq__anchor {
+  scroll-margin-top: to-rem(120px);
+
+  @include media-breakpoint-up(lg) {
+    scroll-margin-top: to-rem(220px);
+  }
+}

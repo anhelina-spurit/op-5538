@@ -1,0 +1,119 @@
+{
+  "wrapper": "div.page-collection",
+  "sections": {
+    "164961257833f4eb2d": {
+      "type": "image-with-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/page-collection-4.jpg",
+        "heading": "CYRILLUS S’ENGAGE",
+        "richtext": "<p>Le saviez-vous?<br\/>Il se vend en France 9,2 kg de vêtements par habitant et par an, seulement 3,2kg sont collectés (par habitant et par an) !<br\/><br\/>Nous sommes TOUS acteurs, ensemble nous pouvons faire bouger les lignes...<br\/>Nous avons déjà collecté dans nos boutique 180 tonnes de vêtements.<br\/>Mille mercis pour votre participation et votre engagement  !<\/p>",
+        "background": "#f2ecdf"
+      }
+    },
+    "16496210313b89f286": {
+      "type": "interleaved-list",
+      "blocks": {
+        "0d17d8c1-d7c9-4617-99f3-ad7285fd50f4": {
+          "type": "block",
+          "settings": {
+            "title": "1 - Quels types de vêtements sont collectés ?",
+            "description": "Nous collectons tous les vêtements et le linge de maison, quels que soient leur marque et leur état, pourvu qu’ils soient propres, secs et dans un sac fermé. Les chaussures, accessoires en cuir, couettes, oreillers ainsi que la lingerie ne sont pas collectés.",
+            "additional_description": ""
+          }
+        },
+        "5baf21af-ee82-4359-a059-b757c9cf48f9": {
+          "type": "block",
+          "settings": {
+            "title": "2 - Comment ça marche ?",
+            "description": "Déposez en boutique 1 sac de textile par jour. \nCe sac devra être composé d ‘au moins 3 articles ou plus.",
+            "additional_description": "1 sac déposé* = 1 coupon de 5€"
+          }
+        },
+        "be5406ce-fc84-4a8a-97ba-1df7a1095f1e": {
+          "type": "block",
+          "settings": {
+            "title": "3 - Comment et où utiliser ce coupon ?",
+            "description": "Profitez de votre coupon dès 20€ d’achat dans les boutiques Cyrillus participantes pendant 3 mois à partir du lendemain de la date d’édition et dans la limite d’un coupon par jour. Les coupons sont cumulables avec les offres en cours mais ne peuvent se cumuler entre eux.",
+            "additional_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "0d17d8c1-d7c9-4617-99f3-ad7285fd50f4",
+        "5baf21af-ee82-4359-a059-b757c9cf48f9",
+        "be5406ce-fc84-4a8a-97ba-1df7a1095f1e"
+      ],
+      "settings": {
+        "heading": "Offrez une seconde vie à vos vêtements",
+        "left_column_description": "<p>Les collectes de textiles usagés sont permanentes dans toutes nos boutiques. Ces collectes permettront de créer des collections en fibres recyclées, et de soutenir l’insertion sociale de personnes en difficulté.<br\/><br\/>Cercle vertueux : Le recyclage des textiles permet aussi d’éviter d’utiliser des fibres vierges, de réduire la consommation d’énergie et d’eau, de réduire la pollution liée à la production de fibres, de diminuer la consommation de colorants chimiques.<br\/><br\/>Voilà pourquoi, nous nous engageons aujourd’hui dans la collecte mais aussi dans la création de collection en fibres recyclées.<\/p>",
+        "right_column_description_1": "<p>1 sac de vêtement déposé*<br\/>=<br\/>5€<\/p>",
+        "right_column_description_2": "<p>sur toutes les collections dès 20€ d’achat <\/p>"
+      }
+    },
+    "1649541419cdf177d1": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/page-collection-1.jpg",
+        "invert_content": false,
+        "label_action": "",
+        "heading": "Nos jeans en fibres recyclées",
+        "richtext": "<p>Tissu en denim durable, issu de la technologie Renim By Evlox®. Composés à 35% de matières recyclées.<br\/><br\/>La fabrication de ces jeans nécessite peu d’eau.<br\/><br\/>Tous les matériaux et chaque étape de fabrication de ces jeans sont rigoureusement contrôlés et optimisés pour consommer le moins possible et réduire au maximum les émissions.<br\/><br\/>D’autres collections en fibres recyclées sont à l’étude; vous les découvrirez bientôt...<\/p>",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#f2ecdf"
+      }
+    },
+    "1649541425458f4b65": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/page-collection-2.jpg",
+        "invert_content": true,
+        "label_action": "",
+        "heading": "",
+        "richtext": "<p>Conscients de nos responsabilités et soucieux d’agir positivement sur l’environnement et la planète, nous nous mobilisons et démultiplions les actions au quotidien.<br\/><br\/>Notre action ne s’arrête pas aux collectes de textiles usagés, aux collections en fibres recyclées, nous tentons tous les jours d’agir positivement sur l’environnement.<br\/><br\/>Au sein de notre siège, nous sommes aussi passés au 0 déchet, toutes les chutes de tissus, les boutons, les glissières... sont totalement recyclés.<br\/><br\/>D’autres actions se préparent, suivez-nous !<\/p>",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "right",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#ffffff"
+      }
+    },
+    "1649541432c410aed2": {
+      "type": "image-with-text-invert",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/page-collection-3.jpg",
+        "invert_content": false,
+        "label_action": "zoom sur",
+        "heading": "Seconde histoire",
+        "richtext": "<p><strong>« Rien ne se perd, tout se transmet »<\/strong><br\/>C’est pour cela que nous avons crée le site SECONDE HISTOIRE,<br\/>un espace communautaire de revente où chacun pourra acheter et vendre ses produits Cyrillus.<br\/><a href=\"https:\/\/www.secondehistoire.fr\" title=\"https:\/\/www.secondehistoire.fr\">www.secondehistoire.fr<\/a><br\/><\/p>",
+        "read_more_url": "shopify:\/\/blogs\/journal",
+        "read_more_label": "En lire plus",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#f2ecdf"
+      }
+    }
+  },
+  "order": [
+    "164961257833f4eb2d",
+    "16496210313b89f286",
+    "1649541419cdf177d1",
+    "1649541425458f4b65",
+    "1649541432c410aed2"
+  ]
+}

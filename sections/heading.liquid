@@ -1,0 +1,72 @@
+{%- liquid
+  capture content
+    render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'section-heading'
+    render 'el_heading', level: 3, text: section.settings.subheading, custom_classes: 'section-subheading'
+  endcapture
+
+  render 'el_container', content: content, modifiers: 'xl'
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .section-heading {
+    font-size: {{- section.settings.heading_size -}}px;
+  }
+  {%- if section.settings.subheading != blank -%}
+  #shopify-section-{{ section.id }} .section-subheading {
+    font-size: {{- section.settings.subheading_size -}}px;
+  }
+  {%- endif -%}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Heading",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading text"
+    },
+    {
+      "id": "heading_size",
+      "type": "range",
+      "min": 14,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Subheading"
+    },
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading text"
+    },
+    {
+      "id": "subheading_size",
+      "type": "range",
+      "min": 14,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading"
+    }
+  ]
+}
+{% endschema %}

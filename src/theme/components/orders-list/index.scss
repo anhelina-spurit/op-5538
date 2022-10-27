@@ -1,0 +1,53 @@
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+
+.orders-list {
+  padding: 0;
+  border-top: 0.0625em solid $palette-silver-chalice;
+  margin: 0;
+  list-style-type: none;
+}
+
+.orders-list__item {
+  display: flex;
+  align-items: center;
+  padding: to-rem(16px) 0;
+  border-bottom: 0.0625em solid $palette-silver-chalice;
+}
+
+.orders-list__content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.orders-list__content-date,
+.orders-list__content-url {
+  display: inline-block;
+  padding-bottom: to-rem(12px);
+}
+
+.orders-list__content-url {
+  font-size: to-rem(13px);
+}
+
+.orders-list__content-price,
+.orders-list__content-date {
+  font-size: to-rem(12px);
+}
+
+.orders-list__content-icon {
+  height: to-rem(9px);
+}
+
+.orders-list__content-refund-action {
+  padding-top: to-rem(15px);
+  color: $palette-dark;
+  font-size: to-rem(13px);
+  line-height: to-rem(10px);
+}
+
+.orders-list__content-link {
+  border-bottom-color: transparent;
+}

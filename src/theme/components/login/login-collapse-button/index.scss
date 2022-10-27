@@ -1,0 +1,23 @@
+@import '../../../utils/breakpoints';
+@import '../../../utils/to-rem';
+
+.login__collapse-button {
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(14px);
+    padding-bottom: to-rem(14px);
+    margin-top: to-rem(24px);
+    font-size: to-rem(10px);
+    letter-spacing: 0.15em;
+    line-height: 1.4;
+  }
+}
+
+.login__collapse-button[data-collapse-opened] {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}

@@ -1,0 +1,65 @@
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+{%- assign products_label = 'collection.products' | t -%}
+{%- assign one_product_label = 'collection.one_product' | t -%}
+<script>
+  window.collection = {
+    products: '{{ products_label }}',
+    one_product: '{{ one_product_label }}'
+  }
+</script>
+{%- liquid
+  capture info_container_content
+    render 'c_breadcrumbs'
+    render 'el_heading', level: 1, text: collection.title, modifiers: 'md', custom_classes: 'collection__heading'
+    if collection.filters != blank and section.settings.has_filter
+      render 'c_filter-horizontal', results: collection
+    endif
+    render 'c_filter-navigation', results: collection, is_filter: section.settings.has_filter
+
+    echo '<p class="collection__product-number"></p>'
+
+    echo '<div class="collection__body" data-allow-infinite-scroll=' | append: settings.allow_infinite_scroll | append: '>'
+    echo '<div class="collection__column" data-results>'
+    paginate collection.products by settings.products_count
+      render 'c_product-list', products: collection.products, attributes: 'data-product-list', current_page: paginate.current_page, paginate: paginate
+      render 'c_load-more', paginate: paginate, filter: collection.filters, allow_infinite_scroll: settings.allow_infinite_scroll
+    endpaginate
+    echo '</div>'
+    if collection.filters != blank and section.settings.has_filter
+      render 'c_filter', results: collection
+    endif
+    echo '</div>'
+  endcapture
+
+  capture content
+    render 'el_container', content: info_container_content, modifiers: 'xxl'
+  endcapture
+
+  assign attributes = 'data-collection-url=' | append: collection.url
+  render 'c_section', id: section.id, name: 'collection', content: content, attributes: attributes
+-%}
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    {
+      "type": "header",
+      "content": "FILTERING AND SORTING"
+    },
+    {
+      "id": "has_filter",
+      "type": "checkbox",
+      "label": "Enable filtering",
+      "info": "Customize filters [filtres](\/admin\/menus)",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection"
+    }
+  ]
+}
+{% endschema %}

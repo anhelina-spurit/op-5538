@@ -1,0 +1,141 @@
+{%- capture text_content -%}
+  <div class="commitments-item__row commitments-item__row--v-center">
+    <div class="commitments-item__content commitments-item__text">
+      {%- render 'el_heading', level: 2, text: section.settings.content_heading, custom_classes: 'commitments-item__subheading' -%}
+      <div class="commitments-item__desc">
+        {{ section.settings.content_text | newline_to_br }}
+      </div>
+    </div>
+    <div class="commitments-item__content">
+      <div class="commitments-item__framed">
+        {%- render 'el_image', src: section.settings.content_icon, lazy_loading: true, custom_classes: 'commitments-item__framed_icon' -%}
+
+        <div class="commitments-item__framed_h heading">
+          {{ section.settings.content_slogan | newline_to_br }}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+
+  capture section_content
+    render 'c_commitments-item-header', count: 7
+    render 'el_container', content: text_content, modifiers: 'xxl', custom_classes: 'commitments-item__footer'
+  endcapture
+
+  assign section_classes = 'commitments-item__sm-no-header'
+
+  if section.settings.bg_image != blank
+    assign section_classes = section_classes | append: ' commitments-item--bg'
+  endif
+
+  render 'c_section', id: 'commitments-item-7', content: section_content, name: 'commitments-item', heading_id: heading_id, custom_classes: section_classes
+-%}
+
+{%- style -%}
+  @media screen and (min-width: 992px) {
+    #shopify-section-{{ section.id }} {
+      margin-top: {{ section.settings.margin_top }}px;
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+    #shopify-section-{{ section.id }} .commitments-item__footer {
+      margin-top: {{ section.settings.content_margin_top }}px;
+    }
+  }
+  {%- if section.settings.bg_image != blank -%}
+    #shopify-section-{{ section.id }} .commitments-item__header {
+      background-image: url({{ section.settings.bg_image | image_url }});
+    }
+  {%- endif -%}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Commitments Item 7",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading"
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "id": "bg_image",
+      "type": "image_picker",
+      "label": "Background image"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "margin_top",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Section top offset",
+      "default": 80
+    },
+    {
+      "id": "margin_bottom",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Section bottom offset",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "content_heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "content_text",
+      "type": "richtext",
+      "label": "Text"
+    },
+    {
+      "id": "content_icon",
+      "type": "url",
+      "label": "Framed icon"
+    },
+    {
+      "id": "content_slogan",
+      "type": "textarea",
+      "label": "Framed text"
+    },
+    {
+      "id": "content_margin_top",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Content top offset",
+      "default": 70
+    }
+  ]
+}
+{% endschema %}

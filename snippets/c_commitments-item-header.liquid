@@ -1,0 +1,38 @@
+{%- assign heading_id = section.id | append: '__heading' -%}
+
+{%- capture header_content -%}
+  <div class="commitments-item__hero">
+    <div class="commitments-item__text">
+      {%- render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'commitments-item__heading', id: heading_id -%}
+      {%- render 'el_heading', level: 3, text: section.settings.subheading, custom_classes: 'commitments-item__subheading' -%}
+
+      {%- if section.settings.description != blank -%}
+        <div class="commitments-item__desc">
+        {{ section.settings.description | newline_to_br }}
+    </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.image != blank -%}
+    <div class="commitments-item__image">
+        {%- render 'el_shopify-image', image: section.settings.image, lazy_loading: true, format: 'pjpg' -%}
+    </div>
+    {%- endif -%}
+  </div>
+{%- endcapture -%}
+
+<div class="commitments-item__header">
+  <ul class="commitments-item__counter" role="presentation" aria-hidden="true">
+    {%- for i in (1..7) -%}
+      <li class="commitments-item__counter_item {% if count == i %}active{% endif %}"></li>
+    {%- endfor -%}
+  </ul>
+
+  {%- render 'el_container', content: header_content, modifiers: 'xxl' -%}
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} .commitments-item__hero {
+    --commitments-item-count: {{ count }};
+  }
+{% endstyle %}

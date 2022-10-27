@@ -1,0 +1,69 @@
+{%- comment -%}
+  @summary It creates a data-srcset content for lazy loading.
+
+  @dependency: Lazysizes plugin (https://github.com/aFarkas/lazysizes) which enable responsive image with faster load time and better performance.
+
+  @param {Object} image {Required}: shopify image object
+  @param {Enum} crop (top,center,bottom,left,right): parameter to make sure that the resulting image's dimensions match the requested dimensions
+  @param {String} format (jpg, pjpg): lets you specify what file format to use for the displayed image
+  @param {Number} width: width of the image (if "crop" is set, crops the image to the following size)
+  @param {Number} height: height of the image (if "crop" is set, crops the image to the following size)
+
+  @example
+  {%-
+    render 'f_lazy-loading-srcset',
+    image: image,
+    crop: 'center',
+    format: 'jpg',
+    width: 500,
+    height: 500,
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  if width == blank and height != blank
+    assign width = height | times: image.aspect_ratio | round
+  endif
+
+  if width != blank and height == blank
+    assign height = width | divided_by: image.aspect_ratio | round
+  endif
+
+  capture srcset
+    assign index = 0
+    assign widths = '180,360,540,720,900,1080,1296,1512,1728,1944,2160,2376,2592,2808,3024' | split: ','
+    assign widths_contains_image_width = false
+
+    for current_width in widths
+      assign calculated_width = current_width | plus: 0 | round
+
+      if width >= calculated_width
+        assign calculated_height = calculated_width | divided_by: image.aspect_ratio | round
+        if index > 0
+          echo ','
+        endif
+
+        render 'f_lazy-loading-image-url', image: image, crop: crop, format: format, width: calculated_width, height: calculated_height
+
+        assign index = index | plus: 1
+      else
+        break
+      endif
+
+      if width == calculated_width
+        assign widths_contains_image_width = true
+      endif
+    endfor
+
+    unless widths_contains_image_width
+      if index > 0
+        echo ','
+      endif
+
+      render 'f_lazy-loading-image-url', image: image, crop: crop, format: format, width: width, height: height
+    endunless
+  endcapture
+
+  assign srcset = srcset | strip
+  echo srcset
+-%}

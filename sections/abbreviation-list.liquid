@@ -1,0 +1,112 @@
+{% style %}
+  .abbreviation-list {
+  background-color: {{- section.settings.background -}};
+  }
+
+ a {
+text-decoration: none;
+color:#324D57;
+}
+
+{% endstyle %}
+
+{%- liquid
+  capture container_content
+    echo '<div class="abbreviation__content">'
+    assign blocks = section.blocks |  where: "type", "item"
+
+    if blocks.size > 0
+      render 'el_heading', level: 2,  text: section.settings.title, custom_classes: 'abbreviation__title'
+      echo '<ul class="abbreviation__list">'
+        for block in blocks
+          echo '<li class="abbreviation__item">'
+          if block.settings.title != blank
+           render 'el_heading', level: 3,  text: block.settings.title, custom_classes: 'abbreviation__item-title'
+          endif
+          if block.settings.subtitle != blank
+            echo '<p class="abbreviation__item-subtitle">'
+              echo block.settings.subtitle
+            echo '</p>'
+          endif
+          if block.settings.image != blank
+            if block.settings.image_link != blank
+              echo '<a class="abbreviation__item-link" href="' | append: block.settings.image_link.url | append: '">'
+            endif
+            render 'el_shopify-image',image: block.settings.image, custom_classes: 'abbreviation__item-image'
+            if block.settings.image_link != blank
+              echo '</a>'
+            endif
+          endif
+          if block.settings.content != blank
+            echo block.settings.content
+          endif
+          echo '</li>'
+        endfor
+      echo '</ul>'
+    endif
+
+    echo '</div>'
+  endcapture
+
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xl', custom_classes: 'abbrviation__container'
+  endcapture
+  render 'c_section', id: section.settings.id, name: 'abbreviation-list', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Abbreviation list",
+  "settings": [
+    {
+      "id": "background",
+      "type": "color",
+      "label": "Background",
+      "default": "#F8F4EA"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    }
+  ],
+  "blocks" : [
+    {
+      "type": "item",
+      "name": "Abbreviation item",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "subtitle",
+          "type": "text",
+          "label": "Subtitle"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "image_link",
+          "type": "url",
+          "label": "Image link"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Abbreviation list"
+    }
+  ]
+}
+{% endschema %}

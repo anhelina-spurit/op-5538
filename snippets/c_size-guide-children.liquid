@@ -1,0 +1,228 @@
+{% comment %}
+  @summary Renders size guide for children
+
+  @param {string} id - id
+
+  @example
+  {%- render 'c_size-guide-children' -%}
+{% endcomment %}
+
+<div>
+  {% liquid
+    capture options
+      assign tables = 'boys,girls' | split: ','
+
+      for table in tables
+        assign option_id = table | append: '_' | append: id
+        assign option_value = 'option_' | append: option_id
+        assign option_text = 'size_guide.panel.children.table' | append: forloop.index | append: '_title'
+        assign option_text = option_text | t | capitalize
+        assign selected = forloop.first
+        render 'el_selectbox-option', id: option_id, option_value: option_value, selected: selected, option_text: option_text
+      endfor
+    endcapture
+
+    assign selected_option_text = 'size_guide.panel.children.table1_title' | t | capitalize
+
+    render 'c_selectbox', id: 'size_guide_table_type',custom_classes: 'size-guide__selectbox-tables', custom_options: options, selected_option_id: 'option_dresses', selected_option_text: selected_option_text
+  %}
+</div>
+
+<div class="size-guide__content size-guide__content--children">
+  {%- assign image_src = 'children-size.png' | asset_url -%}
+  {%- render 'c_size-guide-description',
+          tab_name: 'children',
+          image_src: image_src,
+          circle_number: 0
+  -%}
+  <div class="size-guide__tables-list">
+    <table class="size-guide__table size-guide__table--girls" data-size-guide-table data-size-guide-table-id="girls_{{ id }}" >
+      <caption class="size-guide__table-caption">{{ 'size_guide.panel.children.table1_title' | t }}</caption>
+      <thead class="size-guide__table-head">
+      <tr>
+        <th>{{ 'size_guide.panel.size' | t }}</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+        <th>12</th>
+        <th>14</th>
+        <th>16</th>
+      </tr>
+      </thead>
+      <tbody class="size-guide__table-body">
+      <tr>
+        <th scope="row" >{{ 'size_guide.panel.height' | t }}</th>
+        <th>83/89</th>
+        <th>90/97</th>
+        <th>98/104</th>
+        <th>105/110</th>
+        <th>111/116</th>
+        <th>117/122</th>
+        <th>123/128</th>
+        <th>129/134</th>
+        <th>135/140</th>
+        <th>141/152</th>
+        <th>153/158</th>
+        <th>159/164</th>
+      </tr>
+      <tr>
+        <th scope="row" class="size-guide__row-head size-guide__row-head--first">{{ 'size_guide.panel.chest' | t }}</th>
+        <th>52</th>
+        <th>54</th>
+        <th>56</th>
+        <th>58</th>
+        <th>60</th>
+        <th>62</th>
+        <th>64</th>
+        <th>66</th>
+        <th>70</th>
+        <th>78</th>
+        <th>82</th>
+        <th>86</th>
+      </tr>
+      <tr>
+        {%- liquid
+          assign waist = 'size_guide.panel.waist' | t
+          assign smallest_part = 'size_guide.panel.smallest_part' | t
+          assign smallest_part = smallest_part | prepend: '<br><span class="size-guide__th-note">' | append: '</span>'
+        -%}
+        <th scope="row" class="size-guide__row-head size-guide__row-head--second">{{ waist|append: smallest_part }}</th>
+        <th>51</th>
+        <th>53</th>
+        <th>55</th>
+        <th>56</th>
+        <th>57</th>
+        <th>58</th>
+        <th>59</th>
+        <th>60.5</th>
+        <th>62</th>
+        <th>66</th>
+        <th>68</th>
+        <th>70</th>
+      </tr>
+      <tr>
+        {%- liquid
+          assign hips = 'size_guide.panel.hips' | t
+          assign widest_part = 'size_guide.panel.widest_part' | t
+          assign widest_part = widest_part | prepend: '<br><span class="size-guide__th-note">' | append: '</span>'
+        -%}
+        <th scope="row" class="size-guide__row-head size-guide__row-head--third">{{ hips| append: widest_part }}</th>
+        <th>56</th>
+        <th>58</th>
+        <th>60</th>
+        <th>62</th>
+        <th>64</th>
+        <th>67</th>
+        <th>70</th>
+        <th>73</th>
+        <th>76</th>
+        <th>82</th>
+        <th>86</th>
+        <th>90</th>
+      </tr>
+      </tbody>
+    </table>
+
+
+    <table class="size-guide__table size-guide__table--boys" data-size-guide-table data-size-guide-table-id="boys_{{ id }}" >
+      <caption class="size-guide__table-caption">{{ 'size_guide.panel.children.table2_title' | t }}</caption>
+      <thead class="size-guide__table-head">
+      <tr>
+        <th>{{ 'size_guide.panel.size' | t }}</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+        <th>12</th>
+        <th>14</th>
+        <th>16</th>
+      </tr>
+      </thead>
+      <tbody class="size-guide__table-body">
+      <tr>
+        <th scope="row">{{ 'size_guide.panel.height' | t }}</th>
+        <th>83/89</th>
+        <th>90/97</th>
+        <th>98/104</th>
+        <th>105/110</th>
+        <th>111/116</th>
+        <th>117/122</th>
+        <th>123/128</th>
+        <th>129/134</th>
+        <th>135/140</th>
+        <th>141/152</th>
+        <th>153/158</th>
+        <th>159/164</th>
+      </tr>
+      <tr>
+        <th scope="row" class="size-guide__row-head size-guide__row-head--first">{{ 'size_guide.panel.chest' | t }}</th>
+        <th>52</th>
+        <th>54</th>
+        <th>56</th>
+        <th>58</th>
+        <th>60</th>
+        <th>62</th>
+        <th>64</th>
+        <th>67</th>
+        <th>70</th>
+        <th>76</th>
+        <th>82</th>
+        <th>88</th>
+      </tr>
+      <tr>
+        {%- liquid
+          assign waist = 'size_guide.panel.waist' | t
+          assign smallest_part = 'size_guide.panel.smallest_part' | t
+          assign smallest_part = smallest_part | prepend: '<br><span class="size-guide__th-note">' | append: '</span>'
+        -%}
+        <th scope="row" class="size-guide__row-head size-guide__row-head--second">{{ waist| append: smallest_part }}</th>
+        <th>51</th>
+        <th>53</th>
+        <th>55</th>
+        <th>56</th>
+        <th>57</th>
+        <th>58</th>
+        <th>59</th>
+        <th>61.5</th>
+        <th>64</th>
+        <th>69</th>
+        <th>73</th>
+        <th>75</th>
+      </tr>
+      <tr>
+        {%- liquid
+          assign hips = 'size_guide.panel.hips' | t
+          assign widest_part = 'size_guide.panel.widest_part' | t
+          assign widest_part = widest_part | prepend: '<br><span class="size-guide__th-note">' | append: '</span>'
+        -%}
+        <th scope="row" class="size-guide__row-head size-guide__row-head--third">{{ hips| append: widest_part }}</th>
+        <th>56</th>
+        <th>58</th>
+        <th>60</th>
+        <th>62</th>
+        <th>64</th>
+        <th>67</th>
+        <th>70</th>
+        <th>73</th>
+        <th>76</th>
+        <th>82</th>
+        <th>88</th>
+        <th>92</th>
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>

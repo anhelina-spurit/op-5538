@@ -1,0 +1,49 @@
+{%- comment -%}
+    @summary Renders a cart form
+    
+    @param {string} id - id
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {%-
+        render 'c_cart-form',
+        id: 'cart-1234ewrwdvcs'
+        custom_classes: 'custom',
+        modifiers: 'xl',
+    -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture classes
+    render 'f_bem-classes', main_class: 'cart-form', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+-%}
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+<form id="{{- id -}}" class="{{- classes -}}" action="{{- routes.cart_url -}}" method="post" data-cart-form>
+  <input type="hidden" value="{{ cart.item_count }}" data-cart-form-count>
+  <input type="hidden" name="checkout">
+  <div class="cart-form__wrapper{% if cart.item_count == 0 %} cart-form__wrapper--empty{% endif %}">
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-form__body">
+          <ul class="cart-form__items" role="list">
+            {%- for item in cart.items -%}
+              {%- if active_pakage.first.id == item.id -%}
+                {%- continue -%}
+              {%- endif -%}
+              <li class="cart-form__item">
+                {%- render 'c_cart-item', line_item: item -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+      </div>
+      <div class="cart-form__info">
+        {% render 'c_cart-info' %}
+      </div>
+    {% else %}
+      <p class="cart-form__empty">{{ 'cart.empty' | t }}</p>
+    {%- endif -%}
+  </div>
+</form>
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}

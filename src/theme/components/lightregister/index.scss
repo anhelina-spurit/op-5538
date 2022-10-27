@@ -1,0 +1,35 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.lightregister {
+  background-color: $palette-quarter-pearl-lusta;
+}
+
+.lightregister .container {
+  padding-top: to-rem(54px);
+  padding-bottom: to-rem(106px);
+}
+
+.lightregister .login__heading {
+  margin-bottom: to-rem(26px);
+  color: $palette-pickled-bluewood;
+  font-size: to-rem(20px);
+  font-weight: 400;
+  letter-spacing: to-rem(3.52px);
+  line-height: 1.45;
+  text-align: center;
+}
+
+.lightregister .login__description {
+  max-width: to-rem(675px);
+  margin-right: auto;
+  margin-bottom: to-rem(58px);
+  margin-left: auto;
+  color: $palette-pickled-bluewood;
+  font-size: to-rem(14px);
+  font-weight: 400;
+  letter-spacing: to-rem(1.2px);
+  line-height: 1.71;
+  text-align: center;
+}

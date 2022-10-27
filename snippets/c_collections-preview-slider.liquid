@@ -1,0 +1,90 @@
+{%- comment -%}
+  @summary Renders an collections preview slider
+
+  @param {object[]} blocks - sfopify section blocks
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+      render 'c_collections-preview-slider',
+      blocks: section.blocks
+      attributes: 'min="1"'
+      modifiers: 'lg, light',
+  -%}
+{%- endcomment -%}
+
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'collections-preview-slider', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+<div class="{{- class -}}">
+
+  {% liquid
+    assign options = nil
+    assign slides = nil
+  %}
+
+  {% comment %}theme-check-disable LiquidTag{% endcomment %}
+  {% for block in blocks %}
+    {% assign slide_index = 'slide_'| append: forloop.index %}
+    {% assign render_slide = false %}
+    {% for i in (1..3) %}
+      {% assign image_key = 'image_' | append: forloop.index %}
+      {% if block.settings[image_key] != blank %}
+        {% assign render_slide = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if block.settings.heading != blank and render_slide %}
+      {% capture option %}
+        {% render 'el_option', value: block.settings.heading, content: block.settings.heading, selected: forloop.first %}
+      {% endcapture %}
+      {% capture slide %}
+        <div class="collections-preview-slider__slide swiper-slide" data-collections-slide="{{- block.settings.heading -}}">
+          {% comment %}theme-check-disable NestedSnippet{% endcomment %}
+           {% render 'c_collection-preview-slider', id: section.id, block: block, slide_index: slide_index %}
+          {% comment %}theme-check-enable NestedSnippet{% endcomment %}
+        </div>
+      {% endcapture %}
+
+      {% liquid
+        assign options = options | append: option
+        assign slides = slides | append: slide
+      %}
+    {% endif %}
+  {% endfor %}
+  {% comment %}theme-check-enable LiquidTag{% endcomment %}
+
+  <div class="collections-preview-slider__controls">
+    {%-
+      render 'el_heading',
+      id: 'collections-preview-heading',
+      level: 2,
+      text: section.settings.heading,
+      custom_classes: 'collections-preview__heading',
+      modifiers: 'md'
+    -%}
+    <ul class="collections-preview-slider__pagination" data-collections-pagination></ul>
+    {%-
+      render 'el_select',
+      custom_classes: 'collections-preview-slider__pagination-mobile',
+      attributes: 'data-collections-pagination-mobile',
+      options: options
+    -%}
+  </div>
+  <div class="collections-preview-slider__body swiper" data-collections-slider>
+    <div class="swiper-wrapper">
+      {{- slides -}}
+    </div>
+  </div>
+  {%
+      render 'c_modal',
+      id: 'collections-preview-slider-modal',
+      content: '<div data-collection-slider-modal-content></div>',
+      custom_classes: 'collections-preview-slider__modal'
+  %}
+</div>

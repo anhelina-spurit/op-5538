@@ -1,0 +1,19 @@
+.ratio-container {
+  position: relative;
+  display: flex;
+}
+
+.ratio-container::before {
+  display: block;
+  padding-top: var(--padding-top);
+  content: '';
+}
+
+.ratio-container > * {
+  width: 100%;
+  height: 100%;
+}
+
+.ratio-container--size-limited {
+  max-width: var(--max-width);
+}

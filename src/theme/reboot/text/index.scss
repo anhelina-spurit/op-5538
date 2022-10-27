@@ -1,0 +1,16 @@
+@import '../../constants/palette';
+@import '../../constants/fonts';
+
+html {
+  color: $palette-dark;
+  font-family: $font-family-sweet-sans-pro;
+  line-height: 1.375;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.text-center {
+  text-align: center;
+}

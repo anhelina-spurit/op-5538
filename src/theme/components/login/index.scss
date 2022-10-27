@@ -1,0 +1,585 @@
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../constants/transitions';
+
+.login__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.login__grid--reverse {
+  @include media-breakpoint-up(md) {
+    flex-direction: row-reverse;
+  }
+
+  @include media-breakpoint-down(md) {
+    flex-direction: column-reverse;
+  }
+}
+
+.login__grid-item {
+  display: flex;
+  flex-direction: column;
+
+  @include media-breakpoint-up(md) {
+    width: calc((100% - to-rem(26px)) / 2);
+  }
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+}
+
+.login__grid-item--single {
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+  }
+}
+
+.login__grid-item:not(:last-child) {
+  @include media-breakpoint-up(md) {
+    margin-right: to-rem(26px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(26px);
+  }
+}
+
+.login__grid--reverse .login__grid-item:not(:last-child) {
+  @include media-breakpoint-up(md) {
+    margin-right: 0;
+    margin-left: to-rem(26px);
+  }
+}
+
+.login__grid--reverse .login__grid-item--sign-up:not(.login__grid-item--single) {
+  @include media-breakpoint-down(md) {
+    margin-top: to-rem(26px);
+    margin-bottom: 0;
+  }
+}
+
+.login__block {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: to-rem(60px);
+  background-color: $palette-white;
+
+  @include media-breakpoint-down(lg) {
+    display: block;
+    padding-right: to-rem(32px);
+    padding-left: to-rem(32px);
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 0 0 to-rem(36px);
+    border-bottom: to-rem(1px) solid $palette-dusty-gray;
+  }
+}
+
+.login__block:not(:last-child) {
+  @include media-breakpoint-up(md) {
+    margin-bottom: to-rem(20px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(26px);
+  }
+}
+
+.login__block-header {
+  @include media-breakpoint-down(md) {
+    text-align: center;
+  }
+}
+
+.login__block--social-sign-in .login__block-header {
+  @include media-breakpoint-up(md) {
+    margin-bottom: to-rem(9px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(21px);
+  }
+}
+
+.login__block-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 400;
+
+  @include media-breakpoint-up(md) {
+    letter-spacing: 0.1875em;
+    line-height: 1.5;
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(14px);
+    letter-spacing: 0.1071em;
+    line-height: 1.8;
+  }
+}
+
+.login__block-description {
+  margin-bottom: 0;
+  font-size: to-rem(10px);
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+
+  @include media-breakpoint-up(md) {
+    margin-top: to-rem(15px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-top: to-rem(9px);
+    text-align: center;
+  }
+}
+
+.login__block--social-sign-in .login__block-description {
+  @include media-breakpoint-up(md) {
+    margin-bottom: to-rem(5px);
+  }
+}
+
+.login__block-notice {
+  margin-top: to-rem(8px);
+  font-size: to-rem(10px);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-transform: none;
+
+  @include media-breakpoint-down(md) {
+    padding: 0 10%;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: to-rem(5px);
+  }
+}
+
+.login__block-notice--sign-up {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+// prevent content to being displayed before the panel would be ready after transitions
+.login__collapse-panel:not([data-collapse-ready]) {
+  @include media-breakpoint-down(md) {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+// Login / register / recovery forms components:
+.login__form {
+  @include media-breakpoint-up(md) {
+    margin-top: to-rem(34px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-top: to-rem(21px);
+  }
+}
+
+// fieldsets
+.login-fieldset {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+.login-fieldset--row {
+  display: flex;
+  align-items: center;
+  margin-bottom: to-rem(20px);
+}
+
+.login-fieldset--row .fieldset__header {
+  width: 26%;
+  flex-shrink: 0;
+  margin-right: to-rem(24px);
+}
+
+.login-fieldset--recovery .fieldset__header {
+  margin-bottom: to-rem(26px);
+}
+
+.login-fieldset--recovery > :last-child {
+  margin-bottom: 0;
+}
+
+.login-fieldset .legend {
+  @include media-breakpoint-up(md) {
+    font-size: to-rem(12px);
+    letter-spacing: 0.0999em;
+    line-height: 1.5;
+  }
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(10px);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+}
+
+// controls (field wrappers)
+.login-control {
+  position: relative;
+}
+
+.login-controls-wrapper,
+.login-control:not(:last-child) {
+  @include media-breakpoint-up(md) {
+    margin-bottom: to-rem(32px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(14px);
+  }
+}
+
+.login-control:not(.login-password-control, .login-radio-control) {
+  @include media-breakpoint-down(md) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.login-controls-wrapper--register {
+  @include media-breakpoint-up(md) {
+    margin-bottom: to-rem(25px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-top: to-rem(26px);
+  }
+}
+
+// radio-controls
+.login-radio-control--row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.login-radio-control--row .radio:not(:last-child) {
+  margin-right: to-rem(20px);
+}
+
+.login-radio-control .radio:last-of-type {
+  @include media-breakpoint-down(xs) {
+    margin-left: 0;
+  }
+}
+
+.login-radio-control .radio + .radio {
+  margin-top: 0;
+}
+
+.login-radio-control--row .radio__label {
+  padding-left: to-rem(26px);
+  font-size: to-rem(12px);
+  letter-spacing: 0.1366em;
+  line-height: 2;
+  text-transform: uppercase;
+}
+
+.login-radio-control--row .radio__label::before {
+  top: calc(50% - to-rem(1px)); // stylelint-disable-line
+  width: to-rem(14px);
+  height: to-rem(14px);
+  transform: translateY(-50%);
+}
+
+.login-radio-control--row .radio__label::after {
+  top: calc(50% - to-rem(1px)); // stylelint-disable-line
+  left: to-rem(2px);
+  width: to-rem(10px);
+  height: to-rem(10px);
+  transform: translateY(-50%);
+}
+
+// action-controls, password-controls
+.login-action-control {
+  @include media-breakpoint-up(md) {
+    margin-top: to-rem(34px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-top: to-rem(20px);
+  }
+}
+
+.login-action-control--recovery {
+  margin-top: to-rem(29px);
+  margin-bottom: to-rem(24px);
+}
+
+.login-action-control--sign-up {
+  margin-top: to-rem(24px);
+}
+
+.login-action-control__button {
+  padding-top: to-rem(14px);
+  padding-bottom: to-rem(14px);
+  font-size: to-rem(10px);
+  letter-spacing: 0.15em;
+  line-height: 1.4;
+}
+
+.login-action-control__button--cancel {
+  margin-left: to-rem(12px);
+}
+
+.login-password-control__inner {
+  position: relative;
+
+  @include media-breakpoint-down(md) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.login-password-control__button--recovery,
+.login-action-control__button--cancel {
+  position: relative;
+  padding-top: to-rem(6px);
+  padding-bottom: to-rem(6px);
+  border-bottom: 0;
+  font-size: to-rem(9.1px);
+  letter-spacing: 0.068em;
+  line-height: 1.45;
+  text-transform: none;
+}
+
+.login-password-control__button--recovery::after,
+.login-action-control__button--cancel::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: to-rem(1px);
+  background-color: $palette-dark;
+  content: '';
+  transition: background-color $transition-duration-fastest;
+}
+
+.login-password-control__button--recovery:hover::after,
+.login-action-control__button--cancel:hover::after {
+  background-color: transparent;
+}
+
+.login-password-control__button--recovery {
+  padding-bottom: 0;
+
+  @include media-breakpoint-up(md) {
+    margin-top: to-rem(3px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-top: to-rem(5px);
+  }
+}
+
+.login-password-control__button--recovery:hover {
+  border-bottom: 0;
+}
+
+.login-password-control__button--view {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: to-rem(2px) solid transparent;
+  background-color: transparent;
+
+  @include media-breakpoint-up(md) {
+    top: 0;
+    right: to-rem(-6px);
+    width: to-rem(30px);
+    height: to-rem(30px);
+  }
+
+  @include media-breakpoint-down(md) {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    width: to-rem(48px);
+    height: to-rem(44px);
+  }
+}
+
+.login-password-control__button--view .icon--password-show {
+  width: to-rem(17px);
+  height: to-rem(12px);
+}
+
+.login-password-control__button--view .icon--password-hide {
+  width: to-rem(14px);
+  height: to-rem(6px);
+}
+
+.login-password-control__input[type='password'] ~ .login-password-control__button--view .icon--password-show,
+.login-password-control__input[type='text'] ~ .login-password-control__button--view .icon--password-hide {
+  display: block;
+}
+
+.login-password-control__input[type='password'] ~ .login-password-control__button--view .icon--password-hide,
+.login-password-control__input[type='text'] ~ .login-password-control__button--view .icon--password-show {
+  display: none;
+}
+
+// checkbox-controls
+.login-controls-wrapper .login-checkbox-control:not(:last-child) {
+  @include media-breakpoint-up(md) {
+    margin-bottom: to-rem(16px);
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(8px);
+  }
+}
+
+.login-checkbox-control .checkbox__label {
+  padding-left: to-rem(26px);
+  font-size: to-rem(11px);
+  font-weight: 300;
+  letter-spacing: normal;
+  line-height: 1.6;
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(4px);
+    padding-bottom: to-rem(4px);
+  }
+}
+
+.login-checkbox-control .checkbox__label::before,
+.login-checkbox-control .checkbox__label::after {
+  width: to-rem(12px);
+  height: to-rem(12px);
+
+  @include media-breakpoint-up(md) {
+    top: to-rem(2px);
+  }
+
+  @include media-breakpoint-down(md) {
+    top: to-rem(6px);
+  }
+}
+
+.login-checkbox-control .checkbox__label::after {
+  background-size: to-rem(9px);
+}
+
+.login-checkbox-control .checkbox__input:checked + .checkbox__label::before {
+  border-width: to-rem(6px);
+}
+
+.login-checkbox-control .checkbox__label a {
+  color: $palette-dark;
+}
+
+// info-controls
+.login-info-control {
+  font-size: to-rem(10px);
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+
+.login-info-control:not(:last-child) {
+  margin-bottom: to-rem(16px);
+}
+
+// inputs
+.login-input {
+  width: 100%;
+  text-overflow: ellipsis;
+
+  @include media-breakpoint-up(md) {
+    height: to-rem(30px);
+    padding: 0;
+    border: 0;
+    border-bottom: to-rem(2px) solid $palette-silver;
+    transition: border-bottom-color $transition-duration-fastest;
+  }
+
+  @include media-breakpoint-down(md) {
+    height: to-rem(44px);
+    padding: 0 to-rem(14px);
+    border: to-rem(1px) solid $palette-dark;
+  }
+}
+
+.login-password-control__input {
+  @include media-breakpoint-up(md) {
+    padding-right: to-rem(24px);
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-right: to-rem(48px);
+  }
+}
+
+// labels
+.login-label {
+  display: block;
+
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    top: 0;
+    font-size: to-rem(12px);
+    letter-spacing: 0.0999em;
+    line-height: 1.5;
+    pointer-events: none;
+    transform: translateY(to-rem(6px));
+    transition: top $transition-duration-fastest;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(8px);
+    font-size: to-rem(10px);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+}
+
+.login-input:focus ~ .login-label,
+.login-input:not(:focus):valid ~ .login-label,
+.login-input:not(:placeholder-shown) ~ .login-label,
+.login-input:-webkit-autofill ~ .login-label {
+  @include media-breakpoint-up(md) {
+    top: to-rem(-20px);
+  }
+}
+
+// status message
+.login__form .status {
+  margin-top: to-rem(16px);
+  margin-bottom: 0;
+  font-size: to-rem(10px);
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+
+// Login with socials
+.login__socials-widget {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__socials-widget iframe {
+  margin-bottom: 0 !important; // stylelint-disable-line declaration-no-important
+}
+
+// stylelint-disable-next-line selector-max-id, selector-id-pattern
+#social_login_frame {
+  min-height: to-rem(115px);
+}

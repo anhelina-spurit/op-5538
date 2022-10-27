@@ -1,0 +1,42 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.product-slider__wrapper {
+  box-sizing: border-box;
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(38px);
+  }
+}
+
+.product-slider__scrollbar {
+  display: none;
+  height: auto;
+  padding: to-rem(8px) 0;
+  /* stylelint-disable-next-line declaration-no-important */
+  background-color: transparent !important;
+  cursor: grab;
+
+  @include media-breakpoint-down(lg) {
+    display: block;
+  }
+}
+
+.product-slider__scrollbar::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: to-rem(1px);
+  margin-top: to-rem(1px);
+  background-color: $palette-cornflower-blue;
+  content: '';
+}
+
+.product-slider__scrollbar .swiper-scrollbar-drag {
+  max-width: to-rem(90px);
+  height: to-rem(3px);
+  background-color: $palette-dark-slate-grey;
+  border-radius: 0;
+}

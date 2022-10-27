@@ -1,0 +1,91 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+@import '../../../constants/palette';
+
+.personal-info .account-content-heading__title {
+  font-weight: 400;
+  letter-spacing: to-rem(1.65px);
+}
+
+.personal-info__content {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  color: $palette-dark-slate-grey;
+
+  @include media-breakpoint-down(lg) {
+    flex-direction: column;
+    margin-top: to-rem(36px);
+  }
+}
+
+.personal-info__personal-form {
+  max-width: to-rem(440px);
+  margin-right: to-rem(78px);
+
+  @include media-breakpoint-down(lg) {
+    margin-right: auto;
+    margin-bottom: to-rem(20px);
+    margin-left: auto;
+  }
+}
+
+.personal-info__recover-form {
+  display: flex;
+  @include media-breakpoint-down(lg) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.personal-info__recover-form::before {
+  display: inline-block;
+  width: to-rem(0.5px);
+  height: 100%;
+  max-height: to-rem(174px);
+  margin-right: to-rem(48px);
+  background-color: $palette-pickled-bluewood;
+  content: '';
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+}
+
+.personal-info__recover-form .recover-password {
+  max-width: to-rem(300px);
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+    max-width: to-rem(440px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.personal-info__client-number {
+  margin-bottom: to-rem(28px);
+}
+
+.personal-info__client-number .text-preview__description {
+  display: inline-block;
+  margin: 0;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.97px);
+
+  @include media-breakpoint-down(sm) {
+    letter-spacing: to-rem(0.4px);
+  }
+}
+
+.personal-info__heading-mobile {
+  @include media-breakpoint-down(sm) {
+    min-width: calc(100% - 2.5rem);
+    justify-content: center;
+  }
+}
+
+.personal-info__heading-mobile .account-content-heading__link-content {
+  @include media-breakpoint-down(sm) {
+    max-width: 50%;
+  }
+}

@@ -1,0 +1,72 @@
+{%- capture text_content -%}
+  <div class="commitments-item__row">
+    <div class="commitments-item__content">
+      {%- render 'el_heading', level: 2, text: section.settings.content_heading, custom_classes: 'commitments-item__subheading' -%}
+      <div class="commitments-item__desc">
+        {{ section.settings.content_text | newline_to_br }}
+      </div>
+    </div>
+    <div class="commitments-item__content_image">
+      {%- render 'el_shopify-image', image: section.settings.content_image, lazy_loading: true, format: 'pjpg' -%}
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+
+  capture section_content
+    render 'c_commitments-item-header', count: 2
+    render 'el_container', content: text_content, modifiers: 'xl'
+  endcapture
+
+  render 'c_section', id: 'commitments-item-2', content: section_content, name: 'commitments-item', heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Commitments Item 2",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading"
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "content_heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "content_text",
+      "type": "html",
+      "label": "Text"
+    },
+    {
+      "id": "content_image",
+      "type": "image_picker",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

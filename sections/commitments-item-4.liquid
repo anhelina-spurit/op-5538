@@ -1,0 +1,56 @@
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+
+  capture section_content
+    render 'c_commitments-item-header', count: 4
+  endcapture
+
+  render 'c_section', id: 'commitments-item-4', content: section_content, name: 'commitments-item', heading_id: heading_id
+-%}
+
+{%- style -%}
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .commitments-item__header {
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Commitments Item 4",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading"
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "margin_bottom",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Header bottom offset",
+      "default": 100
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,49 @@
+{%- comment -%}
+    @summary Renders a cart modal
+    @param {string} [custom_classes] - additional classes
+    @param {string[]} [modifiers] - modifiers
+    @example
+    {%-
+        render 'c_cart-modal',
+        custom_classes: 'custom',
+        modifiers: 'xl',
+    -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture classes
+    render 'f_bem-classes', main_class: 'cart-modal', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  assign title = 'cart.title' | t
+
+  capture close
+    render 'el_icon', icon: 'close', custom_classes: 'cart-modal__icon'
+    echo '<span class="visually-hidden">'
+    echo 'fermer le panier'
+    echo '</span>'
+  endcapture
+-%}
+
+<div class="{{ classes }} hidden" data-cart-modal>
+  <div class="cart-modal__header">
+    {%
+        render 'el_button',
+        text: close,
+        custom_classes: 'cart-modal__close',
+        modifiers: 'link',
+        attributes: 'data-cart-modal-close',
+        type: 'button'
+    %}
+
+    {%- render 'el_heading', level: 2, custom_classes: 'cart-modal__heading', text: title, modifiers: 'md' -%}
+    <hr/>
+  </div>
+  <div class="cart-modal__notice" data-cart-modal-notice></div>
+  <div class="cart-modal__body">
+  {% render 'c_cart-form', id: 'cart-modal', cart: cart %}
+  </div>
+  <div class="cart-modal__recently-products">
+    <div data-recently-viewed-products></div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+{%- liquid
+  layout none
+  render 'c_filter-active', results: collection
+  paginate collection.products by settings.products_count
+    render 'c_product-list', products: collection.products, attributes: 'data-product-list', current_page: paginate.current_page
+    render 'c_load-more', paginate: paginate
+  endpaginate
+-%}
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}

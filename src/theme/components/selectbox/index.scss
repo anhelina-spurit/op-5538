@@ -1,0 +1,116 @@
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+
+.selectbox *,
+.selectbox *::before,
+.selectbox *::after {
+  box-sizing: border-box;
+}
+
+.selectbox {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  font-size: to-rem(14px);
+}
+
+.selectbox__select {
+  display: none;
+}
+
+.selectbox::after {
+  position: absolute;
+  top: calc(50% - 2px);
+  right: to-rem(24px);
+  display: block;
+  width: to-rem(10px);
+  height: to-rem(10px);
+  border-right: to-rem(1px) solid $palette-dark;
+  border-bottom: to-rem(1px) solid $palette-dark;
+  content: '';
+  pointer-events: none;
+  transform: translate(0, -65%) rotate(45deg);
+}
+
+.selectbox--opened::after {
+  top: calc(50% + 4px);
+  transform: translate(0, -65%) rotate(225deg);
+}
+
+.selectbox__combo {
+  display: flex;
+  width: 100%;
+  min-height: to-rem(70px);
+  align-items: baseline;
+  justify-content: space-between;
+  padding: to-rem(24px) to-rem(50px) to-rem(24px) to-rem(24px);
+  border: to-rem(1px) solid $palette-dark;
+  background-color: $palette-white;
+}
+
+.selectbox__label {
+  display: block;
+  margin-bottom: to-rem(10px);
+  font-size: to-rem(20px);
+  font-weight: 100;
+}
+
+.selectbox__list {
+  position: absolute;
+  z-index: 100;
+  top: calc(100% - 1px);
+  left: 0;
+  display: none;
+  width: 100%;
+  max-height: to-rem(300px);
+  border: to-rem(1px) solid $palette-dark;
+  background-color: $palette-white;
+  overflow-y: auto;
+}
+
+.selectbox--opened .selectbox__list {
+  display: block;
+}
+
+.selectbox__option {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: to-rem(12px) to-rem(32px) to-rem(12px) to-rem(24px);
+  cursor: pointer;
+}
+
+.selectbox__option[aria-disabled='true'],
+.selectbox--disabled {
+  color: rgba($palette-dark, 60%);
+}
+
+.selectbox.selectbox--single-option {
+  cursor: default;
+}
+
+.selectbox.selectbox--single-option::after,
+.selectbox.selectbox--single-option .selectbox__list {
+  display: none;
+}
+
+.selectbox.selectbox--single-option .selectbox__combo {
+  padding: to-rem(24px);
+}
+
+.selectbox__option span {
+  font-weight: 700;
+}
+
+.selectbox__option:hover {
+  background-color: rgba($palette-dark, 10%);
+}
+
+.selectbox__option--active {
+  outline: 1px solid;
+  outline-offset: to-rem(-3px);
+}
+
+.selectbox__option[aria-selected='true'] {
+  position: relative;
+}

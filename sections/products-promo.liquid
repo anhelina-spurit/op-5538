@@ -1,0 +1,75 @@
+{%- capture products_promo -%}
+  <div class="products-promo__grid">
+    <div class="products-promo__item products-promo__item--header">
+      <div class="products-promo__header">
+        {% render 'c_text-preview', custom_classes: 'products-promo__text-preview', heading: section.settings.heading, heading_level: 2, description: section.settings.description, link: section.settings.link, link_title: section.settings.link_title %}
+      </div>
+    </div>
+    {%- for block in section.blocks -%}
+      {%- unless block.settings.product == blank and  block.settings.product == nil -%}
+        <div class="products-promo__item">
+          {% comment %}theme-check-disable NestedSnippet{% endcomment %}
+          {%- render 'c_product-card', custom_classes: 'products-promo__card', product: block.settings.product -%}
+          {% comment %}theme-check-enable NestedSnippet{% endcomment %}
+        </div>
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+{%- endcapture -%}
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+  capture content
+    render 'el_container', content: products_promo, modifiers: 'xxl', custom_classes: 'products-promo__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'products-promo', content: content, heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Products promo",
+  "class": "shopify-section--has-padding",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "Description"
+    },
+    {
+      "id": "link_title",
+      "type": "text",
+      "label": "Link title"
+    },
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Link url"
+    }
+  ],
+  "blocks": [
+     {
+      "type": "product",
+      "name": "product",
+      "settings": [
+       {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+     }
+  ],
+  "presets": [
+    {
+      "name": "Products promo"
+    }
+  ]
+}
+
+{% endschema %}

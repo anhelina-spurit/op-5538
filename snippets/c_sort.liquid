@@ -1,0 +1,66 @@
+{% comment %}
+  @summary Renders sort list
+
+  @param {object} results - Collection or Search object
+  @param {string} [custom_classes] - additional classes
+  @param {string[]} [modifiers] - modifiers
+  @param {string} [attributes] - additional attributes
+
+  @example
+  {%-
+    render 'c_sort',
+    results: collection,
+    custom_classes: "custom custom-2",
+    modifiers: 'lg, light',
+  -%}
+{% endcomment %}
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'sort', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  capture sort_label
+    render 'el_icon', icon: 'sort', custom_classes: 'filter-navigation__icon'
+    echo 'collection.sort.sort_label' | t
+  endcapture
+
+  assign sort_heading = 'collection.sort.sort_heading' | t
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  capture content
+    for option in results.sort_options
+      if option.value == 'price-ascending' or option.value == 'price-descending'
+        assign checked = false
+
+        if option.value == sort_by
+          assign checked = true
+        endif
+
+        assign option_locale = option.value | replace: '-', '_'
+        assign sort_option_name = 'collection.sort.' | append: option_locale | t
+
+        assign radio_id = 'selectbox_option_' | append: option.value | handleize | append: '_' | append: forloop.index
+        render 'el_radio', input_id: radio_id, name: 'sort', value: option.value, input_attributes: 'data-sort-control', disabled: false, checked: checked, label: sort_option_name
+      endif
+    endfor
+  endcapture
+%}
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}
+
+<div class={{- class -}}>
+  {%
+    render 'el_button',
+    text: sort_label,
+    modifiers: 'link',
+    custom_classes: 'filter-navigation__btn',
+    attributes: 'data-sort data-modal-id="sort-modal"',
+    type: 'button'
+  %}
+  {% render 'c_modal',
+    id: 'sort-modal',
+    heading: sort_heading,
+    outer_close: true,
+    content: content,
+    custom_classes: 'sort__modal'
+  %}
+</div>

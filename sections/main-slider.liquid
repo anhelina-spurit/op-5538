@@ -1,0 +1,289 @@
+{%- capture content -%}
+  {%- if section.blocks.size > 0 -%}
+    <div class="main-slider__slider swiper">
+      <ul class="main-slider__slides swiper-wrapper" role="list">
+        {%- for block in section.blocks -%}
+         {% case block.type %}
+           {% when 'slide' %}
+             <li class="main-slider__slide swiper-slide" style="--text-color:{{ block.settings.color }}" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+               <div class="main-slider__media">
+                 {%- capture container_content -%}
+                   {%- liquid
+                     if block.settings.image != blank or block.settings.video != blank
+                       if block.settings.url == blank
+                         if block.settings.video != blank
+                           render 'c_video-block', video_settings: block.settings.video, classes: 'video-block__iframe--no-controls', autoplay: true
+                         else
+                           render 'el_shopify-image', image: block.settings.image, lazy_loading: true, custom_classes: 'main-slider__image'
+                         endif
+                       else
+                         echo '<div class="main-slider__link-wrapper">'
+                         echo '<a class="main-slider__main-link" href="' | append: block.settings.url | append: '">'
+                         echo '</a>'
+                         if block.settings.video != blank
+                           render 'c_video-block', video_settings: block.settings.video, classes: 'video-block__iframe--no-controls', autoplay: true
+                         else
+                           render 'el_shopify-image', image: block.settings.image, lazy_loading: true, custom_classes: 'main-slider__image'
+                         endif
+                         echo '</div>'
+                       endif
+                     endif
+                     unless block.settings.heading == blank
+                       assign heading_text = block.settings.heading
+                       render 'el_heading', level: 3, text: heading_text, custom_classes: 'main-slider__heading main-slider__heading--slide'
+                     endunless
+                     assign nav_id = section.id | append: '-navigation'
+                     assign label_id = nav_id | append: '_title'
+                   -%}
+                   <nav class="main-slider__navigation" id="{{ nav_id }}" aria-labelledby="{{ label_id }}">
+                  <span id="{{ label_id }}" class="visually-hidden" aria-hidden="true">
+                    {{ block.settings.navigation.links.title }}</span>
+                     <ul class="main-slider__links" role="menubar" aria-labelledby="{{ label_id }}">
+                       {%- for menu_link in block.settings.navigation.links -%}
+                         <li class="main-slider__navigation-item" role="none">
+                           {%- assign menu_link_id = nav_id | append: '_' | append: forloop.index -%}
+                           <a id="{{- menu_link_id -}}"
+                              class="main-slider__link"
+                              href="{{- menu_link.url -}}"
+                              role="menuitem">
+                             {{- menu_link.title -}}
+                           </a>
+                         </li>
+                       {% endfor %}
+                     </ul>
+                   </nav>
+                 {%- endcapture -%}
+                 {%- render 'el_container', content: container_content, modifiers: 'xxl' -%}
+               </div>
+             </li>
+           {% when 'slide_with_countdown' %}
+
+           {%- capture counter_config -%}
+             {
+               "start": "{{ block.settings.date_start }}",
+               "end": "{{ block.settings.date_end }}"
+             }
+           {%- endcapture -%}
+
+            <li class="main-slider__slide swiper-slide" style="--text-color:{{ block.settings.color }}" {{ block.shopify_attributes }} data-index="{{ forloop.index0 }}">
+             <div class="main-slider__counter main-slider__counter--{{ block.settings.sale_position }}" data-slider-counter-wrapper data-slider-counter-config="{{ counter_config | escape }}" style="--text-color:{{ block.settings.color }}">
+               <p>{{ block.settings.sale_heading }} <span data-slider-counter></span></p>
+             </div>
+             <div class="main-slider__media">
+               {%- capture container_content -%}
+                 {%- liquid
+                   if block.settings.image != blank or block.settings.video != blank
+                     if block.settings.url == blank
+                       if block.settings.video
+                         render 'c_video-block', video_settings: block.settings.video, classes: 'video-block__iframe--no-controls', autoplay: true
+                       else
+                         render 'el_shopify-image', image: block.settings.image, lazy_loading: true, custom_classes: 'main-slider__image'
+                       endif
+                     else
+                       echo '<div class="main-slider__link-wrapper">'
+                       echo '<a class="main-slider__main-link" href="' | append: block.settings.url | append: '">'
+                       echo '</a>'
+                       if block.settings.video
+                         render 'c_video-block', video_settings: block.settings.video, classes: 'video-block__iframe--no-controls', autoplay: true
+                         else
+                         render 'el_shopify-image', image: block.settings.image, lazy_loading: true, custom_classes: 'main-slider__image'
+                       endif
+                       echo '</div>'
+                     endif
+                   endif
+                   unless block.settings.heading == blank
+                     assign heading_text = block.settings.heading
+                     render 'el_heading', level: 3, text: heading_text, custom_classes: 'main-slider__heading main-slider__heading--slide'
+                   endunless
+                   assign nav_id = section.id | append: '-navigation'
+                   assign label_id = nav_id | append: '_title'
+                 -%}
+                 <nav class="main-slider__navigation" id="{{ nav_id }}" aria-labelledby="{{ label_id }}">
+                  <span id="{{ label_id }}" class="visually-hidden" aria-hidden="true">
+                    {{ block.settings.navigation.links.title }}</span>
+                   <ul class="main-slider__links" role="menubar" aria-labelledby="{{ label_id }}">
+                     {%- for menu_link in block.settings.navigation.links -%}
+                       <li class="main-slider__navigation-item" role="none">
+                         {%- assign menu_link_id = nav_id | append: '_' | append: forloop.index -%}
+                         <a id="{{- menu_link_id -}}"
+                            class="main-slider__link"
+                            href="{{- menu_link.url -}}"
+                            role="menuitem">
+                           {{- menu_link.title -}}
+                         </a>
+                       </li>
+                     {% endfor %}
+                   </ul>
+                 </nav>
+               {%- endcapture -%}
+               {%- render 'el_container', content: container_content, modifiers: 'xxl' -%}
+             </div>
+           </li>
+         {% endcase %}
+
+        {%- endfor -%}
+      </ul>
+      <div class="main-slider__pagination swiper-pagination"></div>
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- render 'c_section', id: section.id, name: 'main-slider', content: content -%}
+
+{% schema %}
+{
+  "name": "Main slider",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "video",
+          "type": "text",
+          "label": "Video url"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "id": "navigation",
+          "type": "link_list",
+          "label": "Menu"
+        },
+        {
+          "id": "color",
+          "type": "color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Link for slide"
+        }
+      ]
+    },
+    {
+      "type": "slide_with_countdown",
+      "name": "Slide with countdown",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "video",
+          "type": "text",
+          "label": "Video url"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "id": "navigation",
+          "type": "link_list",
+          "label": "Menu"
+        },
+        {
+          "id": "color",
+          "type": "color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Link for slide"
+        },
+        {
+          "id": "sale_heading",
+          "type": "text",
+          "label": "Sale heading",
+          "default": "FLASH SALE"
+        },
+        {
+          "id": "date_start",
+          "type": "text",
+          "label": "Start date",
+          "info": "Example: September 22, 2022 09:26:00"
+        },
+        {
+          "id": "date_end",
+          "type": "text",
+          "label": "End date",
+          "info": "Example: September 23, 2022 22:26:00"
+        },
+        {
+          "id": "sale_position",
+          "type": "select",
+          "label": "Sale text position",
+          "options": [
+            {
+              "value": "top-left",
+              "label": "Top-left"
+            },
+            {
+              "value": "top-center",
+              "label": "Top-center"
+            },
+            {
+              "value": "top-right",
+              "label": "Top-right"
+            },
+            {
+              "value": "center-left",
+              "label": "Center-left"
+            },
+            {
+              "value": "center-center",
+              "label": "Center-center"
+            },
+            {
+              "value": "center-right",
+              "label": "Center-right"
+            },
+            {
+              "value": "bottom-left",
+              "label": "Bottom-left"
+            },
+            {
+              "value": "bottom-center",
+              "label": "Bottom-center"
+            },
+            {
+              "value": "bottom-right",
+              "label": "Bottom-right"
+            }
+          ],
+          "default": "center-center"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main slider",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

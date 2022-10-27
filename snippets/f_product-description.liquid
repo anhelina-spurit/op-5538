@@ -1,0 +1,21 @@
+{% comment %}
+  @summary Renders product description from metafields depends on language
+
+  @param {Shopify.product} product
+
+  @example
+  {%
+    render 'f_product-description', product: product
+  %}
+{% endcomment %}
+
+{%- liquid
+  assign lang = localization.language.iso_code | downcase | slice: 0, 2
+
+  if lang != 'fr'
+    assign description_matafield_name = lang | append: '|product.body_html'
+    assign description = product.metafields.i18n[description_matafield_name].value
+  endif
+
+  echo description | default: product.description
+-%}

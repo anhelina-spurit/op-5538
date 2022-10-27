@@ -1,0 +1,118 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.advantages {
+  overflow: hidden;
+}
+
+.advantages__slider {
+  margin-right: to-rem(-24px);
+  margin-left: to-rem(-24px);
+}
+
+.advantages__list {
+  display: flex;
+  max-height: to-rem(100px);
+  box-sizing: border-box;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+
+  @include media-breakpoint-down(lg) {
+    justify-content: initial;
+    margin-bottom: to-rem(35px);
+  }
+}
+
+.advantages__item {
+  position: relative;
+  display: flex;
+  width: min-content;
+  flex-direction: column;
+  padding: 0 to-rem(24px);
+}
+
+.advantages__media {
+  display: flex;
+  height: to-rem(37px);
+  align-items: center;
+  justify-content: center;
+  margin-bottom: to-rem(16px);
+}
+
+.advantages__image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.advantages__heading {
+  letter-spacing: to-rem(1.5px);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.advantages__heading--item {
+  max-width: to-rem(125px);
+  align-self: center;
+  margin: 0;
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(12px);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.advantages__link {
+  color: inherit;
+  text-decoration: inherit;
+  transition: all 0.15s ease;
+}
+
+.advantages__link::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  content: '';
+}
+
+.advantages__link:hover {
+  font-weight: 500;
+}
+
+.swiper-horizontal > .advantages__scrollbar {
+  right: to-rem(24px);
+  left: to-rem(24px);
+  display: none;
+  width: auto;
+  height: auto;
+  padding: to-rem(8px) 0;
+  background-color: transparent;
+  cursor: grab;
+
+  @include media-breakpoint-down(lg) {
+    display: block;
+  }
+}
+
+.swiper-horizontal > .advantages__scrollbar::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: to-rem(1px);
+  margin-top: to-rem(-0.5px);
+  background-color: $palette-cornflower-blue;
+  content: '';
+}
+
+.swiper-horizontal > .advantages__scrollbar .swiper-scrollbar-drag {
+  height: to-rem(3px);
+  background-color: $palette-dark-slate-grey;
+  border-radius: 0;
+}

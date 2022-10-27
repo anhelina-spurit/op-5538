@@ -1,0 +1,110 @@
+{% assign swatch_count = settings.custom_related_products_swatches_options_number %}
+{% assign swatches_titles = settings.custom_related_products_swatches_options_names | split: "," %}
+{% assign link_to_product_page_swatches_to_display = settings.custom_link_to_product_page_related_products_swatches_options_to_display %}
+{% assign unlink_to_product_page_swatches_to_display = settings.custom_unlink_to_product_page_related_products_swatches_options_to_display %}
+{% assign show_tooltip = settings.show_tooltip %}
+{% assign show_current_color = settings.show_current_colour %}
+
+{% assign link_to_product_page_swatches = link_to_product_page_swatches | default: false %}
+
+{% for i in (1..swatch_count) %}
+
+	{% assign swatch_index = i | minus: 1 %}
+	{% assign swatch_title = swatches_titles[swatch_index] %}
+
+	{% capture swatch_namespace %}swatch_{{i}}{% endcapture %}
+
+	{%- comment -%}
+
+		The display of a swatch depends on its type
+		
+		Currently, two possible types
+			text
+			label/color/image/base64
+
+	{%- endcomment -%}
+
+	{%- comment -%}
+		Display of a text swatch
+	{%- endcomment -%}
+	{% if current_product.metafields[swatch_namespace].text %}
+		{% assign current_product_text = current_product.metafields[swatch_namespace].text %}
+
+		<div class="oz-related-products-swatches__wrapper {% if link_to_product_page_swatches %}oz-href-only-swatches{% endif %}">
+			{% if swatch_title != blank and link_to_product_page_swatches and link_to_product_page_swatches_to_display contains swatch_namespace %}
+				<div class="oz-related-products-swatches--title">
+					<span>{{ swatch_title }}</span>
+				</div>
+			{% endif %}
+			<ul class="oz-related-products-swatches--ul">
+				{% for related_product in current_product.metafields[swatch_namespace].products.value %}
+					{% assign related_product_text = related_product.metafields[swatch_namespace].text %}
+
+					{% if link_to_product_page_swatches and link_to_product_page_swatches_to_display contains swatch_namespace %}
+						<li class="oz-related-products-swatches--li oz-related-products-swatches--li--text-option-{{i}} {% if related_product == current_product %}active{% endif %} {% unless related_product.available %}oz-swatch-unavailable{% endunless %}">
+							<a href="{{ related_product.url | within: collection }}" data-handle="{{ related_product.handle }}">
+								<span>{{ related_product_text }}</span>
+							</a>
+						</li>
+					{% elsif link_to_product_page_swatches == false and unlink_to_product_page_swatches_to_display contains swatch_namespace %}
+						<li class="oz-related-products-swatches--li oz-related-products-swatches--li--text-option-{{i}} {% if related_product == current_product %}active{% endif %} {% unless related_product.available %}oz-swatch-unavailable{% endunless %}">
+							<a data-handle="{{ related_product.handle }}" class="oz-related-products-swatch oz-related-products-swatch--text oz-collection-swatch {% if related_product_text == blank %}oz-swatch-empty{% endif %}">
+								<span>{{ related_product_text }}</span>
+							</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	{%- comment -%}
+		Display of a 'label/color/image/base64' swatch
+	{%- endcomment -%}
+	{% else %}
+		{%- comment -%}
+			Retrieve the existing metafields values
+		{%- endcomment -%}
+		{% if current_product.metafields[swatch_namespace].label %}{% assign current_product_label = current_product.metafields[swatch_namespace].label %}{% endif %}
+		{% if current_product.metafields[swatch_namespace].color %}{% assign current_product_color = current_product.metafields[swatch_namespace].color %}{% endif %}
+		{% if current_product.metafields[swatch_namespace].image %}{% assign current_product_image = current_product.metafields[swatch_namespace].image %}{% endif %}
+		{% if current_product.metafields[swatch_namespace].base64_image %}{% assign current_product_base64_image = current_product.metafields[swatch_namespace].base64_image %}{% endif %}
+
+		{% if current_product_color != blank or current_product_image != blank or current_product_base64_image != blank %}
+			<div class="oz-related-products-swatches__wrapper {% if link_to_product_page_swatches %}oz-href-only-swatches{% endif %}">
+				{% if swatch_title != blank and link_to_product_page_swatches and link_to_product_page_swatches_to_display contains swatch_namespace %}
+					<div class="oz-related-products-swatches--title">
+						<span>{{ swatch_title }}</span>{% if current_product_label != blank and show_current_color %}<span class="oz-related-products-swatches--label"> {{ current_product_label }} </span>{% endif %}
+					</div>
+				{% endif %}
+
+				<ul class="oz-related-products-swatches--ul">
+					{% for related_product in current_product.metafields[swatch_namespace].products.value %}
+
+						{% assign related_product_label = related_product.metafields[swatch_namespace].label %}
+						{% assign related_product_color = related_product.metafields[swatch_namespace].color %}
+						{% assign related_product_image = related_product.metafields[swatch_namespace].image %}
+						{% assign related_product_base64_image = related_product.metafields[swatch_namespace].base64_image %}
+
+						{% if link_to_product_page_swatches and link_to_product_page_swatches_to_display contains swatch_namespace %}
+							<li class="oz-related-products-swatches--li oz-related-products-swatches--li--color-option-{{i}} {% if related_product == current_product %}active{% endif %} {% unless related_product.available %}oz-swatch-unavailable{% endunless %}" style="{% if related_product_image %}background-image:url({{ related_product_image }});{% elsif related_product_base64_image != blank and related_product_color == blank %}background-image: url('data:image/png;base64,{{related_product_base64_image}}');{% endif %}">
+								<a href="{{ related_product.url | within: collection }}" data-handle="{{ related_product.handle }}" class="oz-related-products-swatch oz-related-products-swatch--color {% if related_product_color == blank and related_product_image == blank %}oz-swatch-empty{% endif %}"
+									style="background-color:{{ related_product_color }};">
+								</a>
+								{% if related_product_label != blank and show_tooltip %}
+									<div class="oz-related-products-swatches--tooltip">
+										<span>{{ related_product_label }}</span>
+									</div>
+								{% endif %}
+							</li>
+						{% elsif link_to_product_page_swatches == false and unlink_to_product_page_swatches_to_display contains swatch_namespace %}
+							<li class="oz-related-products-swatches--li oz-related-products-swatches--li--color-option-{{i}} {% if related_product == current_product %}active{% endif %} {% unless related_product.available %}oz-swatch-unavailable{% endunless %}" style="{% if related_product_image %}background-image:url({{ related_product_image }});{% elsif related_product_base64_image != blank and related_product_color == blank %}background-image: url('data:image/png;base64,{{related_product_base64_image}}');{% endif %}">
+								<span data-handle="{{ related_product.handle }}" class="oz-related-products-swatch oz-related-products-swatch--color oz-collection-swatch {% if related_product_color == blank and related_product_image == blank %}oz-swatch-empty{% endif %}"
+									style="background-color:{{ related_product_color }};">
+								</span>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	{% endif %}
+{% endfor %}

@@ -1,0 +1,74 @@
+{%- capture content -%}
+  {%- render 'c_breadcrumbs' -%}
+
+  <div class="product__grid">
+    <div class="product__column product__column--media">
+      {%- render 'c_product-media', product: product -%}
+    </div>
+
+    <div class="product__column product__column--info">
+      <div class="product__info">
+        <div class="product__header">
+        {% liquid
+          capture title
+            render 'f_product-title', product: product
+          endcapture
+          assign title = title | strip
+
+          render 'el_heading', level: 1, text: title, modifiers: 'sm', custom_classes: 'product__heading'
+        %}
+        <span class="product__header_wishlist" data-product-wishlist>
+          <span
+            class="smartwishlist smartwishlist--secondary"
+            data-product="{{ product.id }}"
+            data-variant="{{ product.selected_or_first_available_variant.id }}"
+          ></span>
+          {%  render 'el_icon', icon: 'heart', custom_classes: 'smartwishlist__icon' %}
+        </span>
+        {%- if template.suffix == 'bundle' -%}
+          <div class="product__introtext">
+            {{ product.description | strip_html | split: '. ' | first }}
+          </div>
+        {%- endif -%}
+      </div>
+        {%- liquid
+          assign product_type = ''
+
+          if template.suffix == 'bundle'
+            assign product_type = 'bundle'
+            render 'c_product-bundle', product: product
+          else
+            render 'c_product-form', product: product
+            render 'c_product-info', product: product
+          endif
+        -%}
+      </div>
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  capture section_content
+    render 'el_container', content: content, modifiers: 'xxl'
+    render 'c_product-size-guide', product: product
+  endcapture
+
+  assign attributes = 'data-product-type="' | append: product_type | append: '"'
+
+  render 'c_section', id: section.id, name: 'product', content: section_content, attributes: attributes
+-%}
+
+{%- if product.available -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const recentlyViewedProducts = JSON.parse(localStorage.getItem('recentlyViewedProducts') || '[]');
+
+      if (recentlyViewedProducts.indexOf('{{ product.id }}') >= 0) {
+        return;
+      }
+
+      recentlyViewedProducts.push('{{ product.id }}');
+      localStorage.setItem('recentlyViewedProducts', JSON.stringify(recentlyViewedProducts.slice(-20)));
+    });
+  </script>
+{%- endif -%}

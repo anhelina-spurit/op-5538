@@ -1,0 +1,194 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../utils/visually-hidden';
+@import '../../constants/palette';
+@import '../../constants/transitions';
+
+.contact {
+  max-width: to-rem(600px);
+  padding: to-rem(60px) to-rem(16px) to-rem(84px);
+  margin: auto;
+
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+    padding-top: to-rem(32px);
+    padding-bottom: to-rem(32px);
+  }
+}
+
+.contact__heading {
+  margin-bottom: to-rem(44px);
+  font-weight: 400;
+  letter-spacing: to-rem(3px);
+  line-height: 1.45;
+
+  @include media-breakpoint-down(lg) {
+    font-size: to-rem(12px);
+    letter-spacing: to-rem(2.25px);
+    line-height: 1.5;
+    text-align: center;
+  }
+}
+
+.contact__field {
+  position: relative;
+  display: flex;
+  padding: to-rem(20px) to-rem(4px) to-rem(4px);
+}
+
+.contact__field--civility {
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 0;
+
+  @include media-breakpoint-down(lg) {
+    justify-content: space-between;
+  }
+}
+
+.contact__field--civility .label {
+  padding-right: to-rem(34px);
+}
+
+.contact__field--civility .radio {
+  padding-right: to-rem(8px);
+  padding-left: to-rem(8px);
+}
+
+.contact__field--civility .radio__label {
+  margin: 0;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(1.64px);
+  line-height: 2;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(lg) {
+    letter-spacing: to-rem(0.5px);
+  }
+}
+
+.contact__field--civility .radio__label::before {
+  top: 30%;
+  width: to-rem(15px);
+  height: to-rem(15px);
+}
+
+.contact__field--civility .radio__label::after {
+  top: calc(30% + 2px);
+  width: to-rem(11px);
+  height: to-rem(11px);
+}
+
+.contact__field .label {
+  position: absolute;
+  top: to-rem(22px);
+  display: block;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(1.2px);
+  line-height: 1.5;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: top $transition-duration-fastest;
+
+  @include media-breakpoint-down(lg) {
+    top: to-rem(18px);
+    font-weight: 300;
+    letter-spacing: to-rem(0.46px);
+    line-height: 2;
+  }
+}
+
+.contact__field--civility .label,
+.contact__field--question .label {
+  position: initial;
+  transform: none;
+}
+
+.contact__input,
+.contact__select {
+  width: 100%;
+  min-height: to-rem(24px);
+  box-sizing: content-box;
+  border: 0;
+  border-bottom: 1px solid $palette-silver;
+  text-overflow: ellipsis;
+  transition: border-bottom-color $transition-duration-fastest;
+}
+
+.contact__textarea {
+  border-bottom: 1px solid $palette-silver;
+  border-radius: 0;
+}
+
+.contact__input:focus,
+.contact__select:focus,
+.contact__select:active {
+  border-bottom-color: $palette-dark;
+}
+
+.contact__input:focus ~ .label,
+.contact__input:not(.contact__input--not-required):not(:focus):valid ~ .label,
+.contact__input:not(:placeholder-shown) ~ .label,
+.contact__input:-webkit-autofill ~ .label,
+.contact__select:focus ~ .label,
+.contact__select:not(:focus):valid ~ .label {
+  top: to-rem(-8px);
+}
+
+.contact__field--question {
+  flex-direction: column;
+}
+
+.contact__field--question .label {
+  padding-top: to-rem(42px);
+
+  @include media-breakpoint-down(lg) {
+    padding-top: to-rem(18px);
+    padding-bottom: to-rem(18px);
+  }
+}
+
+.contact__button {
+  width: 100%;
+  padding-top: to-rem(16px);
+  padding-bottom: to-rem(16px);
+  margin-bottom: to-rem(44px);
+
+  @include media-breakpoint-down(lg) {
+    padding-top: to-rem(10px);
+    padding-bottom: to-rem(10px);
+    margin-bottom: to-rem(32px);
+  }
+}
+
+.contact__info {
+  color: $palette-silver-chalice;
+  font-size: to-rem(11px);
+  font-weight: 300;
+  line-height: 1.9;
+
+  @include media-breakpoint-down(lg) {
+    @include visually-hidden;
+  }
+}
+
+.contact__info p {
+  margin: 0;
+}
+
+.contact__confirmation-message {
+  display: none;
+
+  @include media-breakpoint-down(lg) {
+    text-align: center;
+  }
+}
+
+.contact__confirmation-message p {
+  margin-top: 0;
+  color: $palette-san-felix;
+}
+
+.contact__confirmation-message--visible {
+  display: block;
+}

@@ -1,0 +1,31 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.collections-preview {
+  padding-top: to-rem(67px);
+  padding-bottom: to-rem(67px);
+  background-color: $palette-ecru-white;
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(27px);
+    padding-bottom: to-rem(27px);
+    background-color: $palette-white;
+  }
+}
+
+.collections-preview__container {
+  @include media-breakpoint-down(md) {
+    padding: 0;
+  }
+}
+
+.collections-preview__heading {
+  margin-bottom: to-rem(92px);
+  font-weight: 400;
+  letter-spacing: to-rem(3.2px);
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(20px);
+  }
+}

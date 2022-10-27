@@ -1,0 +1,56 @@
+{% comment %}
+  @summary Renders a products slider
+
+  @param {Shopify.product[] | string[]} products - products list or products handles list or prodcuts id list
+  @param {string} [custom_classes] - custom_classes
+  @param {string[]('page')} [modifiers] - modifiers
+  @param {string} [attributes] - attributes
+
+  @example
+  {%
+    render 'c_products-slider',
+    products: '..., ..., ...',
+    custom_classes: 'custom',
+    modifiers: 'full',
+    attributes: 'data-custom'
+  %}
+{% endcomment %}
+{%- unless products == blank -%}
+  {%- capture class -%}
+    {% render 'f_bem-classes', main_class: 'product-slider', custom_classes: custom_classes, modifiers: modifiers %}
+  {%- endcapture -%}
+  <div class="{{ class }} swiper">
+    <div class="product-slider__wrapper swiper-wrapper">
+      {%- liquid
+        for product in products
+          assign product_data = product
+
+          if product_data.id == blank
+            assign product_handle = product | handleize
+            assign product_data = all_products[product_handle]
+            if product_data == blank
+              assign id = product | times: 1
+              paginate collections.all.products by 1000
+                for element in collections.all.products
+                  if element.id == id
+                    assign product_data = element
+                    break
+                  endif
+                endfor
+              endpaginate
+            endif
+          endif
+
+          unless product_data == blank
+            echo '<div class="product-slider__slide swiper-slide">'
+            assign product_id = product_data.id | append: '_product_' | append: forloop.index
+            render 'c_product-card', product: product_data, id: product_id, custom_classes: 'product-slider__card'
+            echo '</div>'
+          endunless
+        endfor
+      -%}
+    </div>
+    <div class="product-slider__scrollbar swiper-scrollbar"></div>
+  </div>
+{%- endunless -%}
+

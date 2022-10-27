@@ -1,0 +1,17 @@
+{% comment %}
+  Note : currently unused
+{% endcomment %}
+
+{%- layout none -%}
+
+{% assign query_params = search.terms | split: '|' %}
+{% assign product_handle = query_params[0] | strip %}
+{% assign product = all_products[product_handle] %}
+
+{%- capture swatch_block_html -%}
+    {% include 'c_product-card', id: product.id, product: product %}
+{%- endcapture -%}
+
+{
+  "product_block": {{ swatch_block_html | json }}
+}

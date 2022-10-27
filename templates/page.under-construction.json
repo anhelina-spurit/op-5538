@@ -1,0 +1,52 @@
+{
+  "sections": {
+    "under-construction": {
+      "type": "under-construction",
+      "blocks": {
+        "34018f78-b2db-4523-a9da-1b636c605565": {
+          "type": "social_network",
+          "settings": {
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/youtube.svg?v=1654555301",
+            "url": "https:\/\/www.youtube.com\/channel\/UCkhdyyPmhU53dWjkwbulxlw"
+          }
+        },
+        "d753b610-63a5-4b2e-bf74-0ae6ffb847b9": {
+          "type": "social_network",
+          "settings": {
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/instagram.svg?v=1654555301",
+            "url": "https:\/\/www.instagram.com\/cyrillusofficiel\/"
+          }
+        },
+        "48e98010-480e-4dd2-b11b-52f447f00cc1": {
+          "type": "social_network",
+          "settings": {
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/facebook.svg?v=1654555301",
+            "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/facebook.svg?v=1654555301"
+          }
+        },
+        "861adb9d-112f-4ffc-b81e-8bd1336b69f6": {
+          "type": "social_network",
+          "settings": {
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/pinterest.svg?v=1654555301",
+            "url": "https:\/\/www.pinterest.fr\/cyrillus\/"
+          }
+        }
+      },
+      "block_order": [
+        "34018f78-b2db-4523-a9da-1b636c605565",
+        "d753b610-63a5-4b2e-bf74-0ae6ffb847b9",
+        "48e98010-480e-4dd2-b11b-52f447f00cc1",
+        "861adb9d-112f-4ffc-b81e-8bd1336b69f6"
+      ],
+      "settings": {
+        "background": "#f2ecdf",
+        "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/Logo_gray.svg?v=1654557286",
+        "content": "<p>Un peu de patience ! <br\/>Notre nouveau site va bientôt sortir <\/p>",
+        "social_text": "<p>En attendant suivez la tribu #cyrillus :<\/p>"
+      }
+    }
+  },
+  "order": [
+    "under-construction"
+  ]
+}

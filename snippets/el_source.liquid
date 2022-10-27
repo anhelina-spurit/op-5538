@@ -1,0 +1,49 @@
+{%- comment -%}
+    @summary It creates a source tag
+
+    @param {string} name - placeholder name
+    @param {string} [alt] - alternative text for image
+    @param {string} [custom_classes] - class name
+    @param {string} [attributes] - additional HTML attributes
+    @param {string} [modifiers] - modifiers 'xl', 'lg'
+
+    @example
+    {%-
+      render 'el_source',
+      image: image,
+      media: "(max-width: 767px)",
+      lazy_loading: true
+    -%}
+{%- endcomment -%}
+
+{%- liquid
+  if image.src == blank
+    assign srcset = image
+  else
+    if width == blank and height == blank
+      assign width = width | default: image.width
+      assign height = height | default: image.height
+    endif
+
+    if width == blank and height != blank
+      assign width = height | times: image.aspect_ratio | round
+    endif
+
+    if width != blank and height == blank
+      assign height = width | divided_by: image.aspect_ratio | round
+    endif
+
+    capture srcset
+      render 'f_image-srcset', image: image, crop: crop, format: format, width: width, height: height
+    endcapture
+  endif
+-%}
+
+{%- unless srcset == blank -%}
+  <source
+    srcset="{% unless lazy_loading %}{{ srcset }}{% endunless %}"
+    {% if lazy_loading %}data-srcset="{{ srcset }}"{% endif %}
+    media="{{ media }}"
+  />
+{%- endunless -%}
+

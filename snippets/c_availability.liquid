@@ -1,0 +1,43 @@
+{% comment %}
+  @summary Renders circle with prodcut availability
+
+  @param {Number} product_count - Number available products
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render: 'c_availability',
+    product_count: 4,
+    custom_classes: "footer__accordion",
+    attributes: "data-accordion='1'",
+    modifiers: "xxl"
+  %}
+{% endcomment %}
+
+{%- unless product_count == blank -%}
+  {%- liquid
+    if product_count <= 0
+      assign modifiers = modifiers | append: ' out-of-stock'
+      assign availability_text = 'availability.out-of-stock' | t
+    elsif product_count <= 2
+      assign modifiers = modifiers | append: ' low'
+      assign availability_text = 'availability.low' | t
+    else
+      assign modifiers = modifiers | append: ' high'
+      assign availability_text = 'availability.high' | t
+    endif
+
+    capture class
+      render 'f_bem-classes', main_class: 'availability', custom_classes: custom_classes, modifiers: modifiers
+    endcapture
+
+    assign visually_hidden_text = 'availability.prefix' | t
+  %}
+
+  <p class="{{ class }}"{% unless attributes == blank %}{{ attributes }}{% endunless %}>
+    <span class="visually-hidden">{{ visually_hidden_text }} </span>
+    <span class="availability__label">{{ availability_text }}</span>
+  </p>
+{%- endunless -%}

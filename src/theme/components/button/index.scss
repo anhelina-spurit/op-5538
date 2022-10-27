@@ -1,0 +1,81 @@
+@import '../../constants/palette';
+@import '../../constants/transitions';
+@import '../../utils/to-rem';
+@import '../link';
+
+.button {
+  display: inline-block;
+  max-width: 100%;
+  padding: to-rem(21px) to-rem(40px);
+  border: none;
+  cursor: pointer;
+  font-size: to-rem(12px);
+  font-weight: 400;
+  letter-spacing: to-rem(1.8px);
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition-duration: $transition-duration-fast;
+  transition-property: color, background-color, opacity;
+}
+
+.button--xs {
+  padding: to-rem(13px) to-rem(23px);
+  font-size: to-rem(10px);
+}
+
+.button--primary {
+  border: to-rem(1px) solid $palette-dark;
+  background: $palette-dark;
+  color: $palette-white;
+}
+
+.button--primary:not([disabled]):hover {
+  background: $palette-white;
+  color: $palette-dark;
+}
+
+.button--secondary {
+  border: to-rem(1px) solid $palette-dark-slate-grey;
+  background: $palette-dark-slate-grey;
+  color: $palette-white;
+}
+
+.button--secondary:not([disabled]):hover {
+  background: $palette-white;
+  color: $palette-dark-slate-grey;
+}
+
+.button--outline {
+  border: to-rem(1px) solid $palette-dark;
+  background-color: transparent;
+  color: $palette-dark;
+}
+
+.button--outline:not([disabled]):hover {
+  background: $palette-dark;
+  color: $palette-white;
+}
+
+.button--link {
+  @extend %link;
+  padding: 0 0 to-rem(2px) 0;
+  border-bottom: to-rem(0.5px) solid $palette-dark;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.button--full-width {
+  width: 100%;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button--small {
+  padding: to-rem(13px) to-rem(43px);
+  font-size: to-rem(9px);
+}

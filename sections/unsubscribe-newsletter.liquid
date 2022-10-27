@@ -1,0 +1,126 @@
+{%- capture container_content -%}
+  {% liquid
+    assign heading = 'newsletter-unsubscribe.title' | t
+    assign email_label = 'newsletter-unsubscribe.email_title' | t
+    assign email_notes = 'newsletter-unsubscribe.email_notes' | t
+    assign button_accept_label = 'newsletter-unsubscribe.button_accept' | t
+    assign button_reset_label = 'newsletter-unsubscribe.button_reset' | t
+    assign link_text = 'newsletter-unsubscribe.policy_link_text' | t
+    capture link_html
+      render 'el_link', href: section.settings.link, text: link_text, custom_classes: 'unsubscribe-newsletter__link'
+    endcapture
+    assign policy_text = 'newsletter-unsubscribe.policy_text_html' | t: link: link_html
+  %}
+  <div class="unsubscribe-newsletter__unsubscribe">
+    <div class="unsubscribe-newsletter__header">
+      {%- render 'el_heading', level: 2, text: heading, custom_classes: 'unsubscribe-newsletter__heading' -%}
+    </div>
+    {% form 'customer', class: 'unsubscribe-newsletter-form' %}
+      {%- render 'el_input', id: 'accept_marketing', type: 'hidden', name: 'customer[accepts_marketing]', value: "false" -%}
+
+      <div class="unsubscribe-newsletter-form__field-wrap">
+        {%- liquid
+          assign input_id = 'UnsubscribeNewsletterForm-' | append: section.id
+          assign input_attriputes = 'autocorrect="off" autocapitalize="off" autocomplete="email"'
+
+          if form.errors
+            assign input_attriputes = input_attriputes | append: 'autofocus' | append: 'aria-invalid="true"' | append: 'aria-describedby="Newsletter-error-' | append: section.id | append: '"'
+          elsif form.posted_successfully?
+            assign input_attriputes = input_attriputes | append: 'aria-describedby="Unsubscribe-Newsletter-success-' | append: section.id | append: '"'
+          endif
+        -%}
+
+        <div class="field unsubscribe-newsletter-form__field">
+          {%-
+                  render 'el_input',
+                  id: input_id,
+                  type: 'email',
+                  name: 'contact[email]',
+                  required: true,
+                  modifiers: 'outlined',
+                  attributes: input_attriputes
+          -%}
+
+          {%-
+                  render 'el_label',
+                  for_input: input_id,
+                  custom_classes: 'input-label',
+                  content: email_label
+          -%}
+
+        </div>
+        <div class="field unsubscribe-newsletter-form__field">
+        <p class="unsubscribe-newsletter__email-notes">{{ email_notes }}</p>
+        </div>
+        <div class="field unsubscribe-newsletter-form__field unsubscribe-newsletter-form__field--buttons">
+        {%-
+                render 'el_button',
+                text: button_accept_label,
+                custom_classes: 'field__button unsubscribe-newsletter-form__button',
+                modifiers: 'secondary',
+                attributes: 'name="commit"',
+                type: 'submit',
+        -%}
+        {%-
+                render 'el_button',
+                text: button_reset_label,
+                custom_classes: 'field__button unsubscribe-newsletter-form__button',
+                modifiers: 'outline',
+                attributes: 'name="cancel"',
+                type: 'reset',
+        -%}
+
+          </div>
+      </div>
+
+      <ins class="newsletter-form__message newsletter-form__message--failed hidden" id="Newsletter-error--{{ section.id }}">
+        {{ 'newsletter.failed' | t }}
+      </ins>
+
+      <ins class="newsletter-form__message newsletter-form__message--already_subscribed hidden" id="Newsletter-error--{{ section.id }}">
+        {{ 'newsletter.already_subscribed' | t }}
+      </ins>
+
+      <ins class="newsletter-form__message newsletter-form__message--already_unsubscribed hidden" id="Newsletter-error--{{ section.id }}">
+        {{ 'newsletter-unsubscribe.already_unsubscribed' | t }}
+      </ins>
+      </div>
+
+      <h3 class="newsletter-form__message newsletter-form__message--success hidden" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>
+        {{ 'newsletter.success' | t }}
+      </h3>
+    {% endform %}
+    <p class="unsubscribe-newsletter__policy-text">{{ policy_text }}</p>
+  </div>
+
+{%- endcapture -%}
+
+{%- liquid
+  capture content
+    render 'el_container', content: container_content, custom_classes: 'unsubscribe-newsletter__container container container--l'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'unsubscribe-newsletter', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Newsletter unsubscribe",
+  "settings": [
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Link to the privacy policy",
+      "default": "/"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter unsubscribe",
+      "category": "Promotional",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

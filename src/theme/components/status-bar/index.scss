@@ -1,0 +1,44 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.status-bar {
+  position: relative;
+  width: 100%;
+  height: to-rem(3px);
+  background: $palette-alto;
+}
+
+.status-bar::before,
+.status-bar::after {
+  position: absolute;
+  top: -4px;
+  width: to-rem(11px);
+  height: to-rem(11px);
+  border-radius: 50%;
+  content: '';
+}
+
+.status-bar::before {
+  left: 0;
+  background-color: $palette-dark-slate-grey;
+}
+
+.status-bar.empty::before {
+  background-color: $palette-alto;
+}
+
+.status-bar::after {
+  right: 0;
+  background-color: $palette-alto;
+}
+
+.status-bar.full::after {
+  background-color: $palette-dark-slate-grey;
+}
+
+.status-bar__progress {
+  position: absolute;
+  height: 100%;
+  background: $palette-dark-slate-grey;
+}

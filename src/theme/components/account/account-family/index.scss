@@ -1,0 +1,224 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+@import '../../../constants/palette';
+
+.family__container {
+  color: $palette-dark-slate-grey;
+  @include media-breakpoint-up(xl) {
+    padding-left: to-rem(40px);
+  }
+}
+
+.family__back-link {
+  display: block;
+  padding-bottom: to-rem(30px);
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
+
+.family__heading {
+  margin: 0 0 to-rem(7px) 0;
+  letter-spacing: to-rem(1.64px);
+  line-height: 2;
+}
+
+.family .family-content {
+  @include media-breakpoint-down(lg) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.family .container > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.family .family-list {
+  max-width: to-rem(637px);
+  border-bottom: to-rem(0.5px) solid $palette-dark;
+  margin: 0;
+
+  @include media-breakpoint-down(lg) {
+    max-width: 100%;
+  }
+}
+
+.family .family-list .text-preview__description {
+  margin-bottom: 0;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.96px);
+  line-height: to-rem(18px);
+}
+
+.family .children {
+  display: grid;
+  grid-column-gap: to-rem(10px);
+  grid-row-gap: to-rem(10px);
+  grid-template-columns: repeat(3, 1fr);
+
+  @include media-breakpoint-down(sm) {
+    // margin-bottom: to-rem(47px);
+    grid-template-columns: unset;
+  }
+}
+
+.family .children.children-placeholder {
+  margin-bottom: to-rem(9px);
+}
+
+.family .children .child {
+  position: relative;
+  display: flex;
+  width: to-rem(205px);
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: to-rem(22px) to-rem(22px) to-rem(12px);
+  margin-top: to-rem(28px);
+  margin-bottom: to-rem(30px);
+  background: $palette-white;
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}
+
+.family .child .text-preview {
+  margin-bottom: to-rem(23px);
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(20px);
+  }
+}
+
+.family .child .text-preview__heading,
+.family .child .text-preview__description {
+  margin: 0;
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(0.5px);
+  line-height: to-rem(22px);
+}
+
+.family .child .text-preview__heading {
+  font-size: to-rem(12px);
+}
+
+.family .child .text-preview__description {
+  letter-spacing: to-rem(0.42px);
+}
+
+.family .child .child--delete {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  font-size: to-rem(8px);
+}
+
+.family .child .child--update {
+  font-size: to-rem(8px);
+  letter-spacing: to-rem(1.2px);
+  line-height: to-rem(14px);
+}
+
+.family .family-form {
+  margin-top: to-rem(25px);
+
+  @include media-breakpoint-down(lg) {
+    width: max-content;
+    margin-top: to-rem(34px);
+  }
+
+  @include media-breakpoint-down(sm) {
+    width: auto;
+  }
+}
+
+.family-form .input-wrapper + .label {
+  display: inline-block;
+  margin-top: to-rem(30px);
+}
+
+.family-form .text-preview__description {
+  margin-bottom: to-rem(18px);
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.5px);
+  line-height: to-rem(18px);
+}
+
+.family-form .account--add-child__form {
+  margin-top: to-rem(18px);
+}
+
+.family-form .date-select {
+  margin: to-rem(12px) 0 to-rem(35px);
+}
+
+.family-form .select,
+.family-form .input,
+.family-list .select,
+.family-list .input {
+  padding-top: to-rem(5px);
+  padding-bottom: to-rem(5px);
+  border-bottom-width: to-rem(0.5px);
+}
+
+.family-form .label,
+.family-list .label {
+  padding-top: to-rem(5px);
+  padding-bottom: to-rem(5px);
+}
+
+.family-form__sex {
+  margin-top: to-rem(7px);
+  @include media-breakpoint-down(sm) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.family-form__sex .radio:last-of-type {
+  margin-top: to-rem(6px);
+  @include media-breakpoint-down(sm) {
+    margin-top: 0;
+  }
+}
+
+.family-form__sex .radio .radio__label {
+  width: max-content;
+}
+
+.family .radio:last-of-type {
+  @include media-breakpoint-down(sm) {
+    margin-left: to-rem(48px);
+  }
+}
+
+.family .account--edit-child__form .date-select {
+  margin-top: to-rem(12px);
+}
+
+.family .account--add-child__form .feedback {
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(1px);
+  line-height: to-rem(18px);
+}
+
+.family .account--add-child__form .success,
+.family .account--add-child__form .error {
+  margin-top: to-rem(25px);
+}
+
+.family .account--edit-child__form .button,
+.family .account--add-child__form .button {
+  padding: to-rem(9.5px) to-rem(45px);
+  margin-top: to-rem(25px);
+  letter-spacing: to-rem(1.35px);
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}

@@ -1,0 +1,83 @@
+{% comment %}
+  @summary Renders filter navigation
+  @param {object} results - Collection or Search object
+  @param {string} [custom_classes] - additional classes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_filter-navigation',
+    results: collection,
+    custom_classes: "custom",
+    modifiers: 'lg, light',
+  %}
+{% endcomment %}
+
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'filter-navigation', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  assign button_filter = 'collection.filter.button_filter' | t
+  capture filter_btn
+    render 'el_icon', icon: 'filter', custom_classes: 'filter-navigation__icon'
+    echo button_filter
+  endcapture
+
+  assign clear = 'collection.filter.clear' | t
+%}
+{% comment %}theme-check-disable NestedSnippet{% endcomment %}
+<div class="{{- class -}}">
+  <div class="filter-navigation__column">
+    {%- if results.filters.size > 1 and is_filter -%}
+      <div class="filter-navigation__row">
+        {%
+          render 'el_button',
+          text: filter_btn,
+          modifiers: 'link',
+          custom_classes: 'filter-navigation__btn',
+          attributes: 'data-sidebar-control',
+          type: 'button'
+        %}
+      </div>
+    {%- endif -%}
+    <div class="filter-navigation__row">
+      {%- render 'c_sort', results: results -%}
+    </div>
+  </div>
+  {%- if results.filters != blank and is_filter -%}
+
+    <div class="filter-navigation__column">
+      <div class="filter-navigation__row filter-navigation__row--active-filters">
+        {% render 'c_filter-active', results: results %}
+      </div>
+      {% assign active_filter_count = 0 %}
+      {% for filter in results.filters %}
+        {% if filter.type == 'price_range' and filter.min_value.value != blank and filter.max_value.value != blank %}
+          {% assign active_filter_count = active_filter_count | plus: 1 %}
+        {% endif %}
+        {% assign namespace = filter.param_name | split: "." | last %}
+        {% unless namespace == 'subcollection' %}
+          {% for value in filter.active_values %}
+            {% assign active_filter_count = active_filter_count | plus: 1 %}
+          {% endfor %}
+        {% endunless %}
+      {% endfor %}
+      <div class="filter-navigation__row filter-navigation__row--reset">
+        {% assign classes_reset = 'filter-navigation__btn filter-navigation__btn--underline' %}
+        {%- if active_filter_count <= 0 -%}
+          {% assign classes_reset = classes_reset | append: ' hidden' %}
+        {%- endif -%}
+        {%
+          render 'el_button',
+          text: clear,
+          modifiers: 'link',
+          custom_classes: classes_reset,
+          attributes: 'data-filter-reset',
+          type: 'button'
+        %}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+{% comment %}theme-check-enable NestedSnippet{% endcomment %}

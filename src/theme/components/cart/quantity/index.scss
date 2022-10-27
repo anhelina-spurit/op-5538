@@ -1,0 +1,42 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+
+.quantity {
+  display: flex;
+  align-items: center;
+  margin: to-rem(15px) 0;
+  font-size: to-rem(14px);
+}
+
+.quantity--desktop {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.quantity--mobile {
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.quantity__viewfield {
+  margin: 0;
+}
+
+.quantity__button {
+  border: none;
+  font-size: to-rem(14px);
+}
+
+.quantity__button:first-child {
+  padding-right: to-rem(14px);
+}
+
+.quantity__button:last-child {
+  padding-left: to-rem(14px);
+}
+
+.quantity__button:hover {
+  border: none;
+}

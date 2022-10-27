@@ -1,0 +1,113 @@
+{% liquid
+  assign heading_id = section.id | append: '_heading'
+  capture section_content
+    echo '<div class="product-feature__column">'
+      echo '<div class="product-feature__row">'
+        echo '<blockquote class="product-feature__quote">' | append: section.settings.quote | append: '</blockquote>'
+        echo '<div class="product-feature__content">'
+            if section.settings.description != blank
+              echo '<div class="product-feature__info">'
+                echo '<p class="product-feature__percent">' | append: section.settings.percent | append: '%</p>'
+                echo '<p>' | append: section.settings.description | append: '</p>'
+                render 'el_image', src: section.settings.icon, lazy_loading: true, custom_classes: 'page-advantages__icon'
+              echo '</div>'
+            endif
+            echo '<p class="product-feature__description">' | append: section.settings.section_description | append: '</p>'
+        echo '</div>'
+      echo '</div>'
+      echo '<div class="product-feature__row">'
+          if section.settings.image != blank and section.settings.image_link != blank
+            echo '<a class="product-feature__link" href="' | append: section.settings.image_link.url | append: '">'
+          endif
+          if section.settings.image != blank
+            render 'el_shopify-image', image: section.settings.image, width: 660, height: 868, lazy_loading: true, format: 'pjpg'
+            else
+            render 'el_placeholder', name: 'collection-2'
+          endif
+          if section.settings.image != blank and section.settings.image_link != blank
+            echo '</a>'
+          endif
+      echo '</div>'
+    echo '</div>'
+  endcapture
+
+  capture content
+    render 'el_container', content: section_content, modifiers: 'xl,centered'
+  endcapture
+
+  assign name_modifiers = blank
+  if section.settings.pull_up
+    assign name_modifiers = name_modifiers | append: ' pull-up'
+  endif
+  render 'c_section', id: section.id, name: 'product-feature', content: content, heading_id: heading_id, name_modifiers: name_modifiers
+%}
+
+{% schema %}
+{
+  "name": "Product feature",
+  "settings": [
+      {
+        "type": "header",
+        "content": "General"
+      },
+      {
+        "id": "quote",
+        "type": "text",
+        "label": "Quote",
+        "default": "«Lorem Ipsum is simply dummy text of the printing and typesetting industry.»"
+      },
+      {
+        "id": "section_description",
+        "type": "textarea",
+        "label": "Description",
+        "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+      },
+      {
+        "type": "header",
+        "content": "Feature"
+      },
+      {
+        "id": "percent",
+        "type": "number",
+        "label": "Percent",
+        "default": 100
+      },
+      {
+        "id": "description",
+        "type": "textarea",
+        "label": "Description"
+      },
+      {
+        "id": "icon",
+        "type": "url",
+        "label": "Icon"
+      },
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "image_link",
+        "type": "url",
+        "label": "Image link"
+      },
+      {
+        "id": "pull_up",
+        "type": "checkbox",
+        "label": "Pull up section",
+        "default": true
+      }
+  ],
+  "presets": [
+    {
+      "name": "Product feature"
+    }
+  ]
+}
+{% endschema %}
+

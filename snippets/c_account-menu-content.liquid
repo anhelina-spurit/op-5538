@@ -1,0 +1,69 @@
+{% comment %}
+  @summary Renders account menu content
+  @param {Shopify.linklist} link_list - list of links
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_account-menu',
+    links: menu.links,
+    custom_classes: 'account__menu'
+  %}
+{% endcomment %}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'account-menu-content', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+{%- if link_list != blank -%}
+  {%- for link in link_list.links -%}
+    {%- if link.url contains '#' or template contains link.url -%}
+      {%- assign prepfix = '' -%}
+      {%- if link.url contains '#' -%}
+        {%- assign tmp = link.url | split: '#' -%}
+        {%- assign prefix = tmp[1] -%}
+      {% elsif link.url == '/account' %}
+        {% assign prefix = 'orders' %}
+      {%- endif -%}
+      {%- assign snippetName = 'c_' | append: prefix | strip -%}
+      {%- capture content -%}
+        {% case prefix %}
+          {% when 'orders' %} {% render 'c_orders', title: link.title %}
+          {% when 'refunds' %} {% render 'c_refunds', title: link.title %}
+          {% when 'points' %} {% render 'c_points', title: link.title %}
+          {% when 'personal-info' %} {% render 'c_personal-info', title: link.title %}
+          {% when 'family' %} {% render 'c_family', title: link.title %}
+          {% when 'subscriptions' %} {% render 'c_subscriptions', title: link.title %}
+        {% endcase %}
+      {%- endcapture -%}
+      <div class="{{ class }} {% if forloop.first != true %}account-menu-content_hidden{% endif %}"
+           {{ attributes }}
+           data-id="{{- prefix -}}"
+           aria-hidden="{% if forloop.first != true %}true{% else %}false{% endif %}"
+      >
+        {% unless content == blank or content contains "Liquid error" %}
+          {{ content }}
+        {% else %}
+          {{ 'account.navigation.content.not_found.label' | t }}
+        {% endunless %}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- capture content -%}
+    {% render 'c_order' %}
+  {%- endcapture -%}
+  <div class="{{ class }} account-menu-content_hidden" {{ attributes }}
+       data-id="order"
+       aria-hidden="true"
+  >
+    {% unless content == blank or content contains "1Liquid error" %}
+      {{ content }}
+    {% else %}
+      {{ 'account.navigation.content.not_found.label' | t }}
+    {% endunless %}
+  </div>
+{%- endif -%}

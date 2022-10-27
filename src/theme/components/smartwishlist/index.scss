@@ -1,0 +1,22 @@
+@import '../../constants/palette';
+
+.smartwishlist {
+  /* stylelint-disable-next-line declaration-no-important */
+  display: none !important;
+}
+
+.smartwishlist + .smartwishlist__icon {
+  color: $palette-white;
+}
+
+.smartwishlist--secondary + .smartwishlist__icon {
+  color: $palette-dark;
+}
+
+.smartwishlist.bookmarked + .smartwishlist__icon {
+  fill: $palette-white;
+}
+
+.smartwishlist--secondary.bookmarked + .smartwishlist__icon {
+  fill: $palette-dark;
+}

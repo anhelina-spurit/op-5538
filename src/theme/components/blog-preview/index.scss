@@ -1,0 +1,114 @@
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+
+.blog-preview__heading {
+  margin-top: 0;
+  margin-bottom: to-rem(64px);
+  font-size: to-rem(20px);
+  font-weight: 400;
+  letter-spacing: to-rem(3.2px);
+  line-height: 1.5;
+  text-align: center;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(32px);
+  }
+}
+
+.blog-preview__widget {
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media-breakpoint-down(lg) {
+    max-width: to-rem(872px);
+  }
+
+  @include media-breakpoint-down(md) {
+    max-width: to-rem(426px);
+  }
+}
+
+.blog-preview__wrapper {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.blog-preview__slider {
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(32px);
+  }
+}
+
+.blog-preview__card {
+  max-width: to-rem(426px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.blog-preview__media {
+  margin-bottom: to-rem(32px);
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(24px);
+  }
+}
+
+.blog-preview__scrollbar {
+  display: none;
+  height: auto;
+  padding: to-rem(8px) 0;
+  background-color: transparent;
+  cursor: grab;
+
+  @include media-breakpoint-down(lg) {
+    display: block;
+  }
+}
+
+.blog-preview__scrollbar::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: to-rem(1px);
+  margin-top: to-rem(-0.5px);
+  background-color: $palette-cornflower-blue;
+  content: '';
+}
+
+.blog-preview__scrollbar .swiper-scrollbar-drag {
+  height: to-rem(3px);
+  background-color: $palette-dark-slate-grey;
+  border-radius: 0;
+}
+
+.blog-preview .text-preview__heading {
+  margin-bottom: to-rem(20px);
+  font-size: to-rem(16px);
+  line-height: 1.2;
+
+  @include media-breakpoint-down(lg) {
+    font-size: to-rem(14px);
+    line-height: 1.7;
+  }
+}
+
+.blog-preview .text-preview__description {
+  margin-bottom: to-rem(20px);
+  font-size: to-rem(14px);
+  line-height: 1.7;
+}
+
+.blog-preview .text-preview__link {
+  display: inline-block;
+  font-size: to-rem(12px);
+  line-height: 1.2;
+
+  @include media-breakpoint-down(lg) {
+    font-size: to-rem(11px);
+  }
+}

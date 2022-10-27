@@ -1,0 +1,104 @@
+{%- assign heading_id = section.id | append: '_heading' -%}
+
+{%- capture content -%}
+  {%- render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'image-with-text-slider__heading' -%}
+
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {%- for block in section.blocks -%}
+        <div class="image-with-text-slider__item swiper-slide">
+          <div class="image-with-text-slider__content image-with-text-slider__text">
+            {%- render 'el_heading', level: 2, text: block.settings.heading, custom_classes: 'commitments-item__subheading' -%}
+            <div class="commitments-item__desc">
+              {{ block.settings.description | newline_to_br }}
+            </div>
+          </div>
+          <div class="image-with-text-slider__content">
+            {%- liquid
+              if block.settings.image != blank
+                render 'el_shopify-image', image: block.settings.image, lazy_loading: true, format: 'pjpg'
+              else
+                render 'el_placeholder', name: 'product-3'
+              endif
+            -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+    <ul class="collection-preview-slider__pagination" data-collection-pagination></ul>
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  capture section_content
+    render 'el_container', content: content, modifiers: 'xxl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'image-with-text-slider', content: section_content, heading_id: heading_id
+-%}
+
+<style>
+  #{{ section.id }} {
+    background: {{ section.settings.section_bg }};
+  }
+  @media screen and (min-width: 768px) {
+    #{{ section.id }} .image-with-text-slider__item {
+      background: {{ section.settings.slide_bg }};
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Image with text Slider",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "section_bg",
+      "type": "color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "id": "slide_bg",
+      "type": "color",
+      "label": "Slide background",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "id": "description",
+          "type": "textarea",
+          "label": "Description",
+          "default": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text Slider"
+    }
+  ]
+}
+{% endschema %}

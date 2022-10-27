@@ -1,0 +1,40 @@
+{%- comment -%}
+  @summary Renders pagination
+
+  @param {string} paginate - paginate
+  @param {string} [custom_classes] - additional classes
+
+  @example
+  {%-
+    render 'el_option',
+    paginate: paginate
+  -%}
+{%- endcomment -%}
+
+{%- if paginate.pages > 1 -%}
+  {%- if paginate.parts.size > 0 -%}
+    <nav class="{%- render 'f_bem-classes', main_class: 'pagination', custom_classes: custom_classes -%}"
+         role="navigation" aria-label="{{ 'pagination.label' | t }}">
+      <ul class="pagination__list" role="list">
+        {%- if paginate.previous -%}
+        <li class="pagination__prev">
+          {%- capture next -%}
+            {%- render 'el_icon', icon: 'arrow-chevron-right' -%}
+          {%- endcapture -%}
+          {%- assign aria_label = 'pagination.prev' | t -%}
+          {%- render 'el_link', href: paginate.previous.url, text: next, aria_label: aria_label -%}
+        </li>
+        {%- endif -%}
+        {%- if paginate.next -%}
+        <li class="pagination__next">
+          {%- capture next -%}
+            {%- render 'el_icon', icon: 'arrow-chevron-right' -%}
+          {%- endcapture -%}
+          {%- assign aria_label = 'pagination.next' | t -%}
+          {%- render 'el_link', href: paginate.next.url, text: next, aria_label: aria_label -%}
+        </li>
+        {%- endif -%}
+      </ul>
+    </nav>
+  {%- endif -%}
+{%- endif -%}

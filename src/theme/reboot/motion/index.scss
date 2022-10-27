@@ -1,0 +1,12 @@
+@import '../../utils/prefers-reduced-motion';
+
+@include prefers-reduced-motion {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important; // stylelint-disable-line declaration-no-important
+    animation-iteration-count: 1 !important; // stylelint-disable-line declaration-no-important
+    scroll-behavior: auto;
+    transition-duration: 0.001ms !important; // stylelint-disable-line declaration-no-important
+  }
+}

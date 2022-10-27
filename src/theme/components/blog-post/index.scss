@@ -1,0 +1,105 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../constants/fonts';
+
+.blog-post__container {
+  max-width: to-rem(1069px);
+  padding-top: to-rem(20px);
+  padding-bottom: to-rem(20px);
+}
+
+.blog-post__heading {
+  font-size: to-rem(20px);
+  font-weight: 400;
+  letter-spacing: to-rem(3.75px);
+  line-height: 1.45;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(lg) {
+    font-size: to-rem(12px);
+    letter-spacing: to-rem(2.25px);
+    text-align: center;
+  }
+}
+
+.blog-post__info {
+  display: flex;
+
+  @include media-breakpoint-down(lg) {
+    flex-direction: column;
+  }
+}
+
+.blog-post__content {
+  max-width: to-rem(600px);
+  order: 2;
+
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+  }
+}
+
+.blog-post__content p {
+  margin-top: 0;
+  margin-bottom: to-rem(10px);
+  color: $palette-dark;
+  font-size: to-rem(14px);
+  font-weight: 400;
+  letter-spacing: to-rem(0.6px);
+  line-height: 1.43;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(22px);
+    font-size: to-rem(10px);
+    letter-spacing: to-rem(1px);
+    line-height: 2.2;
+    text-align: center;
+  }
+}
+
+.blog-post__content a,
+.blog-post__content a:visited,
+.blog-post__content a:active {
+  color: $palette-dark;
+}
+
+.blog-post__content .heading:not(.blog-post__heading),
+.blog-post__content h2:not(.blog-post__heading),
+.blog-post__content h3,
+.blog-post__content h4 {
+  margin-top: 0;
+  margin-bottom: to-rem(32px);
+  font-family: $font-family-sweet-sans-pro;
+  font-size: to-rem(16px);
+  font-weight: 400;
+  letter-spacing: to-rem(3px);
+  line-height: 1.44;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(lg) {
+    font-size: to-rem(12px);
+    letter-spacing: to-rem(2.63px);
+    text-align: center;
+  }
+}
+
+.blog-post__media {
+  width: calc(100% - 600px);
+  order: 1;
+  padding-right: 30px;
+  padding-bottom: 30px;
+
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+    padding-right: 0;
+  }
+}
+
+.blog-post__author {
+  font-size: to-rem(12px);
+  @include media-breakpoint-down(lg) {
+    font-size: to-rem(10px);
+    text-align: center;
+  }
+}

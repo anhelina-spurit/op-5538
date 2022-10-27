@@ -1,0 +1,103 @@
+{%- capture text_content -%}
+  {%- render 'el_heading', level: 3, text: section.settings.content_heading, custom_classes: 'section-heading' -%}
+{%- endcapture -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+
+  capture section_content
+    render 'c_commitments-item-header', count: 5
+    render 'el_container', content: text_content, modifiers: 'xl'
+  endcapture
+
+  render 'c_section', id: 'commitments-item-5', content: section_content, name: 'commitments-item', heading_id: heading_id, custom_classes: 'commitments-item--bottom-pull'
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .section-heading {
+    font-size: {{- section.settings.heading_size -}}px;
+  }
+
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .section-heading {
+      font-size: {{- section.settings.heading_size | times: 0.888 | round: 0 -}}px;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .commitments-item__header {
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+    #shopify-section-{{ section.id }} .section-heading {
+      padding-bottom: {{ section.settings.h_padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Commitments Item 5",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading"
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "margin_bottom",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Header bottom offset",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "content_heading",
+      "type": "text",
+      "label": "Content heading"
+    },
+    {
+      "id": "heading_size",
+      "type": "range",
+      "min": 14,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading font size",
+      "default": 16
+    },
+    {
+      "id": "h_padding_bottom",
+      "type": "range",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Heading bottom padding",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

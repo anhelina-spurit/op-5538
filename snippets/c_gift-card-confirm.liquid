@@ -1,0 +1,53 @@
+{% capture modal %}
+	<div class="gift-card-confirm__container">
+		<div class="gift-card-confirm__row">
+			<div class="gift-card-confirm__image">
+				{%-
+					render 'el_image',
+					src: settings.gift_card_confirm_image,
+					alt: ''
+					lazy_loading: true,
+					lazy_loading_src_enabled: true,
+				-%}
+			</div>
+			<div class="gift-card-confirm__text">
+        {%- assign gift_card_name = 'gift_cards.modal.name'| t -%}
+        {%- assign send_email = 'gift_cards.modal.send_email'| t -%}
+				<p data-gift-card-name> {{ gift_card_name }}</p>
+				<p>{{ send_email }}</p>
+				<p ><span data-gift-card-sum>100,00</span> €</p>
+			</div>
+		</div>
+    {%- assign button_label = 'gift_cards.modal.buttons.complete_order'| t -%}
+		{%-
+			render 'el_button',
+			text: button_label,
+			custom_classes: 'gift-card-confirm__button',
+			modifiers: 'secondary, small',
+			type: 'button',
+		-%}
+    {%- assign button_label = 'gift_cards.modal.buttons.buy_new_card'| t -%}
+		{%-
+			render 'el_link',
+			href: settings.buy_new_card_link,
+			text: button_label,
+			custom_classes: 'gift-card-confirm__link',
+		-%}
+    {%- assign button_label = 'gift_cards.modal.buttons.continue_shopping'| t -%}
+		{%-
+			render 'el_link',
+			href: settings.continue_link,
+			text: button_label,
+			custom_classes: 'gift-card-confirm__link',
+		-%}
+	</div>
+{% endcapture %}
+{%- assign modal_title = 'gift_cards.modal.title_e_card'|t -%}
+{%
+	render 'c_modal',
+	id: 'gift-card-modal',
+	heading: modal_title,
+	outer_close: false,
+	content: modal,
+	custom_classes: 'gift-card-confirm'
+%}

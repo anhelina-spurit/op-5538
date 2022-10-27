@@ -1,0 +1,14 @@
+<div class="login__block login__block--social-sign-in">
+  <div class="login__block-header">
+    {%- liquid
+      assign sign_in_title = 'customer.login_oxi_socials.title' | t
+      render 'el_heading', level: 2, text: sign_in_title, custom_classes: 'login__block-title', modifiers: 'xxs'
+
+      if description != blank
+        echo '<p class="login__block-description">' | append: description | remove: '<p>' | remove: '</p>' | append: '</p>'
+      endif
+    -%}
+    <div class="login__block-notice">{{ 'customer.login.notice' | t }}</div>
+  </div>
+  <div class="login__socials-widget oxi-social-login"></div>
+</div>

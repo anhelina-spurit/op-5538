@@ -1,12 +1,30 @@
 {
   "sections": {
-    "main": {
-      "type": "main-404",
+    "banner": {
+      "type": "banner",
       "settings": {
+        "image_ratio": 20,
+        "alignment": "center",
+        "heading_text": "404",
+        "heading_level": "1",
+        "heading_color": "#324d57",
+        "description": "<p>La page que vous demandez n’existe pas ou n’est plus accessible<\/p>",
+        "description_color": "#324d57",
+        "button_text": "Continuer",
+        "button_url": "\/",
+        "button_background": "#324d57",
+        "button_background_hover": "#ffffff",
+        "button_color": "#ffffff",
+        "button_color_hover": "#324d57"
       }
+    },
+    "nosto-recommendations": {
+      "type": "nosto-recommendations",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "banner",
+    "nosto-recommendations"
   ]
 }

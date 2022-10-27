@@ -1,0 +1,79 @@
+{% liquid
+  capture modal_content
+    echo '<div class="newsletter-modal__media">'
+    unless section.settings.image == blank
+      render 'el_shopify-image', image: section.settings.image, lazy_loading: true, custom_classes: 'newsletter-modal__image'
+    endunless
+    unless section.settings.logo == blank
+      render 'el_image', src: section.settings.logo, lazy_loading: true, custom_classes: 'newsletter-modal__logo'
+    endunless
+    echo '</div>'
+    echo '<div class="newsletter-modal__content">'
+    unless section.settings.heading == modal
+      render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'newsletter-modal__heading'
+    endunless
+    unless section.settings.description == blank
+      echo '<div class="newsletter-modal__description">'
+      echo section.settings.description
+      echo '</div>'
+    endunless
+    render 'c_newsletter-form-oz', type: 'modal'
+    unless section.settings.legal_notes == blank
+      echo '<div class="newsletter-modal__legal-notes">'
+      echo section.settings.legal_notes
+      echo '</div>'
+    endunless
+    echo '</div>'
+  endcapture
+
+  capture section_content
+    assign dataDelay = 'data-delay='| append: section.settings.delay
+    render 'c_modal', id: 'newsletter-modal__modal', content: modal_content, custom_classes: 'newsletter-modal__modal',attributes: dataDelay
+  endcapture
+
+  render 'c_section', id: section.id, name: 'newsletter-modal', content: section_content, tag: 'div'
+%}
+
+{% schema %}
+{
+  "name": "Newsletter modal",
+  "settings": [
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "s",
+      "label": "Delay (in seconds)",
+      "default": 30
+    },
+    {
+      "id": "logo",
+      "type": "text",
+      "label": "Logo url"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "Description"
+    },
+    {
+      "id": "legal_notes",
+      "type": "richtext",
+      "label": "Legal notes"
+    }
+  ]
+}
+{% endschema %}

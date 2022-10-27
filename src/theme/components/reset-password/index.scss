@@ -1,0 +1,101 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../utils/visually-hidden';
+@import '../../constants/transitions';
+
+.reset-password {
+  padding-top: to-rem(34px);
+  padding-bottom: to-rem(40px);
+}
+
+.reset-password__form {
+  max-width: to-rem(440px);
+  margin: auto;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: to-rem(20px);
+  }
+}
+
+.reset-password__heading {
+  margin-top: 0;
+  margin-bottom: to-rem(12px);
+  color: $palette-pickled-bluewood;
+  font-size: to-rem(12px);
+  font-weight: 400;
+  letter-spacing: to-rem(1.64px);
+  line-height: 2;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(lg) {
+    max-width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: to-rem(12px);
+    line-height: 1.375;
+    text-align: center;
+  }
+}
+
+.reset-password__subtext {
+  display: inline-block;
+  max-width: to-rem(267px);
+  margin: 0 0 to-rem(12px);
+  color: $palette-pickled-bluewood;
+  font-size: to-rem(12px);
+  font-weight: 300;
+  letter-spacing: to-rem(1px);
+  line-height: 1.67;
+
+  @include media-breakpoint-down(sm) {
+    letter-spacing: to-rem(0.4px);
+  }
+}
+
+.reset-password__control {
+  margin-bottom: to-rem(28px);
+}
+
+.reset-password__row {
+  position: relative;
+}
+
+.reset-password__input {
+  width: 100%;
+}
+
+.reset-password .input--outlined {
+  padding: 0 0 to-rem(4px);
+  border-color: $palette-pickled-bluewood;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(1px);
+  line-height: 1.5;
+}
+
+.reset-password__label {
+  color: $palette-pickled-bluewood;
+  font-size: to-rem(12px);
+}
+
+.reset-password__label.label--float {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  transition: top $transition-duration-fastest;
+}
+
+.reset-password .input--outlined:focus ~ .input-label,
+.reset-password .input--outlined:-webkit-autofill ~ .input-label,
+.reset-password .input--outlined:not(:focus):not(:placeholder-shown):valid ~ .input-label {
+  @include visually-hidden;
+}
+
+.reset-password__button {
+  min-width: to-rem(180px);
+  padding: to-rem(9px) to-rem(16px);
+
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+  }
+}

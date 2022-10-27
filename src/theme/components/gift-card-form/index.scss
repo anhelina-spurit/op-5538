@@ -1,0 +1,155 @@
+@import '../../utils/to-rem';
+@import '../../constants/fonts';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.gift-card-form {
+  max-width: to-rem(567px);
+  padding-top: to-rem(63px);
+  padding-bottom: to-rem(70px);
+  margin: 0 auto;
+  color: $palette-dark-slate-grey;
+}
+
+.gift-card-form__icon {
+  margin-bottom: to-rem(18px);
+}
+
+.gift-card-form__heading {
+  margin: 0 0 to-rem(17px);
+  font-family: $font-family-lora;
+  font-size: to-rem(20px);
+  font-style: italic;
+  letter-spacing: to-rem(1.25px);
+  line-height: to-rem(26px);
+  text-transform: initial;
+}
+
+.gift-card-form__description {
+  margin: 0 0 to-rem(28px) 0;
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(0.6px);
+  line-height: to-rem(26px);
+}
+
+.gift-card-form__field {
+  position: relative;
+}
+
+.gift-card-form__field + .gift-card-form__field {
+  margin-top: to-rem(33px);
+}
+
+// Hide input [type="number"] arrows in Chrome, Safari, Edge and Opera
+.gift-card-form__input[type='number']::-webkit-outer-spin-button,
+.gift-card-form__input[type='number']::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+// Hide input [type="number"] input arrows in Firefox
+.gift-card-form__input[type='number'] {
+  appearance: textfield;
+}
+
+.gift-card-form__input--date {
+  display: flex;
+  min-width: to-rem(252px);
+  padding: to-rem(10px) to-rem(12px);
+  border-width: to-rem(1px);
+  border-color: $palette-dark-slate-grey;
+  margin-top: to-rem(14px);
+  line-height: to-rem(22px);
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+.gift-card-form__input--date::-webkit-calendar-picker-indicator {
+  width: to-rem(22px);
+  height: to-rem(22px);
+  padding: 0;
+  background-image: url('https://cdn.shopify.com/s/files/1/0565/1546/1256/files/calendar.svg?v=1653396415');
+}
+
+.gift-card-form__label {
+  letter-spacing: to-rem(0.6px);
+  line-height: to-rem(18px);
+}
+
+.gift-card-form__label.input-label.label--float {
+  line-height: to-rem(45px);
+}
+
+.gift-card-form__label b {
+  font-weight: 500;
+}
+
+.gift-card-form__textarea {
+  padding: to-rem(22px) to-rem(20px);
+  margin-top: to-rem(14px);
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.72px);
+  line-height: to-rem(15px);
+  resize: none;
+}
+
+.gift-card-form__textarea::placeholder {
+  font-family: $font-family-lora;
+  font-style: italic;
+}
+
+.gift-card-form__radio-group {
+  display: flex;
+
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+}
+
+.gift-card-form__radio-description {
+  width: 100%;
+  margin: 0 0 to-rem(20px) 0;
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.6px);
+  line-height: to-rem(18px);
+}
+
+.gift-card-form__radio-description small {
+  display: inline-block;
+  margin-left: to-rem(16px);
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(0.5px);
+}
+
+.gift-card-form__radio-container {
+  min-width: to-rem(81px);
+
+  @include media-breakpoint-down(md) {
+    min-width: unset;
+  }
+}
+
+.gift-card-form__radio-container:not(:last-child) {
+  margin-right: to-rem(26px);
+
+  @include media-breakpoint-down(md) {
+    margin-right: unset;
+  }
+}
+
+.gift-card-form__radio-container .radio__label::before {
+  top: to-rem(6px);
+}
+
+.gift-card-form__radio-container .radio__label::after {
+  top: to-rem(8px);
+  background-color: currentColor;
+}
+
+.gift-card-form__select {
+  width: 100%;
+  padding: 1px 2px;
+}

@@ -1,0 +1,31 @@
+{%- comment -%}
+    @summary Renders a picture element
+
+    @param {string} sources - sources
+    @param {string} image - default image
+    @param {string} [custom_classes] - class for picture element
+    @param {string} [attributes] - additional HTML attributes
+    @param {string} [modifiers] - modifiers 'xl', 'lg'
+
+    @example
+    {%-
+        render 'el_picture',
+        sources: sources,
+        image: image
+    -%}
+{%- endcomment -%}
+
+{%- liquid
+  unless sources == blank and image == blank
+    capture classes
+      render 'f_bem-classes', main_class: 'image', custom_classes: custom_classes, modifiers: modifiers
+    endcapture
+
+    echo '<picture class="' | append: classes | append: '" ' | append: attributes | append: '>'
+    echo sources
+    echo image
+    echo '</picture>'
+  endunless
+-%}
+
+

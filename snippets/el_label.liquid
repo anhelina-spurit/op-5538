@@ -1,0 +1,32 @@
+{%- comment -%}
+  @summary Renders a label
+
+  @param {string} for_input - control id
+  @param {string} content - content
+  @param {boolean} [required] - required
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+      render 'el_label',
+      for_input: 'username',
+      content: 'Username',
+      required: false,
+      custom_classes: 'control__label',
+      attributes: 'data-custom-label',
+      modifiers: 'lg, light'
+  -%}
+{%- endcomment -%}
+
+<label
+  class="{%- render 'f_bem-classes', main_class: 'label', custom_classes: custom_classes, modifiers: modifiers -%}"
+  for="{{ for_input }}"
+  {{ attributes }}
+>
+  {{- content -}}
+  {%- if required == true -%}
+      <span class="label__require" aria-hidden="true">*</span>
+  {%- endif -%}
+</label>

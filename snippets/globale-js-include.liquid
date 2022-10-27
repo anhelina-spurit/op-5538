@@ -1,0 +1,44 @@
+{% if shop.permanent_domain contains "cyrillus-global-e.myshopify.com" %}
+  {% if customer.id  %}
+   <input type="hidden" name="customer_id" id="customer_id" value="{{ customer.id }}_{{ customer.id | append: "!#Gl0b@lE-$3cr3t!)%1#" | sha1 }}" />
+  {% endif %}
+  <script id="globaleScript">
+    (function () {
+     var s = document.createElement('script');
+     s.type = 'text/javascript';
+     s.async = true;
+     s.src = '//intgepi.bglobale.com/includes/js/1146';
+     document.getElementsByTagName('head')[0].appendChild(s);
+     })();
+  </script>
+
+  {% if request.path == '/account' %}
+    {% include 'globale-orders-list' %}
+  {%- elsif request.path contains 'account/orders' -%}
+    {% include 'globale-order' %}
+  {%- endif -%}
+
+{% endif %}
+
+{% if shop.permanent_domain contains "cyrillus-the-oz.myshopify.com" %}
+  {% if customer.id  %}
+   <input type="hidden" name="customer_id" id="customer_id" value="{{ customer.id }}_{{ customer.id | append: "!#Gl0b@lE-$3cr3t!)%1#" | sha1 }}" />
+  {% endif %}
+  <script id="globaleScript">
+    (function () {
+     var s = document.createElement('script');
+     s.type = 'text/javascript';
+     s.async = true;
+     s.src = '//gepi.global-e.com/includes/js/1146';
+     document.getElementsByTagName('head')[0].appendChild(s);
+     })();
+  </script>
+
+  {% if request.path == '/account' %}
+    {% include 'globale-orders-list' %}
+  {%- elsif request.path contains 'account/orders' -%}
+    {% include 'globale-order' %}
+  {%- endif -%}
+
+{% endif %}
+

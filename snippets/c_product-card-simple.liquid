@@ -1,0 +1,109 @@
+{%- comment -%}
+  @summary Renders a product card simple
+
+  @param {string} id - id
+  @param {object} product - product
+  @param {string} [custom_classes] - custom_classes
+  @param {string[]('page')} [modifiers] - modifiers
+  @param {string} [attributes] - attributes
+
+  @example
+  {%-
+    render 'c_product-card-simple',
+    id: 'product_id',
+    product: product
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'product-card product-card--simple', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+  assign custom_related_product_swatches_enabled = settings.enable_custom_related_products_swatches
+  capture title
+    render 'f_product-title', product: product
+  endcapture
+  assign subcollection = product.metafields.global.product_label.value
+  assign size_label = 'size,taille,größe,tamanho,tamaño,koko,サイズ' | split: ','
+  assign color_label = 'color,colour,couleur,colore,farbe,색,色,färg,farve' | split: ','
+  assign selected_product = product.selected_or_first_available_variant
+  unless selected_product.price > 0
+    for variant in product.variants 
+      if variant.available and variant.price > 0
+        assign selected_product = variant
+      endif
+    endfor
+  endunless
+  assign price = selected_product.price
+  assign compare_at_price = selected_product.compare_at_price
+  assign hover_image = product.media[1]
+-%}
+
+{%- if product.id != blank -%}
+  {% assign product_id_simple = product.id | append: '_simple' %}
+  <div id="{{ id }}" class="{{ class }}" data-product-card data-product-card-handle="card-simple" data-vp-handle="{{ product.handle }}" {{ attributes }}>
+      {%- if product.template_suffix != 'bundle' -%}
+        {%- form 'product', product, class: 'product-card__form', data-product-card-form: '' -%}
+          <input type="hidden" name="id" value={{ selected_product.id }} data-product-card-variant-id>
+          <script data-product-json>
+            {{ product.variants | json }}
+          </script>
+          {% liquid
+            echo '<div class="product-card__options product-card__options--color">'
+            if custom_related_product_swatches_enabled
+              assign is_options = true
+              render 'oz-related-products-swatches', current_product: product
+            endif
+            echo '</div>'
+            echo '<div class="product-card__options product-card__options--size">'
+            for product_option in product.options_with_values
+              assign option_name_downcase = product_option.name | downcase
+              if size_label contains option_name_downcase
+                assign is_options = true
+                echo '<div class="product-card__options product-card__options--size">'
+                for value in product_option.values
+                  assign id = selected_product.id | append: '_' | append: 'size_' | append: value | append: '_' | append: forloop.index | append: '_simple'
+                  assign name = selected_product.id | append: '_' | append: option_name_downcase | append: '_simple'
+                  render 'el_radio', input_id: id, input_attributes: 'data-product-card-option', name: name, value: value, checked: false, label: value
+                endfor
+                echo '</div>'
+              endif
+            endfor
+            echo '</div>'
+          %}
+          {% capture icon_close  %}
+            {%- render 'el_icon', icon: 'close', custom_classes: '' -%}
+          {% endcapture %}
+         {% render 'el_button', text: icon_close, custom_classes: 'product-card__close', attributes: 'data-product-card-close', modifiers: 'link', type: 'button' %}
+        {% endform %}
+      {%- endif -%}
+
+    {%- liquid
+      capture link
+        render 'el_link', custom_classes: 'product-card__link', href: product.url, text: title
+      endcapture
+      echo '<div class="product-card__info">'
+      if subcollection
+        echo '<span class="product-card__subtitle">' | append: subcollection | append: '</span>'
+      endif
+      render 'el_heading', custom_classes: 'product-card__title', tag: 'div', level: 3, text: link
+      echo '<div class="product-card__price-wrap">'
+        render 'c_product-label-discount', tag: 'p', price: price, compare_at_price: compare_at_price, product_tags: product.tags
+      if product.template_suffix == 'bundle'
+        render 'c_bundle-price', product: product
+      else
+        render 'c_price', custom_classes: 'product-card__price vp-original-prices', price: price, compare_at_price: compare_at_price, no_discount: true, product_tags: product.tags
+      endif
+      echo '</div>'
+      if is_options
+        echo '<div class="product-card__controls">'
+          assign product_card_button = 'cart.add_to_cart' | t
+          render 'el_button', text: product_card_button, custom_classes: 'product-card__button vp-original-prices', attributes: 'data-product-card-button', modifiers: 'primary, xs', type: 'button'
+          assign product_detail_text = 'products.product.see_detail' | t
+          render 'el_link', href: product.url, text: product_detail_text, custom_classes: 'product-card__button button button--outline button--xs'
+        echo '</div>'
+      endif
+      echo '</div>'
+    -%}
+  </div>
+{%- endif -%}

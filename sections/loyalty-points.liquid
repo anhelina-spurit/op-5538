@@ -1,0 +1,93 @@
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+  assign conditions = section.blocks | where: "type", "conditions"
+  assign advantages = section.blocks | where: "type", "advantages"
+
+  capture container_content
+    render 'el_heading', level: 2, id: heading_id, text: section.settings.heading_text, custom_classes: 'loyalty-points__heading', modifiers: 'md'
+    echo '<ul class="loyalty-points__list loyalty-points__list--conditions">'
+      for condition in conditions
+       echo '<li class="loyalty-points__item">'
+        render 'el_heading', level: 3, text: condition.settings.title
+        echo '<p>' | append: condition.settings.description | append: '</p>'
+       echo '</li>'
+      endfor
+    echo '</ul>'
+
+    echo '<ul class="loyalty-points__list loyalty-points__list--advantages">'
+      for advantage in advantages
+       echo '<li class="loyalty-points__item">'
+        render 'c_loyalty-card', icon: advantage.settings.icon, title: advantage.settings.title, content: advantage.settings.description, modifiers: 'secondary'
+       echo '</li>'
+      endfor
+    echo '</ul>'
+
+    capture link_href
+      echo routes.account_url | append: '#points'
+    endcapture
+
+    render 'el_link', href: link_href, text: section.settings.link_text, custom_classes: 'button button--secondary loyalty-points__link'
+  endcapture
+
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xl'
+  endcapture
+  render 'c_section', id: section.settings.id, name: 'loyalty-points', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Loyalty points",
+  "settings": [
+     {
+      "id": "link_text",
+      "type": "text",
+      "label": "Link text"
+     }
+  ],
+  "blocks": [
+   {
+     "name": "Conditions",
+     "type": "conditions",
+     "settings": [
+       {
+         "type": "text",
+         "id": "title",
+         "label": "Title"
+       },
+       {
+         "type": "textarea",
+         "id": "description",
+         "label": "Description"
+       }
+     ]
+   },
+   {
+     "name": "Advantages",
+     "type": "advantages",
+     "settings": [
+        {
+         "type": "url",
+         "id": "icon",
+         "label": "Icon"
+       },
+       {
+         "type": "text",
+         "id": "title",
+         "label": "Title"
+       },
+       {
+         "type": "textarea",
+         "id": "description",
+         "label": "Description"
+       }
+     ]
+   }
+  ],
+  "presets": [
+    {
+      "name": "Loyalty points"
+    }
+  ]
+}
+{% endschema %}

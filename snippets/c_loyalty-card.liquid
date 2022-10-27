@@ -1,0 +1,49 @@
+{% comment %}
+  @summary Renders loyalty card
+
+  @param {string} id - id
+  @param {string} title - title text
+  @param {boolean} [is_opened=false] - is accordion item opened
+  @param {string} [title_id] - title id
+  @param {string='div'} [title_tag] - title tag
+  @param {string} content - content
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_loyalty-card',
+    title: link.title,
+    content: accordion_content
+  %}
+{% endcomment %}
+
+
+
+
+{%- liquid
+  assign tag = title_tag | default: 'div'
+  capture class
+    render 'f_bem-classes', main_class: 'loyalty-card', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+{%- unless icon == blank and title == blank and content == blank -%}
+  <{{ tag }} id="{{ id }}" class="{{ class }}" {{ attributes }}>
+    <div class="loyalty-card__media">
+      {%-
+        render 'el_image',
+        src: icon,
+        lazy_loading: true,
+        custom_classes: ''
+      -%}
+    </div>
+    {%- render 'el_heading', level: 3, text: title, custom_classes: 'loyalty-card__title' -%}
+    <p class="loyalty-card__content">{{- content -}}</p>
+  </{{ tag }}>
+   
+{%- endunless -%}
+    
+
+    

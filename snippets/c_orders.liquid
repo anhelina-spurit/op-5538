@@ -1,0 +1,45 @@
+{% comment %}
+  @summary Render customer orders information
+  @param {string} title - title
+
+  @example
+  {%
+    render 'c_orders',
+    title: 'Orders'
+  %}
+{% endcomment %}
+
+{%- liquid
+  unless title
+    assign title = 'orders.title' | t
+  endunless
+-%}
+
+{%- if customer -%}
+  {% paginate customer.orders by 10 %}
+    <div class="orders">
+      {% render "el_account-content-heading",
+        title: title,
+        custom_classes_title: 'account-content-heading__title_offset'
+      %}
+
+      {%- if customer.orders.size > 0 -%}
+        <div class="orders__content">
+          <div class="orders__content-wrapper">
+            <div class="orders_hidden-mobile">
+              {% render "el_orders-table", customer_orders: customer.orders %}
+            </div>
+            <div class="orders_hidden-desktop">
+              {% render "el_orders-list", customer_orders: customer.orders %}
+            </div>
+            {% render 'el_pagination', paginate: paginate %}
+          </div>
+        </div>
+      {%- else -%}
+        <div class="orders__content">
+          <span class="orders__empty">{{- 'orders.empty' | t -}}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  {% endpaginate %}
+{%- endif -%}

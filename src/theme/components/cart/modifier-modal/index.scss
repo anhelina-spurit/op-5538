@@ -1,0 +1,6 @@
+@import '../../../utils/to-rem';
+
+.cart-modifier__modal .modal__container {
+  width: 100%;
+  max-width: to-rem(900px);
+}

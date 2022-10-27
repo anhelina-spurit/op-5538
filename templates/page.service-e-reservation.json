@@ -1,0 +1,60 @@
+{
+  "sections": {
+    "16581523703c1006bc": {
+      "type": "page-header",
+      "settings": {
+      }
+    },
+    "page-content": {
+      "type": "page-content",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "16581518494cae22ff": {
+      "type": "interleaved-list",
+      "blocks": {
+        "586ec057-ea5b-4030-a4cc-9014e7eaed9d": {
+          "type": "block",
+          "settings": {
+            "title": "1 - Je choisis mon article sur cyrillus.fr",
+            "description": "Je sélectionne le coloris et la taille de mon article coup de coeur puis je clique sur le bouton réserver en boutique.",
+            "additional_description": ""
+          }
+        },
+        "8a373d57-68b9-4334-8231-8a22a36feceb": {
+          "type": "block",
+          "settings": {
+            "title": "2 - Je réserve en boutique",
+            "description": "En 2h, la boutique vous confirme la disponibilité de votre article qui sera mis de côté.",
+            "additional_description": ""
+          }
+        },
+        "285585f6-2bd3-4d70-896e-feeb34a9ca62": {
+          "type": "block",
+          "settings": {
+            "title": "3 - J'essaye mon article",
+            "description": "J'ai 2 jours pour venir l'essayer et l'acheter s'il me convient.",
+            "additional_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "586ec057-ea5b-4030-a4cc-9014e7eaed9d",
+        "8a373d57-68b9-4334-8231-8a22a36feceb",
+        "285585f6-2bd3-4d70-896e-feeb34a9ca62"
+      ],
+      "settings": {
+        "heading": "<span style=\"text-transform: uppercase;\">R<\/span><span style=\"text-transform: lowercase;\">éservez en ligne, essayez en boutique !<\/span>",
+        "left_column_description": "",
+        "right_column_description_1": "",
+        "right_column_description_2": ""
+      }
+    }
+  },
+  "order": [
+    "16581523703c1006bc",
+    "page-content",
+    "16581518494cae22ff"
+  ]
+}

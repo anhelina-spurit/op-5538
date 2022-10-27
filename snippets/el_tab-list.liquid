@@ -1,0 +1,31 @@
+{%- comment -%}
+  @summary Renders a tab list
+
+  @param {string} content - content
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'el_tab-list',
+    content: '<button role="tab">Tab</button>',
+    custom_classes: 'product__tablist',
+    attributes: 'data-custom',
+    modifiers: 'lg, light',
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'tabs', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+<div
+  {% if id != blank %}id="{{ id }}"{% endif %}
+  class="{{ class }}"
+  {{ attributes }}
+>
+  <div class="tabs__list" role="tablist">{{ content }}</div>
+</div>

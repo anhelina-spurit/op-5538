@@ -1,0 +1,248 @@
+{
+  "sections": {
+    "section": {
+      "type": "empty",
+      "settings": {
+      }
+    },
+    "1659706435b9b0ac79": {
+      "type": "themes",
+      "blocks": {
+        "7b86ece4-a869-415f-96b9-35b7feb15488": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/category-mobile-FE_d6ee1474-a1d1-40bd-a533-e4ab4482ef01.png",
+            "url_image": "",
+            "heading": "Looks Femme",
+            "image_1": "shopify:\/\/shop_images\/Push-layers-BAF_FE.jpg",
+            "url_image_1": "",
+            "image_2": "shopify:\/\/shop_images\/Push-layers-NEW-CO_FE.jpg",
+            "url_image_2": "",
+            "content": ""
+          }
+        },
+        "2af944e0-5645-4cbd-88cf-324d639989de": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/category-mobile-HO_82da4b3e-d4c9-4010-8fb5-dce59920b39b.png",
+            "url_image": "",
+            "heading": "Looks Homme",
+            "image_1": "shopify:\/\/shop_images\/Push-layers-BAF_HO.jpg",
+            "url_image_1": "",
+            "image_2": "shopify:\/\/shop_images\/Push-layers-NEW-CO_HO.jpg",
+            "url_image_2": "",
+            "content": ""
+          }
+        },
+        "9e0217b9-10c2-4b24-a213-f2cd261529b0": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/category-mobile-FI.png",
+            "url_image": "",
+            "heading": "Looks Fille",
+            "image_1": "shopify:\/\/shop_images\/Push-layers-BAF_FI.jpg",
+            "url_image_1": "",
+            "image_2": "shopify:\/\/shop_images\/Push-layers-NEW-CO_FI.jpg",
+            "url_image_2": "",
+            "content": ""
+          }
+        },
+        "705329f6-c9bb-4047-a295-f1845acb52cf": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/category-mobile-GA.png",
+            "url_image": "",
+            "heading": "Looks Garçon",
+            "image_1": "shopify:\/\/shop_images\/Push-layers-BAF_GA.jpg",
+            "url_image_1": "",
+            "image_2": "shopify:\/\/shop_images\/Push-layers-NEW-CO_GA.jpg",
+            "url_image_2": "",
+            "content": ""
+          }
+        },
+        "b1f2e0de-bc0c-49cb-b433-b843b6c9f953": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/category-mobile-BB.png",
+            "url_image": "",
+            "heading": "Looks Bébé",
+            "image_1": "shopify:\/\/shop_images\/Push-layers-BAF_BB.jpg",
+            "url_image_1": "",
+            "image_2": "shopify:\/\/shop_images\/Push-layers-NEW-CO_BB.jpg",
+            "url_image_2": "",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "7b86ece4-a869-415f-96b9-35b7feb15488",
+        "2af944e0-5645-4cbd-88cf-324d639989de",
+        "9e0217b9-10c2-4b24-a213-f2cd261529b0",
+        "705329f6-c9bb-4047-a295-f1845acb52cf",
+        "b1f2e0de-bc0c-49cb-b433-b843b6c9f953"
+      ],
+      "settings": {
+        "heading": "Découvrez nos thèmes de collection",
+        "modile_view": "images"
+      }
+    },
+    "1657725971af259edb": {
+      "type": "banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/BANNER-NEWCO-FR.jpg",
+        "image_ratio": 22,
+        "alignment": "left",
+        "heading_text": "",
+        "heading_level": "1",
+        "heading_color": "#000000",
+        "description": "",
+        "description_color": "#000000",
+        "button_text": "",
+        "button_url": "",
+        "button_background": "#000000",
+        "button_background_hover": "#ffffff",
+        "button_color": "#ffffff",
+        "button_color_hover": "#000000"
+      }
+    },
+    "16577259870aa894aa": {
+      "type": "advantages",
+      "disabled": true,
+      "blocks": {
+        "1657725987b55b8180-0": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Femme",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FEMME&sort_by=best-selling"
+          }
+        },
+        "1657725987b55b8180-1": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Homme",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=HOMME&sort_by=best-selling"
+          }
+        },
+        "1657725987b55b8180-2": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Fille",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FILLE&sort_by=best-selling"
+          }
+        },
+        "1657725987b55b8180-3": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Garçon",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=GARCON&sort_by=best-selling"
+          }
+        },
+        "1657725987b55b8180-4": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Bébé",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=BEBE&sort_by=best-selling"
+          }
+        },
+        "1657725987b55b8180-5": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Maison",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=MAISON&sort_by=best-selling"
+          }
+        }
+      },
+      "block_order": [
+        "1657725987b55b8180-0",
+        "1657725987b55b8180-1",
+        "1657725987b55b8180-2",
+        "1657725987b55b8180-3",
+        "1657725987b55b8180-4",
+        "1657725987b55b8180-5"
+      ],
+      "settings": {
+        "heading": "Advantages",
+        "is_heading_visible": false
+      }
+    },
+    "164882170123666d2a": {
+      "type": "collection-template",
+      "settings": {
+        "has_filter": true
+      }
+    },
+    "1659706172a3a1c73d": {
+      "type": "collection-trends",
+      "settings": {
+        "sub_image": "shopify:\/\/shop_images\/Push-layers-NEW-CO_FE.jpg",
+        "sub_heading": "",
+        "heading": "Lorem Ipsum is simply dummy text",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "link_text": "",
+        "link": "",
+        "image": "shopify:\/\/shop_images\/HP_NEWCO_discover_push-2_10bb0dd2-0c99-41b4-88eb-aab79f6cfc8c.jpg"
+      }
+    },
+    "1659706312f8cb395b": {
+      "type": "collections-preview",
+      "blocks": {
+        "d34b8d8a-e9b0-42f0-ba41-519bc98c3633": {
+          "type": "collection",
+          "settings": {
+            "heading": "titre",
+            "image_1": "shopify:\/\/shop_images\/HP_NEWCO_discover_push-2_10bb0dd2-0c99-41b4-88eb-aab79f6cfc8c.jpg",
+            "url_image_1": "",
+            "product_1_1": "",
+            "product_1_2": "",
+            "product_1_3": "",
+            "product_1_4": "",
+            "product_1_5": "",
+            "url_image_2": "",
+            "product_2_1": "",
+            "product_2_2": "",
+            "product_2_3": "",
+            "product_2_4": "",
+            "product_2_5": "",
+            "url_image_3": "",
+            "product_3_1": "",
+            "product_3_2": "",
+            "product_3_3": "",
+            "product_3_4": "",
+            "product_3_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "d34b8d8a-e9b0-42f0-ba41-519bc98c3633"
+      ],
+      "settings": {
+        "heading": "Nos collections"
+      }
+    },
+    "1659706395168dd0a3": {
+      "type": "page-hero-collection",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Main-Slider_HP_NEW-CO_FR-correc.jpg",
+        "sub_image": "",
+        "color": "#324d57",
+        "long": true
+      }
+    }
+  },
+  "order": [
+    "section",
+    "1659706435b9b0ac79",
+    "1657725971af259edb",
+    "16577259870aa894aa",
+    "164882170123666d2a",
+    "1659706172a3a1c73d",
+    "1659706312f8cb395b",
+    "1659706395168dd0a3"
+  ]
+}

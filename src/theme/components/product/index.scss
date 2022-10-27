@@ -1,0 +1,73 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.product {
+  margin-bottom: to-rem(84px);
+}
+
+.product__grid {
+  @include media-breakpoint-up(lg) {
+    display: grid;
+    grid-gap: to-rem(110px);
+    grid-template-columns: 0.9fr 1fr;
+  }
+}
+
+.product__column {
+  min-width: 0;
+}
+
+.product__column--info {
+  max-width: to-rem(490px);
+  padding-bottom: 0;
+
+  @include media-breakpoint-down(lg) {
+    padding-bottom: to-rem(16px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.product__info {
+  position: sticky;
+  top: 0;
+  padding-top: to-rem(32px);
+
+  @include media-breakpoint-down(lg) {
+    padding-top: to-rem(16px);
+  }
+}
+
+.product__info--relative {
+  position: relative;
+}
+
+.product__header {
+  position: relative;
+}
+
+.product__heading {
+  padding-right: to-rem(32px);
+  margin-top: 0;
+  font-weight: 400;
+  letter-spacing: to-rem(3px);
+}
+
+.product__header_wishlist {
+  position: absolute;
+  top: to-rem(5px);
+  right: 0;
+  display: inline-block;
+  min-height: 22px;
+}
+
+.product__introtext {
+  margin-bottom: to-rem(40px);
+  font-size: to-rem(10px);
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(sm) {
+    margin-bottom: to-rem(32px);
+  }
+}

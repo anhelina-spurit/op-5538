@@ -1,0 +1,73 @@
+@import '../../constants/transitions';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+
+.announcement-bar {
+  overflow: hidden;
+  background: $palette-ecru-white;
+}
+
+.announcement-bar__container {
+  position: relative;
+}
+
+.announcement-bar__close {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 1.25rem;
+  display: flex;
+  width: to-rem(24px);
+  height: to-rem(24px);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  margin-top: to-rem(-12px);
+  background: transparent;
+  color: $palette-dark-slate-grey;
+
+  @include media-breakpoint-down(xl) {
+    right: 0;
+  }
+}
+
+.announcement-slider__slide {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: to-rem(10px) to-rem(30px);
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(10px);
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(xl) {
+    padding: to-rem(10px) to-rem(8px);
+    font-size: to-rem(9px);
+    letter-spacing: 0.1em;
+  }
+}
+
+.announcement-slider__slide a {
+  color: inherit;
+}
+
+.announcement-slider__slide p {
+  margin: 0;
+}
+
+.announcement-bar__icon {
+  display: block;
+  width: auto;
+  height: auto;
+  transition: transform $transition-duration-fastest;
+}
+
+.announcement-bar__close:hover .announcement-bar__icon {
+  transform: scale(1.2);
+}

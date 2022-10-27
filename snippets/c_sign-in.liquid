@@ -1,0 +1,102 @@
+<div class="login__block login__block--sign-in">
+  <div class="login__block-header">
+    {%- liquid
+      assign level = nil
+      assign text = 'customer.login.title' | t
+      assign id = nil
+
+      if template contains 'customers/login'
+        assign level = 1
+        assign id = section.id | append: '__heading'
+      else
+        assign level = 2
+      endif
+
+      render 'el_heading', level: level, text: text, id: id, custom_classes: 'login__block-title', modifiers: 'xxs'
+
+      assign collapse_button_id = 'sign_in_collapse_button'
+      assign collapse_button_controls = 'sign_in_collapse_panel'
+      assign collapse_button_text = 'customer.login.submit' | t
+      render 'c_collapse-button', id: collapse_button_id, controls: collapse_button_controls, content: collapse_button_text, custom_classes: 'button button--primary button--full-width login__collapse-button'
+    -%}
+  </div>
+
+  <div class="login__collapse-panel" id="sign_in_collapse_panel" data-collapse-panel>
+    <div class="login__collapse-content" data-collapse-content>
+      {%- liquid
+        if description != blank
+          echo '<p class="login__block-description">' | append: description | remove: '<p>' | remove: '</p>' | append: '</p>'
+        endif
+
+        assign sign_in_form_id = 'sign_in_form'
+        render 'c_sign-in_form', id: sign_in_form_id
+
+        assign recovery_form_id = 'recovery_password_form'
+        render 'c_recovery_form', id: recovery_form_id
+      -%}
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const PASSWORD_RECOVERY_HASH = '#recover';
+
+      const signInForm = document.getElementById({{ sign_in_form_id | json }});
+      const recoveryPasswordForm = document.getElementById({{ recovery_form_id | json }});
+
+      const show = (element) => {
+        if (!element) return;
+
+        element.style.display = '';
+      };
+
+      const hide = (element) => {
+        if (!element) return;
+
+        element.style.display = 'none';
+      };
+
+      const setWindowLocationHash = (hash) => {
+        if (!hash) return;
+
+        window.location.hash = hash;
+      };
+
+      const removeWindowLocationHash = () => {
+        history.pushState('', document.title, window.location.pathname + window.location.search);
+      };
+
+      const showSignInForm = () => {
+        hide(recoveryPasswordForm);
+        show(signInForm);
+        signInForm.focus();
+        removeWindowLocationHash();
+      };
+
+      const showRecoveryPasswordForm = (focus = true) => {
+        hide(signInForm);
+        show(recoveryPasswordForm);
+        setWindowLocationHash(PASSWORD_RECOVERY_HASH);
+
+        if (focus) {
+          recoveryPasswordForm.focus();
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const showSignInButton = document.querySelector('[data-show-sign-in]');
+        const showRecoveryPasswordButton = document.querySelector('[data-show-recovery-password]');
+
+        signInForm.setAttribute('tabindex', '-1');
+        recoveryPasswordForm.setAttribute('tabindex', '-1');
+
+        showSignInButton.addEventListener('click', showSignInForm);
+        showRecoveryPasswordButton.addEventListener('click', showRecoveryPasswordForm);
+
+        if (window.location.hash === PASSWORD_RECOVERY_HASH) {
+          showRecoveryPasswordForm(false);
+        }
+      });
+    })();
+  </script>
+</div>

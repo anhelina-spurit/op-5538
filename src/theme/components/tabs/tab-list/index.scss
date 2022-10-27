@@ -1,0 +1,22 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+
+.tabs {
+  overflow: hidden;
+}
+
+.tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: to-rem(-10px) to-rem(-30px);
+
+  @include media-breakpoint-down(lg) {
+    flex-direction: column;
+  }
+}
+
+.tabs__list > * {
+  padding: to-rem(10px) to-rem(30px);
+}

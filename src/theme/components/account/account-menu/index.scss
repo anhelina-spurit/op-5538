@@ -1,0 +1,54 @@
+@import '../../../utils/to-rem';
+@import '../../../utils/breakpoints';
+@import '../../../constants/palette';
+
+.account-menu__list {
+  width: 100%;
+  padding: 0 0 to-rem(44px) 0;
+  margin: 0;
+  list-style-type: none;
+
+  @include media-breakpoint-up(lg) {
+    padding: 0 0 to-rem(26px) 0;
+  }
+}
+
+.account-menu__item:first-of-type {
+  border-top: 0.0625em solid $palette-silver-chalice;
+}
+
+.account-menu__link {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: to-rem(19px) 0;
+  border-bottom: 0.0625em solid $palette-silver-chalice;
+  color: $palette-silver-chalice;
+  text-transform: uppercase;
+}
+
+.account-menu__link:hover,
+.account-menu__link:focus,
+.account-menu__link.active {
+  border-bottom: 0.0625em solid $palette-silver-chalice;
+  color: $palette-dark-slate-grey;
+}
+
+.account-menu__link,
+.account-menu__link-logout {
+  font-size: to-rem(10px);
+  letter-spacing: 0.026em;
+}
+
+.account-menu__link-logout {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.account-menu__link-icon {
+  display: block;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}

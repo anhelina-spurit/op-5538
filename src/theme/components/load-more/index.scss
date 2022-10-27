@@ -1,0 +1,51 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+
+.load-more {
+  position: relative;
+  padding-top: to-rem(80px);
+  text-align: center;
+}
+
+.collection__body[data-allow-infinite-scroll='true'] .load-more {
+  display: flex;
+  justify-content: center;
+}
+
+.load-more__label {
+  margin: to-rem(35px) 0;
+  font-size: to-rem(12px);
+  font-weight: 500;
+  letter-spacing: to-rem(2px);
+  line-height: to-rem(18px);
+}
+
+.load-more__progress {
+  position: relative;
+  width: 100%;
+  max-width: to-rem(530px);
+  padding: to-rem(2px) 0;
+  margin: auto;
+  background-color: $palette-concrete;
+  border-radius: to-rem(10px);
+}
+
+.load-more__progress-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: $palette-dark-slate-grey;
+  border-radius: to-rem(10px);
+}
+
+.load-more .button {
+  letter-spacing: to-rem(2px);
+  line-height: to-rem(18px);
+}
+
+.load-more .loader {
+  position: absolute;
+  top: 0;
+  margin: auto;
+}

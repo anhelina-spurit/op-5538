@@ -1,0 +1,19 @@
+@import '../../utils/to-rem/index';
+
+.collections-preview-slider__modal .modal__wrapper {
+  align-items: flex-end;
+  padding: 0;
+}
+
+.collections-preview-slider__modal .modal__container {
+  width: 100%;
+}
+
+.collections-preview-slider__modal .modal__close {
+  right: to-rem(10px);
+  width: to-rem(10px);
+}
+
+.collections-preview-slider__modal .collection-preview-slider__product:not(.active) {
+  display: none;
+}

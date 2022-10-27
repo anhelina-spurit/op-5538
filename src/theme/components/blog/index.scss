@@ -1,0 +1,123 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.blog__heading {
+  font-size: to-rem(20px);
+  font-weight: 400;
+  letter-spacing: to-rem(3px);
+  line-height: 2;
+  text-align: center;
+
+  @include media-breakpoint-down(lg) {
+    font-size: to-rem(16px);
+  }
+}
+
+.blog__heading--main {
+  color: var(--main-image-color-text);
+}
+
+.blog__description--main {
+  margin-bottom: to-rem(20px);
+  color: var(--main-image-color-text);
+}
+
+.blog__menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 0;
+}
+
+.blog__menu-item {
+  padding: to-rem(20px);
+  list-style: none;
+
+  @include media-breakpoint-down(lg) {
+    padding: to-rem(10px);
+  }
+}
+
+.blog__menu-item .menu__link--active {
+  border-bottom: to-rem(2px) solid $palette-pickled-bluewood;
+}
+
+.blog .blog-preview__wrapper {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.blog__article:not(.blog__article--main) {
+  width: 30%;
+  max-width: 580px;
+  padding-right: to-rem(30px);
+  padding-left: to-rem(30px);
+  margin-bottom: to-rem(10px);
+
+  @include media-breakpoint-down(lg) {
+    width: 100%;
+    padding-right: to-rem(16px);
+    padding-bottom: to-rem(16px);
+    padding-left: to-rem(16px);
+  }
+}
+
+.blog__article--main {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: to-rem(590px);
+  align-items: flex-end;
+  padding: 0;
+  margin-bottom: to-rem(30px);
+
+  @include media-breakpoint-down(lg) {
+    min-height: to-rem(450px);
+  }
+}
+
+.blog__content .text-preview__heading {
+  padding-top: to-rem(16px);
+  font-size: to-rem(16px);
+  font-weight: 400;
+  letter-spacing: to-rem(3px);
+  line-height: 1.2;
+}
+
+.blog__image--main {
+  max-height: to-rem(590px);
+  object-fit: cover;
+  object-position: var(--main-image-crop);
+
+  @include media-breakpoint-down(lg) {
+    max-height: to-rem(460px);
+  }
+}
+
+.blog__content--main {
+  position: relative;
+  z-index: 2;
+  max-width: to-rem(460px);
+  margin: to-rem(20px);
+}
+
+.blog__media {
+  margin: auto;
+}
+
+.blog__media--main {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.blog .blog__button--main {
+  border-bottom: to-rem(1px) solid var(--main-image-color-text);
+  color: var(--main-image-color-text);
+}

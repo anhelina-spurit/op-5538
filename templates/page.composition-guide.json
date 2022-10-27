@@ -1,0 +1,117 @@
+{
+  "sections": {
+    "composition-guide": {
+      "type": "composition-guide",
+      "blocks": {
+        "721945be-9e45-4de7-a0ef-7a5d1f69cc6f": {
+          "type": "item",
+          "settings": {
+            "heading": "LES DRAPS DE LAINE",
+            "content": "<p>Tous nos draps de laine sont sélectionnés méticuleusement et sont reconnus pour avoir une grande densité de fils et une excellente tenue à l’usage et au porter. Cette qualité apporte un grand confort et une chaleur naturelle particulièrement agréable.<\/p>"
+          }
+        },
+        "f03cf0db-7190-4681-86ed-e2c7bf88b754": {
+          "type": "item",
+          "settings": {
+            "heading": "LA LAINE FROIDE",
+            "content": "<p>La laine froide est une matière respirante grâce à une grande qualité de tissage et au choix de fils ultra fins. Elle apporte une tenue parfaite aux produits structurés et élégants. Cette matière puisée dans le vestiaire masculin, a la particularité de garder au chaud l’hiver, et au frais pendant l’été. Dans les produits féminins, cette matière exceptionnelle cohabite avec 4% d’élasthanne pour un confort optimal, et une vraie féminité.<\/p>"
+          }
+        },
+        "289bfd7f-eafb-4797-ad00-b4c37cd53177": {
+          "type": "item",
+          "settings": {
+            "heading": "LE CACHEMIRE",
+            "content": "<p>Le cachemire est une fibre fine et très douce obtenue à partir de la laine de la chèvre cachemire. C’est une matière naturelle et précieuse renommée pour sa chaleur et sa légèreté. Le cachemire est également thermorégulateur et s’adapte à la température du corps. Il est aussi extrêmement soyeux au toucher.<\/p>"
+          }
+        },
+        "46878749-eb80-4dd6-8eb9-522175878c53": {
+          "type": "item",
+          "settings": {
+            "heading": "LE LAMBSWOOL",
+            "content": "<p>Issue de la première tonte d'un agneau de sept mois, le lambswool est une laine connue pour ses vertus d'isolation thermique. Elle est souple, particulièrement douce et facilement défroissable.<\/p>"
+          }
+        },
+        "0a709d56-158b-4b0b-82cc-55ecadaa6441": {
+          "type": "item",
+          "settings": {
+            "heading": "LE VELOURS",
+            "content": "<p>Le velours est un tissu à effet de surface obtenu par la coupe de fils formant une nappe de poils. Fait à partir de coton, il en prend tous les avantages : résistance et souplesse. Le velours sélectionné par Cyrillus pour son tissage serré permet la confection de pantalons et de vestes.<\/p>"
+          }
+        },
+        "7f9805a5-c7f4-4b47-ae6a-3ebcc3d86e98": {
+          "type": "item",
+          "settings": {
+            "heading": "LA SOIE",
+            "content": "<p>La soie compte parmi les matières les plus nobles et douces. Elle apporte beaucoup de féminité aux produits. La fibre de soie est la plus fine et la plus douce au toucher. Elle est très souple et brillante. Naturelle et rare, cette matière mérite d’être entretenue avec précaution. La soie est résistante, confortable et possède un grand pouvoir isolant.<\/p>"
+          }
+        },
+        "a5973d5a-8036-47d4-93d2-d366722459ef": {
+          "type": "item",
+          "settings": {
+            "heading": "LE VISCOSE",
+            "content": "<p>Fibre végétale fabriquée à partir de la cellulose des végétaux puis régénérée. La viscose ressemble à la soie, mais elle est plus économique. Ses propriétés sont proches de celles du coton : peu élastique, se froissant peu, avec un fort pouvoir absorbant.<\/p>"
+          }
+        },
+        "9d973b21-317a-4e49-8c0f-25209fb356bf": {
+          "type": "item",
+          "settings": {
+            "heading": "LE LYOCELL",
+            "content": "<p>Fibre produite à partir de pulpe de bois, la cellulose est dissoute dans un solvant non toxique. Le lyocell a un lustre naturel discret, respire et absorbe bien l’humidité. Il est très fluide et plombant. Il est également plus résistant que la viscose.<\/p>"
+          }
+        },
+        "7fad27de-aae3-48ee-aa7b-5c17b784c975": {
+          "type": "item",
+          "settings": {
+            "heading": "POLYESTER",
+            "content": "<p>C'est la fibre synthétique la plus produite dans le monde. Elle représente environ 7% des fibres synthétiques utilisées dans le vêtement. Le polyester est souvent  mélangé avec d'autres fibres, notamment le coton et la laine. Le polyester a une très haute résistance et possède une bonne élasticité. Il est « sec » au toucher et a un faible pouvoir d’absorption. Son atout : l’entretien facile (lavage machine et repassage superflu).<\/p>"
+          }
+        },
+        "ac5c6cf5-1380-4742-8a4a-388fa773d71f": {
+          "type": "item",
+          "settings": {
+            "heading": "LE CUIR",
+            "content": "<p>Le cuir est une matière naturelle. Toutes nos peaux sont choisies minutieusement parmi les plus qualitatives. Nos fournisseurs partenaires de longue date dans la réalisation de ces produits apportent une attention toute particulière aux finitions. Nos cuirs sont choisis dans des qualités extrêmement souples pour garantir le confort au porter.<\/p>"
+          }
+        },
+        "4a50d17e-5faf-4c47-b1a2-ee27e061de57": {
+          "type": "item",
+          "settings": {
+            "heading": "LE TISSU LIBERTY",
+            "content": "<p>Il s’agit de motifs exclusifs que nous choisissons dans les collections de Liberty, marque déposée, dont les dessins sont pensés dans les bureaux de la marque à Londres et imprimés sur des supports qualitatifs en Italie et en Angleterre. Un produit en Liberty, c’est l’assurance d’un dessin raffiné et exclusif et d’une excellente tenue. Des voiles et popelines de coton sont utilisées comme support, ce qui en fait des produits facilement utilisables d’une génération à une autre.<\/p>"
+          }
+        },
+        "cf65cb98-387f-4b89-9fce-2b0a2c09d570": {
+          "type": "item",
+          "settings": {
+            "heading": "LE LIN",
+            "content": "<p>Extraite de la tige de la plante de lin, la fibre de lin est assez brillante, lisse et d’épaisseur un peu irrégulière. Extrêmement solide, elle est naturellement brune. Traitée, elle prend des coloris subtils et puissants. Même si elle se froisse facilement, cette matière a gardé son charme et sa noblesse. Léger et naturel, le lin est agréable à porter l’été.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "721945be-9e45-4de7-a0ef-7a5d1f69cc6f",
+        "f03cf0db-7190-4681-86ed-e2c7bf88b754",
+        "289bfd7f-eafb-4797-ad00-b4c37cd53177",
+        "46878749-eb80-4dd6-8eb9-522175878c53",
+        "0a709d56-158b-4b0b-82cc-55ecadaa6441",
+        "7f9805a5-c7f4-4b47-ae6a-3ebcc3d86e98",
+        "a5973d5a-8036-47d4-93d2-d366722459ef",
+        "9d973b21-317a-4e49-8c0f-25209fb356bf",
+        "7fad27de-aae3-48ee-aa7b-5c17b784c975",
+        "ac5c6cf5-1380-4742-8a4a-388fa773d71f",
+        "4a50d17e-5faf-4c47-b1a2-ee27e061de57",
+        "cf65cb98-387f-4b89-9fce-2b0a2c09d570"
+      ],
+      "settings": {
+        "background": "#324d57",
+        "color_text": "#ffffff",
+        "logo": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/logo_cc1df125-cbdb-4afd-9e1d-a9727195a5f2.svg?v=1648027904",
+        "image": "shopify:\/\/shop_images\/Capture_d_ecran_2022-04-15_a_10.34.27.jpg",
+        "description": "CYRILLUS apporte le plus grand soin à la sélection des matières et des tissus."
+      }
+    }
+  },
+  "order": [
+    "composition-guide"
+  ]
+}

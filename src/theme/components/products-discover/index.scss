@@ -1,0 +1,58 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.products-discover {
+  margin-bottom: to-rem(80px);
+}
+
+.products-discover__slider {
+  padding-bottom: to-rem(30px);
+  margin-bottom: to-rem(30px);
+
+  @include media-breakpoint-down(md) {
+    padding-left: to-rem(20px);
+  }
+}
+
+.products-discover__scrollbar {
+  @include media-breakpoint-down(md) {
+    left: 1.25rem;
+    width: calc(100% - 2.5rem);
+  }
+}
+
+.products-discover__action {
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    padding-right: to-rem(20px);
+    padding-left: to-rem(20px);
+  }
+}
+
+.products-discover__action .button {
+  color: $palette-white;
+}
+
+.products-discover__action_link {
+  display: inline-block;
+  padding: to-rem(13px) to-rem(55px);
+  border: 1px solid $palette-dark-slate-grey;
+  background: $palette-dark-slate-grey;
+  color: $palette-white;
+  font-size: to-rem(9px);
+  letter-spacing: 0.15em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}
+
+.products-discover__action_link:hover {
+  border-color: $palette-dark-slate-grey;
+  background-color: $palette-white;
+  color: $palette-dark-slate-grey;
+}

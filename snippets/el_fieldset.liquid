@@ -1,0 +1,57 @@
+{%- comment -%}
+  @summary Renders a fieldset
+
+  @param {string} id - id
+  @param {string} content - content
+  @param {string} legend - legend
+  @param {string} [description] - hint
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+  @param {boolean} [disabled] - disability
+
+  @example
+  {%-
+    render 'el_fieldset',
+    id: "meals_count_fieldset",
+    legend: 'How many people are you cooking for?',
+    content: '<label for="username">Username</label><input id="username" name="username" type="text"/>',
+  -%}
+
+  @example
+  {%-
+    render 'el_fieldset',
+    id: "meals_count_fieldset",
+    custom_classes: 'custom-class',
+    attributes: 'data-custom="value"',
+    modifiers: 'xl, light',
+    disabled: false,
+    legend: 'How many people are you cooking for?',
+    description: 'Pick 3+ meals to get free delivery.',
+    content: '<label for="username">Username</label><input id="username" name="username" type="text"/>',
+  -%}
+{%- endcomment -%}
+
+{%- if id != blank and content != blank and legend != blank -%}
+  {%- assign description_id = id | append: '_description' -%}
+
+  <fieldset
+    id="{{ id }}"
+    class="{%- render 'f_bem-classes', main_class: 'fieldset', custom_classes: custom_classes, modifiers: modifiers -%}"
+    {% if description -%}aria-describedby="{{ description_id }}"{% endif %}
+    {% if disabled -%}disabled{% endif %}
+    {% if attributes -%}{{ attributes }}{% endif %}
+  >
+    <div class="fieldset__header">
+        {%- render 'el_legend', content: legend -%}
+
+      {%- if description and description != blank -%}
+        <p id="{{ description_id }}" class="fieldset__description">{{- description -}}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="fieldset__body">
+      {{- content -}}
+    </div>
+  </fieldset>
+{%- endif -%}

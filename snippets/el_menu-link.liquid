@@ -1,0 +1,21 @@
+{% comment %}
+  @summary Renders a link for main menu.
+
+  @param {object} link {required} - link object
+
+  @example
+  {%
+    render 'el_menu-link',
+    link: link,
+  %}
+{% endcomment %}
+
+{%- liquid
+  assign link_classes = 'menu__link'
+
+  if link.current
+    assign link_classes = link_classes | append: ' menu__link--active'
+  endif
+
+  render 'el_link', href: link.url, text: link.title, custom_classes: link_classes
+-%}

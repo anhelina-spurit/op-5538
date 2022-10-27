@@ -1,0 +1,44 @@
+{%- comment -%}
+  @summary Renders an H tag of the level and style needed.
+
+  @param {(1|2|3|4|5|6)} level - level
+  @param {string} text - text
+  @param {string} [tag] - tag
+  @param {string} [id] - id
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]('xxl'|'xl'|'lg'|'md'|'sm'|'xs')} [modifiers] - modifiers
+
+  @example
+  {% render 'el_heading', level: 1, text: 'This is heading' %}
+
+  @example
+  {%
+    render 'el_heading',
+    tag: 'div',
+    level: 1,
+    text: 'This is heading',
+    id: 'heading_id'
+    custom_classes: 'section__heading',
+    attributes: 'data-custom="value"',
+    modifiers: 'xxl, light',
+  %}
+{%- endcomment -%}
+
+{%- if text != blank and level != blank -%}
+  {%- liquid
+    assign tag = tag | default: 'h'
+
+    if tag == 'h'
+      assign tag = tag | append: level
+    endif
+  -%}
+
+  <{{ tag }}
+    {% if id %}id="{{ id }}"{% endif %}
+    class="{%- render 'f_bem-classes', main_class: 'heading', custom_classes: custom_classes, modifiers: modifiers -%}"
+    {{ attributes }}
+  >
+    {{- text -}}
+  </{{ tag }}>
+{%- endif -%}

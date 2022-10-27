@@ -1,0 +1,32 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.price {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: to-rem(12px);
+  font-weight: 500;
+  letter-spacing: to-rem(0.8px);
+  line-height: to-rem(18px);
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(7px);
+  }
+}
+
+.price__value:not(:last-child) {
+  margin-right: to-rem(10px);
+  @include media-breakpoint-down(md) {
+    margin-right: to-rem(5px);
+  }
+}
+
+.price__value--compare {
+  color: $palette-alto;
+  text-decoration: line-through;
+}
+
+.vp-prices-from {
+  margin-right: to-rem(10px);
+  text-transform: uppercase;
+}

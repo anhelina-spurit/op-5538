@@ -1,0 +1,76 @@
+@import '../../utils/to-rem';
+@import '../../constants/fonts';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.gift-cards-faq {
+  padding: to-rem(78px) 0 to-rem(58px) 0;
+  background-color: $palette-bright-gray;
+}
+
+.gift-cards-faq__list {
+  max-width: to-rem(1068px);
+  padding: 0 to-rem(82px);
+  margin: 0 auto;
+  color: $palette-dark-slate-grey;
+
+  @include media-breakpoint-down(md) {
+    padding: 0;
+  }
+}
+
+.gift-cards-faq__row {
+  padding-bottom: to-rem(40px);
+  border-bottom: 1px solid currentColor;
+}
+
+.gift-cards-faq__row:not(:last-child) {
+  margin-bottom: to-rem(30px);
+}
+
+.gift-cards-faq__question {
+  margin-bottom: to-rem(26px);
+  font-family: $font-family-lora;
+  font-size: to-rem(18px);
+  font-style: italic;
+  letter-spacing: to-rem(1.13px);
+  line-height: to-rem(23px);
+}
+
+.gift-cards-faq__answer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0;
+
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+}
+
+.gift-cards-faq__column {
+  flex: 0 1 to-rem(439px);
+}
+
+.gift-cards-faq__column:not(:last-child) {
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(19px);
+  }
+}
+
+.gift-cards-faq__column--text {
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(0.6px);
+  line-height: to-rem(26px);
+}
+
+.gift-cards-faq__column--big {
+  flex-basis: to-rem(542px);
+}
+
+.gift-cards-faq__column--medium {
+  flex-basis: to-rem(379px);
+}
+
+.gift-cards-faq__column--small {
+  flex-basis: to-rem(215px);
+}

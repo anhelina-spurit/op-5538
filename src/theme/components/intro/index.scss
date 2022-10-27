@@ -1,0 +1,76 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+
+.intro {
+  padding: to-rem(30px) to-rem(50px);
+
+  @include media-breakpoint-down(md) {
+    padding: to-rem(20px);
+  }
+}
+
+.intro__container {
+  max-width: to-rem(1068px);
+}
+
+.intro__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: to-rem(28px);
+
+  @include media-breakpoint-up(md) {
+    min-height: to-rem(250px);
+  }
+
+  @include media-breakpoint-down(md) {
+    overflow: hidden;
+    max-height: to-rem(300px);
+    flex-direction: column;
+  }
+}
+
+.intro__title {
+  width: 50%;
+  font-size: to-rem(24px);
+  letter-spacing: to-rem(4px);
+  line-height: to-rem(44px);
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+.heading.intro__title {
+  @include media-breakpoint-down(md) {
+    font-weight: 400;
+  }
+}
+
+.intro__logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: to-rem(45px);
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.intro__media {
+  width: 50%;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+.intro__image {
+  width: 100%;
+}

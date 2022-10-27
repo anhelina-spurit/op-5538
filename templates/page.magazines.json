@@ -1,0 +1,594 @@
+{
+  "sections": {
+    "1657717866ff5bbb84": {
+      "type": "themes",
+      "blocks": {
+        "a2b82617-2a6d-4d6e-bc42-06d6adbc7b58": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/RDC_AH22_COUV_ombre.jpg",
+            "url_image": "https:\/\/it1v7.interactiv-doc.fr\/html\/4197_3c5_bd_643\/",
+            "heading": "<a href=\"https:\/\/it1v7.interactiv-doc.fr\/html\/4197_3c5_bd_643\/\">Rentrée 2022<\/a>",
+            "url_image_1": "",
+            "url_image_2": "",
+            "content": ""
+          }
+        },
+        "d62ae240-e619-4047-94e5-a8864898c185": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CG6_AH22_COUV_ombre.jpg",
+            "url_image": "",
+            "heading": "Collection Bébé AH22<br><span style=\"text-transform: lowercase;\">à découvrir prochainement<\/span>",
+            "url_image_1": "",
+            "url_image_2": "",
+            "content": ""
+          }
+        },
+        "0c22b458-e102-4114-b987-2510e0e40b2a": {
+          "type": "items",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CG6_AH22_COUV_ombre.jpg",
+            "url_image": "",
+            "heading": "",
+            "url_image_1": "",
+            "url_image_2": "",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "a2b82617-2a6d-4d6e-bc42-06d6adbc7b58",
+        "d62ae240-e619-4047-94e5-a8864898c185",
+        "0c22b458-e102-4114-b987-2510e0e40b2a"
+      ],
+      "settings": {
+        "heading": "<br>Collections Automne-Hiver 2022<br><br>Les Magazines",
+        "modile_view": "images"
+      }
+    },
+    "1658758569841f5059": {
+      "type": "themes",
+      "blocks": {
+        "4c8ad9fe-3181-49f7-8702-01646b1a5aad": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CG6_AH22_COUV_ombre.jpg",
+            "url_image": "",
+            "heading": "Prêt-à-Porter AH22<br><span style=\"text-transform: lowercase;\">à découvrir prochainement<\/span>",
+            "url_image_1": "",
+            "url_image_2": "",
+            "content": ""
+          }
+        },
+        "2d26ccdf-df82-48af-9f15-ff5a6fd0af07": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/CG6_AH22_COUV_ombre.jpg",
+            "url_image": "",
+            "heading": "Collection Maison AH22<br><span style=\"text-transform: lowercase;\">à découvrir prochainement<\/span>",
+            "url_image_1": "",
+            "url_image_2": "",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "4c8ad9fe-3181-49f7-8702-01646b1a5aad",
+        "2d26ccdf-df82-48af-9f15-ff5a6fd0af07"
+      ],
+      "settings": {
+        "heading": "",
+        "modile_view": "images"
+      }
+    },
+    "1655387483eb1c5e9a": {
+      "type": "page-header",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "1655391599fb6d1d5a": {
+      "type": "heading-with-image",
+      "disabled": true,
+      "settings": {
+        "heading": "Ventes Privées<br>Jusqu'à -50%*",
+        "image": "shopify:\/\/shop_images\/Main-Slider_HP_13-06-22-slide1.jpg",
+        "background": "#324d57",
+        "logo_style": "light"
+      }
+    },
+    "1655387505b8206c56": {
+      "type": "page-head",
+      "disabled": true,
+      "settings": {
+        "background": "#ffffff",
+        "image": "shopify:\/\/shop_images\/Main-Slider_HP_13-06-22-slide1.jpg",
+        "image_link": "",
+        "sub_image": "",
+        "quotes": "",
+        "subtitle": "",
+        "description": ""
+      }
+    },
+    "1655387591c8056803": {
+      "type": "abbreviation-list",
+      "disabled": true,
+      "blocks": {
+        "b38e0878-0f49-47fe-b59b-015fd0082958": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "subtitle": "",
+            "image": "shopify:\/\/shop_images\/RDC_AH22_COUV_ombre.jpg",
+            "image_link": "",
+            "content": "<p><a href=\"https:\/\/it1v7.interactiv-doc.fr\/html\/4197_3c5_bd_643\/\" title=\"https:\/\/it1v7.interactiv-doc.fr\/html\/4197_3c5_bd_643\/\">Rentrée 2022<\/a><\/p>"
+          }
+        },
+        "1c58ef7a-94f1-42db-a64a-0c6bed91dbec": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "subtitle": "",
+            "image": "shopify:\/\/shop_images\/CG6_AH22_COUV_ombre.jpg",
+            "image_link": "",
+            "content": "<p>Collection Bébé AH22<br\/>à découvrir prochainement<\/p>"
+          }
+        },
+        "4d6edb63-2410-4e2a-b215-3d7c052647a8": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "subtitle": "",
+            "image": "shopify:\/\/shop_images\/RDC_AH22_COUV_ombre.jpg",
+            "image_link": "",
+            "content": "<p>Prêt-à-Porter AH22<br\/>à découvrir prochainement<\/p>"
+          }
+        },
+        "26f575ad-b518-495a-97d8-c4af03117e26": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "subtitle": "",
+            "image": "shopify:\/\/shop_images\/CG6_AH22_COUV_ombre.jpg",
+            "image_link": "",
+            "content": "<p>Collection Maison AH22<br\/>à découvrir prochainement<\/p>"
+          }
+        },
+        "ad0ee3ab-2ee9-4943-9a31-13c4fbb6c917": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "title": "",
+            "subtitle": "",
+            "image": "shopify:\/\/shop_images\/SHP-VP_format-visu-web_768x1024-BB.jpg",
+            "image_link": "",
+            "content": "<p><a href=\"\/collections\/vp-bebe\" title=\"VP bébé\">La sélection Bébé<\/a><\/p>"
+          }
+        },
+        "05b591fb-e849-4a86-9290-7b8a33dce2d0": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "title": "",
+            "subtitle": "",
+            "image": "shopify:\/\/shop_images\/SHP-VP_format-visu-web_768x1024-maison.jpg",
+            "image_link": "",
+            "content": "<p><a href=\"\/collections\/vp-maison\" title=\"VP maison\">La sélection Maison<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "b38e0878-0f49-47fe-b59b-015fd0082958",
+        "1c58ef7a-94f1-42db-a64a-0c6bed91dbec",
+        "4d6edb63-2410-4e2a-b215-3d7c052647a8",
+        "26f575ad-b518-495a-97d8-c4af03117e26",
+        "ad0ee3ab-2ee9-4943-9a31-13c4fbb6c917",
+        "05b591fb-e849-4a86-9290-7b8a33dce2d0"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "title": "<br>Collections Automne-Hiver 2022<br><br>Les Magazines"
+      }
+    },
+    "page-content": {
+      "type": "page-content",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "16553859816a5a138d": {
+      "type": "custom-image-text",
+      "disabled": true,
+      "settings": {
+        "heading": "Ventes Privées",
+        "image": "shopify:\/\/shop_images\/collecte-visu-3.jpg",
+        "image_link": "",
+        "title": "Collection",
+        "description": "",
+        "small_image_link": "",
+        "link_text": "Femme",
+        "link": "shopify:\/\/collections\/vp-femme",
+        "alignment": "left",
+        "color": "#7d95a9",
+        "large_image": false
+      }
+    },
+    "16553861139971c89a": {
+      "type": "info-with-image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/collecte-visu-3.jpg",
+        "image_link": "",
+        "heading": "Lorem Ipsum is simply dummy text",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "link_text": "",
+        "link": "shopify:\/\/collections\/vp-femme",
+        "link_2_text": "",
+        "link_2": "",
+        "content_large": false,
+        "mobile_hidden": false
+      }
+    },
+    "16553861598f66cffc": {
+      "type": "collection-trends",
+      "disabled": true,
+      "settings": {
+        "sub_image_link": "",
+        "sub_heading": "",
+        "heading": "VP Femme",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        "link_text": "Femme",
+        "link": "shopify:\/\/collections\/vp-femme",
+        "image_link": ""
+      }
+    },
+    "1655387040889fc6d8": {
+      "type": "image-tiles",
+      "disabled": true,
+      "blocks": {
+        "1655387040c90d8404-0": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3.jpg",
+            "image_link": "",
+            "heading": "FEMME"
+          }
+        },
+        "1655387040c90d8404-1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Push-layers-BAF_FI.jpg",
+            "image_link": "",
+            "heading": ""
+          }
+        },
+        "1655387040c90d8404-2": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "image_link": "",
+            "heading": ""
+          }
+        }
+      },
+      "block_order": [
+        "1655387040c90d8404-0",
+        "1655387040c90d8404-1",
+        "1655387040c90d8404-2"
+      ],
+      "settings": {
+        "subheading": "",
+        "heading": "Un nouveau site...",
+        "description": "Un nouveau site...\n\nPlus efficace, rapide et séduisant !\n<br>Nos équipes ont fait le maximum mais certaines fonctionnalités sont encore en cours d'amélioration, merci pour votre compréhension. Retrouvez toutes les réponses à vos questions dans notre rubrique FAQ.",
+        "link_text": "Consultez la FAQ",
+        "link": "shopify:\/\/collections\/vp-femme"
+      }
+    },
+    "165538726226496e80": {
+      "type": "discover",
+      "disabled": true,
+      "blocks": {
+        "587fb953-71fe-4fae-812a-c887c8e2b360": {
+          "type": "items",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3.jpg",
+            "image_link": "",
+            "use_gif": false,
+            "heading": "",
+            "product_1": "m-jouet-agneau-a-basule-6309-beige-clair-uni_3716",
+            "product_1_top": 10,
+            "product_1_left": 10,
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": ""
+          }
+        },
+        "4b38f911-425f-4793-a8e8-7d84379f7908": {
+          "type": "items",
+          "settings": {
+            "image_link": "",
+            "use_gif": false,
+            "heading": "",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": ""
+          }
+        },
+        "aef8cdc4-0260-4ce7-94b8-508ad2467aee": {
+          "type": "items",
+          "settings": {
+            "image_link": "",
+            "use_gif": false,
+            "heading": "",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "587fb953-71fe-4fae-812a-c887c8e2b360",
+        "4b38f911-425f-4793-a8e8-7d84379f7908",
+        "aef8cdc4-0260-4ce7-94b8-508ad2467aee"
+      ],
+      "settings": {
+        "heading": "",
+        "description": "",
+        "link_title": "",
+        "link": ""
+      }
+    },
+    "16553913786b276b9b": {
+      "type": "page-hero",
+      "disabled": true,
+      "settings": {
+        "image_link": "",
+        "image_size": "xl",
+        "sub_image": "",
+        "subimage_position": "tr",
+        "sub_mobile_image": "",
+        "heading": "cyrillus s’engage",
+        "subheading_size": 12,
+        "color": "#ffffff",
+        "heading_alignment": "center",
+        "content_color": "#000000",
+        "long": true
+      }
+    },
+    "1655391398f185d68c": {
+      "type": "page-hero-collection",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Main-Slider_HP_13-06-22-slide1.jpg",
+        "use_gif": false,
+        "video": "https:\/\/www.youtube.com\/watch?v=h_VTU4ifi3A",
+        "sub_image": "",
+        "color": "#324d57",
+        "long": false
+      }
+    },
+    "1657716348f54f89f8": {
+      "type": "banner",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/HP_NEWCO_discover_push-2.jpg",
+        "image_ratio": 23,
+        "alignment": "left",
+        "heading_text": "",
+        "heading_level": "1",
+        "heading_color": "#000000",
+        "description": "<p><a href=\"https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FEMME&sort_by=best-selling\" title=\"https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FEMME&sort_by=best-selling\">Femme<\/a>         Homme         Fille         <\/p><p>Garçon         Bébé         Maison<\/p>",
+        "description_color": "#a06a6a",
+        "button_text": "",
+        "button_url": "",
+        "button_background": "#000000",
+        "button_background_hover": "#ffffff",
+        "button_color": "#ffffff",
+        "button_color_hover": "#000000"
+      }
+    },
+    "1657717167124c2331": {
+      "type": "banner",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/HP_NEWCO_discover_push-2.jpg",
+        "image_ratio": 20,
+        "alignment": "left",
+        "heading_text": "",
+        "heading_level": "1",
+        "heading_color": "#000000",
+        "description": "",
+        "description_color": "#000000",
+        "button_text": "",
+        "button_url": "",
+        "button_background": "#000000",
+        "button_background_hover": "#ffffff",
+        "button_color": "#ffffff",
+        "button_color_hover": "#000000"
+      }
+    },
+    "1657717117f5949e43": {
+      "type": "banner",
+      "disabled": true,
+      "settings": {
+        "image_ratio": 1,
+        "alignment": "left",
+        "heading_text": "",
+        "heading_level": "1",
+        "heading_color": "#000000",
+        "description": "",
+        "description_color": "#000000",
+        "button_text": "",
+        "button_url": "",
+        "button_background": "#000000",
+        "button_background_hover": "#ffffff",
+        "button_color": "#ffffff",
+        "button_color_hover": "#000000"
+      }
+    },
+    "16577170202127a87c": {
+      "type": "advantages",
+      "disabled": true,
+      "blocks": {
+        "1657717020eec57adb-0": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Femme",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FEMME&sort_by=best-selling"
+          }
+        },
+        "1657717020eec57adb-1": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Homme",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=HOMME&sort_by=best-selling"
+          }
+        },
+        "1657717020eec57adb-2": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Fille",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=FILLE&sort_by=best-selling"
+          }
+        },
+        "1657717020eec57adb-3": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Garçon",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=GARCON&sort_by=best-selling"
+          }
+        },
+        "1657717020eec57adb-4": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Bébé",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=BEBE&sort_by=best-selling"
+          }
+        },
+        "1657717020eec57adb-5": {
+          "type": "item",
+          "settings": {
+            "image": "",
+            "heading": "Maison",
+            "url": "https:\/\/cyrillus.fr\/collections\/nouvelle-collection?filter.p.m.filter.secteur=MAISON&sort_by=best-selling"
+          }
+        }
+      },
+      "block_order": [
+        "1657717020eec57adb-0",
+        "1657717020eec57adb-1",
+        "1657717020eec57adb-2",
+        "1657717020eec57adb-3",
+        "1657717020eec57adb-4",
+        "1657717020eec57adb-5"
+      ],
+      "settings": {
+        "heading": "Advantages",
+        "is_heading_visible": false
+      }
+    },
+    "165771782698fe6dc6": {
+      "type": "collection-template",
+      "disabled": true,
+      "settings": {
+        "has_filter": true
+      }
+    },
+    "1657717912385eefde": {
+      "type": "collections-preview",
+      "disabled": true,
+      "blocks": {
+        "111d5cd8-e01b-45d6-9624-a305b99ab6bd": {
+          "type": "collection",
+          "settings": {
+            "heading": "xxxx",
+            "image_1": "shopify:\/\/shop_images\/HP_NEWCO_discover_push-2.jpg",
+            "url_image_1": "",
+            "product_1_1": "",
+            "product_1_2": "",
+            "product_1_3": "",
+            "product_1_4": "",
+            "product_1_5": "",
+            "url_image_2": "",
+            "product_2_1": "",
+            "product_2_2": "",
+            "product_2_3": "",
+            "product_2_4": "",
+            "product_2_5": "",
+            "url_image_3": "",
+            "product_3_1": "",
+            "product_3_2": "",
+            "product_3_3": "",
+            "product_3_4": "",
+            "product_3_5": ""
+          }
+        },
+        "c517f1d4-e89b-47b0-b899-68acf67f4fba": {
+          "type": "collection",
+          "settings": {
+            "heading": "bbb",
+            "image_1": "shopify:\/\/shop_images\/Main-Slider_HP_Soldes5-FR.jpg",
+            "url_image_1": "",
+            "product_1_1": "",
+            "product_1_2": "",
+            "product_1_3": "",
+            "product_1_4": "",
+            "product_1_5": "",
+            "url_image_2": "",
+            "product_2_1": "",
+            "product_2_2": "",
+            "product_2_3": "",
+            "product_2_4": "",
+            "product_2_5": "",
+            "url_image_3": "",
+            "product_3_1": "",
+            "product_3_2": "",
+            "product_3_3": "",
+            "product_3_4": "",
+            "product_3_5": ""
+          }
+        }
+      },
+      "block_order": [
+        "111d5cd8-e01b-45d6-9624-a305b99ab6bd",
+        "c517f1d4-e89b-47b0-b899-68acf67f4fba"
+      ],
+      "settings": {
+        "heading": "Nos collections"
+      }
+    }
+  },
+  "order": [
+    "1657717866ff5bbb84",
+    "1658758569841f5059",
+    "1655387483eb1c5e9a",
+    "1655391599fb6d1d5a",
+    "1655387505b8206c56",
+    "1655387591c8056803",
+    "page-content",
+    "16553859816a5a138d",
+    "16553861139971c89a",
+    "16553861598f66cffc",
+    "1655387040889fc6d8",
+    "165538726226496e80",
+    "16553913786b276b9b",
+    "1655391398f185d68c",
+    "1657716348f54f89f8",
+    "1657717167124c2331",
+    "1657717117f5949e43",
+    "16577170202127a87c",
+    "165771782698fe6dc6",
+    "1657717912385eefde"
+  ]
+}

@@ -1,0 +1,53 @@
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+
+.dropdown-tabs {
+  position: relative;
+}
+
+.dropdown-tabs::after {
+  position: absolute;
+  top: calc(50% - 2px);
+  right: to-rem(4px);
+  display: block;
+  width: to-rem(8px);
+  height: to-rem(8px);
+  border-right: 1px solid $palette-dark-slate-grey;
+  border-bottom: 1px solid $palette-dark-slate-grey;
+  content: '';
+  pointer-events: none;
+  transform: translate(0, -65%) rotate(45deg);
+}
+
+.dropdown-tabs--opened::after {
+  top: calc(50% + 4px);
+  transform: translate(0, -65%) rotate(225deg);
+}
+
+.dropdown-tabs-list {
+  z-index: 100;
+  top: calc(100% - 1px);
+  right: 0;
+  left: 0;
+}
+
+.dropdown-tabs__button {
+  display: flex;
+  width: 100%;
+  min-height: 1.5em;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: to-rem(8px) to-rem(20px) to-rem(9px) 0;
+  border: 1px solid transparent;
+  border-bottom-color: $palette-dark;
+  background-color: $palette-white;
+  font-size: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-transform: inherit;
+}
+
+.dropdown-tabs--opened .dropdown-tabs__button {
+  border-bottom-color: rgba($palette-dark, 0.6);
+}

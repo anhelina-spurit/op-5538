@@ -1,0 +1,28 @@
+@import '../../utils/to-rem';
+
+.pagination {
+  padding: to-rem(30px) 0 0 0;
+}
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.pagination__prev {
+  transform: rotate(180deg);
+}
+
+.pagination .link {
+  display: block;
+  padding: 0 to-rem(10px);
+  border: none;
+}
+
+.pagination .icon {
+  display: block;
+}

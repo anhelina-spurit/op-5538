@@ -1,0 +1,47 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+
+.text-preview {
+  width: 100%;
+}
+
+.text-preview__heading {
+  margin: 0 0 to-rem(22px);
+  font-weight: 400;
+  letter-spacing: to-rem(3px);
+}
+
+.text-preview__description {
+  margin: 0 0 to-rem(30px);
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(0.6px);
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(13px);
+  }
+}
+
+.text-preview__link {
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(1.5px);
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(11px);
+  }
+}
+
+.text-preview__media {
+  width: 100%;
+  margin-top: to-rem(24px);
+}
+
+.text-preview__image {
+  width: 100%;
+  max-width: to-rem(470px);
+
+  @include media-breakpoint-down(md) {
+    max-width: to-rem(300px);
+    margin: auto;
+  }
+}

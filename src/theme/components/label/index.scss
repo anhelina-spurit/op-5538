@@ -1,0 +1,9 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+
+.label {
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.5px);
+  line-height: to-rem(22px);
+}

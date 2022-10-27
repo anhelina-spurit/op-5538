@@ -1,0 +1,40 @@
+@import '../../../utils/to-rem';
+@import '../../../constants/palette';
+@import '../../../utils/breakpoints/index';
+
+.wishlist {
+  padding-top: to-rem(72px);
+  padding-bottom: to-rem(72px);
+  background-color: $palette-quarter-pearl-lusta;
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(24px);
+    padding-bottom: to-rem(24px);
+  }
+}
+
+.wishlist__heading {
+  margin-bottom: to-rem(25px);
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(20px);
+  font-weight: 400;
+  letter-spacing: to-rem(3.52px);
+  text-align: center;
+}
+
+.wishlist__description {
+  margin-bottom: 75px;
+  font-size: to-rem(14px);
+  letter-spacing: to-rem(1.2px);
+  text-align: center;
+}
+
+.wishlist__empty {
+  display: block;
+  margin-top: to-rem(75px);
+  text-align: center;
+}
+
+.wishlist__empty.hidden {
+  display: none;
+}

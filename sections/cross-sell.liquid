@@ -1,0 +1,110 @@
+{%- liquid
+  if section.blocks.size > 0
+    assign heading_id = section.id | append: '__heading'
+    assign heading_custom_classes = 'cross-sell__heading cross-sell__heading--main '
+    unless section.settings.is_heading_visible == true
+      assign heading_custom_classes = heading_custom_classes | append: 'visually-hidden'
+    endunless
+    capture container_content
+      render 'el_heading', level: 2, id: heading_id, text: section.settings.heading, custom_classes: heading_custom_classes
+
+      capture tablist
+        for block in section.blocks
+          assign metafield_name = block.settings.metafield_name
+          assign metafield_namespace = block.settings.metafield_namespace
+          assign tab_panel_id = metafield_name | append: '-tab-panel-' | append: forloop.index
+          assign tab_id = metafield_name | append: '-tab-' | append: forloop.index
+          if forloop.index == 1
+            assign selected = true
+          else
+            assign selected = false
+          endif
+          unless product.metafields[metafield_namespace][metafield_name] == blank
+            render 'el_tab', id: tab_id, content: block.settings.tab_name, panel_id: tab_panel_id, selected: selected
+          endunless
+        endfor
+      endcapture
+      render 'el_tab-list', content: tablist, custom_classes: 'cross-sell__tablist'
+      for block in section.blocks
+        assign metafield_name = block.settings.metafield_name
+        assign metafield_namespace = block.settings.metafield_namespace
+        assign tab_panel_id = metafield_name | append: '-tab-panel-' | append: forloop.index
+        assign tab_id = metafield_name | append: '-tab-' | append: forloop.index
+        capture tab_content
+          unless block.settings.tab_name == blank
+            render 'el_heading',level: 3,text: block.settings.tab_name,custom_classes: 'cross-sell__heading cross-sell__heading--tab'
+          endunless
+          assign handles = product.metafields[metafield_namespace][metafield_name] | split: ','
+          render 'c_product-slider', products: handles, custom_classes: 'cross-sell__product-slider'
+        endcapture
+        if forloop.index == 1
+          assign hidden = false
+        else
+          assign hidden = true
+        endif
+        unless handles == blank
+          render 'el_tab-panel', id: tab_panel_id, content: tab_content, tab_id: tab_id, hidden: hidden
+        endunless
+      endfor
+    endcapture
+    capture content
+      render 'el_container', content: container_content, modifiers: 'xxl', custom_classes: 'cross-sell__container'
+    endcapture
+    render 'c_section', id: section.id, name: 'cross-sell', content: content
+  endif
+-%}
+
+{% schema %}
+{
+  "name": "Cross sell",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Cross sell"
+    },
+    {
+      "id": "is_heading_visible",
+      "type": "checkbox",
+      "label": "Heading visible",
+      "default": false,
+      "info": "By default heading is hidden"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "id": "tab_name",
+          "type": "text",
+          "label": "Tab name"
+        },
+        {
+          "id": "metafield_namespace",
+          "type": "text",
+          "label": "Metafield namespace",
+          "default": "swatch"
+        },
+        {
+          "id": "metafield_name",
+          "type": "text",
+          "label": "Metafield name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cross sell",
+      "blocks": [
+        {
+          "type": "tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

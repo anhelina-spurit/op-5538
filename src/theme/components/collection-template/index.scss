@@ -1,0 +1,26 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../utils/breakpoints';
+
+.collection__heading {
+  color: $palette-dark-slate-grey;
+}
+
+.collection__product-number {
+  font-size: to-rem(11px);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.collection__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection__column .product-list {
+  order: 1;
+}
+
+.collection__column .load-more {
+  order: 2;
+}

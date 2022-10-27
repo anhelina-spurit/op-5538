@@ -1,0 +1,72 @@
+{%- liquid
+  capture container
+    assign blog = blogs[section.settings.blog]
+
+    if blog.articles.size > 0
+      assign heading_id = section.id | append: '_heading'
+      render 'el_heading', id: heading_id, custom_classes: 'blog-preview__heading', level: 2, text: section.settings.heading
+
+      echo '<div class="blog-preview__widget">'
+        echo '<div class="blog-preview__slider swiper">'
+          echo '<ul class="blog-preview__wrapper swiper-wrapper" role="list">'
+            for article in blog.articles limit: 3
+              echo '<li class="blog-preview__slide swiper-slide" data-index="' | append: forloop.index0 | append: '">'
+                echo '<div class="blog-preview__card">'
+                  capture image
+                    render 'el_shopify-image', image: article.image, custom_classes: 'blog-preview__image'
+                  endcapture
+
+                  capture description
+                    if article.excerpt.size > 0
+                      echo article.excerpt
+                    else
+                      echo article.content | strip_html | truncate: 150
+                    endif
+                  endcapture
+
+                  capture link_title
+                    echo 'blog.read_more' | t
+                  endcapture
+
+                  render 'el_ratio-container', custom_classes: 'blog-preview__media', content: image, width: 426, height: 564, size_limited: true
+                  render 'c_text-preview', custom_classes: 'blog-preview__content', heading: article.title, heading_level: 3, description: description, link: article.url, link_title: link_title
+                echo '</div>'
+              echo '</li>'
+            endfor
+          echo '</div>'
+          echo '<div class="blog-preview__scrollbar swiper-scrollbar"></div>'
+        echo '</div>'
+      echo '</div>'
+    endif
+  endcapture
+
+  capture content
+    render 'el_container', content: container, modifiers: 'xxl', custom_classes: 'blog-preview__container'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'blog-preview', heading_id: heading_id, content: content
+-%}
+
+{% schema %}
+{
+  "name": "Blog preview",
+  "class": "shopify-section--has-padding",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "blog",
+      "type": "blog",
+      "label": "Blog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog preview"
+    }
+  ]
+}
+{% endschema %}

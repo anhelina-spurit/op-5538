@@ -1,0 +1,87 @@
+{% style %}
+  #{{ section.id }} {
+    background-image: url({{ section.settings.background_image | img_url: 'master' }});
+  }
+{%- endstyle -%}
+{%- liquid
+  capture container
+    if section.settings.background_image_link != blank
+      echo '<a class="engagements__background-link" href="' | append: section.settings.background_image_link.url | append: '">'
+    endif
+    assign content_classes = 'engagements__content'
+
+    if section.settings.logo
+      render 'el_shopify-image', custom_classes: 'engagements__image', image: section.settings.logo, lazy_loading: true
+    endif
+
+    if section.settings.description
+      echo '<div class="engagements__text">' | append: section.settings.description | append: '</div>'
+    endif
+
+    if section.settings.link != blank and section.settings.link_text != blank
+      render 'el_link', href: section.settings.link, text: section.settings.link_text,  id: 'engagement _link',  custom_classes: 'button button--primary engagements__link'
+    endif
+    if section.settings.background_image_link != blank
+      echo '</a>'
+    endif
+  endcapture
+
+  capture section_content
+    render 'el_container', content: container, custom_classes: 'engagements__container'
+  endcapture
+
+  if section.settings.show_on_mobile
+    assign mobile_show_class = 'engagements--mobile-show'
+  endif
+
+  render 'c_section', id: section.id, name: 'engagements', custom_classes: mobile_show_class,  content: section_content
+-%}
+
+{% schema %}
+{
+  "name": "Engagement",
+  "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_on_mobile",
+        "label": "Show on mobile",
+        "default": true
+      },
+      {
+        "id": "background_image",
+        "type": "image_picker",
+        "label": "Background image"
+      },
+      {
+        "id": "background_image_link",
+        "type": "url",
+        "label": "Background image link"
+      },
+      {
+        "id": "logo",
+        "type": "image_picker",
+        "label": "Logo"
+      },
+      {
+        "id": "description",
+        "type": "richtext",
+        "label": "Description"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link url"
+      },
+      {
+        "id": "link_text",
+        "type": "text",
+        "label": "Link text"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Engagement"
+    }
+  ]
+}
+{% endschema %}

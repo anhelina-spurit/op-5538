@@ -1,0 +1,360 @@
+{%- liquid
+  assign heading = section.settings.heading
+  assign richtext = section.settings.richtext
+  assign readMoreUrl = section.settings.read_more_url
+  assign readMoreLabel = section.settings.read_more_label
+  assign imageSrc = section.settings.image | image_url
+  assign invert = section.settings.invert_content
+  assign actionLabel = section.settings.label_action
+  assign hasLinkMore = false
+  if readMoreUrl != blank and readMoreLabel != blank
+    assign hasLinkMore = true
+  endif
+
+  assign customClassSection = 'image-text-invert-' | append: section.id
+  assign customClassContainer = 'image-text-invert__container '
+  if section.settings.centerline == true
+    assign customClassContainer = customClassContainer | append: ' image-text-invert__container--centerline'
+  endif
+
+  assign headingClass = 'image-text-invert__heading'
+  if hasLinkMore == true
+    assign headingClass = headingClass | append: ' ' | append: 'image-text-invert__heading_small-offset'
+  endif
+-%}
+
+{%- capture imageContainer -%}
+  <div class="image-text-invert__image-container">
+    {%- if section.settings.image != blank -%}
+      <div class="link-wrapper">
+        {% unless section.settings.url_image == blank %}
+          <a class="link-wrapper__link" href="{{ section.settings.url_image }}"></a>
+        {% endunless %}
+
+        {%- render 'el_shopify-image', image: section.settings.image, lazy_loading: true, custom_classes: 'image-text-invert__image', format: 'pjpg' -%}
+      </div>
+    {%- endif -%}
+  </div>
+  {%- if section.settings.image_description != blank -%}
+    <div class="image-text-invert__image-desc">{{ section.settings.image_description }}</div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture textContainer -%}
+  <div class="image-text-invert__text-container">
+    {%- if actionLabel != blank -%}
+      <div class="text-image__subtitle">{{ actionLabel }}</div>
+    {%- endif -%}
+
+    {%- if heading != blank -%}
+      {%- render "el_heading", level: 2, text: heading, modifiers: 'md', custom_classes: headingClass -%}
+    {%- endif -%}
+
+    {%- if section.settings.extra_first != blank -%}
+      <div class="image-text-invert__extra-text image-text-invert__extra-text--first">
+        {{- section.settings.extra_first -}}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.extra_large != blank -%}
+      <div class="image-text-invert__extra-large">{{- section.settings.extra_large -}}</div>
+    {%- endif -%}
+
+    {%- if section.settings.extra_image != blank -%}
+      <div class="link-wrapper">
+        {% unless section.settings.url_extra_image == blank %}
+          <a class="link-wrapper__link" href="{{ section.settings.url_extra_image }}"></a>
+        {% endunless %}
+
+        {%- render 'el_shopify-image', image: section.settings.extra_image, lazy_loading: true, custom_classes: 'image-text-invert__extra-image', format: 'pjpg' -%}
+
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.extra_last != blank -%}
+      <div class="image-text-invert__extra-text image-text-invert__extra-text--last">
+        {{- section.settings.extra_last -}}
+      </div>
+    {%- endif -%}
+
+    {%- if richtext != blank -%}
+      <div class="image-text-invert__description">{{- richtext -}}</div>
+    {%- endif -%}
+
+    {%- liquid
+      if readMoreUrl != blank and readMoreLabel != blank
+        render "el_link", href: readMoreUrl, text: readMoreLabel, custom_classes: 'image-text-invert__read-more'
+      endif
+
+      if section.settings.content_image != blank
+        render 'el_shopify-image', custom_classes: 'text-image__content-image', image: section.settings.content_image, lazy_loading: true
+      endif
+    -%}
+  </div>
+{%- endcapture -%}
+
+{%- capture container_content -%}
+  {%- liquid
+    assign column_mod_class = ''
+
+    if section.settings.image_centered
+      assign column_mod_class = 'image-text-invert__column--centered'
+    endif
+  -%}
+  <div class="image-text-invert__column {{ column_mod_class }}
+    {% if invert == false %}image-text-invert__column-image{% else %}image-text-invert__column-text invert{% endif %}">
+    {%- if invert == false -%}{{- imageContainer -}}{%- else -%}{{- textContainer -}}{%- endif -%}
+  </div>
+  <div class="image-text-invert__column
+    {% if invert == false %}image-text-invert__column-text{% else %}image-text-invert__column-image invert{% endif %}">
+    {%- if invert == false -%}{{- textContainer -}}{%- else -%}{{- imageContainer -}}{%- endif -%}
+  </div>
+{%- endcapture -%}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+  background-color: {{- section.settings.background -}};
+  }
+  #shopify-section-{{ section.id }} .image-text-invert__container {
+  padding-top: {{- section.settings.padding_top_desktop -}}px;
+  padding-bottom: {{- section.settings.padding_bottom_desktop -}}px;
+  align-items: {{- section.settings.vertical_alignment -}};
+  }
+  #shopify-section-{{ section.id }} .image-text-invert__text-container {
+  text-align: {{- section.settings.horizontal_alignment -}};
+  }
+
+  @media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .image-text-invert__container {
+  padding-top: {{- section.settings.padding_top_mobile -}}px;
+  padding-bottom: {{- section.settings.padding_bottom_mobile -}}px;
+  }
+  #shopify-section-{{ section.id }} .image-text-invert__text-container {
+  text-align: center;
+  }
+  }
+{% endstyle %}
+
+{%- liquid
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xxl', custom_classes: customClassContainer
+  endcapture
+
+  render 'c_section', tag: 'div', id: section.id, name: 'image-text-invert', content: content, class: customClassSection
+-%}
+
+{% schema %}
+{
+  "name": "Image with text invert",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "image_centered",
+      "type": "checkbox",
+      "label": "Push to center"
+    },
+    {
+      "id": "url_image",
+      "type": "url",
+      "label": "Link for image"
+    },
+    {
+      "id": "image_description",
+      "type": "textarea",
+      "label": "Text after image"
+    },
+    {
+      "type": "header",
+      "content": "View"
+    },
+    {
+      "id": "invert_content",
+      "type": "checkbox",
+      "label": "Invert blocks"
+    },
+    {
+      "id": "centerline",
+      "type": "checkbox",
+      "label": "Centerline"
+    },
+    {
+      "type": "header",
+      "content": "Text content"
+    },
+    {
+      "id": "label_action",
+      "type": "text",
+      "label": "Action label"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading text"
+    },
+    {
+      "id": "richtext",
+      "type": "richtext",
+      "label": "Description"
+    },
+    {
+      "id": "content_image",
+      "type": "image_picker",
+      "label": "Image after description"
+    },
+    {
+      "type": "header",
+      "content": "Extra content"
+    },
+    {
+      "id": "extra_first",
+      "type": "text",
+      "label": "Extra first line text"
+    },
+    {
+      "id": "extra_large",
+      "type": "text",
+      "label": "Extra large text"
+    },
+    {
+      "id": "extra_image",
+      "type": "image_picker",
+      "label": "Extra image"
+    },
+    {
+      "id": "url_extra_image",
+      "type": "url",
+      "label": "Link for extra image"
+    },
+    {
+      "id": "extra_last",
+      "type": "text",
+      "label": "Extra last line text"
+    },
+    {
+      "type": "header",
+      "content": "Read more link"
+    },
+    {
+      "id": "read_more_url",
+      "type": "url",
+      "label": "Link url"
+    },
+    {
+      "id": "read_more_label",
+      "type": "text",
+      "label": "Link label"
+    },
+    {
+      "type": "header",
+      "content": "Content alignment"
+    },
+    {
+      "id": "horizontal_alignment",
+      "type": "select",
+      "label": "Horizontal alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "id": "vertical_alignment",
+      "type": "select",
+      "label": "Vertical alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Middle"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Offsets"
+    },
+    {
+      "id": "padding_top_desktop",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top offset (desktop)",
+      "default": 50
+    },
+    {
+      "id": "padding_bottom_desktop",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom offset (desktop)",
+      "default": 67
+    },
+    {
+      "id": "padding_top_mobile",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Top offset (mobile)",
+      "default": 25
+    },
+    {
+      "id": "padding_bottom_mobile",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Bottom offset (mobile)",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Background section color"
+    },
+    {
+      "id": "background",
+      "type": "color",
+      "label": "Background",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text invert",
+      "category": "image with text",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}

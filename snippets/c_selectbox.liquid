@@ -1,0 +1,54 @@
+{%- comment -%}
+  @summary Renders a custom selectbox
+
+  @param {string} options - options
+  @param {string} id - id
+  @param {string} [label] - label
+  @param {string} [selected_option_id] = id of selected option
+  @param {string} [selected_option_text] = text of selected option
+  @param {boolean} [a11y_text] - accessibility text instead of label
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'c_selectbox',
+    id: 'product_select',
+    a11y_text: 'Variants',
+    options: '<div role="option" id="product_option_1" class="selectbox__option" aria-selected="true">100ML</div>div role="option" id="product_option_2" class="selectbox__option" aria-selected="false">100ML</div>',
+  -%}
+{%- endcomment -%}
+
+{% if id != blank and custom_options != blank %}
+  {% assign combobox_id = id | append: "_combobox" %}
+  {% assign listbox_id = id | append: "_listbox" %}
+  {% assign label_id = id | append: "_label" %}
+
+  <div class="{%- render 'f_bem-classes', main_class: 'selectbox', custom_classes: custom_classes, modifiers: modifiers -%}" data-selectbox data-select="{{ id }}" {{ attributes }}>
+    {% if label != blank %}
+      <label id="{{ label_id }}" class="selectbox__label">{{ label }}</label>
+    {% else %}
+      <label id="{{ label_id }}" class="visually-hidden">{{ a11y_text }}</label>
+    {% endif %}
+
+    <div aria-controls="{{ listbox_id }}"
+         aria-expanded="false"
+         aria-haspopup="listbox"
+           aria-labelledby="{{ label_id }}"
+         id="{{ combobox_id }}"
+         class="selectbox__combo"
+         role="combobox"
+         {% if selected_option_id != blank %}aria-activedescendant="{{ selected_option_id }}"{% endif %}
+         tabindex="0">
+      {% if selected_option_text %}{{ selected_option_text }}{% else %} {{ label }} {% endif %}
+    </div>
+    <div class="selectbox__list"
+         role="listbox"
+         id="{{ listbox_id }}"
+         {% if label != blank %} aria-labelledby="{{ label_id }}"{% else %}aria-label="{{ a11y_text }}"{% endif %}
+         tabindex="-1">
+      {{ custom_options }}
+    </div>
+  </div>
+{% endif %}

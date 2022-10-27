@@ -1,0 +1,735 @@
+{
+  "sections": {
+    "hero": {
+      "type": "commitments-hero",
+      "blocks": {
+        "6e42f25f-269a-4845-99fb-8b6d52bffdfb": {
+          "type": "item",
+          "settings": {
+            "heading": "Des matières naturelles"
+          }
+        },
+        "674315a5-b136-4f88-ab47-25a3b9455fcd": {
+          "type": "item",
+          "settings": {
+            "heading": "Le respect des hommes"
+          }
+        },
+        "c06e4dee-9a49-4d20-895c-523e990b4249": {
+          "type": "item",
+          "settings": {
+            "heading": "Nos partenaires et fabricants"
+          }
+        },
+        "a800035b-8633-4645-9691-149fa692cb04": {
+          "type": "item",
+          "settings": {
+            "heading": "Plus  éco-responsable"
+          }
+        },
+        "7a0f09f9-5073-457b-850c-3ebc5df52424": {
+          "type": "item",
+          "settings": {
+            "heading": "Actions vertueuses"
+          }
+        },
+        "ceefb2aa-bbed-45b7-97c7-b98a738d88c8": {
+          "type": "item",
+          "settings": {
+            "heading": "#Cyrillus solidaire"
+          }
+        },
+        "4e7a791d-6ea2-4534-a701-cdb540d53c96": {
+          "type": "item",
+          "settings": {
+            "heading": "Boîte à idées"
+          }
+        }
+      },
+      "block_order": [
+        "6e42f25f-269a-4845-99fb-8b6d52bffdfb",
+        "674315a5-b136-4f88-ab47-25a3b9455fcd",
+        "c06e4dee-9a49-4d20-895c-523e990b4249",
+        "a800035b-8633-4645-9691-149fa692cb04",
+        "7a0f09f9-5073-457b-850c-3ebc5df52424",
+        "ceefb2aa-bbed-45b7-97c7-b98a738d88c8",
+        "4e7a791d-6ea2-4534-a701-cdb540d53c96"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/CYRILLUS-STUDIO-PRINTEMPS-BD-30.jpg",
+        "background": "#697b6b",
+        "sub_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/logo_66b1fd35-ff89-44e6-bbf5-c92925c679b2.svg",
+        "pre_heading": "Nos",
+        "heading": "engagements",
+        "nav_label": "Découvrez nos engagements"
+      }
+    },
+    "promo": {
+      "type": "commitments-promo",
+      "settings": {
+        "background": "#697b6b",
+        "text_color": "#ffffff",
+        "image": "shopify:\/\/shop_images\/IMG_1456.jpg",
+        "subtitle": "Parce que demain c’est vous, nous, nos enfants, notre planète :",
+        "heading": "NOUS NOUS ENGAGEONS...",
+        "description": "<p>UNE DÉMARCHE PLUS RESPONSABLE  ET SOLIDAIRE<br\/><br\/>Conscients des enjeux de demain et du rôle que nous devons prendre, nous initions depuis quelques années de nouveaux chantiers, lançons des actions concrètes et avançons dans cette voie d’une économie plus responsable et solidaire. <br\/><br\/>Produire mieux, consommer mieux et respecter ce qui nous entoure : notre feuille de route est écrite... <\/p>",
+        "words_headings": "Protéger\nValoriser\nTransmettre\nContribuer",
+        "words_description": "4 mots qui ont du sens et qui résument notre volonté d'aller vers une économie plus vertueuse, raisonnée et solidaire."
+      }
+    },
+    "item1": {
+      "type": "commitments-item",
+      "blocks": {
+        "ae619a8d-cc7e-4aaf-9853-95daf3d250aa": {
+          "type": "item",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/commitments-card_01.jpg",
+            "collection_title": "Nos collections bébé",
+            "collection_desc": "100% de nos t-shirts et bodies sont en matières naturelles",
+            "collection_link": "shopify:\/\/collections\/bebe"
+          }
+        },
+        "eceb3a23-841d-428a-a6d6-bc68f8a5e7f0": {
+          "type": "item",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/commitments-card_02.jpg",
+            "collection_title": "Notre collection Lin",
+            "collection_desc": "Plus de 100 nouvelles références en lin majoritaire",
+            "collection_link": "shopify:\/\/collections\/maison-linge-de-maison-art-de-la-table"
+          }
+        },
+        "3747831b-aa7a-41f8-8e6b-cbccccc514ad": {
+          "type": "item",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/commitments-card_03.jpg",
+            "collection_title": "Nos Jeans adultes",
+            "collection_desc": "100% de nos jeans bénéficient d’un traitement eco-responsable",
+            "collection_link": "shopify:\/\/collections\/pantalon-jeans"
+          }
+        },
+        "da9c1a40-9619-4862-b488-dd615f2bef68": {
+          "type": "item",
+          "settings": {
+            "collection_image": "shopify:\/\/shop_images\/Push-Layer-FE-Look-histoire3.jpg",
+            "collection_title": "title",
+            "collection_desc": "Description",
+            "collection_link": "shopify:\/\/collections\/bebe-doudous-peluches"
+          }
+        }
+      },
+      "block_order": [
+        "ae619a8d-cc7e-4aaf-9853-95daf3d250aa",
+        "eceb3a23-841d-428a-a6d6-bc68f8a5e7f0",
+        "3747831b-aa7a-41f8-8e6b-cbccccc514ad",
+        "da9c1a40-9619-4862-b488-dd615f2bef68"
+      ],
+      "settings": {
+        "heading": "Nos matières",
+        "subheading": "Toujours plus naturelles",
+        "description": "Nous privilégions depuis toujours les fibres naturelles, cette saison nous sommes très fiers d’annoncer ce chiffre record : 78% de nos modèles sont composés de matières naturelles.\nLin, coton, coton biologique, laine, laine RWS®... sont les matières de nos collections automne-hiver 2022.\n\nOui, nous utilisons encore quelques matières artificielles, mais nous les choisissons plus raisonnées et plus respectueuses de la planète. La part croissante des Tencel®, Lyocell®, Cupro recyclé, viscose Lenzing Ecovero®, fibres recyclées dans nos collections est aussi une avancée.",
+        "image": "shopify:\/\/shop_images\/IMG_1456_be5b0de8-86ef-4036-911b-eb19df78acc9.jpg",
+        "feature_number": "78%",
+        "feature_description": "de nos modèles sont composés de matières naturelles",
+        "feature_icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/leaf-reef.svg",
+        "content_heading": "Nos collections automne-hiver",
+        "content_text": "Notre VOLONTÉ : développer encore plus de matières naturelles et travailler sur la qualité de nos matières artificielles. \n\nNotre ambition : accroître le pourcentage de fibres recyclées et de nouvelles matières écoresponsables. \n\nNos acheteurs, responsables qualité et collection mobilisent aussi nos partenaires et nouveaux fournisseurs à cette démarche plus éco-responsable. C'est ensemble main dans la main que nous avançons, que nous nous engageons et que nous grandissons.",
+        "link_url": "shopify:\/\/collections",
+        "link_text": "Tous nos produits éco-responsables"
+      }
+    },
+    "item2": {
+      "type": "commitments-item-2",
+      "settings": {
+        "heading": "Le respect des hommes et de la planètes",
+        "subheading": "une évidence pour nous aujourd’hui…",
+        "description": "Soucieux de ralentir notre impact environnemental et de vous proposer des collections les plus respectueuses possibles. \n\nNous appliquons les réglementations de protection de la planète et des hommes pour toutes nos productions (Réglementation européenne REACH). \n\nNous prenons les mesures adéquates pour nous acquitter des responsabilités qui nous incombent en vertu de ces réglementations européennes.",
+        "image": "shopify:\/\/shop_images\/comm-i-2.jpg",
+        "content_heading": "Le respect de toutes les obligations légales fait partie de notre culture d’entreprise.",
+        "content_text": "Nous développons également des programmes complets en coton organique certifié et des collections Oeko-Tex®,  Label garantissant l'absence de substances nocives ou pouvant nuire à la santé et à l'environnement.<br>\n<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0565\/1546\/1256\/files\/oeko-tex.png?v=1654125239\" alt=\"oeko-tex\"><br>\nNos parures de lit sont entièrement labellisées Oeko-Tex®. Pour notre collection maison, nous travaillons également avec un pays partenaire reconnu pour son savoir-faire textile : Le Portugal. <br><br>100% de nos parures de lit adultes en gaze de coton et lin y sont fabriquées.",
+        "content_image": "shopify:\/\/shop_images\/corporate_culture.png"
+      }
+    },
+    "item3": {
+      "type": "commitments-item-3",
+      "blocks": {
+        "bf9fe149-5163-472b-855f-ba3daaa7fdff": {
+          "type": "figures",
+          "settings": {
+            "figure_image": "shopify:\/\/shop_images\/fabric-01.jpg",
+            "figure_caption": "L’atelier de création Cyrillus"
+          }
+        },
+        "55489fe1-5f30-4e3c-bdc9-d78744905f34": {
+          "type": "figures",
+          "settings": {
+            "figure_image": "shopify:\/\/shop_images\/fabric-02.jpg",
+            "figure_caption": ""
+          }
+        },
+        "5a072328-e7e2-4217-bd0b-4f04f78d0170": {
+          "type": "figures",
+          "settings": {
+            "figure_image": "shopify:\/\/shop_images\/fabric-03.jpg",
+            "figure_caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "bf9fe149-5163-472b-855f-ba3daaa7fdff",
+        "55489fe1-5f30-4e3c-bdc9-d78744905f34",
+        "5a072328-e7e2-4217-bd0b-4f04f78d0170"
+      ],
+      "settings": {
+        "heading": "Nos partenaires et fabricants",
+        "subheading": "ensemble nous irons plus loin...",
+        "description": "",
+        "image": "shopify:\/\/shop_images\/comm-i-3.jpg",
+        "margin_bottom": 60,
+        "content_heading": "",
+        "content_text": "Nous dessinons, créons tous nos modèles en France, une équipe de 12 stylistes et modélistes y est entièrement dédiée.",
+        "margin_top": -100
+      }
+    },
+    "image-with-text-slider": {
+      "type": "image-with-text-slider",
+      "blocks": {
+        "52e14850-f14e-4bec-9629-a471e63a637a": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fabric-slide-01.jpg",
+            "heading": "NOS COLLECTIONS ET PARTENARIATS",
+            "description": "Nous développons des collections 100% Made In France et des partenariats éco-responsables (Les 3 Tricoteurs, VEJA, Indispensac...).\n\nNous privilégions de plus en plus les productions européennes et les productions proche-import. Ce n'est certes pas encore suffisant mais nous avançons à grands pas..."
+          }
+        },
+        "0c83ae6a-9e98-4ccc-93df-d46130e279f6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fabric-slide-01.jpg",
+            "heading": "Heading",
+            "description": "Description"
+          }
+        }
+      },
+      "block_order": [
+        "52e14850-f14e-4bec-9629-a471e63a637a",
+        "0c83ae6a-9e98-4ccc-93df-d46130e279f6"
+      ],
+      "settings": {
+        "heading": "",
+        "section_bg": "#f9f4eb",
+        "slide_bg": "#ffffff"
+      }
+    },
+    "commitments-map": {
+      "type": "commitments-map",
+      "blocks": {
+        "13103db7-dbe7-455b-92f5-48666866edbc": {
+          "type": "marker",
+          "settings": {
+            "marker_name": "Italie",
+            "heading": "L’ITALIE",
+            "subheading": "Et ses grandes maisons italiennes",
+            "description": "<p><strong>Production pour Cyrillus : Nos manteaux, robes, jupes, vestes et pantalons adultes.<\/strong><\/p><p>À l’image de notre collaboration avec l’historique maison Manteco®, une référence et un savoir-faire reconnu dans les tissus haut de gamme. L’Entreprise Manteco® est aussi pleinement engagée dans la mode circulaire et a développé de nombreux projets écoresponsables. Derrière son approche verte et ses tissus de première qualité, il y a des générations de savoir-faire, d'héritage et d’exigence.<\/p>",
+            "image1": "shopify:\/\/shop_images\/partner_italy_01.jpg",
+            "image2": "shopify:\/\/shop_images\/partner_italy_02.jpg"
+          }
+        },
+        "62810268-c052-4d30-9010-5c99547f1443": {
+          "type": "marker",
+          "settings": {
+            "marker_name": "Angleterre",
+            "heading": "Angleterre",
+            "subheading": "",
+            "description": ""
+          }
+        },
+        "9ce5c2eb-2c1a-40b1-93c5-53839e5c70e1": {
+          "type": "marker",
+          "settings": {
+            "marker_name": "France",
+            "heading": "France",
+            "subheading": "",
+            "description": ""
+          }
+        },
+        "e17f5065-26ba-4ff3-b2ec-a2a9516bbb93": {
+          "type": "marker",
+          "settings": {
+            "marker_name": "Portugal",
+            "heading": "Portugal",
+            "subheading": "",
+            "description": ""
+          }
+        },
+        "e4c5d301-3d32-4502-98ff-c91c82de1c41": {
+          "type": "marker",
+          "settings": {
+            "marker_name": "Maroc",
+            "heading": "Maroc",
+            "subheading": "",
+            "description": ""
+          }
+        },
+        "d639f228-7640-4ecf-90d2-7a3c80f38404": {
+          "type": "marker",
+          "settings": {
+            "marker_name": "Madagascar",
+            "heading": "Madagascar",
+            "subheading": "",
+            "description": ""
+          }
+        },
+        "d305952c-c1e4-40fc-ab01-852f25b2cd4e": {
+          "type": "marker",
+          "settings": {
+            "marker_name": "Chine",
+            "heading": "Chine",
+            "subheading": "",
+            "description": ""
+          }
+        },
+        "bdfd81ad-ea33-492b-bad8-6d167ce0df78": {
+          "type": "marker",
+          "settings": {
+            "marker_name": "Inde",
+            "heading": "Inde",
+            "subheading": "",
+            "description": ""
+          }
+        },
+        "2c3b23e1-d054-479d-9a22-55d885254daf": {
+          "type": "marker",
+          "settings": {
+            "marker_name": "Bulgarie",
+            "heading": "Bulgarie",
+            "subheading": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "13103db7-dbe7-455b-92f5-48666866edbc",
+        "62810268-c052-4d30-9010-5c99547f1443",
+        "9ce5c2eb-2c1a-40b1-93c5-53839e5c70e1",
+        "e17f5065-26ba-4ff3-b2ec-a2a9516bbb93",
+        "e4c5d301-3d32-4502-98ff-c91c82de1c41",
+        "d639f228-7640-4ecf-90d2-7a3c80f38404",
+        "d305952c-c1e4-40fc-ab01-852f25b2cd4e",
+        "bdfd81ad-ea33-492b-bad8-6d167ce0df78",
+        "2c3b23e1-d054-479d-9a22-55d885254daf"
+      ],
+      "settings": {
+        "annotation": "Main dans la main… \n\nTous nos prestataires, fournisseurs, fabricants et ateliers sont choisis pour leur expertise. C’est une relation de confiance et de respect mutuel qui nous lient. Même si l’objectif est de rapprocher nos sources de production, nous fabriquons aujourd’hui partout dans le monde, et surtout là où se trouvent le savoir-faire, l’exigence et le respect de nos engagements. Nous exigeons de tous nos partenaires un cahier des charges signé et respecté sur les conditions éthiques, sociales et environnementales. Courant 2022 et ce malgré un contexte sanitaire compliqué, 100% de nos partenaires seront audités.",
+        "legend": "cliquez  sur la carte pour\ndécouvrir nos partenaires",
+        "nav_label": "découvrez nos partenaires à travers le monde"
+      }
+    },
+    "item4": {
+      "type": "commitments-item-4",
+      "settings": {
+        "heading": "Plus éco- responsable",
+        "subheading": "Tous les jours des gestes qui font du bien",
+        "description": "C'est simple et cela commence par des engagements et des actions au quotidien...\n\nDepuis quelques années, nous nous sommes actés dans nos boutiques, nos bureaux, nos entrepôts des gestes, des actions, des engagements qui font sens.",
+        "image": "shopify:\/\/shop_images\/comm-i-4.jpg",
+        "margin_bottom": 0
+      }
+    },
+    "image-with-text-slider4": {
+      "type": "image-with-text-slider",
+      "blocks": {
+        "c2ce486d-a895-49a2-a8b5-1b80632a8255": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/comm-4-cont-01.jpg",
+            "heading": "Nos sacs shopping",
+            "description": "100 % MADE IN FRANCE EN FIBRES RECYCLÉES\n\nComposés de chutes de coton et de bouteilles plastiques. Réduction par 5 de la consommation d’eau et par 9 des émissions de CO2. Sacs produits à Charlieu par notre partenaire l’INDISPENSAC®. Bon pour la planète et pour les hommes : la fabrication de ces sacs s’inscrit aussi dans une démarche responsable et solidaire (ESAT, entreprises adaptées..)."
+          }
+        }
+      },
+      "block_order": [
+        "c2ce486d-a895-49a2-a8b5-1b80632a8255"
+      ],
+      "settings": {
+        "heading": "ARRÊT DE LA DISTRIBUTION DES SACS EN CAISSE",
+        "section_bg": "#ffffff",
+        "slide_bg": "#f2ecdf"
+      }
+    },
+    "image-text-tiles": {
+      "type": "image-text-tiles",
+      "blocks": {
+        "3c4de1d0-48ca-4a24-822a-bf5d943e6609": {
+          "type": "Item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/comm-4-cont-02.jpg",
+            "heading": "Objectif  0 déchet",
+            "subheading": "100% de nos déchets textile sont recyclés",
+            "link_text": "Nos autres actions",
+            "link": "shopify:\/\/collections",
+            "description": "<p>- 80% de nos autres déchets (hors textile) sont aussi valorisés<br\/>- 50% de nos boutiques ont adopté le tri sélectif<br\/>- 100% de nos cartons sont recyclés ou réutilisés<br\/><br\/>Notre objectif ? <br\/>Recycler ou réutiliser 100% de nos déchets d'ici 2022 sur tous nos sites.<\/p>"
+          }
+        },
+        "8dc82862-0921-4d5b-b7c3-f309b0cba8e2": {
+          "type": "Item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/comm-4-cont-03.jpg",
+            "heading": "Nos éco-gestes",
+            "subheading": "500 h d’atelier de sensibilisation pour nos collaborateurs",
+            "link_text": "LEs réalisations",
+            "link": "shopify:\/\/collections",
+            "description": "<p>- Ateliers de fabrication de shampoing, <br\/>de lessive, de Tawashis... pour nos collaborateurs<br\/>-  Installation de ruches sur les toits <br\/>de nos entrepôts<br\/>- Engagemnent des collaborateurs pour une mobilité collective, douce et éco-responsable <br\/>(co-voiturage, transports en commun, équipements pour les voitures électriques...)<br\/>- Création d'un guide éco-gestes <br\/><br\/>Ensemble .... nous nous mobilisons tous les jours.<\/p>"
+          }
+        },
+        "7345579e-669d-48c2-a4a5-5f86afcd7d27": {
+          "type": "Item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/comm-4-cont-04.jpg",
+            "heading": "Le plastique",
+            "subheading": "Arrêt des sacs plastique en boutique",
+            "link_text": "Et ce n’est pas fini …",
+            "link": "shopify:\/\/collections",
+            "description": "<p>- Arrêt des couverts et gobelets plastique <br\/>- Réduction de 30% du grammage de nos polybags<br\/>- Utilisation de plastique recyclé pour nos polybags<br\/>- Arrêt des emballages en plastique<br\/>pour certaines lignes de produits adaptés.<br\/><br\/>Notre engagement ? Oui nous utilisons encore du plastique mais notre volonté est de réduire progressivement et définivement notre consommation. <\/p>"
+          }
+        },
+        "c2e22b1b-b6ea-4d2c-9dfa-4e191090e311": {
+          "type": "Item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/comm-4-cont-05.jpg",
+            "heading": "Le papier",
+            "subheading": "Oui, nous consommons encore du papier mais moins et mieux",
+            "link_text": "La preuve !",
+            "link": "shopify:\/\/collections",
+            "description": "<p>- Nous adhérons à Citeo, organisme d’état<br\/>qui gère le recyclage papier<br\/>- Depuis 2019, nous avons divisé par 2<br\/>notre consommation de papier <br\/>- Notre contribution en 2020 a permis de financer la collecte et le recyclage de 60 tonnes de papier<br\/>- Nous mettons tout en oeuvre pour produire des catalogues et supports papier plus recyclables et éco-responsables<br\/>- Les papiers que nous utilisons sont toujours issus de forêts gérées éco-durablement.  <br\/><br\/>Notre objectif ? Produire moins et mieux sur des supports recyclés.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "3c4de1d0-48ca-4a24-822a-bf5d943e6609",
+        "8dc82862-0921-4d5b-b7c3-f309b0cba8e2",
+        "7345579e-669d-48c2-a4a5-5f86afcd7d27",
+        "c2e22b1b-b6ea-4d2c-9dfa-4e191090e311"
+      ],
+      "settings": {
+        "heading": "NOUS L’AVONS FAIT !"
+      }
+    },
+    "item5": {
+      "type": "commitments-item-5",
+      "settings": {
+        "heading": "Actions vertueuses",
+        "subheading": "Recréer des histoires,  des collections de la valeur",
+        "description": "Collecte en boutique, revente sur notre site Secondehistoire.fr, collection en fibres recyclées...\nNous sommes TOUS les acteurs du monde\nd’aujourd’hui et de ce qu’il deviendra demain.",
+        "image": "shopify:\/\/shop_images\/comm-i-5.jpg",
+        "margin_bottom": 80,
+        "content_heading": "Découvrez nos actions recyclage",
+        "heading_size": 22,
+        "h_padding_bottom": 0
+      }
+    },
+    "1655293040654b509e": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/comm-5-cont-1.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": true,
+        "centerline": false,
+        "label_action": "Limites collection",
+        "heading": "",
+        "richtext": "<p>\"Moins, mieux et bon pour la planète\"<br\/>Le principe : chaque semaine, nous fabriquons<br\/>des petites séries en fonction des commandes. Chaque modèle est découpé pièce par pièce,<br\/>ce qui permet d'éviter surproduction et gaspillage.<br\/><\/p>",
+        "extra_first": "",
+        "extra_large": "",
+        "extra_image": "shopify:\/\/shop_images\/Liberty_logo.png",
+        "url_extra_image": "",
+        "extra_last": "Une production plus responsable sur un tissu signé Liberty Fabric",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "right",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#ffffff"
+      }
+    },
+    "1655297575c2ac1703": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/comm-5-cont-2.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": false,
+        "centerline": false,
+        "label_action": "L’upcycling",
+        "heading": "",
+        "richtext": "<p>Récupérer nos chutes de tissus Liberty pour leur donner une 2ème vie : une collection aussi jolie que 100% éco-responsable !<\/p>",
+        "extra_first": "Collection",
+        "extra_large": "100%",
+        "url_extra_image": "",
+        "extra_last": "upcyclée made with Liberty Fabrics",
+        "read_more_url": "shopify:\/\/collections",
+        "read_more_label": "En savoir plus",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#ffffff"
+      }
+    },
+    "1655300771e7f261e4": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/comm-5-cont-3.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": true,
+        "centerline": false,
+        "label_action": "LA REVENTE",
+        "heading": "",
+        "richtext": "<p>ACHAT & VENTE DE SECONDE MAIN<br\/>Offrez une seconde histoire aux collections Cyrillus<br\/>et créez-vous un dressing plus responsable avec des pièces 100% durables.<\/p>",
+        "extra_first": "Rien ne se perd, tout se transmet",
+        "extra_large": "23 859",
+        "url_extra_image": "",
+        "extra_last": "c’est le nombre de membres que compte notre communauté.",
+        "read_more_url": "shopify:\/\/collections",
+        "read_more_label": "aller sur seconde histoire",
+        "horizontal_alignment": "right",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#ffffff"
+      }
+    },
+    "1655301151641f3579": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/comm-5-cont-4.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": false,
+        "centerline": false,
+        "label_action": "La collecte",
+        "heading": "",
+        "richtext": "<p>Nous vous donnons rendez-vous dans nos boutiques <br\/>pour y déposer vos sacs de textiles usés. <br\/>Ces collectes permettront de créer des collections <br\/>en fibres recyclées.<\/p>",
+        "extra_first": "En 2021, vous avez réalisé",
+        "extra_large": "23000 dons",
+        "url_extra_image": "",
+        "extra_last": "dans nos boutiques",
+        "read_more_url": "shopify:\/\/collections",
+        "read_more_label": "1 sac déposé = 1 bon de 5 €",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#ffffff"
+      }
+    },
+    "16559895121467d912": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/comm-5-cont-5.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": true,
+        "centerline": false,
+        "label_action": "La valorisation",
+        "heading": "",
+        "richtext": "<p>Cercle vertueux : Le recyclage des textiles permet d’éviter d’utiliser des fibres vierges, de réduire la consommation d’énergie et d’eau, de réduire la pollution liée à la production de fibres, de diminuer la consommation de colorants chimiques et de soutenir l’insertion sociale.<br\/><\/p>",
+        "extra_first": "",
+        "extra_large": "100%",
+        "url_extra_image": "",
+        "extra_last": "de nos déchets textiles sont recyclés et valorisés.",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "right",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#ffffff"
+      }
+    },
+    "165572374084bdad23": {
+      "type": "image-fullsize",
+      "settings": {
+        "heading": "Merci à nos partenaires",
+        "heading_size": 16,
+        "subheading": "",
+        "subheading_size": 16,
+        "image": "shopify:\/\/shop_images\/comm-5-cont-6.jpg",
+        "image_sm": "shopify:\/\/shop_images\/comm-5-cont-6-sm.jpg",
+        "description": "",
+        "text_color": "white",
+        "align_x": "center",
+        "align_y": "center",
+        "padding_top": 32,
+        "padding_bottom": 80
+      }
+    },
+    "item6": {
+      "type": "commitments-item-6",
+      "blocks": {
+        "018976da-f87f-478a-bbbc-e8e926d23228": {
+          "type": "image-fullsize",
+          "settings": {
+            "heading": "Cyrillus s’engage",
+            "heading_size": 14,
+            "subheading": "Avec l’association les enfants du soleil",
+            "subheading_size": 18,
+            "image": "shopify:\/\/shop_images\/comm-6-cont-1.jpg",
+            "image_sm": "shopify:\/\/shop_images\/comm-6-cont-1-sm.jpg",
+            "description": "De la rue à l’espoir, \naidons-les à se construire un avenir...",
+            "text_color": "white",
+            "align_x": "left",
+            "align_y": "center",
+            "padding_top": 36,
+            "padding_bottom": 80
+          }
+        },
+        "692ad62b-a17e-4902-962d-24dead59af7e": {
+          "type": "image-text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/comm-6-cont-2.jpg",
+            "invert_content": true,
+            "description": "<p>Reconnue d’utilité publique, l’association lesEnfants du Soleil s’est fixée pour mission d’offrir un toit et un encadrement scolaire aux enfants des rues de Madagascar.Plus d’infos sur l’association et ses actions sur le site  <a href=\"https:\/\/eds-madagascar.org\/\" title=\"https:\/\/eds-madagascar.org\/\">eds-madagascar.or<br\/><br\/><\/a>&lt;mark&gt;Merci !&lt;\/mark&gt;<br\/><br\/>Grâce à nos ventes solidaires et à votre généreuse participation, nous sommes très fiers de remettre pour l’année 2021 la jolie somme de  <br\/><br\/>&lt;mark&gt;26435 €&lt;\/mark&gt;<br\/><br\/>à l’association <\/p>",
+            "image_last": "shopify:\/\/shop_images\/comm-6-cont-2-1.png",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "center",
+            "padding_bottom": 36
+          }
+        },
+        "9da648a3-f290-4ea1-899d-0d559cc96715": {
+          "type": "image-fullsize",
+          "settings": {
+            "heading": "Notre nouvelle association marraine&vous",
+            "heading_size": 16,
+            "subheading": "",
+            "subheading_size": 16,
+            "image": "shopify:\/\/shop_images\/comm-6-cont-3.jpg",
+            "image_sm": "shopify:\/\/shop_images\/comm-6-cont-3-sm.jpg",
+            "description": "Soutenir, créer du lien, \nredonner de l'espoir ...",
+            "text_color": "dark",
+            "align_x": "right",
+            "align_y": "bottom",
+            "padding_top": 80,
+            "padding_bottom": 80
+          }
+        },
+        "eaeee042-8562-434b-ad17-168df61a25f6": {
+          "type": "image-text",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/comm-6-cont-4.jpg",
+            "invert_content": false,
+            "description": "<p>Marraine&vous est une association qui soutient au quotidien les mères isolées dans leur maternité.<br\/>La mission de l'association : soutenir, créer du lien, redonner de l'espoir et rompre la solitude des mamans solos grâce à une Famille Marraine avec qui elles pourront partager des moments simples<br\/><br\/>Plus d’infos sur l’association et ses actions sur le site<br\/><a href=\"https:\/\/marraine-et-vous.fr\/\" title=\"https:\/\/marraine-et-vous.fr\/\">https:\/\/marraine-et-vous.fr<br\/><\/a><br\/>&lt;h3&gt;Nous comptons sur vous ! &lt;\/h3&gt;<\/p><p>Retrouvez nos prochaines ventes solidaires<br\/>en boutique et sur cyrillus.fr au profit de<\/p>",
+            "image_last": "shopify:\/\/shop_images\/comm-6-cont-5.png",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "center",
+            "padding_bottom": 80
+          }
+        }
+      },
+      "block_order": [
+        "018976da-f87f-478a-bbbc-e8e926d23228",
+        "692ad62b-a17e-4902-962d-24dead59af7e",
+        "9da648a3-f290-4ea1-899d-0d559cc96715",
+        "eaeee042-8562-434b-ad17-168df61a25f6"
+      ],
+      "settings": {
+        "heading": "Cyrillus solidaire",
+        "subheading": "Nos engagements nous font grandir",
+        "description": "La famille et l'enfance font partie de nous, de nos valeurs, de nos engagements.\n\nNous nous engageons au quotidien à travers des partenariats et actions d'aide et de bienveillance.\n\nNotre action et détermination continuent en 2022 avec la démultiplication de nos ventes solidaires en boutique et sur notre site.",
+        "image": "shopify:\/\/shop_images\/comm-i-6.jpg",
+        "margin_bottom": 60,
+        "circles_heading": "Nous avons distribué",
+        "circles_subheading": "en dons de produits et participations financières",
+        "circle_title_1": "2018",
+        "circle_text_1": "52000€",
+        "circle_title_2": "2019",
+        "circle_text_2": "100000€",
+        "circle_title_3": "2020",
+        "circle_text_3": "170000€",
+        "circle_title_4": "2021",
+        "circle_text_4": "400000€",
+        "last_heading": "Nos ventes solidaires"
+      }
+    },
+    "image-with-text-invert6": {
+      "type": "image-with-text-invert",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/comm-i-cont-6.jpg",
+        "image_centered": false,
+        "url_image": "",
+        "image_description": "",
+        "invert_content": false,
+        "centerline": false,
+        "label_action": "",
+        "heading": "Cyrillus s’engage..",
+        "richtext": "<p>Nous réalisons durant la saison des ventes solidaires en boutique et sur cyrillus.fr dont les bénéfices sont entièrement reversés à nos associations partenaires.<br\/><br\/>Penser aux autres et avancer ensemble : nous sommes persuadés que nos petites actions mises bout à bout font bouger les choses et permettent de construire les grands projets d’aujourd’hui et de demain.<br\/><br\/><strong>Encore mille mercis pour votre soutien.<\/strong><\/p>",
+        "extra_first": "",
+        "extra_large": "",
+        "url_extra_image": "",
+        "extra_last": "",
+        "read_more_url": "",
+        "read_more_label": "",
+        "horizontal_alignment": "left",
+        "vertical_alignment": "center",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 67,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "background": "#f9f4eb"
+      }
+    },
+    "item7": {
+      "type": "commitments-item-7",
+      "settings": {
+        "heading": "Boîte à idées",
+        "subheading": "",
+        "description": "",
+        "bg_image": "shopify:\/\/shop_images\/comm-i-7-bg.jpg",
+        "margin_top": 80,
+        "margin_bottom": 80,
+        "content_heading": "Pour vous, à vous...",
+        "content_text": "<p>Notre service client basé en France est à votre écoute 24h\/24h. Néanmoins nous le savons, vous avez beaucoup de questions, d’idées, d’envies qui méritent toute notre attention.<br\/><br\/>Secouez-nous, faites-nous rêver, avancer et grandir... nous avons aussi besoin de vous !<\/p>",
+        "content_icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0639\/8266\/5985\/files\/idea-lamp.svg",
+        "content_slogan": "Nous mettons ici \nune boite à idées",
+        "content_margin_top": 70
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "promo",
+    "item1",
+    "item2",
+    "item3",
+    "image-with-text-slider",
+    "commitments-map",
+    "item4",
+    "image-with-text-slider4",
+    "image-text-tiles",
+    "item5",
+    "1655293040654b509e",
+    "1655297575c2ac1703",
+    "1655300771e7f261e4",
+    "1655301151641f3579",
+    "16559895121467d912",
+    "165572374084bdad23",
+    "item6",
+    "image-with-text-invert6",
+    "item7"
+  ]
+}

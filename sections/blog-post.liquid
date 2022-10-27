@@ -1,0 +1,35 @@
+{% liquid
+  capture container
+    unless article.title == blank
+      render 'el_heading', level: 2, text: article.title, custom_classes: 'blog-post__heading'
+    endunless
+    unless article.content == blank or article.image == blenk
+      echo '<div class="blog-post__info">'
+      unless article.content == blank
+        echo '<div class="blog-post__content">'
+        assign content = article.content | replace: '<span>', '' | replace: '</span>', ''
+        echo content
+        echo '</div>'
+      endunless
+      unless article.image == blank
+        echo '<div class="blog-post__media">'
+        assign src = article | img_url: 'large'
+        render 'el_shopify-image',image: article.image,lazy_loading: true,custom_classes: 'blog-post__image'
+        echo '</div>'
+      endunless
+      echo '</div>'
+    endunless
+    unless article.author == blank
+      echo '<div class="blog-post__author"> <p>'
+      echo article.author
+      echo '</p></div>'
+    endunless
+  endcapture
+
+  capture section_content
+    render 'el_container', content: container, custom_classes: 'blog-post__container', modifiers: 'xl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'blog-post', content: section_content
+%}
+

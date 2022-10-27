@@ -1,0 +1,48 @@
+{% comment %}
+  @summary Renders a button tag and style needed.
+
+  @param {string} text - button text {required}
+  @param {string} id - id
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]('primary'|'secondary'|'light'|'full-width'|'sm'|'link')} [modifiers] - modifiers
+  @param {string} [type='button'] - button type
+  @param {string} [name] - button name
+  @param {boolean} disabled - button state
+  @param {string} aria_label - for accessibility
+  @param {boolean} has_loader - loading indicator
+  @param {string} custom_content - custom html-content (for example, to render icon or anything else)
+
+  @example
+  {%
+    render 'el_button',
+    text: 'Add meal-kit',
+    id: 'add_to_cart_button',
+    custom_classes: 'test test-2',
+    modifiers: 'secondary, full-width',
+    attributes: 'data-add-to-cart data-test',
+    type: 'button',
+    disabled: true,
+    aria_label: 'Add meal-kit to you cart'
+  %}
+{% endcomment %}
+
+{% if text != blank or custom_content != blank %}
+  <button
+    class="{%- render 'f_bem-classes', main_class: 'button', custom_classes: custom_classes, modifiers: modifiers -%}"
+    type="{{ type | default: 'button' }}"
+    {% if id %}id="{{ id }}"{% endif %}
+    {% if disabled %}disabled{% endif %}
+    {% if name %}name="{{ name }}"{% endif %}
+    {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}
+    {% if attributes != blank -%}{{ attributes }}{% endif %}
+  >
+    {% if text != blank %}
+      {{- text -}}
+    {% endif %}
+
+    {% if custom_content != blank %}
+      {{- custom_content -}}
+    {% endif %}
+  </button>
+{% endif %}

@@ -1,0 +1,28 @@
+@import '../../constants/palette';
+@import '../../constants/fonts';
+@import '../../utils/to-rem';
+
+.page-header {
+  padding: to-rem(30px) 0;
+  background-color: $palette-dark-slate-grey;
+}
+
+.page-header__heading {
+  margin: to-rem(20px) 0;
+  color: $palette-white;
+  font-size: to-rem(16px);
+  font-weight: 200;
+  letter-spacing: to-rem(2.67px);
+  line-height: 2;
+  text-align: center;
+}
+
+.page-header__description {
+  margin: to-rem(20px) 0;
+  color: $palette-white;
+  font-family: $font-family-lora;
+  font-size: to-rem(30px);
+  font-style: italic;
+  letter-spacing: to-rem(5px);
+  text-align: center;
+}

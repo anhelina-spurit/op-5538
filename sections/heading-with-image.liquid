@@ -1,0 +1,85 @@
+{%- liquid
+  assign heading = section.settings.heading | strip
+  assign background = section.settings.background
+  assign logo_style = section.settings.logo_style
+  assign image_src = section.settings.image | image_url
+
+  capture logo_classes
+    render 'f_bem-classes', main_class: 'heading-image__icon', modifiers: logo_style
+  endcapture
+-%}
+
+{%- if heading != blank and image_src != blank -%}
+  <style>
+    .heading-image__container {
+      background-color: {{ background }};
+    }
+  </style>
+
+  {%- capture banner -%}
+    <div class="heading-image__container">
+      {%- render 'el_heading', level: 1, text: heading, custom_classes: 'heading-image__column heading-image__column--heading' -%}
+      <div class="heading-image__logo">
+        {%- render "el_icon", icon: "logo", custom_classes: logo_classes -%}
+      </div>
+      <div class="heading-image__column heading-image__column--image">
+        {%- render "el_image", src: image_src, lazy_loading: true, alt: '' -%}
+      </div>
+    </div>
+  {%- endcapture -%}
+  {%- render 'el_container',
+        content: banner,
+        tag: 'div',
+        modifiers: 'xl',
+        custom_classes: ''
+  -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Heading with image",
+  "tag": "div",
+  "class": "heading-image",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#324d57"
+    },
+    {
+      "type": "radio",
+      "id": "logo_style",
+      "label": "Logo style",
+      "options": [
+        {
+          "value": "light",
+          "label": "Light"
+        },
+        {
+          "value": "dark",
+          "label": "Dark"
+        }
+      ],
+      "default": "light"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading with logo and image",
+      "category": "heading with logo and image",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

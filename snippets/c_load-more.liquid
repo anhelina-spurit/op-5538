@@ -1,0 +1,51 @@
+{% comment %}
+  @summary Renders load more
+  @param {object} paginate - paginate
+  @param {boolean} [allow_infinite_scroll] - show if used infinite scroll
+
+  @example
+  {% render 'c_load-more', paginate: paginate,  allow_infinite_scroll: true %}
+{% endcomment %}
+
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'load-more', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+   assign button_text = 'collection.paginate.load_more' | t
+
+   assign button_attribute = "data-load-more-button"
+   assign product_count = paginate.page_size | times: paginate.current_page
+   assign results_count = search.results_count | default: collection.products_count
+
+   assign progress_part = product_count | times: 100
+   assign progress = progress_part | divided_by : results_count
+%}
+{% if paginate.next.is_link %}
+  <div class="{{ class }}" data-load-more>
+    {%- capture load-more-content -%}
+      <div class="load-more__progress">
+        <div class="load-more__progress-indicator" style="width: {{ progress }}%"></div>
+      </div>
+      <p class="load-more__label">{{ 'collection.paginate.load_more_count' | t: products_on_page: product_count, products_count: results_count }}</p>
+      {%
+              render 'el_button',
+              text: button_text,
+              modifiers: 'secondary',
+              attributes: button_attribute,
+              type: 'button'
+      %}
+    {%- endcapture -%}
+    {%- if allow_infinite_scroll == true -%}
+      <div style="display: none">
+        {{ load-more-content }}
+      </div>
+      <div class="loader" style="display: none"></div>
+      <div class="page-loader-trigger"></div>
+    {%- else -%}
+      {{ load-more-content }}
+      <div class="loader" style="display: none"></div>
+      <div class="page-loader-trigger" style="display: none"></div>
+    {%- endif -%}
+  </div>
+{% endif %}

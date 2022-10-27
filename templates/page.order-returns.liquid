@@ -1,0 +1,15 @@
+<div class="order-returns-app__container">
+  {% if settings.enable_order_return_app %}
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@the-oz/app-order-returns@1.3.1/dist/app-order-return/app-order-return.esm.js"></script>
+    
+    <app-order-return theme-language="{{request.locale.iso_code | splice: 0,1 }}"
+              store-name="{{ shop.permanent_domain | remove: '.myshopify.com' }}"
+              orders-page-suffix="{{ settings.orders_page_suffix }}"
+              storefront-token="{{ settings.storefront_token }}"
+              enable-select-products-wording={% if settings.enable_select_products_wording %}true{% else %}false{% endif %}
+              api-url="{{ settings.api_url }}"
+              return-reasons-codes="{{ settings.returns_codes }}"
+              spinner-color="{{ settings.spinner_color }}"
+              theme-translations="{{ "request_returns" | t }}"/>
+  {% endif %}
+</div>

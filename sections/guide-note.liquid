@@ -1,0 +1,59 @@
+{%- liquid
+  capture container_content
+    if section.settings.content != blank
+      echo '<div class="guide-note__content">'
+        if section.settings.logo != blank
+          echo '<div class="guide-note__logo">'
+            render 'el_image',src: section.settings.logo,lazy_loading: true,custom_classes: 'guide-note__logo-img'
+          echo '</div>'
+        endif
+
+        echo '<span class="guide-note__text">'
+          echo section.settings.content
+        echo '</span>'
+
+        render 'el_link', custom_classes: 'guide-note__link', href: section.settings.link, text: section.settings.link_text
+      echo '<div>'
+    endif
+  endcapture
+
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xxl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'guide-note', content: content, heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Guide note",
+  "settings": [
+    {
+      "id": "logo",
+      "type": "text",
+      "label": "Notes logo",
+      "info": "It is more priority to use the image in the SVG format. To do this, you need to upload an image to the store's file system, copy path and paste it here."
+    },
+    {
+      "id": "content",
+      "type": "richtext",
+      "label": "Content"
+    },
+    {
+      "id": "link_text",
+      "type": "text",
+      "label": "Link text"
+    },
+    {
+      "id": "link",
+      "type": "url",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Guide note"
+    }
+  ]
+}
+{% endschema %}

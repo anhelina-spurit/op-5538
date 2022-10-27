@@ -1,0 +1,34 @@
+{% comment %}
+  @summary Renders accordion
+
+  @param {string} content - content
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render: 'c_accordion',
+    id: "footer_accordion",
+    content: content,
+    custom_classes: "footer__accordion",
+    attributes: "data-accordion='1'",
+    modifiers: "xxl"
+  %}
+{% endcomment %}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'accordion', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+{% unless content == blank %}
+  <div
+    class="{{ class }}"
+    data-accordion
+    {% unless attributes == blank %}{{ attributes }}{% endunless %}
+  >
+    {{- content -}}
+  </div>
+{% endunless %}

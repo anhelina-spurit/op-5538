@@ -1,0 +1,133 @@
+{%- capture text_content -%}
+  <div class="commitments-item__row">
+    <div class="commitments-item__content commitments-item__content--pullup">
+      {%- render 'el_heading', level: 2, text: section.settings.content_heading, custom_classes: 'commitments-item__subheading' -%}
+      <div class="commitments-item__desc">
+        {{ section.settings.content_text | newline_to_br }}
+      </div>
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- capture figures_content -%}
+  {%- if section.blocks.size > 0 -%}
+    <div class="commitments-figures">
+      <ul class="commitments-figures__list">
+        {%- for block in section.blocks -%}
+          <li class="commitments-figures__item {% if block.settings.figure_caption != blank %}commitments-figures__item--captioned{% endif %}">
+            <figure class="commitments-figures__figure">
+              {%- render 'el_shopify-image', image: block.settings.figure_image -%}
+              {%- if block.settings.figure_caption != blank -%}
+                <figcaption class="commitments-figures__caption">{{ block.settings.figure_caption }}</figcaption>
+              {%- endif -%}
+            </figure>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- liquid
+  assign heading_id = section.id | append: '__heading'
+
+  capture section_content
+    render 'c_commitments-item-header', count: 3
+    render 'el_container', content: text_content, modifiers: 'xxl'
+    render 'el_container', content: figures_content, modifiers: 'xl'
+  endcapture
+
+  render 'c_section', id: 'commitments-item-3', content: section_content, name: 'commitments-item', heading_id: heading_id
+-%}
+
+{%- style -%}
+  @media screen and (min-width: 992px) {
+    #shopify-section-{{ section.id }} .commitments-item__header {
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+    #shopify-section-{{ section.id }} .commitments-item__content {
+      margin-top: {{ section.settings.margin_top }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Commitments Item 3",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Heading"
+    },
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading"
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "Description"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "margin_bottom",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Header bottom offset",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "content_heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "content_text",
+      "type": "textarea",
+      "label": "Text"
+    },
+    {
+      "id": "margin_top",
+      "type": "range",
+      "min": -100,
+      "max": 50,
+      "step": 10,
+      "unit": "px",
+      "label": "Content top offset",
+      "default": -100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "figures",
+      "name": "Image",
+      "settings": [
+        {
+          "id": "figure_image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "figure_caption",
+          "type": "text",
+          "label": "Caption"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,26 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.product-label {
+  padding: to-rem(5px) to-rem(10px);
+  margin: 0 0 to-rem(7px) 0;
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(7px);
+  letter-spacing: to-rem(1.5px);
+  text-align: center;
+  text-transform: uppercase;
+  @include media-breakpoint-down(md) {
+    padding: to-rem(3px);
+    font-size: to-rem(5px);
+    letter-spacing: to-rem(1px);
+  }
+}
+
+.product-label--feature {
+  background-color: $palette-ecru-white;
+}
+
+.product-label--discount {
+  background-color: $palette-cornflower-blue;
+}

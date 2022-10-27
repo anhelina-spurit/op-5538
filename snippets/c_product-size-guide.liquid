@@ -1,0 +1,25 @@
+{% comment %}
+  @summary Renders size guide block for button
+
+
+   @param {Shopify.product} product - product
+
+
+  @example
+  {%- render 'c_product-size-guide', product: product -%}
+{% endcomment %}
+
+{% liquid
+  assign guide_modal_class =  'size-guide-modal'
+
+  capture modal_content
+  if product.metafields.FRONT.size_guide and product.metafields.FRONT.size_guide == 'bedding'
+    render 'c_bedding-size-guide'
+    assign guide_modal_class = guide_modal_class | append: ' size-guide-modal--bedding'
+  else
+    render 'c_size-guide'
+   endif
+  endcapture
+  assign guide_modal_title =  'size_guide.modal_title' |  t
+  render 'c_modal', id: 'size-guide-modal', heading: guide_modal_title, outer_close: false, content: modal_content,  custom_classes: guide_modal_class
+%}

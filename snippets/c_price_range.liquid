@@ -1,0 +1,60 @@
+{%- comment -%}
+    @summary Renders a price range slider
+
+    @param {object} filter - filter object
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {% render 'c_price_range', filter: filter %}
+{%- endcomment -%}
+
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'price-range', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+  assign uses_comma_decimals = false
+  if currencies_using_comma_decimals contains cart.currency.iso_code
+    assign uses_comma_decimals = true
+  endif
+
+  assign value_gte = nil
+  assign value_lte = nil
+
+  if filter.min_value.value
+    if uses_comma_decimals
+      assign value_gte = filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.'
+    else
+      assign value_gte = filter.min_value.value | money_without_currency | replace: ',', ''
+    endif
+  endif
+
+  if filter.max_value.value
+    if uses_comma_decimals
+      assign value_lte = filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.'
+    else
+      assign value_lte = filter.max_value.value | money_without_currency | replace: ',', ''
+    endif
+  endif
+
+%}
+<div id="price-range" class="{{ class }}"></div>
+
+{%-
+  render 'el_input',
+  type: 'hidden',
+  name: filter.min_value.param_name,
+  value: value_gte,
+  attributes: 'data-filter-control data-price-gte'
+-%}
+
+{%-
+  render 'el_input',
+  type: 'hidden',
+  name: filter.max_value.param_name,
+  value: value_lte,
+  attributes: 'data-filter-control data-price-lte'
+-%}

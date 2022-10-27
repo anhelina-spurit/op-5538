@@ -1,0 +1,99 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+@import '../../constants/fonts';
+@import '../../components/theme-sections';
+
+.info-with-image {
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+  @extend .shopify-section--has-padding;
+  @include media-breakpoint-down(md) {
+    border-bottom: to-rem(1px) solid $palette-bismark;
+  }
+}
+
+.info-with-image--mobile-hidden {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.info-with-image__column {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: to-rem(80px);
+  @include media-breakpoint-down(md) {
+    gap: 0;
+  }
+}
+
+.info-with-image__row {
+  flex: 1;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    flex: auto;
+  }
+}
+
+.info-with-image__row:last-child {
+  @include media-breakpoint-down(md) {
+    order: -1;
+  }
+}
+
+.info-with-image__media {
+  width: 100%;
+  max-width: to-rem(368px);
+  @include media-breakpoint-down(md) {
+    max-width: to-rem(165px);
+    margin: to-rem(10px) auto;
+  }
+}
+
+.info-with-image__media--full {
+  max-width: to-rem(460px);
+}
+
+.info-with-image__content {
+  width: 100%;
+  max-width: to-rem(300px);
+  color: $palette-bismark;
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    text-align: center;
+  }
+}
+
+.info-with-image__content--full {
+  max-width: 100%;
+}
+
+.info-with-image__content .text-preview__heading {
+  font-family: $font-family-lora;
+  text-transform: inherit;
+}
+
+.info-with-image .text-preview__link {
+  display: inline-block;
+  padding: to-rem(18px) to-rem(40px);
+  border: to-rem(1px) solid;
+  margin-bottom: to-rem(30px);
+  background-color: $palette-bismark;
+  color: $palette-white;
+  font-size: to-rem(9px);
+}
+
+.info-with-image .text-preview__actions {
+  @include media-breakpoint-down(md) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.info-with-image .text-preview__actions .button {
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+}

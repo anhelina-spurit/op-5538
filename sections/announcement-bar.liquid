@@ -1,72 +1,54 @@
-{%- for block in section.blocks -%}
-  {%- case block.type -%}
-    {%- when 'announcement' -%}
-      <div class="announcement-bar color-{{ block.settings.color_scheme }} gradient" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
-        {%- if block.settings.text != blank -%}
-          {%- if block.settings.link != blank -%}
-            <a href="{{ block.settings.link }}" class="announcement-bar__link link link--text focus-inset animate-arrow">
-          {%- endif -%}
-              <p class="announcement-bar__message h5">
-                {{ block.settings.text | escape }}
-                {%- if block.settings.link != blank -%}
-                  {% render 'icon-arrow' %}
-                {%- endif -%}
-              </p>
-          {%- if block.settings.link != blank -%}
-            </a>
-          {%- endif -%}
-        {%- endif -%}
+{% if section.blocks.size > 0 %}
+  {%- capture content -%}
+    <div class="announcement-slider swiper">
+      <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          <div class="announcement-slider__slide swiper-slide" {{ block.shopify_attributes }}>
+            {%- render 'el_wysiwyg', content: block.settings.text -%}
+          </div>
+        {%- endfor -%}
       </div>
-  {%- endcase -%}
-{%- endfor -%}
+    </div>
+
+    {%- liquid
+      capture button_content
+        render 'el_icon', icon: 'close', custom_classes: 'announcement-bar__icon'
+      endcapture
+
+      assign button_label = 'accessibility.close' | t
+
+      render 'el_button', text: button_content, custom_classes: 'announcement-bar__close': aria_label: button_label
+    -%}
+  {%- endcapture -%}
+
+  {%- liquid
+    capture section_content
+      render 'el_container', content: content, modifiers: 'xxl', custom_classes: 'announcement-bar__container'
+    endcapture
+
+    render 'c_section', content: section_content, name: 'announcement-bar'
+  -%}
+{% endif %}
+
+<script>
+  (() => {
+    if (sessionStorage.getItem('wasAnnouncementBarShown') !== 'true') return;
+    document.querySelectorAll('.announcement-bar').forEach((bar) => bar.remove());
+  })();
+</script>
 
 {% schema %}
 {
-  "name": "t:sections.announcement-bar.name",
-  "max_blocks": 12,
+  "name": "Announcement",
   "blocks": [
     {
       "type": "announcement",
-      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "name": "Announcement",
       "settings": [
         {
-          "type": "text",
           "id": "text",
-          "default": "Welcome to our store",
-          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
-        },
-        {
-          "type": "select",
-          "id": "color_scheme",
-          "options": [
-            {
-              "value": "background-1",
-              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__1.label"
-            },
-            {
-              "value": "background-2",
-              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__2.label"
-            },
-            {
-              "value": "inverse",
-              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__3.label"
-            },
-            {
-              "value": "accent-1",
-              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__4.label"
-            },
-            {
-              "value": "accent-2",
-              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__5.label"
-            }
-          ],
-          "default": "accent-1",
-          "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.label"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+          "type": "richtext",
+          "label": "Content"
         }
       ]
     }

@@ -1,0 +1,69 @@
+{%- liquid
+  form 'customer_login', class: 'login__form form', id: id, name: 'login', style: 'display: block'
+    assign form_errors_id = id | append: '_errors'
+    assign form_errors_label = 'accessibility.error' | t
+
+    echo '<div class="form-errors-wrapper form-errors-wrapper--sign-in" hidden></div>'
+    render 'c_form-errors', id: form_errors_id, form: form, label: form_errors_label
+
+    capture error_attributes
+      echo 'aria-invalid="true" aria-describedby="' | append: form_errors_id | append : '"'
+    endcapture
+
+    capture email_input
+      assign email_id = id | append: '_email'
+      assign email_label = 'customer.login.email' | t
+
+      capture email_attributes
+        if form.errors
+          echo error_attributes
+        endif
+      endcapture
+
+      render 'el_input', id: email_id, type: 'email', name: 'customer[email]', required: true, custom_classes: 'login-input', attributes: email_attributes, placeholder: ' '
+      render 'el_label', content: email_label, for_input: email_id, required: true, custom_classes: 'login-label'
+    endcapture
+
+    render 'c_control', content: email_input, custom_classes: 'login-control'
+
+    capture password_input
+      assign password_id = id | append: '_password'
+      assign password_label = 'customer.login.password' | t
+
+      capture password_attributes
+        echo 'autocomplete="current-password"'
+        if form.errors
+          echo error_attributes
+        endif
+      endcapture
+
+      echo '<div class="login-password-control__inner">'
+        render 'el_input', id: password_id, type: 'password', name: 'customer[password]', required: true, custom_classes: 'login-input login-password-control__input', attributes: password_attributes, placeholder: ' '
+        render 'el_label', content: password_label, for_input: password_id, required: true, custom_classes: 'login-label'
+
+        assign password_view_button_label = 'customer.login.toggle_password_view' | t
+        capture password_view_button_content
+          render 'el_icon', icon: 'password-show', custom_classes: 'login-password-control__icon'
+          render 'el_icon', icon: 'password-hide', custom_classes: 'login-password-control__icon'
+        endcapture
+
+        render 'el_button', custom_content: password_view_button_content, custom_classes: 'login-password-control__button login-password-control__button--view', attributes: 'data-toggle-password-view', aria_label: password_view_button_label
+      echo '</div>'
+
+      assign password_recovery_button_text = 'customer.login.forgot_password' | t
+
+      render 'el_button', text: password_recovery_button_text, modifiers: 'link', attributes: 'data-show-recovery-password', custom_classes: 'login-password-control__button login-password-control__button--recovery'
+    endcapture
+
+    render 'c_control', content: password_input, custom_classes: 'login-control login-password-control'
+
+    capture form_action
+      assign submit_text = 'customer.login.submit' | t
+      assign submit_id = id | append: '_submit'
+
+      render 'el_button', id: submit_id, text: submit_text, custom_classes: 'login-action-control__button', modifiers: 'primary, full-width', type: 'submit'
+    endcapture
+
+    render 'c_control', content: form_action, custom_classes: 'login-action-control'
+  endform
+-%}

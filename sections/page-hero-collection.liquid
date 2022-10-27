@@ -1,0 +1,91 @@
+{%- assign heading_id = section.id | append: '_heading' -%}
+
+{%- capture container_content -%}
+  <div class="page-hero__media">
+    {%- liquid
+      if section.settings.image != blank or section.settings.video != blank
+        if section.settings.video != blank
+            render 'c_video-block', video_settings: section.settings.video, classes: 'video-block__iframe--no-controls', autoplay: true
+        else
+          if section.settings.use_gif
+            render 'el_shopify-image', image: section.settings.image, width: 980, height: 488, lazy_loading: true
+          else
+            render 'el_shopify-image', image: section.settings.image, width: 980, height: 488, lazy_loading: true, format: 'pjpg'
+          endif
+        endif
+      else
+        render 'el_placeholder', name: 'lifestyle-1'
+      endif
+
+      render 'el_image', src: section.settings.sub_image, lazy_loading: true, custom_classes: 'page-hero__logo'
+    -%}
+  </div>
+  <div class="page-hero__main" style="color:{{ section.settings.color }}">
+    {%- render 'el_heading', id: heading_id, level: 1, text: page.title, custom_classes: 'page-hero__title' -%}
+    {%- liquid
+      if page.content != blank
+        render 'el_wysiwyg', content: page.content
+      endif
+    -%}
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xl,centered'
+  endcapture
+
+  assign name_modifiers = blank
+
+  if section.settings.long
+    assign name_modifiers = name_modifiers | append: ' long'
+  endif
+
+  render 'c_section', id: section.id, name: 'page-hero', content: content, heading_id: heading_id, name_modifiers: name_modifiers
+-%}
+
+{% schema %}
+{
+  "name": "Page hero collection",
+  "settings": [
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_gif",
+      "label": "Use gif",
+      "default": false
+    },
+    {
+      "id": "video",
+      "type": "text",
+      "label": "Video url"
+    },
+    {
+      "id": "sub_image",
+      "type": "url",
+      "label": "Sub image"
+    },
+    {
+      "id": "color",
+      "type": "color",
+      "label": "Text color",
+      "default": "#324d57"
+    },
+    {
+      "id": "long",
+      "type": "checkbox",
+      "label": "Section long",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page hero collection"
+    }
+  ]
+}
+{% endschema %}

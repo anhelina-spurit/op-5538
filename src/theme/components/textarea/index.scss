@@ -1,0 +1,12 @@
+@import '../../constants/palette';
+
+.textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  outline: 0;
+}
+
+.textarea:focus {
+  border-color: $palette-dark;
+}

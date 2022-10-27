@@ -1,0 +1,52 @@
+@import '../../../utils/to-rem';
+@import '../../../constants/palette';
+@import '../../../utils/breakpoints';
+@import '../../../utils/visually-hidden';
+
+.size-guide-modal .modal__container {
+  width: to-rem(960px);
+  padding: to-rem(50px) to-rem(30px) to-rem(40px);
+}
+
+.size-guide-modal .modal__header {
+  margin-bottom: 0;
+}
+
+.size-guide-modal .modal__heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: to-rem(18px);
+  padding-bottom: to-rem(18px);
+  padding-left: to-rem(10px);
+  background: $palette-ecru-white;
+  color: $palette-dark-slate-grey;
+  font-size: to-rem(10px);
+  font-weight: 400;
+  letter-spacing: to-rem(0.6px);
+  line-height: to-rem(14px);
+
+  @include media-breakpoint-up(md) {
+    @include visually-hidden;
+  }
+}
+
+.size-guide-modal .modal__icon {
+  width: to-rem(10px);
+  height: to-rem(10px);
+  @include media-breakpoint-down(md) {
+    width: to-rem(7px);
+    height: to-rem(7px);
+  }
+}
+
+.size-guide-modal .modal__close {
+  top: to-rem(15px);
+  right: to-rem(15px);
+
+  @include media-breakpoint-down(md) {
+    top: 0;
+    right: 0;
+  }
+}

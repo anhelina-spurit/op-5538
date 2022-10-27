@@ -1,0 +1,28 @@
+{% comment %}
+  @summary Renders a card for main menu disclosure item.
+
+  @param {object} card {required} - blok item
+
+  @example
+  {%
+    render 'el_menu-card',
+    card: card,
+  %}
+{% endcomment %}
+
+<div class="disclosure-menu__card">
+  {%-
+    render 'el_shopify-image',
+    image: card.settings.image,
+    lazy_loading: true,
+    scale: 1,
+    format: 'pjpg',
+    custom_classes: 'disclosure-menu__card_image'
+  -%}
+  <div class="disclosure-menu__card_title">
+    {{ card.settings.title }}
+  </div>
+  <a href="{{ card.settings.link }}" class="disclosure-menu__card_link">
+    {{ 'sections.header.card_more' | t }}
+  </a>
+</div>

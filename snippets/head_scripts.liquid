@@ -1,0 +1,38 @@
+<script>
+  window.theme = window.theme || {};
+  window.theme.routes = window.theme.routes || {};
+  window.theme.routes.rootUrl = '{{ routes.root_url }}';
+  window.theme.routes.search_url = '{{ routes.search_url }}';
+  window.theme.routes.cart_url = '{{ routes.cart_url }}';
+  window.theme.routes.cart_add_url = '{{ routes.cart_add_url }}';
+  window.theme.routes.cart_update_url = '{{ routes.cart_update_url }}';
+  window.theme.routes.cart_change_url = '{{ routes.cart_change_url }}';
+  window.theme.routes.predictive_search_url = '{{ routes.predictive_search_url }}'
+  window.theme.money_format = '{{ shop.money_format }}';
+  window.variantStrings = {
+    addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+    soldOut: `{{ 'products.product.sold_out' | t }}`,
+    unavailable: `{{ 'products.product.unavailable' | t }}`,
+    reset_password_block: `{{ 'customer.login.reset_password_block' | t }}`,
+  };
+  window.cartStrings = {
+    quantity_max_lines_products: `{{ 'cart.quantity_error_lines_products' | t: value: settings.cart_max_lines_products }}`,
+    quantity_max_line_product: `{{ 'cart.quantity_error_line_product' | t: value: settings.cart_max_line_product}}`,
+    quantity_max_lines_products_value: `{{ settings.cart_max_lines_products }}`,
+    quantity_max_line_product_value: `{{ settings.cart_max_line_product }}`,
+  };
+  window.countDown = {
+    period: `{{ 'elements.count-down.period' | t }}`
+  };
+
+  if(window.location.href.includes('/a/wishlist')) {
+    var url = '{{ shop.url }}';
+    document.location.replace(url);
+  }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" data-ot-ignore defer></script>
+{% comment %}
+TODO - remove jquery when VP is updated to jQuery-less version
+{% endcomment %}
+<script src="{{ 'vp.js' | asset_url }}" defer></script>
+<script src="{{ 'bundle.min.js' | asset_url }}" defer></script>

@@ -1,0 +1,19 @@
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+
+.recently-viewed-products__body {
+  max-width: to-rem(1375px);
+  padding: to-rem(40px) to-rem(20px);
+  margin: 0 auto;
+  @include media-breakpoint-down(md) {
+    background-color: $palette-ecru-white;
+  }
+}
+
+.recently-viewed-products__heading {
+  margin-bottom: to-rem(45px);
+  letter-spacing: to-rem(2.24px);
+  text-align: center;
+  text-decoration: underline;
+}

@@ -1,0 +1,70 @@
+@import '../heading';
+@import '../image';
+@import '../link';
+
+@mixin wysiwyg($selector) {
+  #{$selector} h1,
+  #{$selector} h2,
+  #{$selector} h3,
+  #{$selector} h4,
+  #{$selector} h5,
+  #{$selector} h6 {
+    @include heading;
+  }
+
+  #{$selector} h1 {
+    @include heading--xxl;
+  }
+
+  #{$selector} h2 {
+    @include heading--xl;
+  }
+
+  #{$selector} h3 {
+    @include heading--lg;
+  }
+
+  #{$selector} h4 {
+    @include heading--md;
+  }
+
+  #{$selector} h5 {
+    @include heading--sm;
+  }
+
+  #{$selector} h6 {
+    @include heading--xs;
+  }
+
+  #{$selector} p {
+    margin: 0 0 to-rem(8px);
+    line-height: 1.5;
+  }
+
+  #{$selector} img {
+    @extend %image;
+    margin: to-rem(10px) auto;
+  }
+
+  #{$selector} a {
+    @extend %link;
+  }
+
+  #{$selector} table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  #{$selector} table,
+  #{$selector} th,
+  #{$selector} td {
+    border: 1px solid $palette-dark;
+  }
+
+  #{$selector} td {
+    padding: to-rem(5px);
+  }
+}
+
+@include wysiwyg('.wysiwyg');

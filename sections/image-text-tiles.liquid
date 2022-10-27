@@ -1,0 +1,101 @@
+{%- assign heading_id = section.id | append: '_heading' -%}
+
+{%- capture content -%}
+  {%- render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'image-text-tiles__heading' -%}
+
+  <div class="image-text-tiles__items">
+    {%- for block in section.blocks -%}
+      <div class="image-text-tiles__item">
+        <div class="image-text-tile__image">
+          {%- liquid
+            if block.settings.image != blank
+              render 'el_shopify-image', image: block.settings.image, lazy_loading: true, format: 'pjpg'
+            else
+              render 'el_placeholder', name: 'collection-1'
+            endif
+          -%}
+        </div>
+        <div class="image-text-tile__text">
+          {%- render 'el_heading', level: 2, text: block.settings.heading, custom_classes: 'image-text-tile__heading' -%}
+          {%- render 'el_heading', level: 3, tag: 'div', text: block.settings.subheading, custom_classes: 'image-text-tile__subheading' -%}
+
+          {%- if block.settings.link_text != blank -%}
+            <div class="image-text-tile__link">
+              {%- render 'el_link', href: block.settings.link, text: block.settings.link_text -%}
+            </div>
+          {%- endif -%}
+
+          <div class="image-text-tile__desc">
+            {{ block.settings.description | newline_to_br }}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  capture section_content
+    render 'el_container', content: content, modifiers: 'xxl'
+  endcapture
+
+  render 'c_section', id: 'image-text-tiles', content: section_content, name: 'image-text-tiles', heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Image with text tiles",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Item",
+      "name": "Image with text",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "id": "subheading",
+          "type": "text",
+          "label": "Subheading"
+        },
+        {
+          "id": "link_text",
+          "type": "text",
+          "label": "Link text"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Link"
+        },
+        {
+          "id": "description",
+          "type": "richtext",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text Tiles"
+    }
+  ]
+}
+{% endschema %}

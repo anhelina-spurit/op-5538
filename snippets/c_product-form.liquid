@@ -1,0 +1,127 @@
+{%- comment -%}
+  @summary Renders a product from
+
+  @example
+  {%- render 'c_product-form' -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign custom_related_product_swatches_enabled = settings.enable_custom_related_products_swatches
+  assign product_form_id = 'product-form-' | append: product.id
+-%}
+
+{%- form 'product', product, id: product_form_id, class: 'product-form', data-product-form: '', data-product-url: product.url, data-section: section.id, data-vp-id: product.selected_or_first_available_variant.id -%}
+  {%- liquid
+    assign selected_product = product.selected_or_first_available_variant
+    assign selected_product_price = selected_product.price
+    assign selected_product_compare_at_price = selected_product.compare_at_price
+    assign size_label = 'size,taille,größe,tamanho,tamaño,koko,サイズ' | split: ','
+    assign color_label = 'color,colour,couleur,colore,farbe,색,色,färg,farve' | split: ','
+    render 'el_input', type: 'hidden', name: 'id', value: selected_product.id
+
+    if selected_product_price == 0
+      for variant in product.variants
+        if variant.available and variant.price > 0
+          assign selected_product_price = variant.price
+          assign selected_product_compare_at_price = variant.compare_at_price
+          break
+        endif
+      endfor
+    endif
+  -%}
+
+  <div class="product-form__status" id="status-{{ section.id }}" role="status">
+    <span class="product-form__price-group">
+      {% render 'c_product-label-discount', tag: 'span', price: selected_product.price, compare_at_price: selected_product.compare_at_price, custom_classes: 'product__label', product_tags: product.tags %}
+      {%-
+          render 'c_price',
+          price: selected_product_price,
+          compare_at_price: selected_product_compare_at_price,
+          custom_classes: 'product-form__price vp-original-prices',
+          no_discount: true,
+          tag: 'div'
+      -%}
+    </span>
+
+    <span class="product-form__availability">
+      {%- render 'c_availability', product_count: product.selected_or_first_available_variant.inventory_quantity -%}
+    </span>
+  </div>
+
+  <div class="product-form__options">
+    {%- liquid
+      if custom_related_product_swatches_enabled
+        render 'oz-related-products-swatches', current_product: product, link_to_product_page_swatches: true
+      endif
+    -%}
+
+    {%- for option in product.options_with_values -%}
+      {%- liquid
+        assign downcase_option = option.name | downcase
+
+        if color_label contains downcase_option
+          if custom_related_product_swatches_enabled == false
+            render 'el_product-option', option: option, id: section.id
+          else
+            assign color_value = option.selected_value | escape
+            render 'el_input', type: 'radio', name: option.name, attributes: 'checked data-option-value', value: color_value, custom_classes: 'visually-hidden'
+          endif
+        endif
+      -%}
+
+      {%- if size_label contains downcase_option -%}
+        {%- capture size_guide -%}
+          <div class="product-size-guide">
+            {%- liquid
+              assign guide_label= 'size_guide.button_label' |  t
+              render 'el_button', text: guide_label,  modifiers: 'link',  custom_classes: 'size-guide-btn', attributes: 'data-open-size-guide'
+            -%}
+          </div>
+        {%- endcapture -%}
+
+        <div class="product-form__size">
+          {%- capture legend -%}
+            <div class="product-form__legend-wrapper">
+              <span class="product-form__size-label">{{ option.name }}</span>
+              {{ size_guide }}
+            </div>
+          {%- endcapture -%}
+          {%- render 'el_product-option', option: option, id: section.id, legend: legend -%}
+          {{ size_guide }}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+    <script type="application/json" data-product-json>
+      {{ product.variants | json }}
+    </script>
+  </div>
+
+  {%- liquid
+    assign button_text = 'products.product.add_to_cart' | t
+    assign button_disabled = false
+    assign button_class = 'product_form__button'
+
+    if product.selected_or_first_available_variant.available == false or selected_product_price == 0
+      assign button_text = 'products.product.sold_out' | t
+      assign button_disabled = true
+    endif
+
+    render 'el_button', text: button_text, type: 'submit', name: 'add', custom_classes: button_class, modifiers: 'full-width,primary', disabled: button_disabled
+
+    if settings.enable_socloz
+      assign choose_id = 'ChooseShop-' | append: section.id
+      capture choose_text
+      echo '<span id="ChooseShopText-' | append: section.id | append: '">'
+      echo 'products.product.choose_shop' | t
+      echo '</span>'
+      endcapture
+
+      assign choose_attributes = 'data-socloz-service="reservation" data-socloz-product-id="' | append: product.selected_or_first_available_variant.sku | append: '"'
+      assign choose_class = button_class | append: ' socloz'
+
+      render 'el_button', id: choose_id, text: choose_text, name: 'shop', custom_classes: choose_class, modifiers: 'full-width,outline', attributes: choose_attributes, disabled: button_disabled
+    endif
+  -%}
+
+  {{ form | payment_terms }}
+{%- endform -%}

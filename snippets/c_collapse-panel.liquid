@@ -1,0 +1,40 @@
+{% comment %}
+  @summary Renders collapse panel
+
+  @param {string} id - id
+  @param {string} labelled_by - label id
+  @param {string} content - content
+  @param {boolean} [is_opened] - is opene
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+      render 'c_collapse-panel',
+      id: 'collapse',
+      labelled_by: 'panel_id',
+      content: '<span>Lorem ipsum</span>',
+      is_opened: true,
+      modifiers: 'lg, light',
+      custom_classes: 'accordion-item__panel',
+      attributes: 'data-custom',
+  %}
+{% endcomment %}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'collapse-panel', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+%}
+
+<section
+  id="{{ id }}"
+  class="{{ class }}"
+  aria-labelledby="{{ labelled_by }}"
+  data-collapse-panel
+  {% unless is_opened %}hidden{% endunless %}
+  {{ attributes }}
+>
+  <div class="collapse-panel__content" data-collapse-content>{{- content -}}</div>
+</section>

@@ -1,0 +1,267 @@
+{%- capture container_content -%}
+  <div class="account__wrapper">
+    <div class="account__column account__column-nav account_width-column">
+      {%- liquid
+        assign heading = 'account.navigation.menu.title' | t
+        assign heading_id = section.id | append: '_menu_heading'
+      -%}
+      {% render 'el_heading', level: 1, id: heading_id, text: heading, modifiers: 'sm', custom_classes: 'account__heading' %}
+      {% if customer.first_name != blank or customer.last_name != blank %}
+        {% assign customerFullName = customer.first_name | append: ' ' | append: customer.last_name | strip %}
+        <span class="account__customer-name">{{- customerFullName -}}</span>
+      {% endif %}
+      {% if section.settings.account_nav != blank %}
+        {% render 'c_account-menu', link_list: section.settings.account_nav, labelled_by: heading_id %}
+      {% endif %}
+    </div>
+    <div class="account__column account__column-content account_width-column">
+      {% render 'c_account-menu-content' link_list: section.settings.account_nav %}
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- liquid
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xxl'
+  endcapture
+
+  render 'c_section', tag: 'div', id: section.id, name: 'account', content: content
+-%}
+
+<script>
+  class AccountMenu{
+    /**
+     *
+     * @param props
+     */
+    constructor (props = {}) {
+      const defaultProps = {
+        sectionType: 'account',
+        activeClass: 'active',
+        hiddenClass: 'account-menu-content_hidden',
+        classNameColumnMenu: '.account__column-nav',
+        classNameColumnContent: '.account__column-content',
+        clasNameMenuLink: '.account-menu__link',
+        attributeSectionContent: 'data-id',
+        attributeDefaultUrl: 'data-default',
+        breakpointCss: '(min-width: 992px)',
+        defaultBlock: 'orders',
+        pathnameOrder: '/account/orders/',
+        defaultPathname: '/account',
+        nameBlockOrder: 'order'
+      }
+
+      this.options = {...defaultProps, ...props}
+
+      /**
+       *
+       * @type {Element | any}
+       */
+      this.section = document.querySelector('[data-section-type="'+ this.options.sectionType +'"]');
+      /**
+       *
+       * @type {NodeListOf<Element>|null}
+       */
+      this.blocks = this.section ? this.section.querySelectorAll('['+ this.options.attributeSectionContent +']') : null;
+      /**
+       *
+       * @type {NodeListOf<HTMLElementTagNameMap[string|string|*]>|null}
+       */
+      this.menuLinks = this.section ? this.section.querySelectorAll(this.options.clasNameMenuLink) : null;
+      /**
+       *
+       * @type {Element|null}
+       */
+      this.columnLinks = this.section ? this.section.querySelector(this.options.classNameColumnMenu) : null;
+      /**
+       *
+       * @type {Element|null}
+       */
+      this.columnContent = this.section ? this.section.querySelector(this.options.classNameColumnContent) : null;
+
+      this.handlers = {
+        hashchange: this.switchContent.bind(this),
+        resize: this.checkDefaultUrl.bind(this)
+      }
+    }
+
+    init() {
+      if(this.blocks && this.blocks.length && this.menuLinks && this.menuLinks.length) {
+        this.switchContent();
+        window.addEventListener('resize', this.handlers.resize);
+        window.addEventListener('hashchange', this.handlers.hashchange);
+      }
+    }
+
+    location () {
+      let obj;
+      try {
+        obj = window.self !== window.top ? document.location : window.location;
+      } catch (e) {
+        obj = window.location;
+      }
+      return obj;
+    }
+
+    getHash () {
+      let obj = this.location();
+      return obj.hash.replace('#', '');
+    }
+
+    getPath () {
+      let obj = this.location();
+      return obj.pathname;
+    }
+
+    switchContent() {
+      let blockName;
+      if (!this.getPath().includes(this.options.pathnameOrder)) {
+        blockName = this.getHash();
+        if (window.matchMedia(this.options.breakpointCss).matches && !blockName) {
+          blockName = this.options.defaultBlock;
+        }
+      } else {
+        blockName = this.options.nameBlockOrder;
+      }
+      this.makeActiveBlock(blockName);
+      this.makeActiveMenuItem(blockName)
+    }
+
+    makeActiveBlock(blockName) {
+      if (!blockName) {
+        if (!window.matchMedia(this.options.breakpointCss).matches && this.columnContent) {
+          this.columnContent.style.display = 'none';
+        }
+        return;
+      }
+
+      let targetBlock = null;
+      for (let i = 0; i < this.blocks.length; i++) {
+        const valueDataAttrUrl = this.blocks[i].getAttribute(this.options.attributeSectionContent);
+        if (valueDataAttrUrl && valueDataAttrUrl === blockName) {
+          targetBlock = this.blocks[i];
+          this.blocks[i].classList.remove(this.options.hiddenClass);
+          this.blocks[i].setAttribute('aria-hidden', 'false');
+        } else {
+          this.blocks[i].classList.add(this.options.hiddenClass);
+          this.blocks[i].setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      if (this.columnLinks && this.columnContent && targetBlock) {
+        if (window.matchMedia(this.options.breakpointCss).matches) {
+          this.columnLinks.style.display = 'block';
+          this.columnContent.style.display = 'block';
+        } else {
+          this.columnLinks.style.display = 'none';
+          this.columnContent.style.display = 'block';
+        }
+      }
+    }
+
+    makeActiveMenuItem(blockName) {
+      if(!blockName) {
+        return;
+      }
+      if (!window.matchMedia(this.options.breakpointCss).matches) {
+        this.section.classList.add(blockName);
+        return;
+      }
+      const tmpName = (!this.getPath().includes(this.options.pathnameOrder))
+              ? blockName === this.options.defaultBlock
+                      ? this.options.defaultPathname
+                      : this.options.defaultPathname + '#' + blockName
+              : this.options.defaultPathname;
+
+      for (let i = 0; i < this.menuLinks.length; i++) {
+        const href = this.menuLinks[i].getAttribute('href');
+        if (tmpName === href) {
+          this.menuLinks[i].classList.add(this.options.activeClass);
+          this.section.classList.add(blockName);
+        } else {
+          const oldBlockName = href === this.options.defaultPathname
+                  ? this.options.defaultBlock
+                  : href.replace(this.options.defaultPathname + '#', '');
+          this.menuLinks[i].classList.remove(this.options.activeClass);
+          this.section.classList.remove(oldBlockName);
+        }
+      }
+    }
+
+    checkDefaultUrl() {
+      let defaultLinkMenu = null;
+      for (let i = 0; i < this.menuLinks.length; i++) {
+        if (this.menuLinks[i].hasAttribute(this.options.attributeDefaultUrl)) {
+          defaultLinkMenu = this.menuLinks[i];
+          break;
+        }
+      }
+
+      if (defaultLinkMenu) {
+        const prefix = '#' + this.options.defaultBlock;
+        let href = defaultLinkMenu.getAttribute('href');
+
+        if (window.matchMedia(this.options.breakpointCss).matches) {
+          if (href.indexOf(prefix) !== -1) {
+            href = href.replaceAll(prefix, '');
+          }
+        } else if (href.indexOf(prefix) === -1) {
+          href = href + prefix;
+          for (let i = 0; i < this.menuLinks.length; i++) {
+            this.menuLinks[i].classList.remove(this.options.activeClass);
+            let tmpHref = this.menuLinks[i].getAttribute('href');
+            if (tmpHref.indexOf('#') !== -1) {
+              const addClass = tmpHref.split('#')[1];
+              this.section.classList.remove(addClass);
+            }
+          }
+          this.section.classList.remove(this.options.defaultBlock)
+        }
+
+        defaultLinkMenu.setAttribute('href', href);
+        this.switchContent();
+      }
+    }
+  }
+
+  const accountMenu = new AccountMenu();
+  accountMenu.init();
+</script>
+
+
+{% schema %}
+  {
+    "name": "Account",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "account_nav",
+        "label": "Select navigation"
+      },
+      {
+        "type": "header",
+        "content": "Return tab - custom wording"
+      },
+      {
+        "type": "checkbox",
+        "id": "return_tab_enable_custom_wording",
+        "label": "Enable",
+        "default": false
+      },
+      {
+        "id": "return_tab_custom_wording",
+        "type": "richtext",
+        "info": "Will be displayed on the return tab, below orders",
+        "label": "Wording"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Account",
+        "category": "Account",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,130 @@
+@use 'sass:map';
+
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+
+$headings-sizes: (
+  xxl: to-rem(32px),
+  xl: to-rem(30px),
+  lg: to-rem(26px),
+  md: to-rem(20px),
+  sm: to-rem(16px),
+  xs: to-rem(14px),
+  xxs: to-rem(12px),
+);
+
+$headings-line-height: (
+  xxl: 1.25,
+  xl: 1.5,
+  lg: 1.5,
+  md: 1.5,
+  sm: 1.5,
+  xs: 1.5,
+);
+
+@mixin heading() {
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@mixin heading--xxl() {
+  font-size: map.get($headings-sizes, xxl);
+  line-height: map.get($headings-line-height, xxl);
+
+  @include media-breakpoint-down(md) {
+    font-size: map.get($headings-sizes, lg);
+    line-height: map.get($headings-line-height, lg);
+  }
+}
+
+@mixin heading--xl() {
+  font-size: map.get($headings-sizes, xl);
+  line-height: map.get($headings-line-height, xl);
+
+  @include media-breakpoint-down(md) {
+    font-size: map.get($headings-sizes, lg);
+    line-height: map.get($headings-line-height, lg);
+  }
+}
+
+@mixin heading--lg() {
+  font-size: map.get($headings-sizes, lg);
+  line-height: map.get($headings-line-height, lg);
+
+  @include media-breakpoint-down(md) {
+    font-size: map.get($headings-sizes, md);
+    line-height: map.get($headings-line-height, md);
+  }
+}
+
+@mixin heading--md() {
+  font-size: map.get($headings-sizes, md);
+  line-height: map.get($headings-line-height, md);
+
+  @include media-breakpoint-down(sm) {
+    font-size: map.get($headings-sizes, sm);
+    line-height: map.get($headings-line-height, sm);
+  }
+}
+
+@mixin heading--sm() {
+  font-size: map.get($headings-sizes, sm);
+  line-height: map.get($headings-line-height, sm);
+}
+
+@mixin heading--xs() {
+  font-size: map.get($headings-sizes, xs);
+  line-height: map.get($headings-line-height, xs);
+}
+
+@mixin heading--xxs() {
+  font-size: map.get($headings-sizes, xxs);
+  line-height: map.get($headings-line-height, xxs);
+}
+
+.heading {
+  @include heading;
+}
+
+.heading--xxl {
+  @include heading--xxl;
+}
+
+.heading--xl {
+  @include heading--xl;
+}
+
+.heading--lg {
+  @include heading--lg;
+}
+
+.heading--md {
+  @include heading--md;
+}
+
+.heading--sm {
+  @include heading--sm;
+}
+
+.heading--xs {
+  @include heading--xs;
+}
+
+.heading--xxs {
+  @include heading--xxs;
+}
+
+.section-heading {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.167em;
+  text-align: center;
+}
+
+.section-heading--low {
+  font-size: to-rem(14px);
+  text-transform: lowercase;
+}

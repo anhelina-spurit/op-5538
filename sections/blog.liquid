@@ -1,0 +1,138 @@
+<style>
+  .blog {
+    --main-image-crop: {{ section.settings.image_crop }};
+    --main-image-color-text: {{ section.settings.main_image_color }};
+  }
+</style>
+
+{%- liquid
+  capture container_content
+    render 'el_heading', level: 2, text: blog.title, custom_classes: 'blog__heading'
+
+    if blog.all_tags.size > 0
+      echo '<ul class="blog__menu">'
+      echo '<li class="blog__menu-item">'
+      assign blog_href = '/blogs/' | append: blog.handle
+      assign blog_custom_classes = 'link menu__link'
+      assign all_tags_label = 'blog.all' | t
+      if current_tags == blank
+        assign blog_custom_classes = blog_custom_classes | append: ' menu__link--active'
+      endif
+      render 'el_link', href: blog_href, text: all_tags_label, custom_classes: blog_custom_classes
+      echo '</li>'
+      for tag in blog.all_tags
+        echo '<li class="blog__menu-item">'
+        assign href = '/blogs/' | append: blog.handle | append: '/tagged/' | append: tag
+        assign custom_classes = 'link menu__link'
+        if current_tags contains tag
+          assign custom_classes = custom_classes | append: ' menu__link--active'
+        endif
+        render 'el_link', href: href, text: tag, custom_classes: custom_classes
+        echo '</li>'
+      endfor
+      echo '</ul>'
+    endif
+
+    assign first_article = blog.articles.first
+    echo '<div class="blog__article blog__article--main">'
+    echo '<div class="blog__content--main">'
+    render 'el_heading', level: 3, text: first_article.title, custom_classes: 'blog__heading--main'
+    capture description
+      if first_article.excerpt.size > 0
+        echo first_article.excerpt
+      else
+        echo first_article.content | strip_html | truncate: 150
+      endif
+    endcapture
+
+    echo '<div class="blog__description--main">' | append: description | append: '</div>'
+    assign button_text = 'blog.read_more' | t
+    assign article_url = first_article.url
+
+    render 'el_link', href: article_url, text: button_text, custom_classes: 'blog__button blog__button--main'
+    echo '</div>'
+    echo '<div class="blog__media--main">'
+    capture main_image
+      render 'el_shopify-image', image: first_article.image, custom_classes: 'blog__image--main'
+    endcapture
+    render 'el_ratio-container', custom_classes: 'blog__media-wrappper', content: main_image, width: 1180, height: 590, size_limited: true
+    echo '</div>'
+    echo '</div>'
+
+    if blog.articles_count > 0
+      echo '<div class="blog__grid">'
+      echo '<ul class="blog-preview__wrapper" role="list">'
+      for article in blog.articles
+        if forloop.index == 1
+          continue
+        endif
+        echo '<li class="blog__article">'
+        echo '<div class="blog__card">'
+        capture image
+          render 'el_shopify-image', image: article.image, custom_classes: 'blog__image'
+        endcapture
+
+        capture description
+          if article.excerpt.size > 0
+            echo article.excerpt
+          else
+            echo article.content | strip_html | truncate: 150
+          endif
+        endcapture
+
+        capture link_title
+          echo 'blog.read_more' | t
+        endcapture
+
+        render 'el_ratio-container', custom_classes: 'blog__media', content: image, width: 426, height: 564, size_limited: true
+        render 'c_text-preview', custom_classes: 'blog__content', heading: article.title, heading_level: 3, description: description, link: article.url, link_title: link_title
+        echo '</div>'
+        echo '</li>'
+      endfor
+      echo '</ul>'
+      echo '</div>'
+    endif
+
+  endcapture
+  capture content
+    render 'el_container', content: container_content, modifiers: 'xl'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'blog', content: content
+-%}
+
+{%- schema -%}
+{
+  "name": "Blog",
+  "settings": [
+    {
+      "type": "select",
+      "id": "image_crop",
+      "label": "Crop for all main images",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Middle"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "color",
+      "id": "main_image_color",
+      "label": "Text color for all main images",
+      "default": "#ffffff"
+
+    }
+  ]
+}
+{%- endschema -%}
+

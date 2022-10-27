@@ -1,0 +1,53 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.orders__content {
+  padding: to-rem(45px) 0 0 0;
+  @include media-breakpoint-up(lg) {
+    padding: to-rem(27.5px) 0 0 0;
+  }
+}
+
+.orders__content-wrapper {
+  width: 100%;
+  min-width: unset;
+  padding: 0;
+  background-color: $palette-white;
+
+  @include media-breakpoint-up(lg) {
+    width: 88%;
+    min-width: 600px;
+    padding: to-rem(35px) to-rem(36px) to-rem(20px) to-rem(36px);
+  }
+}
+
+.orders_hidden-mobile {
+  display: none;
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
+}
+
+.orders_hidden-desktop {
+  display: block;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
+
+.refunds__custom-wording {
+  font-size: to-rem(12px);
+  letter-spacing: to-rem(0.6px);
+  line-height: to-rem(22px);
+
+  @include media-breakpoint-down(lg) {
+    font-size: to-rem(12px);
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 88%;
+    min-width: 600px;
+    padding: to-rem(35px) to-rem(36px) to-rem(20px) to-rem(36px);
+  }
+}

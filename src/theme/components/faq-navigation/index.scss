@@ -1,0 +1,38 @@
+@import '../../constants/palette';
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+
+.faq-navigation__list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.faq-navigation__item {
+  color: $palette-dark;
+  font-size: to-rem(10px);
+  letter-spacing: to-rem(0.42px);
+  line-height: 2;
+  text-transform: uppercase;
+}
+
+.faq-navigation__item:not(:last-child) {
+  margin-bottom: to-rem(30px);
+}
+
+.faq-navigation__link {
+  border-bottom: none;
+}
+
+.faq-navigation__link--active {
+  box-shadow: 0 0.5px 0 0 $palette-dark;
+}
+
+.faq-navigation__link:active,
+.faq-navigation__link:hover,
+.faq-navigation__link:target,
+.faq-navigation__link:visited {
+  box-shadow: 0 0.5px 0 0 $palette-dark;
+}

@@ -1,0 +1,775 @@
+{
+  "breadcrumbs": {
+    "home": "Home",
+    "title": "Breadcrumbs"
+  },
+  "accessibility": {
+    "close": "Fermer",
+    "link": {
+      "new_window": "Opens in a new window.",
+      "external": "Opens external website."
+    },
+    "error": "Erreur"
+  },
+  "payment": {
+    "method": "Moyens de paiement"
+  },
+  "modal": {
+    "close": "Close modal"
+  },
+  "meta": {
+    "tags": "Tagged \"{{ tags }}\"",
+    "page": "Page {{ page_number }}"
+  },
+  "newsletter": {
+    "placeholder": "E-mail",
+    "label": "Entrez votre email*",
+    "success": "Merci pour votre inscription",
+    "failed": "Une erreur s'est produite. Veuillez ré-essayer.",
+    "already_subscribed": "L'email que vous avez saisie est déjà enregistrée.",
+    "button_label": "S'inscrire"
+  },
+  "newsletter-unsubscribe": {
+    "title": "Vous ne souhaitez plus recevoir notre lettre d’information ?",
+    "email_title": "Adresse e-mail*",
+    "email_notes": "*Votre adresse email est requise pour vous désinscrire",
+    "button_accept": "Valider",
+    "button_reset": "Annuler",
+    "policy_text_html": "Les champs obligatoires sont marqués par un astérisque et nous permettent de répondre à votre demande et d’assurer la gestion de notre relation. En application de la loi n° 78-17 du 6 janvier 1978, modifiée et du Règlement européen 2016\/679 du 27 avril 2016, vous disposez des droits d’opposition, d'accès, de rectification, d'oubli et de portabilité des données qui vous concernent, ainsi que de limitation des finalités. Vous avez également la possibilité de nous faire part du sort que vous souhaitez réserver à vos données post-mortem. Pour exercer ces droits, contactez-nous à l’adresse suivante : dpo@cyrillus.com. Nous conservons vos données pendant un délai de cinq ans. Pour plus d’information, consulter notre politique de {{link}} .",
+    "policy_link_text": "Protection de la vie privée",
+    "already_unsubscribed": "L'e-mail que vous avez entré est déjà désabonné."
+  },
+  "wishlist": {
+    "count_label": " article(s) dans vos favoris",
+    "continue_shopping": "Je continue mon shopping\n"
+  },
+  "recently_products": {
+    "heading": "Vous aimeriez aussi"
+  },
+  "collection": {
+    "sort": {
+      "sort_label": "Trier",
+      "sort_heading": "Trier par",
+      "manual": "Les plus marqués",
+      "best_selling": "Les plus démarqués",
+      "created_descending": "Nouveautés",
+      "relevance": "Pertinence",
+      "price_ascending": "Du moins cher au plus cher",
+      "price_descending": "Du plus cher au plus moins"
+    },
+    "filter": {
+      "title": "Filtrer par",
+      "all": "Tout",
+      "filters": "de filtres",
+      "color": "Coloris",
+      "button_filter": "Filter",
+      "button_send": "Envoyer",
+      "button_collapse_close": "fermer le filtre",
+      "from": "de",
+      "to": "à",
+      "send": "Appliquer",
+      "clear": "Effacer les filtres",
+      "reset": "Réinitialiser"
+    },
+    "paginate": {
+      "load_more": "Produits suivants",
+      "load_more_count": "Vous avez vu {{ products_on_page }} article(s) sur {{ products_count }}"
+    },
+    "products": "produits",
+    "one_product": "produit"
+  },
+  "products": {
+    "view_product": "Voir le produit",
+    "price": "Prix",
+    "instead_of": "à la place de",
+    "discount": "remise",
+    "not_found": "Aucun produit ",
+    "bundle_title": "à partir de",
+    "product": {
+      "add_to_cart": "Ajouter au panier",
+      "modifier": "Je modifie mon panier",
+      "choose_shop": "Réserver en boutique",
+      "see_product": "Voir de produit",
+      "see_detail": "voir le détail",
+      "description": "Description",
+      "on_sale": "Vente",
+      "product_variants": "Variantes de produits",
+      "sold_out": "Épuisé",
+      "unavailable": "Non disponible",
+      "quantity": {
+        "label": "Quantité",
+        "input_label": "Quantité pour {{ product }}",
+        "increase": "Augmenter la quantité de {{ product }}",
+        "decrease": "Réduire la quantité de {{ product }}"
+      },
+      "info": {
+        "description": "Description ",
+        "care": "conseil d’entretien ",
+        "delivery": "livraison"
+      }
+    }
+  },
+  "cart": {
+    "quantity_error_lines_products": "Le panier est limité à {{ value }} lignes d'articles maximum",
+    "quantity_error_line_product": "Chaque ligne panier est limitée à {{ value }} articles maximum",
+    "free": "GRATUIT",
+    "add_to_cart": "Ajouter au panier",
+    "benefit_code": "Entrez votre code avantage",
+    "benefit_available": "Bonne nouvelle ! Votre fidélité vous permet de bénéficier de 10€ de remise !",
+    "benefit_used": "Votre remise a été appliquée.",
+    "delivery": "Livraison",
+    "use_sale": "Je profite de ma remise",
+    "remove_sale": "Supprimer ma remise",
+    "title": "Votre panier",
+    "total": "Total des articles ",
+    "common": "Total de la commande",
+    "complete_the_order": "Je valide mon panier",
+    "empty": "Votre panier ne contient aucun article.",
+    "modifier": "Modifier",
+    "remove": "Supprimer",
+    "calculated_on_checkout": "Calculée à l’étape paiement ",
+    "additional_info": "Les frais de livraisons, code avantage seront calculés dans votre panier",
+    "benefit_message": "Vous bénéficiez de 10 € de remise",
+    "benefit_button_text": "appliquer la remise",
+    "bulky": "Article volumineux livré chez vous ou en Point Relais. ",
+    "eco_part_wording": "dont {{amount}}€ d’éco-part mobilier",
+    "learn_more": "En savoir plus"
+  },
+  "blog": {
+    "read_more": "Découvrez",
+    "all": "Tous"
+  },
+  "search": {
+    "accessibility": {
+      "close": "Fermer la recherche"
+    },
+    "general": {
+      "input_placeholder": "Rechercher",
+      "submit": "Rechercher",
+      "title": "Recherche",
+      "list_title": "Résultats :",
+      "view_all": "Voir tous les résultats",
+      "no_results": "Aucun résultat",
+      "close": "Close rechercher"
+    }
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu",
+      "store": "Trouver une boutique",
+      "wishlist": "Whislist",
+      "account": "Mon compte",
+      "cart": "Panier",
+      "card_more": "Découvrir"
+    }
+  },
+  "availability": {
+    "prefix": "Le produit est",
+    "high": "Disponible",
+    "low": "Bientôt épuisé",
+    "out-of-stock": "Épuisé"
+  },
+  "account": {
+    "navigation": {
+      "menu": {
+        "title": "MON COMPte",
+        "logout": "x Se déconnecter"
+      },
+      "content": {
+        "not_found": {
+          "label": "Not found content"
+        }
+      }
+    },
+    "loyalty-points": {
+      "content": {
+        "heading": "Mes points de fidélité",
+        "points-count": {
+          "count": "{points} points",
+          "description": "Il vous manque {points} point(s) pour obtenir votre prochaine remise fidélité de 10 €.\nLes points sont valables une année.",
+          "cost": "1 € = 1 point",
+          "loyalty_card": "Votre carte de fidélité : {cardId}"
+        },
+        "points-action": {
+          "heading": "Vous avez 1 remise fidélité",
+          "description": "valable jusqu’au {date} et vous pourrez en profiter directement dans votre panier",
+          "button": "j’en profite",
+          "button_mobile": "Utiliser mon bon de réduction"
+        }
+      }
+    },
+    "personal-info": {
+      "content": {
+        "heading": "Mes informations personnelles",
+        "client": "Votre numéro de client personnel est : {client_number}",
+        "form": {
+          "civility": {
+            "label": "Civilité",
+            "options": {
+              "mme": "MME",
+              "m": "M"
+            }
+          },
+          "first_name": {
+            "label": "Prénom"
+          },
+          "last_name": {
+            "label": "Nom"
+          },
+          "birth_date": {
+            "label": "Date de naissance"
+          },
+          "email": {
+            "label": "Email"
+          },
+          "password": {
+            "label": "Mot de passe"
+          },
+          "address1": {
+            "label": "Adresse"
+          },
+          "address2": {
+            "label": "Complément d'adresse"
+          },
+          "zip_code": {
+            "label": "Code postal"
+          },
+          "city": {
+            "label": "Ville"
+          },
+          "mobile_phone": {
+            "label": "Téléphone"
+          },
+          "button": {
+            "label": "Modifier"
+          },
+          "feedback": {
+            "success": "Vos informations ont bien été enregistrées.",
+            "error": "Une erreur s'est produite. Veuillez ré-essayer."
+          }
+        }
+      }
+    },
+    "family": {
+      "content": {
+        "heading": "Présentez-nous votre tribu :",
+        "list": {
+          "description": "Afin de mieux vous gâter, vous et votre famille, n'hésitez pas à nous présenter vos enfants."
+        },
+        "form": {
+          "description": "D’autres enfants à nous présenter?",
+          "name": {
+            "label": "Prénom"
+          },
+          "birthdate": {
+            "label": "Date de naissance"
+          },
+          "sex": {
+            "label": "Sexe",
+            "options": {
+              "f": "Une fille",
+              "m": "Un garçon"
+            }
+          },
+          "feedback": {
+            "success": "Votre enfant a bien été enregistré.",
+            "error": "Une erreur s'est produite. Veuillez ré-essayer."
+          },
+          "button": {
+            "label": "Valider"
+          }
+        }
+      }
+    }
+  },
+  "elements": {
+    "date-select": {
+      "months": "Janvier Février Mars Avril Mai Juin Juillet Aout Septembre Octobre Novembre Décembre",
+      "day_label": "Jour",
+      "month_label": "Mois",
+      "year_label": "Année"
+    },
+    "count-down": {
+      "period": "du {{ date_start }} au  {{ date_end }}"
+    }
+  },
+  "orders": {
+    "title": "Mes commandes",
+    "empty": "Vous n'avez pas encore passé de commande",
+    "table": {
+      "columns": {
+        "name": "Référence",
+        "date": "Date",
+        "total": "Total",
+        "delivery": "Livraison",
+        "tracking_number": "N°de suivi"
+      }
+    }
+  },
+  "pagination": {
+    "label": "Paginer",
+    "next": "suivant",
+    "prev": "précédent"
+  },
+  "order": {
+    "heading": "retour aux commandes",
+    "info": {
+      "label": "commande",
+      "date": "Date",
+      "total": "Total",
+      "delivery": "Livraison"
+    },
+    "products": {
+      "quantity": {
+        "prefix": "x"
+      }
+    },
+    "invoice": {
+      "button_download": "Télécharger la facture",
+      "prices": {
+        "subtotal_price": "Sous-total",
+        "delivery": "Frais de livraison",
+        "total": "Total"
+      },
+      "additional": {
+        "delivery": "mode de livraison",
+        "delivery_address": "Adresse de livraison",
+        "payment_method": "Mode de paiement ",
+        "billing_address": "Adresse de facturation"
+      }
+    }
+  },
+  "refunds": {
+    "title": "Mes retours",
+    "empty": "Vous n'avez pas encore déclaré de retour",
+    "table": {
+      "columns": {
+        "refund": "REtours "
+      },
+      "actions": {
+        "make_refund": "Déclarer un retour",
+        "refunded": "Remboursé",
+        "partially_refunded": "Partiellement remboursé"
+      }
+    }
+  },
+  "subscriptions": {
+    "title": "Mes abonnements",
+    "description": "Restons connectés… Inscrivez-vous pour suivre l’actualité de Cyrillus : nos engagements, les nouveautés, les offres, les ventes privées",
+    "form": {
+      "input_labels": {
+        "newsletter": "Je souhaite recevoir la newsletter",
+        "sms": "Je souhaite recevoir les sms",
+        "mobilePhoneNumber": "Afin de recevoir les SMS Cyrillus, merci de\nrenseigner votre numéro de téléphone",
+        "mobilePhoneNumberPlaceholder": "Téléphone*"
+      },
+      "button": {
+        "label": "Je m’inscris",
+        "aria_label": "subscribe"
+      },
+      "feedback": {
+        "success": "Merci nous avons bien enregistré votre (mail\/sms)",
+        "error": "Une erreur s'est produite. Veuillez ré-essayer."
+      }
+    }
+  },
+  "templates": {
+    "search": {
+      "no_results": "Aucun résultat trouvé pour «{{ terms }} ». Vérifiez l'orthographe ou utilisez un autre mot ou une autre expression.",
+      "results_with_count": {
+        "one": "{{ count }} résultat",
+        "other": "{{ count }} résultats"
+      },
+      "title": "Résultats de la recherche",
+      "page": "Page",
+      "products": "Produits",
+      "search_for": "Recherche « {{ terms }} »",
+      "results_with_count_and_term": {
+        "one": "{{ count }} résultat trouvé pour « {{ terms }} »",
+        "other": "{{ count }} résultats trouvés pour « {{ terms }} »"
+      }
+    }
+  },
+  "customer": {
+    "login": {
+      "title": "Déjà client.e ?",
+      "new_customer_label": "Nouveau client ou client boutique ?",
+      "email": "Email",
+      "enter_email": "enter your email",
+      "password": "Mot de passe",
+      "confirm_password": "Confirmer le mot de passe",
+      "toggle_password_view": "Basculer la visibilité du mot de passe",
+      "forgot_password": "Mot de passe oublié",
+      "reset_password_block": "Veuillez réessayer, merci",
+      "submit": "Connectez-vous",
+      "notice": "Pas de panique, rien ne sera publié sans votre accord"
+    },
+    "login_oxi_socials": {
+      "title": "Connectez-vous \/ Inscrivez-vous"
+    },
+    "recover_password": {
+      "title": "Réinitialiser mon mot de passe",
+      "subtext": "Nous vous enverrons un e-mail pour réinitialiser votre mot de passe.",
+      "success": "Nous vous avons envoyé un e-mail avec un lien pour mettre à jour votre mot de passe",
+      "spam_note": "Pensez à bien vérifier vos courriers indésirables ou votre boite spam, il se peut que l'email de réinitialisation s'y trouve.",
+      "email": "Email",
+      "submit": "Soumettre",
+      "cancel": "Annuler",
+      "or": "ou",
+      "button_text": "réinitialiser",
+      "enter_new_password": "Entrez un nouveau mot de passe",
+      "reset_password": "Réinitialiser le mot de passe"
+    },
+    "register": {
+      "title": "Nouveau client ou client boutique ?",
+      "cancel": "Retourner à la boutique",
+      "returning_customer_label": "Déjà inscrit ?",
+      "sign_in_html": "Se connecter →",
+      "civility": "Civilité",
+      "mme": "MME",
+      "m": "M",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "Email",
+      "email_confirmation": "Confirmation de votre adresse mail",
+      "password": "Mot de passe",
+      "toggle_password_view": "Basculer la visibilité du mot de passe",
+      "phone": "Téléphone",
+      "submit": "Inscrivez-vous",
+      "or": "ou",
+      "accepts_terms_prefix": "J’ai pris connaissance des",
+      "accepts_terms_link_text": "conditions générales de vente",
+      "accepts_terms_postfix": "et les accepte.",
+      "accepts_marketing": "Newsletter : nouvelles collections, collaborations, événements, soldes.",
+      "notice": "Créez votre compte Cyrillus pour passer votre commande et profiter des nombreux avantages de notre boutique en ligne."
+    }
+  },
+  "size_guide": {
+    "button_label": "guide des talles",
+    "modal_title": "Guide des tailles",
+    "mobile_title": "Guide des tailles",
+    "content_description": "Notre nouvelle version du guide des tailles arrive prochainement.",
+    "tabs": {
+      "women": "Femme",
+      "men": "Homme",
+      "children": "Enfant",
+      "babies": "Bébé",
+      "shoes": "Chaussures"
+    },
+    "panel": {
+      "size": "Taille",
+      "correspondance": "Correspondance",
+      "chest": "Tour de poitrine",
+      "waist": "Tour de taille",
+      "hips": "Tour de bassin",
+      "neck_size": "Tour de cou (cm)",
+      "height": "Stature",
+      "hand_length": "Longueur de main",
+      "shoe_size": "Pointure",
+      "length": "Centimètres",
+      "plus": "(oupluslarge)",
+      "smallest_part": "(au plus fin)",
+      "widest_part": "(au plus large)",
+      "other_contries": "France \/ Belgique",
+      "swiss": "Suisse",
+      "germany": "Allemagne",
+      "uk": "Uk",
+      "italy": "Italie",
+      "america": "Amérique",
+      "title": "CONSEIL",
+      "description": "Prenez soigneusement vos mesures en tenant le mètre ruban sur le corps bien à l'horizontal et sans le serrer",
+      "women": {
+        "table1_title": "ROBES, CHEMISES, BLOUSES, PANTALONS, JUPES, SHORT, COMBI, VESTES, MANTEAUX, TRENCHS",
+        "table2_title": "PULLS, GILETS, T-SHIRTS, POLO",
+        "table3_title": "parka",
+        "table4_title": "CORRESPONDANCE DES TAILLES"
+      },
+      "men": {
+        "table1_title": "PANTALONS",
+        "table2_title": "PARKA, BLOUSON, PULLS, POLOS",
+        "table3_title": "VESTE, BLAZER",
+        "table4_title": "CHEMISES",
+        "table5_title": "CORRESPONDANCE DES TAILLES"
+      },
+      "children": {
+        "table1_title": "FILLE DE 2 À 16 ANS",
+        "table2_title": "GARÇON DE 2 À 16 ANS",
+        "table3_title": "CORRESPONDANCE DES TAILLES"
+      },
+      "babies": {
+        "table1_title": "BÉBÉ DE 0 À 36 MOIS",
+        "table2_title": "CORRESPONDANCE DES TAILLES"
+      },
+      "shoes": {
+        "table1_title": "TAILLES BÉBÉ",
+        "table2_title": "TAILLES ENFANT",
+        "table3_title": "TAILLES FEMME",
+        "table4_title": "TAILLES HOMME",
+        "table5_title": "CORRESPONDANCE DES TAILLES"
+      }
+    }
+  },
+  "contact": {
+    "civility": "Civilité",
+    "civility_to_women": "Mme",
+    "civility_to_men": "M",
+    "surname": "Prénom",
+    "name": "Nom",
+    "address_email": "Adresse mail",
+    "email": "Email",
+    "address": "Adresse",
+    "post_code": "Code postal",
+    "city": "Ville",
+    "telephone": "Téléphone",
+    "request_object": "Objet de la demande",
+    "your_question": "Votre question",
+    "verify_user": "Verification utilisateur",
+    "send": "Envoyer",
+    "confirmation_message": "Merci pour votre message, votre demande a bien été enregistrée. Le Service Client prendra directement contact avec vous rapidement. "
+  },
+  "bedding_size_guide": {
+    "title": "Choisir son linge de lit",
+    "item_1": {
+      "title": "1 - QUELLE MATIÈRE ? LES CONSEILS À SUIVRE",
+      "description": "Cyrillus vous propose 3 matières naturelles",
+      "list": {
+        "item_1": "LE COTON 57 FILS : Fibre confortable et résistante",
+        "item_2": "LA PERCALE DE COTON : Tissu de coton très fin, dʼexcellente qualité. Tissage serré, au minimum 80 fils\/cm2 pour un toucher doux.",
+        "item_3": "LE LIN LAVÉ : Fibre de lin ayant subi des lavages et des séchages maitrisés pour obtenir une matière plus souple et plus douce. Aspect légèrement froissé et vieilli.",
+        "item_4": "LE SATIN DE COTON : Tissu 80 fils présentant une surface lisse, légèrement lumineuse et agréablement soyeuse."
+      }
+    },
+    "item_2": {
+      "title": "2 - QUELLES DIMENSIONS ? LES CONSEILS À SUIVRE",
+      "description": "Avant tout acte dʼachat, assurez-vous de bien connaître les dimensions de vos matelas, couette et oreillers. Elles doivent correspondre aux dimensions de votre literie.",
+      "list": {
+        "item_1": "DRAP HOUSSE : les dimensions dʼun drap-housse sont identiques à celles du matelas : 90x190 cm, 140x190 cm, 160x200 cm. Attention de prendre en compte lʼépaisseur du matelas : un matelas très épais en 140 cm devrasupporter un drap-housse de 160 cm de largeur.",
+        "item_2": "HOUSSE DE COUETTE : La taille de votre housse de couette correspond aux dimensions de votre couette indiquées sur lʼétiquette cousue : 140x200 cm (1 personne), 200x200 cm (1 ou 2 personnes), 240x220 cm (2personnes) et 260x240 cm(2 personnes). Le choix de la taille de votre couette dépend aussi de la retombée que vous souhaitez (voir nos croquis)"
+      },
+      "beg_size": {
+        "size_1": "Lip 1p",
+        "size_2": "Lip 2p"
+      },
+      "bed_covering": "Couette",
+      "bed_frame": "C. sommier",
+      "units": "cm"
+    },
+    "item_3": {
+      "title": "3 - PLUS DE STYLE : LES CACHE-SOMMIERS",
+      "description": "Cyrillus vous propose des cache-sommiers en pur coton déclinés dans des teintes sobres et délicates pour une harmonie totale avec nos programmes de linge de lit. 3 tailles sont à votre disposition : 90x190 cm, 140x190cm et 160x200 cm."
+    }
+  },
+  "request_returns": {
+    "account": {
+      "returns": "Retours",
+      "return_created": "Retour créé",
+      "ask_return": "Déclarer un retour",
+      "my_return_requests": "Mes retours"
+    },
+    "reasons": {
+      "Y01": "RET - ERREUR CLIENT",
+      "Y02": "RET - ERREUR MARQUE",
+      "Y03": "RET - DELAIS LIVRAISON",
+      "Y04": "RET - DECU STYLE",
+      "Y05": "RET - DECU TAILLANT",
+      "Y06": "RET - DECU QUALITE",
+      "Y07": "RET - DIFFERENT vs PHOTO",
+      "Y08": "RET - MONTAGE MEUBLE IMP",
+      "Y09": "RET - DEFFECTUEUX",
+      "Y10": "RET - COULEUR en PLUS",
+      "Y11": "RET - TAILLE en PLUS",
+      "Y12": "RET - AUTRE",
+      "Y13": "RET KO - PAS DE LA MARQUE",
+      "Y14": "RET KO - KLI NON CONFORME",
+      "Y15": "RET KO - INVERSION PDT"
+    },
+    "product_item": {
+      "number": "Nr",
+      "item_label": "Article",
+      "quantity": "Quantité",
+      "reason": "Motif"
+    },
+    "errors": {
+      "error_empty_fields": "Veuillez renseigner le(s) champ(s) en rouge",
+      "error_wrong_input": "Veuillez vérifier l'émail et\/ou le numéro de commande.",
+      "error_not_eligible": "Votre commande n'est plus éligible au retour",
+      "error_no_returnable_items": "Votre commande ne contient plus d'articles éligibles au retour",
+      "error_email_not_found": "L'adresse email entrée est erronée. Veuillez ré-essayer",
+      "error_no_product_selected": "Veuillez sélectionner au moins un produit",
+      "generic": "Une erreur s'est produite. Veuillez ré-essayer"
+    },
+    "feedback": {
+      "request_confirmation_per_return": "Votre demande de retour pour la commande <span class='bold'>{reference}<\/span> du  <span class='bold'>{createdAt}<\/span> a bien été prise en compte pour le(s) article(s) suivant(s):",
+      "request_confirmation": "Votre demande de retour a bien été pris en compte. Vous recevrez un email de confirmation dans les plus brefs délais. N'hésitez pas à vérifier vos courriers indésirables."
+    },
+    "select_order_form": {
+      "title": "Demande de Retour",
+      "order_placeholder": "Commande N° (OS123456)",
+      "email_placeholder": "Email",
+      "submit": "Démarrer"
+    },
+    "select_products_form": {
+      "title": "Demande de Retour",
+      "select_items": "Sélectionnez le(s) produit(s) à retourner :",
+      "no_available_items": "Votre commande ne contient plus d'article(s) éligible(s) au retour.",
+      "submit": "Confirmer",
+      "custom_wording": "Si vous souhaitez retourner des articles encombrants, veuillez contacter directement notre Service Client au 09.69.32.35.04"
+    },
+    "return_confirmation": {
+      "title": "Confirmation de Retour",
+      "download_voucher": "Télécharger le bon de retour",
+      "back": "Retour"
+    }
+  },
+  "gift_cards": {
+    "form": {
+      "card": {
+        "heading": "La carte cadeau",
+        "description": "Merci de personnaliser votre carte cadeau et de préciser les coordonnées du bénéficiaire à l'aide du formulaire ci-dessous:",
+        "input_labels": {
+          "sum_html": "Saisissez le montant de votre e-carte cadeau compris entre <b>10 et 150€*:<\/b>",
+          "for": "Pour* (prénom du bénéficiaire)",
+          "message": "Votre message personnel (200 caractères maximum)",
+          "message_placeholder": "J`ai le plaisir de t`offrir cette e-carte cadeau Cyrillus.",
+          "from": "De la part de* (prénom de l`émetteur)",
+          "delivery_html": "Choisissez l’adresse à laquelle vous souhaitez recevoir votre carte cadeau<br><small>(frais d’envoi postal : 2,50€)<\/small>",
+          "delivery_home": "Chez moi",
+          "delivery_address": "à une autre adresse (celle-si ne sera pas conservée après la livraison)",
+          "address": "Adresse*",
+          "additional_address": "Adresse complémentaire ",
+          "post_code": "Code postal*",
+          "city": "Ville*"
+        },
+        "buttons": {
+          "submit": "ajouter au panier"
+        }
+      },
+      "e_card": {
+        "heading": "E-carte cadeau",
+        "description": "Merci de personnaliser votre e-carte cadeau en précisant les coordonnées du bénéficiaire et en choisissant le jour d'envoi à l'aide du formulaire ci-dessous",
+        "input_labels": {
+          "sum_html": "Saisissez le montant de votre e-carte cadeau compris entre <b>10 et 150€*:<\/b>",
+          "for": "Pour* (prénom du bénéficiaire)",
+          "message": "Votre message personnel (200 caractères maximum)",
+          "message_placeholder": "J`ai le plaisir de t`offrir cette e-carte cadeau Cyrillus.",
+          "from": "De la part de* (prénom de l`émetteur)",
+          "email": "Adresse e-mail du bénéficiaire*",
+          "date": "Date d`envoi de votre e-carte*:"
+        },
+        "buttons": {
+          "submit": "ajouter au panier"
+        }
+      }
+    },
+    "balance": {
+      "form_heading_html": "Consulter le solde de ma <b>carte cadeau<\/b> ou de ma <b>E-carte cadeau<\/b>",
+      "heading_html": "Le solde de votre carte est de :",
+      "input_labels": {
+        "card_number": "Indiquez les 12 numéros de votre carte",
+        "card_pass": "Cryptogramme"
+      },
+      "buttons": {
+        "submit": "Valider"
+      }
+    },
+    "modal": {
+      "title_e_card": "Cette e-carte a été ajoutée à votre panier",
+      "title_card": "Cette carte cadeau a été ajoutée à votre panier",
+      "name": "Carte cadeau",
+      "send_email": "Envoi : Par email( sous 24h)",
+      "buttons": {
+        "continue_shopping": "continuer votre shopping",
+        "buy_new_card": "acheter une nouvelle carte cadeau",
+        "complete_order": "Terminer votre commande"
+      }
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "shipping_address_title": "Coordonnées de livraison ",
+        "title": "Coordonnées "
+      },
+      "order_summary": {
+        "shipping_default_value": "Calculée à l’étape paiement ",
+        "discount_label": "Code promotionnel",
+        "discount_placeholder": "Code promotionnel"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Je souhaite recevoir les informations exclusives par e-mail"
+      },
+      "general": {
+        "continue_to_shipping_method": "Continuer vers le mode de livraison",
+        "back_to_cart": "Revenir au panier",
+        "back_to_contact_information": "Revenir aux coordonnées ",
+        "back_to_shipping_method": "Revenir à la livraison "
+      },
+      "review": {
+        "blocks": {
+          "shipping_method_title": "Livraison",
+          "shipping_address_title": "-",
+          "billing_address_title": "Facturation "
+        }
+      },
+      "shipping": {
+        "shipping_method_title": "Mode de livraison"
+      },
+      "thank_you": {
+        "shipping_method_title": "Mode de livraison",
+        "return_to_store_link_label": "Retour à l’actualité Cyrillus "
+      }
+    }
+  },
+  "checkout": {
+    "terms_and_conditions": {
+      "confirmation": "Vous devez valider les conditions générales de vente pour pouvoir continuer.",
+      "agreement_html": "J'accepte les <a href=\"{{ terms_url }}\" target=\"_blank\">conditions générales de vente<\/a>"
+    },
+    "pick_up_in_store": {
+      "pick_boutique": "Choisissez une boutique",
+      "edit_boutique": "Modifier une boutique",
+      "your_selected_boutique": "Votre boutique sélectionnée",
+      "enter_address_zip_code": "Entrez une adresse ou un code postal",
+      "nearest_boutiques": "Boutiques les plus proches",
+      "all_our_boutiques": "Toutes nos boutiques",
+      "from_your_home": "de chez vous",
+      "submit_my_choice": "Valider mon choix",
+      "reviews": "avis"
+    },
+    "shipping_method_wording": {
+      "encombrant_wording": "En raison de la présence d'un article très volumineux dans votre commande, seule la livraison à domicile est disponible. La livraison de votre article très volumineux se fera sur prise de rendez-vous, sous 8 à 12 jours. La livraison de vos petits articles, se fera à domicile, sous 6 à 8 jours.",
+      "boutique_wording": "Délais de livraison estimés : 6 à 9 jours",
+      "domicile_wording": "Délais de livraison estimés : 6 à 9 jours",
+      "relay_wording": "Délais de livraison estimés : 6 à 9 jours",
+      "colissimo_wording": "Délais de livraison estimés : 6 à 9 jours"
+    }
+  },
+  "ope_com": {
+    "prices": {
+      "from": "à partir de"
+    },
+    "login_lightregister": {
+      "signin_title": "Déjà client ?",
+      "signin_desc": "Identifiez-vous pour accéder aux ventes privées.",
+      "signup_title": "Nouveau client ou client boutique ?",
+      "signup_desc": "Vous n'avez pas de compte en ligne ? Inscrivez-vous pour accéder aux ventes privées.",
+      "connection": "Connexion",
+      "login_error": "E-mail ou mot de passe incorrect.",
+      "register_error": "E-mail ou mot de passe incorrect. Veuillez-ré-essayer.",
+      "reset_password": "reconfigurer votre mot de passe.",
+      "accepts_marketing": "Je souhaite recevoir les newsletters",
+      "sign_up": "Valider"
+    },
+    "fidelity_coupon": {
+      "apply": "Je profite de ma remise",
+      "remove": "Supprimer la remise",
+      "has_been_applied": "Votre remise a été appliquée"
+    },
+    "coupons": {
+      "invalid_coupon": "n'est pas un coupon valide.",
+      "invalid_cart": "Votre panier ne remplit pas les conditions d'application pour le coupon ",
+      "successfully_added": "a bien été ajouté.",
+      "already_used": "a déjà été utilisé."
+    }
+  }
+}

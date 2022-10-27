@@ -1,0 +1,186 @@
+{%- capture style -%}
+  <style>
+    #{{ section.id }} {
+      text-align: {{ section.settings.alignment }};
+    }
+
+    #{{ section.id }}::before {
+      padding-top: {{ section.settings.image_ratio }}%;
+    }
+
+    #{{ section.id }} .banner__heading {
+      color: {{ section.settings.heading_color }};
+    }
+
+    #{{ section.id }} .banner__description {
+      color: {{ section.settings.description_color }};
+    }
+
+    #{{ section.id }} .banner__button {
+      color:{{ section.settings.button_color }};
+      background: {{ section.settings.button_background }};
+      border-color: {{ section.settings.button_background }};
+    }
+
+    #{{ section.id }} .banner__button:hover {
+      color:{{ section.settings.button_color_hover }};
+      background: {{ section.settings.button_background_hover }};
+      border-color: {{ section.settings.button_color_hover }};
+    }
+  </style>
+{%- endcapture -%}
+{%- liquid
+  assign heading_id = section.id | append: '_heading'
+
+  capture content
+    unless section.settings.heading_text == blank
+      render 'el_heading', level: section.settings.heading_level, text: section.settings.heading_text, id: heading_id, custom_classes: 'banner__heading'
+    endunless
+
+    unless section.settings.description == blank
+      echo '<div class="banner__description">' | append: section.settings.description | append: '</div>'
+    endunless
+
+    unless section.settings.button_text == blank and section.settings.button_url == blank
+      echo '<a class="banner__button button button--primary" href="' | append: section.settings.button_url | append: '">' | append: section.settings.button_text | append: '</a>'
+    endunless
+  endcapture
+
+  capture section_content
+    render 'el_shopify-image', image: section.settings.image, custom_classes: 'banner__image'
+    echo '<div class="banner__content">'
+    render 'el_container', content: content, custom_classes: 'banner__container'
+    echo style
+    echo '</div>'
+  endcapture
+
+  render 'c_section', id: section.id, name: 'banner', content: section_content, heading_id: heading_id
+-%}
+
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_ratio",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Ratio",
+      "default": 54
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "id": "heading_text",
+      "type": "text",
+      "label": "Text"
+    },
+    {
+      "type": "select",
+      "id": "heading_level",
+      "label": "Level",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "id": "heading_color",
+      "type": "color",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "Description"
+    },
+    {
+      "id": "description_color",
+      "type": "color",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "id": "button_text",
+      "type": "text",
+      "label": "Label"
+    },
+    {
+      "id": "button_url",
+      "type": "url",
+      "label": "URL"
+    },
+    {
+      "id": "button_background",
+      "type": "color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "id": "button_background_hover",
+      "type": "color",
+      "label": "Background (Hover)",
+      "default": "#ffffff"
+    },
+    {
+      "id": "button_color",
+      "type": "color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "id": "button_color_hover",
+      "type": "color",
+      "label": "Background (Hover)",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner"
+    }
+  ]
+}
+{% endschema %}

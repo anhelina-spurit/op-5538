@@ -1,0 +1,51 @@
+{%- comment -%}
+  @summary Creates a container that supports aspect ratio.
+
+  @param {String} content - content
+  @param {Number} width - aspect ration width
+  @param {Number} height - aspect ration height
+  @param {Boolean} size_limited - enable max-width limitation
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'el_ratio-container',
+    content: image_html,
+    width: actual_width,
+    height: actual_height,
+    size_limited: true,
+    custom_classes: 'custom',
+    attributes: 'data-custom',
+    modifiers: 'sm, lg'
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign padding_top = height | times: 1.0 | divided_by: width | times: 100
+
+  capture class
+    if size_limited == true
+      assign modifiers = modifiers | append: ',size-limited'
+    endif
+
+    render 'f_bem-classes', main_class: 'ratio-container', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  capture style
+    echo '--padding-top:' | append: padding_top | append: '%;'
+
+    if size_limited == true
+      echo '--max-width:' | append: width | append: 'px;'
+    endif
+  endcapture
+
+  capture attributes
+    echo 'class="' | append: class | append: '"'
+    echo 'style="' | append: style | append: '"'
+    echo attributes
+  endcapture
+
+  echo '<div ' | append: attributes | append: '>' | append: content | append: '</div>'
+-%}

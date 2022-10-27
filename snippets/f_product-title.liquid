@@ -1,0 +1,20 @@
+{%- comment -%}
+  @summary Renders product title depends on current language
+
+  @param {Object} product {Required}: shopify product object
+
+  @example
+  {% render 'f_product-title', product: product %}
+{%- endcomment -%}
+
+{% liquid
+  assign lang = localization.language.iso_code | slice: 0, 2
+  assign title = nil
+
+  if lang != 'fr'
+    assign key = lang | append: '|product.title'
+    assign title = product.metafields.i18n[key].value
+  endif
+
+  echo title | default: product.title | strip
+%}

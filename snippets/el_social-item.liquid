@@ -1,0 +1,36 @@
+{% comment %}
+  @summary Renders social media item
+
+  @param {string} content - text
+  @param {string} href - href
+  @param {string} icon - icon
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%-
+    render 'c_social-item',
+    icon: 'twitter',
+    content: 'Twitter',
+    href: settings.social_twitter,
+    custom_classes: 'social-media__item',
+    attributes: 'data-custom',
+    modifiers: 'lg, light',
+  -%}
+{% endcomment %}
+
+{%- unless content == blank and icon == blank and href == blank -%}
+  {%- liquid
+    capture class
+      render 'f_bem-classes', main_class: 'social-item', custom_classes: custom_classes, modifiers: modifiers
+    endcapture
+  %}
+
+  <li class="{{ class }}" {{ attributes }}>
+    <a href="{{ href }}" class="social-item__link" >
+      {%- render 'el_icon', icon: icon, custom_classes: 'social-item__icon' -%}
+      {{ content }}
+    </a>
+  </li>
+{%- endunless -%}

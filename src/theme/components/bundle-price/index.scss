@@ -1,0 +1,24 @@
+@import '../../utils/breakpoints';
+@import '../../utils/to-rem';
+
+.bundle-price {
+  display: flex;
+}
+
+.bundle-price__title {
+  margin-right: to-rem(10px);
+  font-size: to-rem(12px);
+  font-weight: 500;
+  letter-spacing: to-rem(0.8px);
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(md) {
+    font-size: to-rem(7px);
+    line-height: 2.58;
+  }
+}
+
+.bundle-price .price {
+  margin: 0;
+}

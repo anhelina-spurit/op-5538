@@ -1,0 +1,37 @@
+{% comment %}
+
+  @summary Renders a status bar.
+
+  @param {number} value - Value of status bar
+  @param {string} [id] - Status bar id
+  @param {string} [tag] - Tag container
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]('xxl'|'xl'|'lg')} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'el_status-bar',
+    value: 50,
+    tag: 'section',
+    custom_classes: 'test test-2',
+    modifiers: 'xl, lg',
+    attributes: 'data-test data-container'
+  %}
+{% endcomment %}
+
+{% liquid
+  assign tag = tag | default: 'div'
+%}
+
+<{{ tag }}
+  {% if id %}id="{{ id }}"{% endif %}
+  class="{%- render 'f_bem-classes', main_class: 'status-bar', custom_classes: custom_classes, modifiers: modifiers -%}"
+  data-value="{{ value }}"
+  {{ attributes }}
+>
+  <div
+    class="status-bar__progress"
+    style="width:{{ value }}%"
+  ></div>
+</{{ tag }}>

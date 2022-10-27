@@ -1,0 +1,69 @@
+@import '../../utils/to-rem';
+@import '../../constants/palette';
+@import '../../constants/fonts';
+
+.guide-note {
+  padding: to-rem(100px) 0;
+}
+
+.guide-note__content {
+  position: relative;
+  display: block;
+  width: to-rem(700px);
+  max-width: 100%;
+  padding: to-rem(35px) to-rem(35px) to-rem(50px);
+  border: to-rem(1px) solid $palette-dark-slate-grey;
+  margin: auto;
+}
+
+.guide-note__logo {
+  position: absolute;
+  top: to-rem(-12px);
+  left: 50%;
+  height: to-rem(25px);
+  padding: 0 to-rem(12px);
+  background: $palette-white;
+  transform: translate(-50%, 0);
+}
+
+.guide-note__text {
+  display: block;
+  width: 100%;
+  max-width: to-rem(520px);
+  margin: auto;
+  font-family: $font-family-lora;
+  font-size: to-rem(12px);
+  font-style: italic;
+  letter-spacing: to-rem(0.8px);
+  line-height: to-rem(18px);
+  text-align: center;
+}
+
+.guide-note__text p:first-child {
+  font-family: $font-family-sweet-sans-pro;
+  font-style: normal;
+}
+
+.guide-note__link {
+  position: absolute;
+  bottom: to-rem(-20px);
+  left: 50%;
+  display: inline-block;
+  width: fit-content;
+  padding: to-rem(14px) to-rem(40px);
+  border: to-rem(1px) solid $palette-dark-slate-grey;
+  background-color: $palette-dark-slate-grey;
+  color: $palette-white;
+  font-family: $font-family-sweet-sans-pro;
+  font-size: to-rem(9px);
+  letter-spacing: to-rem(1.35px);
+  line-height: to-rem(13px);
+  text-transform: uppercase;
+  transform: translate(-50%, 0);
+}
+
+.guide-note__link:hover {
+  border-bottom: to-rem(1px) solid $palette-dark-slate-grey;
+  background: $palette-white;
+  color: $palette-dark-slate-grey;
+}

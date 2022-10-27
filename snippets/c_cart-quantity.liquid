@@ -1,0 +1,35 @@
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'quantity', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+-%}
+
+<div class="{{- class -}}" data-cart-quantity>
+  {%-
+    render 'el_button',
+    text: '-',
+    type: 'button',
+    custom_classes: 'quantity__button',
+    modifiers: 'link',
+    name: 'decrement',
+    attributes: 'data-cart-quantity-control'
+  -%}
+  <p class="quantity__viewfield" data-cart-quantity-viewfield>{{ item.quantity }}</p>
+  {%-
+    render 'el_input',
+    type: 'hidden',
+    name: 'quantity',
+    value: item.quantity,
+    attributes: 'data-cart-quantity-input data-cart-quantity-action'
+  -%}
+  {%-
+    render 'el_button',
+    text: '+',
+    type: 'button',
+    custom_classes: 'quantity__button',
+    modifiers: 'link',
+    name: 'increment',
+    attributes: 'data-cart-quantity-control'
+  -%}
+</div>

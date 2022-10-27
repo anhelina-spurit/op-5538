@@ -1,0 +1,29 @@
+{%- liquid
+  capture section_content
+    if section.settings.image != blank
+      echo '<div class="chain-end__image">'
+      render 'el_image', src: section.settings.image, lazy_loading: true
+      echo '</div>'
+    endif
+  endcapture
+
+  render 'c_section', id: section.id, name: 'chain-end', content: section_content
+-%}
+
+{% schema %}
+{
+  "name": "Chain end",
+  "settings": [
+      {
+        "id": "image",
+        "type": "url",
+        "label": "Image"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Chain end"
+    }
+  ]
+}
+{% endschema %}

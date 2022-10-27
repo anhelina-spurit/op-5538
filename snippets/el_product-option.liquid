@@ -1,0 +1,60 @@
+{%- comment -%}
+  @summary Renders a product option fieldset
+
+  @param {product_option} option - product_option object
+  @param {stirng(radio|select)} id - input type
+  @param {stirng} id - unique id
+
+  @example
+  {%-
+    render 'el_product-option',
+    option: option,
+    type: option,
+    id: section.id
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign type = type | default: 'radio'
+
+  capture fieldset_content
+    for value in option.values
+      assign inp_id = id | append: '-' | append: option.position | append: forloop.index0
+      assign inp_value = value | escape
+      assign inp_attr = 'data-option-value'
+
+      case type
+        when 'select'
+          assign selected = false
+
+          if option.selected_value == value
+            assign selected = true
+          endif
+
+          render 'el_option', value: value, content: value, selected: selected
+        else
+          if option.selected_value == value
+            assign inp_attr = inp_attr | append: ' checked'
+          endif
+
+          unless product.variants[forloop.index0].available and product.variants[forloop.index0].price > 0
+              assign inp_attr = inp_attr | append: ' disabled'
+          endunless
+
+          render 'el_input', type: 'radio', id: inp_id, name: option.name, value: inp_value, attributes: inp_attr
+          render 'el_label', for_input: inp_id, content: value
+      endcase
+    endfor
+  endcapture
+
+  if type == 'select'
+    capture fieldset_content
+      render 'el_select', options: fieldset_content, name: option.name, attributes: inp_attr
+    endcapture
+  endif
+
+  assign fieldset_id = id | append: '-' | append: option.position
+  assign legend = legend | default: option.name
+
+  render 'el_fieldset', id: fieldset_id, content: fieldset_content, legend: legend, custom_classes: 'product-form__input', attributes: 'data-product-option'
+-%}

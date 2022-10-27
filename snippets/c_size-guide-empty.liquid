@@ -1,0 +1,33 @@
+{% comment %}
+  @summary Renders dummy size guide tab
+
+  @param {string} id - id
+
+  @example
+  {%- render 'c_size-guide-empty' -%}
+{% endcomment %}
+
+<div>
+  {% liquid
+    capture  options
+      assign tables = 'dresses,sweaters,parka,other_contries' | split: ','
+
+      for table in tables
+        assign option_id = table | append: '_' | append: id
+        assign option_value = 'option_' | append: option_id
+        assign option_text = 'size_guide.panel.women.table' | append: forloop.index | append: '_title'
+        assign option_text = option_text | t
+        assign selected = forloop.first
+        render 'el_selectbox-option', id: option_id, option_value: option_value, selected: selected, option_text: option_text
+      endfor
+    endcapture
+
+    assign selected_option_text = 'size_guide.panel.women.table1_title' | t
+
+    render 'c_selectbox', id: 'size_guide_table_type', custom_classes: 'size-guide__selectbox-tables', custom_options: options, selected_option_id: 'option_dresses', selected_option_text: selected_option_text
+  %}
+</div>
+
+<div class="size-guide__content">
+  {{ 'size_guide.content_description' | t }}
+</div>

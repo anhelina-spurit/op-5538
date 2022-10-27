@@ -1,0 +1,99 @@
+{% comment %}
+  @summary Renders filter horizontal
+  @param {object} results - Collection or Search object
+  @param {string} [custom_classes] - additional classes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {%
+    render 'c_filter-horizontal',
+    results: collection,
+    custom_classes: "custom",
+    modifiers: 'lg, light',
+  %}
+{% endcomment %}
+
+{% liquid
+  capture class
+    render 'f_bem-classes', main_class: 'filter-horizontal', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+  assign static_text = 'collection.filter.all' | t
+
+  capture list
+    assign active_item_list = true
+    for filter in results.filters
+      assign namespace = filter.param_name | split: "." | last
+      if namespace == 'subcollection'
+        for value in filter.values
+          if value.active
+            assign active_item_list = false
+            echo '<li class="filter-horizontal__item active" data-filter-sub-form-item="' | append: value.value | append: '">' | append: value.label | append: '</li>'
+          else
+            echo '<li class="filter-horizontal__item"  data-filter-sub-form-item="' | append: value.value | append: '">' | append: value.label | append: '</li>'
+          endif
+        endfor
+        if active_item_list
+          echo '<li class="filter-horizontal__item active" data-filter-sub-form-item>' | append: static_text | append: '</li>'
+        else
+          echo '<li class="filter-horizontal__item" data-filter-sub-form-item>' | append: static_text | append: '</li>'
+        endif
+      endif
+    endfor
+  endcapture
+
+  capture custom_options
+    assign active_statick_option = true
+    assign selected_option_text = nil
+    assign selectesd_option_id = nil
+
+    for filter in results.filters
+      assign namespace = filter.param_name | split: "." | last
+      if namespace == 'subcollection'
+        for value in filter.values
+          assign option_id = value.value | handleize | append: '_option_' | append: forloop.index
+          if value.active
+            assign active_statick_option = false
+            assign selectesd_option_id = option_id
+            assign selected_option_text = value.label
+          endif
+          render 'el_selectbox-option', id: option_id, option_value: value.value, selected: value.active, option_text: value.label, disabled: false
+        endfor
+
+        assign option_statick_id = 'option_0'
+        if active_statick_option
+          assign selectesd_option_id = option_statick_id
+          assign selected_option_text = static_text
+        endif
+        render 'el_selectbox-option', id: option_statick_id, custom_classes: 'selectbox__option--last', option_value: nil, selected: active_statick_option, option_text: static_text, disabled: false
+      endif
+    endfor
+
+    for filter in results.filters
+      assign namespace = filter.param_name | split: "." | last
+      if namespace == 'subcollection'
+        echo '<select class="selectbox__select" name="' | append: filter.param_name | append: '">'
+        if active_statick_option
+          echo '<option value="" selected>' | append: static_text | append: '</option>'
+        else
+          echo '<option value="">' | append: static_text | append: '</option>'
+        endif
+
+        for value in filter.values
+          if value.active
+            echo '<option value="' | append: value.value | append: '"' | append: 'selected>' | append: value.label | append: '</option>'
+          else
+            echo '<option value="' | append: value.value | append: '"' | append: '>' | append: value.label | append: '</option>'
+          endif
+        endfor
+        echo '</select>'
+      endif
+    endfor
+  endcapture
+%}
+
+<form class="{{- class -}}" data-filter-sub-form>
+  {%- liquid
+    echo '<ul class="filter-horizontal__list">' | append: list | append: '</ul>'
+    render 'c_selectbox', id: 'select', custom_classes: 'filter-horizontal__select', custom_options: custom_options, selected_option_id: selectesd_option_id, selected_option_text: selected_option_text
+  -%}
+</form>

@@ -1,0 +1,18 @@
+{% liquid
+  capture content
+    echo '<div data-recently-viewed-products></div>'
+  endcapture
+  render 'c_section', id: section.id, name: 'recently-viewed-products', content: content, attributes: 'data-recently-viewed-wrapper'
+%}
+
+{% schema %}
+    {
+        "name": "Recently viewed products",
+        "settings": [],
+        "presets":[
+            {
+                "name": "Recently viewed products"
+            }
+        ]
+    }
+{% endschema %}

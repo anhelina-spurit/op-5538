@@ -1,0 +1,38 @@
+@import '../../../utils/to-rem';
+@import '../../../constants/palette';
+@import '../../../constants/transitions';
+
+.filter-collapse {
+  transition: $transition-duration-fast;
+}
+
+.filter-collapse.hidden {
+  overflow: hidden;
+  max-height: 0;
+}
+
+.filter-collapse__button {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 0;
+  border: none;
+  text-align: right;
+}
+
+.filter-collapse__button::before {
+  display: inline-block;
+  color: $palette-dark;
+  content: '+';
+  font-size: to-rem(13px);
+  line-height: 1;
+  transition: transform $transition-duration-fastest;
+}
+
+.filter-collapse__button.active::before {
+  transform: rotate(45deg);
+}
+
+.filter-collapse__button:hover {
+  border: none;
+}

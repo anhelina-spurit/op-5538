@@ -1,0 +1,13 @@
+{%- liquid
+  layout none
+  echo '<div class="cart-modifier__grid">'
+    echo '<div class="cart-modifier__column">'
+      render 'el_shopify-image', image: product.featured_image, lazy_loading: true, custom_classes: 'product-media__image'
+    echo '</div>'
+    echo '<div class="cart-modifier__column">'
+      render 'el_heading', level: 2, text: product.title, modifiers: 'md', custom_classes: 'product__heading'
+      render 'c_product-form-modifier', product: product
+      echo '<p class="cart-modifier__error" data-modifier-error></p>'
+    echo '</div>'
+  echo '</div>'
+-%}

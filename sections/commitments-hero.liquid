@@ -1,0 +1,134 @@
+{%- capture content -%}
+  <div class="commitments-hero__media">
+    {%- capture heading_text -%}
+      <span class="commitments-hero__pre_heading">{{ section.settings.pre_heading }}</span>
+      {{ section.settings.heading }}
+    {%- endcapture -%}
+
+    <picture>
+      {%- if section.settings.image_sm != blank -%}
+        <source media="(max-width: 767.99px)" srcset="{{ section.settings.image_sm | image_url: width: 768 }}">
+      {%- endif -%}
+
+    {%- liquid
+      if section.settings.image != blank
+          render 'el_shopify-image', image: section.settings.image, width: 980, height: 488, lazy_loading: true, custom_classes: 'commitments-hero__image' format: 'pjpg'
+      else
+        render 'el_placeholder', name: 'lifestyle-1'
+      endif
+      -%}
+    </picture>
+
+    {%- liquid
+      assign heading_id = section.id | append: '__heading'
+
+      render 'el_heading', level: 1, text: heading_text, custom_classes: 'commitments-hero__heading', id: heading_id
+
+      render 'el_image', src: section.settings.sub_image, lazy_loading: true, custom_classes: 'commitments-hero__logo'
+    -%}
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <ul class="commitments-nav">
+      {%- for block in section.blocks -%}
+        <li class="commitments-nav__item">
+          <a class="commitments-nav__link" href="#commitments-item-{{ forloop.index }}">{{ block.settings.heading }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- liquid
+      assign selected_option_text = ''
+
+      capture options
+        for block in section.blocks
+          assign option_value = 'commitments-item-' | append: forloop.index
+          assign option_text = forloop.index | append: ' . ' | append: block.settings.heading
+          assign selected = forloop.first
+
+          if forloop.index == 1
+            assign selected_option_text = option_text
+          endif
+
+          render 'el_selectbox-option', option_value: option_value, selected: selected, option_text: option_text
+        endfor
+      endcapture
+
+      render 'c_selectbox', id: 'commitments-nav-selectbox', custom_classes: 'commitments-nav-selectbox', custom_options: options, selected_option_text: selected_option_text, label: section.settings.nav_label
+    -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- liquid
+  capture section_content
+    render 'el_container', content: content, modifiers: 'xxl, centered'
+  endcapture
+
+  render 'c_section', id: section.id, content: section_content, name: 'commitments-hero', heading_id: heading_id
+-%}
+
+{% style %}
+  #{{ section.id }} {
+    background-color: {{ section.settings.background }};
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Commitments Hero",
+  "settings": [
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "image_sm",
+      "type": "image_picker",
+      "label": "Image for mobile screens"
+    },
+    {
+      "id": "background",
+      "type": "color",
+      "label": "Background",
+      "default": "#697B6B"
+    },
+    {
+      "id": "sub_image",
+      "type": "url",
+      "label": "Sub image"
+    },
+    {
+      "id": "pre_heading",
+      "type": "text",
+      "label": "Pre-heading",
+      "default": "Nos"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "engagements"
+    },
+    {
+      "id": "nav_label",
+      "type": "text",
+      "label": "Navigation label",
+      "info": "Visible only on small screens"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Nav Item",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Item name"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

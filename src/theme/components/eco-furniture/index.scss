@@ -1,0 +1,78 @@
+@import '../../utils/to-rem';
+@import '../../utils/breakpoints';
+@import '../../constants/palette';
+
+.eco-furniture__container {
+  display: flex;
+  max-width: to-rem(600px);
+  flex-direction: column;
+  padding-top: to-rem(52px);
+  padding-bottom: to-rem(52px);
+
+  @include media-breakpoint-down(md) {
+    padding-top: to-rem(32px);
+    padding-bottom: to-rem(32px);
+  }
+}
+
+.eco-furniture__media {
+  max-width: to-rem(330px);
+  align-self: flex-start;
+  margin-bottom: to-rem(22px);
+  justify-self: flex-start;
+
+  @include media-breakpoint-down(md) {
+    max-width: to-rem(152px);
+    align-self: center;
+    justify-self: center;
+  }
+}
+
+.eco-furniture__image {
+  width: 100%;
+  height: auto;
+}
+
+.eco-furniture__content p {
+  margin-top: 0;
+  margin-bottom: to-rem(32px);
+  color: $palette-dark;
+  font-size: to-rem(12px);
+  font-weight: 400;
+  letter-spacing: to-rem(0.5px);
+  line-height: 1.83;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: to-rem(22px);
+    text-align: center;
+  }
+}
+
+.eco-furniture__content a,
+.eco-furniture__content a:visited,
+.eco-furniture__content a:active {
+  color: $palette-dark;
+}
+
+.eco-furniture__content h2,
+.eco-furniture__content h3,
+.eco-furniture__content h4 {
+  display: block;
+  margin-top: 0;
+  margin-bottom: to-rem(32px);
+  font-size: to-rem(16px);
+  font-weight: 400;
+  letter-spacing: to-rem(3px);
+  line-height: 1.44;
+  text-transform: uppercase;
+
+  @include media-breakpoint-down(md) {
+    max-width: to-rem(244px);
+    margin-right: auto;
+    margin-bottom: to-rem(22px);
+    margin-left: auto;
+    font-size: to-rem(14px);
+    letter-spacing: to-rem(2.63px);
+    text-align: center;
+  }
+}

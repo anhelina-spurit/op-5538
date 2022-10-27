@@ -1,0 +1,27 @@
+{%- comment -%}
+  @summary It creates a placeholder
+
+  @param {string} name - placeholder name
+  @param {string} [alt] - alternative text for image
+  @param {string} [custom_classes] - class name
+  @param {string} [attributes] - additional HTML attributes
+  @param {string} [modifiers] - modifiers 'xl', 'lg'
+
+  @example
+  {%-
+    render 'el_placeholder',
+    name: 'image'
+    custom_classes: 'custom-class',
+    modifiers: 'md, lg'
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture classes
+    render 'f_bem-classes', main_class: 'placeholder', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  assign placeholder = name | default: 'image'
+
+  echo placeholder | placeholder_svg_tag: classes
+-%}

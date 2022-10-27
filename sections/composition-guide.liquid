@@ -1,0 +1,106 @@
+{% style %}
+  .composition-guide__hero {
+    background-color: {{- section.settings.background -}};
+  }
+
+  .composition-guide__heading {
+    color: {{- section.settings.color_text -}};
+  }
+{% endstyle %}
+
+{%- liquid
+  capture container_content
+    echo '<div class="composition-guide__hero">'
+      render 'el_heading', level: 2,  text: page.title, custom_classes: 'composition-guide__heading'
+    unless section.settings.logo == blank
+      render 'el_image',src: section.settings.logo,lazy_loading: true,custom_classes: 'composition-guide__logo'
+    endunless
+    unless section.settings.image == blank
+      echo '<div class="composition-guide__media">'
+      render 'el_shopify-image',image: section.settings.image,custom_classes: 'composition-guide__image'
+      echo '</div>'
+    endunless
+    echo '</div>'
+    echo '<div class="composition-guide__content">'
+    unless section.settings.description == blank
+      echo '<p class="composition-guide__description">'
+      echo section.settings.description
+      echo '</p>'
+    endunless
+    if section.blocks.size > 0
+        capture accordion_content
+          for block in section.blocks
+            assign accordion_item_id = block.settings.heading | handleize | append: forloop.index
+            render 'c_accordion-item', id: accordion_item_id, title: block.settings.heading, content: block.settings.content, custom_classes: 'composition-guide__accordion-item'
+          endfor
+        endcapture
+        assign accordion_id = section.id | append: '__accordion'
+        render 'c_accordion', id: accordion_id, content: accordion_content, custom_classes: 'composition-guide__accordion', attributes: 'data-composition-guide-accordion'
+    endif
+    echo '</div>'
+  endcapture
+  capture content
+    render 'c_breadcrumbs', custom_classes: 'composition-guide__breadcrumbs'
+    render 'el_container', content: container_content, modifiers: 'xl', custom_classes: 'composition-guide__container'
+  endcapture
+  render 'c_section', id: section.settings.id, name: 'composition-guide', content: content
+-%}
+
+{% schema %}
+{
+  "name": "Composition guide",
+  "settings": [
+    {
+      "id": "background",
+      "type": "color",
+      "label": "Image background",
+      "default": "#324D57"
+    },
+    {
+      "id": "color_text",
+      "type": "color",
+      "label": "Color of title",
+      "default": "#FFFFFF"
+    },
+    {
+      "id": "logo",
+      "type": "text",
+      "label": "Logo",
+      "info": "It is more priority to use the image in the SVG format. To do this, you need to upload an image to the store's file system, copy path and paste it here."
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Image"
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Item's heading"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Item's content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Composition guide"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,37 @@
+{% liquid
+	assign form_heading_html = 'gift_cards.balance.form_heading_html' | t
+	assign heading_html = 'gift_cards.balance.heading_html' | t
+	assign card_number = 'gift_cards.balance.input_labels.card_number' | t
+	assign card_pass = 'gift_cards.balance.input_labels.card_pass' | t
+	assign submit = 'gift_cards.balance.buttons.submit' | t
+%}
+
+{%- capture container_content -%}
+<div class="gift-cards-balance">
+  <div class="gift-card-balance__content">
+
+    <form action="#" class="gift-card-form gift-card-balance__form">
+      {%- render 'el_heading', level: 2, text: form_heading_html, custom_classes: 'gift-card-balance__form-heading gift-card-balance__heading' -%}
+
+      <div class="gift-card-form__field">
+        {%- render 'el_label', for_input: 'card_number_input', content: card_number, custom_classes: "gift-card-form__label" -%}
+        {%- render 'el_input', id: 'card_number_input', name: 'card_number', required: true, custom_classes: 'gift-cards-balance__input' -%}
+      </div>
+
+      <div class="gift-card-form__field">
+        {%- render 'el_label', for_input: 'card_pass_input', content: card_pass, custom_classes: "gift-card-form__label" -%}
+        {%- render 'el_input', id: 'card_pass_input', name: 'card_pass', required: true, custom_classes: 'gift-cards-balance__input gift-cards-balance__input--pass' -%}
+      </div>
+
+
+      <div class="gift-card-form__field">
+        {%- render 'el_button', text: submit, modifiers: 'secondary, small, full-width', type: 'submit'	-%}
+      </div>
+    </form>
+  </div>
+</div>
+
+{%- endcapture -%}
+
+{%- render 'el_container', content: container_content, modifiers: 'xl' -%}
+

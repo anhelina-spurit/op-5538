@@ -1,0 +1,76 @@
+<script>
+    (function() {
+        {% if first_time_accessed %}
+            window.dataLayer = window.dataLayer || [];
+            var gtmData = {
+                'env': {
+                    "country": "{{ localization.country.iso_code }}",
+                    "language": "{{ shop.locale }}",
+                    "currency": "{{ shop.currency }}",
+                    "site_name": "{{ shop.name }}",
+                },
+                'page': {
+                    "template": "AccuseReception",
+                    "name": window.location.pathname,
+                },
+                'user': {
+                    {% if customer %}
+                        "logged": "logué",
+                        "id": "{{ checkout.customer.id }}",
+                        "email": "{{ checkout.email | remove: ' ' | strip_newlines | downcase | md5 }}",
+                        "first_name": "{{ checkout.billing_address.first_name }}",
+                        "last_name": "{{ checkout.billing_address.last_name }}",
+                        "street": "{{ checkout.billing_address.street }}",
+                        "city": "{{ checkout.billing_address.city }}",
+                        "region": "{{ checkout.billing_address.province }}",
+                        "zipcode": "{{ checkout.billing_address.zip }}",
+                        "country": "{{ checkout.billing_address.country_code }}",
+                        "phone": "{{ checkout.billing_address.phone }}",
+                        "newcustomer": {{ customer.orders_count }} == 1 ? true : false,
+                    {% else %}
+                        "logged": "anonyme"
+                    {% endif %}
+                }
+            };  
+        
+            {% capture coupons %}
+                {% for discount in order.discounts %}
+                    {{ discount.code }}
+                    {% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+            {% endcapture %}
+            
+            var lineItems = {{ order.line_items | json }};
+                 
+            Object.assign(gtmData, {
+                "order": {
+                    "order_id": "{{order.order_number}}",
+                    "currency": "{{ order.currency }}",
+                    "amount_total_ati": {{total_price}} / 100,
+                    "amount_total_tf": ( {{total_price}} - {{tax_price}} ) / 100,
+                    "discount_total_ati": {{ order.total_discounts }},
+                    "tax": {{tax_price}} > 0 ? {{tax_price}} / 100 : {{tax_price}},
+                    "delivery_costs": {{ order.shipping_price }} > 0 ? {{ order.shipping_price }} / 100 : {{ order.shipping_price }},
+                    {% if order.discounts %}
+                    "code_value": "{{ coupons | escape }}",
+                    {% else %}
+                    "code_value": "",
+                    {% endif %}
+                    "products": lineItems.map(function(item, idx) {
+                        return {
+                            "name": item.title,
+                            "id": item.sku,
+                            "color": item.variant.option2,
+                            "codesize": item.variant.option1,
+                            "url_page": item.url,
+                            "url_picture": item.image,
+                            "currentprice_ati": item.price,
+                            "quantity": item.quantity,
+                        }
+                    }),
+                },
+            });
+        window.dataLayer.push(Object.assign(gtmData, {'event': 'pageview'}));
+        {% endif %}
+    })();
+</script>

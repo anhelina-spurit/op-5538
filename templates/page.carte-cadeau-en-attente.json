@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "page-content": {
+      "type": "page-content",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "1654606506c2cab589": {
+      "type": "heading-with-image",
+      "settings": {
+        "heading": "La Carte Cadeau",
+        "image": "shopify:\/\/shop_images\/Carte-cadeau.jpg",
+        "background": "#324d57",
+        "logo_style": "light"
+      }
+    },
+    "16546065712b83d84e": {
+      "type": "guide-note",
+      "settings": {
+        "logo": "",
+        "content": "<p>Un peu de patience...<\/p><p><br\/>Notre service en ligne \"carte cadeau et e-carte cadeau\" est provisoirement suspendu. Rendez-vous dès aujourd'hui en boutique pour utiliser ou acheter une carte cadeau et très prochainement sur notre site. <br\/>Pour plus de précisions rendez-vous dans notre rubrique FAQ.<\/p>",
+        "link_text": "Consultez notre FAQ",
+        "link": "shopify:\/\/pages\/faq"
+      }
+    }
+  },
+  "order": [
+    "page-content",
+    "1654606506c2cab589",
+    "16546065712b83d84e"
+  ]
+}

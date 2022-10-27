@@ -1,0 +1,27 @@
+{%- comment -%}
+    @summary Renders a price label
+
+    @param {string} content - label content
+    @param {string} type - label type
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {% render 'c_label', tag: 'li', content: 'feature text', type: 'feature' %}
+{%- endcomment -%}
+
+{% liquid
+  assign modifiers = modifiers | append: type | default: 'feature'
+  capture class
+    render 'f_bem-classes', main_class: 'product-label', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  assign tag = tag | default: 'div'
+%}
+
+{%- if content != blank-%}
+  <{{ tag }} class="{{ class }}">{{ content }}</{{ tag }}>
+{%- endif -%}
+
+

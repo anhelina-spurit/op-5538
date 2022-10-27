@@ -1,0 +1,142 @@
+{% liquid
+  assign id = section.id
+  capture content
+    unless section.settings.heading == blank
+      render 'el_heading', level: 2, text: section.settings.heading, custom_classes: 'contact__heading', modifiers: 'sm'
+    endunless
+    capture form
+      assign confirmation_message = 'contact.confirmation_message' | t
+      echo '<div class="contact__confirmation-message">'
+      echo '<p>'
+      echo confirmation_message
+      echo '</p>'
+      echo '</div>'
+      form 'contact', class: 'contact__form'
+        echo '<div class="contact__field contact__field--civility">'
+        assign civility = 'contact.civility' | t
+        assign civility_women = 'contact.civility_to_women' | t
+        assign civility_men = 'contact.civility_to_men' | t
+        echo '<p class="label">' | append: civility | append: ' *' | append: '</p>'
+        render 'el_radio', input_id: 'contact-civility-mrs', label: civility_women, name: 'contact[civility]', value: civility_women, checked: true
+        render 'el_radio', input_id: 'contact-civility-mr', label: civility_men, name: 'contact[civility]', value: civility_men
+        echo '</div>'
+        echo form.errors | default_errors
+        assign surname_id = id | append: '-surname'
+        assign surname = 'contact.surname' | t
+        echo '<div class="contact__field contact__field--surname">'
+        render 'el_input', id: surname_id, type: 'text', required: true, custom_classes: 'contact__input', name: 'contact[surname]'
+        render 'el_label', content: surname, for_input: surname_id, required: true
+        echo '</div>'
+        assign name_id = id | append: '-name'
+        assign name = 'contact.name' | t
+        echo '<div class="contact__field contact__field--name">'
+        render 'el_input', id: name_id, type: 'text', required: true, custom_classes: 'contact__input', name: 'contact[name]'
+        render 'el_label', content: name, for_input: name_id, required: true
+        echo '</div>'
+        assign email_id = id | append: '-email'
+        assign email = 'contact.email' | t
+        echo '<div class="contact__field contact__field--email">'
+        render 'el_input', id: email_id, type: 'email', required: true, custom_classes: 'contact__input',  name: 'contact[email]'
+        render 'el_label', content: email, for_input: email_id, required: true
+        echo '</div>'
+        assign address_id = id | append: '-address'
+        assign address = 'contact.address' | t
+        echo '<div class="contact__field contact__field--address contact__field--not-required">'
+        render 'el_input', id: address_id, type: 'text', required: false, custom_classes: 'contact__input contact__input--not-required',  name: 'contact[address]'
+        render 'el_label', content: address, for_input: address_id, required: false
+        echo '</div>'
+        assign post_code_id = id | append: '-post-code'
+        assign post_code = 'contact.post_code' | t
+        echo '<div class="contact__field contact__field--post-code">'
+        render 'el_input', id: post_code_id, type: 'text', required: true, custom_classes: 'contact__input',  name: 'contact[post-code]'
+        render 'el_label', content: post_code, for_input: post_code_id, required: true
+        echo '</div>'
+        assign city_id = id | append: '-city'
+        assign city = 'contact.city' | t
+        echo '<div class="contact__field contact__field--city contact__field--not-required">'
+        render 'el_input', id: city_id, type: 'text', required: false, custom_classes: 'contact__input contact__input--not-required', name: 'contact[city]'
+        render 'el_label', content: city, for_input: city_id, required: false
+        echo '</div>'
+        assign telephone_id = id | append: '-telephone'
+        assign telephone = 'contact.telephone' | t
+        echo '<div class="contact__field contact__field--telephone ontact__field--not-required">'
+        render 'el_input', id: telephone_id, type: 'tel', required: false, custom_classes: 'contact__input contact__input--not-required',  name: 'contact[telephone]'
+        render 'el_label', content: telephone, for_input: telephone_id, required: false
+        echo '</div>'
+        assign request_object_id = id | append: '-request-object'
+        assign request_object = 'contact.request_object' | t
+        unless section.settings.contact_reason == blank
+          assign options_value = ';' | append: section.settings.contact_reason | split: ';'
+        else
+          assign options_value = '; Lorem ipsum; Lorem ipsum; Lorem ipsum; Lorem ipsum' | split: ';'
+        endunless
+        capture options
+          for option in options_value
+            if forloop.index == 1
+              render 'el_option', value: option, content: option, selected: true, attributes: 'hidden'
+            else
+              render 'el_option', value: option, content: option, selected: false
+            endif
+          endfor
+        endcapture
+        echo '<div class="contact__field contact__field--request-object">'
+        render 'el_select', id: request_object_id, options: options, required: true, custom_classes: 'contact__select',  name: 'contact[request-object]'
+        render 'el_label', content: request_object, for_input: request_object_id, required: true
+        echo '</div>'
+        assign question_id = id | append: '-question'
+        assign question = 'contact.your_question' | t
+        echo '<div class="contact__field contact__field--question">'
+        render 'el_textarea', id: question_id, label: question, required: true, custom_classes: 'contact__textarea', rows: 7,  name: 'contact[body]'
+        echo '</div>'
+        assign button_label = 'contact.send' | t
+        echo '<div class="contact__field contact__field--button">'
+        render 'el_button', text: button_label, custom_classes: 'contact__button', type: 'submit', modifiers: 'primary'
+        echo '</div>'
+        unless section.settings.info == blank
+          echo '<div class="contact__info">'
+          echo section.settings.info
+          echo '</div>'
+        endunless
+      endform
+    endcapture
+    echo form
+    render 'c_form-errors', form: form, custom_classes: 'contact__errors'
+  endcapture
+  render 'c_section', id: section.id, name: 'contact', content: content
+%}
+
+<script>
+  if (window.location.hash.includes('#contact_form'))  {
+    document.querySelector('.contact__confirmation-message').classList.add('contact__confirmation-message--visible');
+  };
+</script>
+
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Contactez-nous"
+    },
+    {
+      "id": "contact_reason",
+      "type": "textarea",
+      "label": "Reasons for contact",
+      "info": "Each reason should divide by ;"
+    },
+    {
+      "id": "info",
+      "type": "richtext",
+      "label": "Additional info at contact form"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact"
+    }
+  ]
+}
+{% endschema %}

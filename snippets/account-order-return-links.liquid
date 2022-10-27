@@ -1,0 +1,37 @@
+{%- assign returns_count = order.metafields.the-oz-return.user-returns.returns | size -%}
+{%- assign order_status = order.fulfillment_status | downcase -%}
+{%- assign now_date = 'now' | date: '%s' | plus: 0 -%}
+{%- assign client_allowed_return_date = 0 -%}
+{%- assign client_return_deadline_date = nil -%}
+
+{%- assign client_return_deadline_date = order.tags | where: 'CLIENT_RETURN_DEADLINE' | last -%}
+{%- if client_return_deadline_date == nil or client_return_deadline_date == "" -%}
+  {%- assign client_return_deadline_date = nil -%}
+{%- else -%}
+  {%- assign client_return_deadline_date = client_return_deadline_date | split: '|' | last -%}
+{%- endif -%}
+
+{%- assign order_is_returnable = false -%}
+{%- if order_status == 'fulfilled' or order_status == 'partial' -%}
+  {%- assign order_is_returnable = true -%}
+{%- endif -%}
+
+{%- if order_is_returnable -%}
+  {%- if client_return_deadline_date != nil -%}
+    {%- assign client_allowed_return_date = client_return_deadline_date | date: '%s' | plus: 0 -%}
+  {%- endif -%}
+
+  {%- capture href -%}{{ routes.root_url }}pages/{{ settings.returns_page_handle }}?ref={{ order.name | url_encode }}&email={{ customer.email | url_encode }}&step=2{%- endcapture -%}
+  {%- assign labelRefund = 'request_returns.account.ask_return' | t -%}
+  {% render 'el_link', href: href, text: labelRefund, custom_classes: customLinkClasses %}
+
+  {%- if returns_count > 0 -%}
+    {%- capture href -%}{{ routes.root_url }}pages/{{ settings.returns_page_handle }}?ref={{ order.name | url_encode}}&email={{ customer.email | url_encode }}&step=3{%- endcapture -%}
+    {%- assign labelRefund = 'request_returns.account.return_created' | t -%}
+    {% render 'el_link', href: href, text: labelRefund, custom_classes: customLinkClasses %}
+  {%- endif -%}
+{%- endif -%}
+
+{% if returns_count == 0 and client_return_deadline_date == nil %}
+  -
+{% endif %}

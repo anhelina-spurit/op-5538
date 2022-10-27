@@ -1,0 +1,48 @@
+{%- comment -%}
+  @summary Renders a product card static
+
+  @param {string} id - id
+  @param {object} product - product
+  @param {string} [custom_classes] - custom_classes
+  @param {string[]('page')} [modifiers] - modifiers
+  @param {string} [attributes] - attributes
+
+  @example
+  {%-
+    render 'c_product-card-static',
+    id: 'product_id',
+    product: product
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'product-card', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+  capture title
+    render 'f_product-title', product: product
+  endcapture
+
+  assign description = product.description
+  assign featured_image = product.featured_image
+  assign url = product.metafields.card.static_url
+  capture content
+      echo '<div class="product-card__content product-card__content--static">'
+        echo '<div class="product-card__info product-card__info--static">'
+          render 'el_shopify-image', custom_classes: 'product-card__image-static', image: featured_image, width: 40, height: 44, lazy_loading: false, format: 'pjpg'
+          render 'el_heading', custom_classes: 'product-card__title product-card__title--static', tag: 'h', level: 3, text: title, modifiers: 'md'
+          echo '<p class="product-card__description product-card__description--static">' | append: description | append: '</p>'
+        echo '</div>'
+      echo '</div>'
+  endcapture
+-%}
+
+<div id="{{ id }}" class="{{ class }} product-card--static">
+  {%- if url -%}
+    {% render 'el_link', custom_classes: 'product-card__body product-card__body--static', href: url, text: content %}
+    {% else %}
+    <div class="product-card__body product-card__body--static">
+      {{- content -}}
+    </div>
+  {%- endif -%}
+</div>

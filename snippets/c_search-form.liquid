@@ -1,0 +1,94 @@
+{%- comment -%}
+  @summary Renders a search form
+
+  @param {string} id - id
+  @param {string} [custom_classes] - additional classes
+  @param {string} [attributes] - additional attributes
+  @param {string[]} [modifiers] - modifiers
+
+  @example
+  {% render 'c_search-form', id: section.id %}
+{%- endcomment -%}
+
+{% if id != blank %}
+  {%- liquid
+    capture class
+      render 'f_bem-classes', main_class: 'search', custom_classes: custom_classes, modifiers: modifiers
+    endcapture
+
+    assign id_search = id | append: '_search'
+    assign id_search_container = id | append: '_search_modal'
+    assign id_results = id | append: '_search_results'
+
+    assign input_attriputes = ''
+    assign search_popup = ''
+    assign search_terms = ''
+
+    if settings.predictive_search_enabled
+      capture input_attriputes
+        echo ' role="combobox"'
+        echo ' aria-expanded="false"'
+        echo ' aria-owns="' | append: id_results | append: '"'
+        echo ' aria-controls="' | append: id_results | append: '"'
+        echo ' aria-haspopup="listbox"'
+        echo ' aria-autocomplete="list"'
+        echo ' autocorrect="off"'
+        echo ' autocomplete="off"'
+        echo ' autocapitalize="off"'
+        echo ' spellcheck="false"'
+      endcapture
+
+      assign attributes = attributes | append: 'data-predictive-search'
+      assign class = class | append: ' predictive-search-container'
+
+      capture search_popup
+        render 'c_predictive-search'
+      endcapture
+    endif
+
+    if search.performed
+      assign search_terms = search.terms
+    endif
+  -%}
+
+  <div class="{{ class }}" id="{{ id_search_container }}" {{ attributes }}>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search__form">
+      {%- liquid
+        render 'el_input', type: 'hidden', name: 'type', value: 'product'
+        render 'el_input', type: 'hidden', name: 'limit', value: '6'
+        render 'el_input', type: 'hidden', name: 'options[prefix]', value: 'last'
+      -%}
+
+      <div class="search__field field">
+        {%- liquid
+          assign input_placeholder = 'search.general.input_placeholder' | t
+          render 'el_input', id: id_search, type: 'search', name: 'q', value: search_terms, placeholder: input_placeholder, custom_classes: 'search__input field__input', attributes: input_attriputes
+
+          assign label_text = 'search.general.input_placeholder' | t
+          render 'el_label', for_input: id_search, content: label_text, custom_classes: 'field__label'
+        -%}
+
+        {%- capture button_content -%}
+          {%- render 'el_icon', icon: 'search' -%}
+          <span class="visually-hidden">
+          {{ 'search.general.submit' | t }}
+          </span>
+        {%- endcapture -%}
+
+        {%- render 'el_button', type: 'submit', custom_classes: 'search__submit', text: button_content -%}
+      </div>
+
+      {{ search_popup }}
+    </form>
+    {%- liquid
+      capture btn_content
+        render 'el_icon', icon: 'close'
+      endcapture
+
+      assign btn_label = 'search.general.close' | t
+      assign btn_attr = 'aria-controls="' | append: id | append: '_search_modal' | append: '"'
+
+      render 'el_button', custom_classes: 'search-modal-close', text: btn_content, aria_label: btn_label, attributes: btn_attr
+    -%}
+  </div>
+{% endif %}

@@ -1,0 +1,145 @@
+{%- comment -%}
+    @summary Renders a cart info
+
+    @param {string} [custom_classes] - additional classes
+    @param {string} [attributes] - additional attributes
+    @param {string[]} [modifiers] - modifiers
+
+    @example
+    {%-
+        render 'c_cart-info',
+        custom_classes: 'custom',
+        modifiers: 'xl'
+
+    -%}
+{%- endcomment -%}
+{%- liquid
+  capture class
+    render 'f_bem-classes', main_class: 'cart-info', custom_classes: custom_classes, modifiers: modifiers
+  endcapture
+
+  assign total = 'cart.total' | t
+  assign common = 'cart.common' | t
+  assign delivery = 'cart.delivery' | t
+  assign benefit_code = 'cart.benefit_code' | t
+  assign benefit_available = 'cart.benefit_available' | t
+  assign benefit_used = 'cart.benefit_used' | t
+  assign use_sale = 'cart.use_sale' | t
+  assign remove_sale = 'cart.remove_sale' | t
+  assign complete_the_order = 'cart.complete_the_order' | t
+-%}
+
+<div class="{{- class -}}">
+  <hr/>
+    <div class="cart-info__between">
+      <p class="cart-info__total">{{ total }}</p>
+      {%- render 'c_price', price: cart.total_price, is_cart_total: true, custom_classes: 'vp-cart-original-total vp-cart-total-container' -%}
+    </div>
+    <div class="cart-info__between cart-modal__hidden">
+      <p class="cart-info__total">{{ delivery }}</p>
+      <p>{{ 'cart.calculated_on_checkout' | t }}</p>
+    </div>
+  <hr/>
+  {% if settings.sales_enable_fidelity_coupons %}
+    {% comment %}
+      Modal display
+    {% endcomment %}
+    <div class="cart-info__benefit-message vp-fidelity-select-container cart-page__hidden" style="display: none">
+      {%- assign benefit_text = 'cart.benefit_message' | t -%}
+      <p class="cart-info__benefit-text ">{{ benefit_text }}</p>
+      {%- assign button_text = 'cart.benefit_button_text' | t -%}
+      {%
+              render 'el_button',
+              text: button_text,
+              modifiers: 'xs,primary',
+              custom_classes: 'vp-fidelity-submit vp-add-fidelity',
+              type: 'button'
+      %}
+    </div>
+
+    {% comment %}
+      Cart page display
+    {% endcomment %}
+    <div class="cart-info__benefit-message vp-fidelity-select-container cart-modal__hidden" style="display: none">
+      {% render 'el_heading', tag: 'h', level: 3, text: 'Cyrillus & moi ', modifiers: 'xs' %}
+      <div class="vp-fidelity-select-available">
+        <p>{{ benefit_available }}</p>
+        {%
+          render 'el_button',
+          text: use_sale,
+          modifiers: 'xs,primary',
+          custom_classes: 'vp-fidelity-submit vp-add-fidelity',
+          type: 'button'
+        %}
+      </div>
+      <div class="vp-fidelity-select-used" style="display: none">
+        <p>{{ benefit_used }}</p>
+        {%
+          render 'el_button',
+          text: remove_sale,
+          modifiers: 'xs,primary',
+          custom_classes: 'vp-fidelity-submit vp-remove-fidelity',
+          type: 'button'
+        %}
+      </div>
+    </div>
+  {% endif %}
+  {% if settings.sales_enable_coupons %}
+    <div class="cart-info__benefit-code vp-coupons cart-modal__hidden">
+      {%-
+        render 'el_input',
+        type: 'text',
+        placeholder: benefit_code,
+        custom_classes: 'vp-coupons-input'
+      -%}
+      {%
+        render 'el_button',
+        text: 'ok',
+        modifiers: 'xs,secondary',
+        type: 'button',
+        custom_classes: 'vp-coupons-submit'
+      %}
+    </div>
+    <div class="vp-coupons-feedback cart-modal__hidden"></div>
+    <hr class="cart-modal__hidden"/>
+  {% endif  %}
+  {% if settings.cart_enable_custom_wording and settings.cart_custom_wording != blank %}
+    <div class="cart-info__custom_wording cart-modal__hidden">
+      {{ settings.cart_custom_wording }}
+    </div>
+    <hr class="cart-modal__hidden"/>
+  {% endif  %}
+  <div class="cart-info__between cart-modal__hidden">
+    <p class="vp-cart-total-container vp-tags" style="display:none;">
+      <span class="vp-prices-discount-tags"></span>
+      <span class="vp-prices-coupon-tags"></span>
+    </p>
+    <p class="cart-info__total">{{ common }}</p>
+    {%- render 'c_price', price: cart.total_price, is_cart_total: true, custom_classes: 'cart-info__total vp-cart-total-container vp-cart-original-total' -%}
+  </div>
+  <hr class="cart-modal__hidden"/>
+  <div class="cart-info__control">
+    {%- assign delivery_info = 'cart.additional_info' | t -%}
+    <p class="cart-info__delivery-info cart-page__hidden">{{ delivery_info }}</p>
+    <div class="cart-info__control-container">
+      {%
+          render 'el_button',
+          text: complete_the_order,
+          id: 'checkout',
+          name: 'checkout',
+          custom_classes: 'vp-checkout-btn',
+          modifiers: 'primary, full-width',
+          attributes: 'data-cart-checkout',
+          type: 'submit'
+      %}
+
+      {%
+        render 'el_link',
+        custom_classes: 'button button--primary button--full-width',
+        href: routes.cart_url,
+        text: complete_the_order
+      %}
+    </div>
+  </div>
+  {% render 'c_payment-method' %}
+</div>

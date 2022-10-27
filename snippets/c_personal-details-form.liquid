@@ -1,0 +1,108 @@
+{% liquid
+  assign civility_t = 'account.personal-info.content.form.civility.label' | t
+  assign civility_mme_t = 'account.personal-info.content.form.civility.options.mme' | t
+  assign civility_m_t = 'account.personal-info.content.form.civility.options.m' | t
+  assign first_name_t = 'account.personal-info.content.form.first_name.label' | t
+  assign last_name_t = 'account.personal-info.content.form.last_name.label' | t
+  assign birth_date_t = 'account.personal-info.content.form.birth_date.label' | t
+  assign email_t = 'account.personal-info.content.form.email.label' | t
+  assign address1_t = 'account.personal-info.content.form.address1.label' | t
+  assign address2_t = 'account.personal-info.content.form.address2.label' | t
+  assign zip_code_t = 'account.personal-info.content.form.zip_code.label' | t
+  assign city_t = 'account.personal-info.content.form.city.label' | t
+  assign mobile_phone_t = 'account.personal-info.content.form.mobile_phone.label' | t
+  assign button_label_t = 'account.personal-info.content.form.button.label' | t
+%}
+
+<form id="account--details__form" class="personal-form">
+  {% render 'el_input', id: 'clientNumber', type: 'hidden', name: 'clientNumber' %}
+  {% render 'el_input', id: 'id', type: 'hidden', name: 'id' %}
+
+  <div class="personal-form__civility">
+    {% render 'el_label', for_input: 'civility', content: civility_t, required: true, custom_classes: 'personal-form__civility-label-group' %}
+    {% render 'el_radio',
+      input_id: 'civility_mme',
+      label: civility_mme_t,
+      name: 'civility',
+      value: 'MRS',
+      container_modifiers: 'big, secondary'
+    %}
+    {% render 'el_radio',
+      input_id: 'civility_m',
+      label: civility_m_t,
+      name: 'civility',
+      value: 'MR',
+      container_modifiers: 'big, secondary'
+    %}
+  </div>
+
+  <div class="personal-form__row">
+    {%- assign id = "first_name" -%}
+    {%- assign required = true -%}
+    {%- render 'el_input', id: id, name: 'firstName', required: required, modifiers: 'outlined, sm' -%}
+    {%- render 'el_label', for_input: id, content: first_name_t, required: required, custom_classes: 'input-label', modifiers: 'float' -%}
+  </div>
+
+  <div class="personal-form__row">
+    {%- assign id = "last_name" -%}
+    {%- assign required = true -%}
+    {%- render 'el_input', id: id, name: 'lastName', required: required, modifiers: 'outlined, sm' -%}
+    {%- render 'el_label', for_input: id, content: last_name_t, required: required, custom_classes: 'input-label', modifiers: 'float' -%}
+  </div>
+  <div class="personal-form__row">
+    {%- assign id = "birthDate" -%}
+    {%- assign required = true -%}
+    {%- render 'el_input',
+      type: 'text',
+      id: id,
+      name: 'birthDate',
+      required: required,
+      custom_classes: 'personal-form__input-date',
+      modifiers: 'outlined, sm'
+      attributes: 'onfocus="(this.type=`date`)" onblur="(this.type=`text`)"'
+    -%}
+    {%- render 'el_label', for_input: id, content: birth_date_t, required: required, custom_classes: 'input-label', modifiers: 'float' -%}
+  </div>
+  <div class="personal-form__row">
+    {%- assign id = "email" -%}
+    {%- assign required = true -%}
+    {%- render 'el_input', type: 'email', id: id, name: 'email', required: required, attributes: 'autocomplete="email"', modifiers: 'outlined, sm' -%}
+    {%- render 'el_label', for_input: id, content: email_t, required: required, custom_classes: 'input-label', modifiers: 'float' -%}
+  </div>
+  <div class="personal-form__row">
+    {%- assign id = "address1" -%}
+    {%- assign required = false -%}
+    {%- render 'el_input', id: id, required: required, name: 'address1', modifiers: 'outlined, sm', placeholder: address1_t -%}
+    {%- render 'el_label', for_input: id, content: address1_t, required: required, custom_classes: 'input-label', modifiers: 'float' -%}
+  </div>
+  <div class="personal-form__row">
+    {%- assign id = "address2" -%}
+    {%- assign required = false -%}
+    {%- render 'el_input', id: id, name: 'address2', required: required, modifiers: 'outlined, sm', placeholder: address2_t -%}
+    {%- render 'el_label', for_input: id, content: address2_t, required: required, custom_classes: 'input-label', modifiers: 'float' -%}
+  </div>
+  <div class="personal-form__row">
+    {%- assign id = "zipCode" -%}
+    {%- assign required = true -%}
+    {%- render 'el_input', id: id, name: 'zipCode', required: required, modifiers: 'outlined, sm' -%}
+    {%- render 'el_label', for_input: id, content: zip_code_t, required: required, custom_classes: 'input-label', modifiers: 'float' -%}
+  </div>
+  <div class="personal-form__row">
+    {%- assign id = "city" -%}
+    {%- assign required = true -%}
+    {%- render 'el_input', id: id, name: 'city', required: required, modifiers: 'outlined, sm' -%}
+    {%- render 'el_label', for_input: id, content: city_t, required: required, custom_classes: 'input-label', modifiers: 'float' -%}
+  </div>
+  <div class="personal-form__row">
+    {%- assign id = "mobilePhoneNumber" -%}
+    {%- assign required = false -%}
+    {%- render 'el_input', id: id, name: 'mobilePhoneNumber', required: required, modifiers: 'outlined, sm', placeholder: mobile_phone_t -%}
+    {%- render 'el_label', for_input: id, content: mobile_phone_t, required: required, custom_classes: 'input-label', modifiers: 'float' -%}
+  </div>
+  <div class="feedback">
+    <div class="success hidden">{{ 'account.personal-info.content.form.feedback.success' | t }}</div>
+    <div class="error hidden">{{ 'account.personal-info.content.form.feedback.error' | t }}</div>
+  </div>
+
+  {% render 'el_button', type: 'submit', text: button_label_t, modifiers: 'secondary, small', custom_classes: 'personal-form__submit' %}
+</form>

@@ -1,0 +1,182 @@
+{%- comment -%}
+  @summary Renders table with order information
+
+  @param {string} custom_class - value
+  @param {string('lg'|'sm')} modifier - value
+  @param {customer.orders} customer_orders - customer orders
+  @param {order} order - order
+  @param {string('orders'|'refunds')} typeTable - type table
+
+  @example
+  {%-
+    render 'el_orders-table',
+    content: content,
+    custom_class: 'custom_class',
+  -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign typeOrders = 'orders'
+  assign typeRefunds = 'refunds'
+  assign isGlobalEStore = false
+
+  if shop.permanent_domain == 'cyrillus-the-oz.myshopify.com' or shop.permanent_domain == 'cyrillus-global-e.myshopify.com'
+    assign isGlobalEStore = true
+  endif
+
+  if typeTable == blank
+    assign typeTable = typeOrders
+  endif
+
+  if modifier == blank
+    assign modifier = 'lg'
+  endif
+
+  if typeTable == typeRefunds
+    assign modifier = 'sm'
+  endif
+
+  assign content = nil
+  assign customerOrdersContent = nil
+  assign orderContent = nil
+-%}
+
+{%- if customer_orders != blank and customer_orders.size > 0 -%}
+  {%- for order in customer_orders -%}
+    {%- liquid
+      assign trackingUrl = nil
+      assign trackingNumber = nil
+
+      for line_item in order.line_items
+        unless trackingNumber
+          if line_item.fulfillment.tracking_number
+            assign trackingNumber = line_item.fulfillment.tracking_number
+          endif
+        endunless
+        unless trackingUrl
+          if line_item.fulfillment.tracking_url
+            assign trackingUrl = line_item.fulfillment.tracking_url
+          endif
+        endunless
+      endfor
+
+      capture link
+        assign text = '№' | append: ' ' | append: order.name
+        render 'el_link', href: order.customer_url, text: text
+      endcapture
+    -%}
+
+    {%- capture tmpContent -%}
+      <tr class="orders-table__row">
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ link }}</td>
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ order.created_at | date: '%d/%m/%Y' }}</td>
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ order.total_price | money }}</td>
+        {%- if typeTable == typeOrders -%}
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ order.fulfillment_status_label | capitalize }}</td>
+        {%- endif -%}
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">
+          {%- if typeTable == typeOrders -%}
+            {%- if trackingUrl != blank -%}
+              {% render 'el_link', href: trackingUrl, text: trackingNumber, target: '_blank' %}
+            {%- else -%}
+              <span>-</span>
+            {%- endif -%}
+          {%- elsif typeTable == typeRefunds -%}
+            {% if order.financial_status == 'refunded' %}
+              {% assign labelFinancialStatus = 'refunds.table.actions.refunded' | t %}
+              {% render 'el_link', href: order.customer_url, text: labelFinancialStatus, custom_classes: 'orders-table__content-refund-action' %}
+            {% elsif order.financial_status == 'partially_refunded' %}
+              {% assign labelFinancialStatus = 'refunds.table.actions.partially_refunded' | t %}
+              {% render 'el_link', href: order.customer_url, text: labelFinancialStatus, custom_classes: 'orders-table__content-refund-action' %}
+            {% endif %}
+            {%- if isGlobalEStore == false and settings.enable_order_return_app -%}
+              {% render 'account-order-return-links', order: order, customLinkClasses: 'orders-table__content-refund-action' %}
+            {% elsif isGlobalEStore and settings.enable_globale_returns and settings.globale_return_portal_link != blank %}
+              {% render 'globale-account-order-return-links' %}
+            {%- else -%}
+              -
+            {%- endif -%}
+          {%- endif -%}
+        </td>
+      </tr>
+    {%- endcapture -%}
+    {%- assign customerOrdersContent = customerOrdersContent | append: tmpContent -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if order != blank -%}
+  {%- liquid
+    assign trackingUrl = nil
+    assign trackingNumber = nil
+
+    for line_item in order.line_items
+      unless trackingNumber
+        if line_item.fulfillment.tracking_number
+          assign trackingNumber = line_item.fulfillment.tracking_number
+        endif
+      endunless
+      unless trackingUrl
+        if line_item.fulfillment.tracking_url
+          assign trackingUrl = line_item.fulfillment.tracking_url
+        endif
+      endunless
+    endfor
+  -%}
+
+  {%- capture tmpContent -%}
+    <tr class="orders-table__row">
+      <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ '№' | append: ' ' | append: order.name }}</td>
+      <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ order.created_at | date: '%d/%m/%Y' }}</td>
+      <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ order.total_price | money }}</td>
+      <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ order.fulfillment_status_label | capitalize }}</td>
+      <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">
+        {% if trackingUrl != blank %}
+          {% render 'el_link', href: trackingUrl, text: trackingNumber, target: '_blank' %}
+        {% else%}
+          <span>-</span>
+        {% endif %}
+      </td>
+    </tr>
+  {%- endcapture -%}
+  {%- assign orderContent = orderContent | append: tmpContent -%}
+{%- endif -%}
+
+{%- if customerOrdersContent != nil and orderContent != nil -%}
+  {%- assign content = customerOrdersContent -%}
+{%- elsif customerOrdersContent != nil -%}
+  {%- assign content = customerOrdersContent -%}
+{%- elsif orderContent != nil -%}
+  {%- assign content = orderContent -%}
+{%- endif -%}
+
+{%- if content -%}
+  {%- assign renderDelivery = false -%}
+  {%- assign nameLastColumn = 'orders.table.columns.tracking_number' | t -%}
+
+  {%- if order != blank and customer_orders == blank -%}
+    {%- assign renderDelivery = true -%}
+  {%- endif -%}
+  {%- if order == blank and customer_orders != blank and typeTable == typeOrders -%}
+    {%- assign renderDelivery = true -%}
+  {%- endif -%}
+  {% if renderDelivery == false %}
+    {%- assign nameLastColumn = 'refunds.table.columns.refund' | t -%}
+  {% endif %}
+
+  <table class="orders-table {{ custom_class }}">
+    <thead class="orders-table__head">
+      <tr class=orders-table__row">
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ 'orders.table.columns.name' | t | upcase }}</td>
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ 'orders.table.columns.date' | t | upcase }}</td>
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ 'orders.table.columns.total' | t | upcase  }}</td>
+        {% if renderDelivery %}
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ 'orders.table.columns.delivery' | t | upcase }}</td>
+        {% endif %}
+        <td class="orders-table__ceil orders-table__ceil_{{- modifier }}">{{ nameLastColumn | upcase }}</td>
+      </tr>
+    </thead>
+    <tbody class="orders-table__body">
+      {{ content }}
+    </tbody>
+  </table>
+{%- endif -%}
