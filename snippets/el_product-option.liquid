@@ -38,7 +38,7 @@
           endif
 
           unless product.variants[forloop.index0].available and product.variants[forloop.index0].price > 0
-              assign inp_attr = inp_attr | append: ' disabled'
+              assign inp_attr = inp_attr | append: ' data-unavailable'
           endunless
 
           render 'el_input', type: 'radio', id: inp_id, name: option.name, value: inp_value, attributes: inp_attr

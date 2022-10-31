@@ -99,15 +99,9 @@
   transition: $transition-duration-fastest;
 }
 
-.product-form__input .input:disabled + label {
-  border: 0;
-  cursor: not-allowed;
+.product-form__input .input[data-unavailable] + label {
   opacity: 0.5;
   text-decoration: line-through;
-}
-
-.product-form__input .input:disabled:hover + .label {
-  border: 0;
 }
 
 .product-form__input .legend {
@@ -245,6 +239,45 @@
   letter-spacing: to-rem(1.5px);
 }
 
-.product_form__button:not(:last-child) {
+.product_form__button:not(:last-child),
+.product-form__buy:not(:last-child) .product_form__button {
   margin-bottom: 1rem;
+}
+
+.product-form__bis-form {
+  @include media-breakpoint-up(md) {
+    display: flex;
+  }
+}
+
+.product-form__bis-button {
+  width: 100%;
+  margin-top: to-rem(8px);
+
+  @include media-breakpoint-up(md) {
+    width: 150px;
+    margin-top: 0;
+  }
+}
+
+.product-form__email {
+  width: 100%;
+  text-overflow: ellipsis;
+  height: to-rem(46.5px);
+
+  @include media-breakpoint-up(md) {
+    padding: 0;
+    border: 0;
+    border-bottom: to-rem(2px) solid $palette-silver;
+    transition: border-bottom-color $transition-duration-fastest;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 0 to-rem(14px);
+    border: to-rem(1px) solid $palette-dark;
+  }
+}
+
+.product-form__notes {
+  margin-top: 0;
 }

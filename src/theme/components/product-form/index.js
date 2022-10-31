@@ -1,4 +1,5 @@
 import Cart from '../cart/cart';
+import BackInStock from '../back-in-stock';
 
 import '../swatches';
 import './index.scss';
@@ -23,6 +24,7 @@ class ProductForm {
     this.pickupButton = container.querySelector(SELECTORS.PICKUP_BTN);
     this.section = this.form.dataset.section;
     this.url = this.form.dataset.productUrl;
+    this._bisForm = new BackInStock();
 
     this._cart = new Cart();
 
@@ -80,6 +82,7 @@ class ProductForm {
     });
 
     this.form.id.value = this.currentVariant ? this.currentVariant.id : '';
+    this._bisForm.setVariantId(this.currentVariant ? this.currentVariant.id : this._bisForm.getVariantId());
   }
 
   updateURL() {
@@ -138,6 +141,7 @@ class ProductForm {
         this.renderBlock('status', html);
         this.toggleAddButton(!this.currentVariant.available);
         this.renderVP();
+        this._bisForm = new BackInStock(this.currentVariant.available);
       })
       .finally(() => this.form.classList.remove(CLASSES.LOADING))
       .catch((error) => error);

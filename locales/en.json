@@ -1385,7 +1385,9 @@
         "description": "Description",
         "care": "Washing care ",
         "delivery": "Delivery"
-      }
+      },
+      "email": "Enter your e-mail",
+      "back_in_stock": "Notify me"
     }
   },
   "cart": {

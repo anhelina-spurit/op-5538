@@ -106,7 +106,9 @@
         "description": "Description ",
         "care": "conseil d’entretien ",
         "delivery": "livraison"
-      }
+      },
+      "email": "Entrer votre e-mail",
+      "back_in_stock": "Notifiez moi"
     }
   },
   "cart": {
